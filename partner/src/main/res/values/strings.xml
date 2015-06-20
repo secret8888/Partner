@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">童伴</string>
+    <string name="wating_hint">请稍候…</string>
+    <string name="network_connect_unavailable">网络好像不可用哦</string>
+    <string name="network_connect_timeout">网络好像不给力呢，休息~休息一会儿~</string>
+    <string name="network_status_not_good">网络状态不佳</string>
+    <string name="reload_page">重新加载</string>
+    <string name="login_timeout_alert">会话已过期,请重新登录</string>
+    <string name="exit_tip">再按一次退出应用</string>
+    <string name="data_get_error">数据获取失败</string>
+
+    <!-- pull to refresh start -->
+    <string name="header_hint_refresh_normal">下拉刷新...</string>
+    <string name="header_hint_refresh_ready">松手立即更新...</string>
+    <string name="header_hint_refresh_loading">正在加载...</string>
+    <string name="header_hint_refresh_time">时间：</string>
+    <string name="footer_hint_load_normal">上拉加载更多</string>
+    <string name="footer_hint_load_ready">松手立即加载更多...</string>
+    <!-- pull to refresh end -->
+
+
+    <!-- share begin -->
+    <string name="share">分享</string>
+    <string name="errcode_success">分享成功</string>
+    <string name="errcode_cancel">分享取消</string>
+    <string name="errcode_deny">分享被拒绝</string>
+    <string name="errcode_unknown">分享返回</string>
+    <string name="weixin_not_install">未安装微信，无法进行分享</string>
+    <string name="share_default_content">专为中国人设计的口语能力提升App</string>
+    <string name="kouyu_website">http://kouyu.youdao.com/panda.html</string>
+    <string name="share_brief">推荐一个很好玩的英语学习工具--有道口语大师。</string>
+    <string name="share_website">http://kouyu.youdao.com</string>
+    <string name="share_app_img_url">http://shared.ydstatic.com/xue/bigbang/share/share_app.jpg</string>
+    <string name="title_activity_video_player">播放器Demo</string>
+    <string name="title_activity_payment">PaymentActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <!-- share end -->
+
+    <!-- check update -->
+    <string name="update">更新</string>
+    <string name="new_version_tip">版本更新</string>
+    <string name="update_content_tip">更新内容:\n</string>
+    <string name="update_size_tip">更新包大小:</string>
+    <string name="task_downloading">有其他任务正在下载，请稍后再试</string>
+    <string name="download_fail_by_network">下载失败，请检查网络连接是否正常</string>
+    <string name="download_fail_and_restart">下载文件错误，正在重新下载</string>
+    <string name="download_fail_by_sdcard">下载失败，未检测到sd卡或sd卡容量不足</string>
+    <string name="download_fail_retry">下载失败，请稍后重试</string>
+    <string name="title_activity_webview">WebviewActivity</string>
+
+</resources>
