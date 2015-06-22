@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/partner_space_medium"
+    android:background="@color/white" >
+
+    <ImageView
+        android:id="@+id/im_activity_intro"
+        android:layout_width="match_parent"
+        android:layout_height="270dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/im_guide_2"
+        />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/partner_space_medium"
+        android:paddingTop="@dimen/partner_space_tiny"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:background="@drawable/bg_calender"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2015/05"
+            android:textColor="@color/black"
+            android:textSize="@dimen/ts_12"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:text="21"
+            android:textColor="@color/white"
+            android:textSize="@dimen/ts_14"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/im_activity_intro"
+        android:textColor="@color/black"
+        android:textSize="@dimen/ts_17"
+        android:layout_margin="@dimen/partner_space_middle"
+        android:text="雪山之行"
+        />
+
+    <LinearLayout
+        android:id="@+id/lv_tag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_name"
+        android:layout_marginLeft="@dimen/partner_space_medium"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="@dimen/ts_14"
+            android:drawablePadding="@dimen/partner_space_normal"
+            android:drawableLeft="@drawable/ic_num"
+            android:text="2人/已报名"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/partner_space_huge"
+            android:textColor="@color/black"
+            android:textSize="@dimen/ts_14"
+            android:drawablePadding="@dimen/partner_space_normal"
+            android:drawableLeft="@drawable/ic_num"
+            android:text="598次/浏览"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lv_tag"
+        android:layout_marginLeft="@dimen/partner_space_medium"
+        android:layout_marginTop="@dimen/partner_space_normal"
+        android:textColor="@color/black"
+        android:textSize="@dimen/ts_14"
+        android:drawablePadding="@dimen/partner_space_normal"
+        android:drawableLeft="@drawable/ic_address"
+        android:text="呼和浩特"
+        />
+</RelativeLayout>

@@ -22,4 +22,64 @@
         <item name="android:windowContentOverlay">@null</item>
     </style>
 
+    <style name="ItemLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/bg_edit</item>
+    </style>
+
+    <style name="ItemIndexImage">
+        <item name="android:layout_width">@dimen/item_height</item>
+        <item name="android:layout_height">@dimen/item_height</item>
+        <item name="android:scaleType">center</item>
+    </style>
+
+    <style name="ItemText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">@dimen/item_height</item>
+        <item name="android:paddingRight">@dimen/partner_space_medium</item>
+        <item name="android:paddingTop">@dimen/partner_space_medium</item>
+        <item name="android:paddingBottom">@dimen/partner_space_medium</item>
+        <item name="android:background">@null</item>
+        <item name="android:textSize">@dimen/ts_14</item>
+    </style>
+
+    <style name="PersonalIndexImage">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/partner_space_medium_12</item>
+    </style>
+
+    <style name="PersonalItemText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:paddingRight">@dimen/partner_space_medium</item>
+        <item name="android:textSize">@dimen/ts_15</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="PersonalArrowStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_marginRight">@dimen/partner_space_common</item>
+        <item name="android:background">@drawable/ic_arrow</item>
+    </style>
+
+    <style name="tab_rb_style">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:button">@null</item>
+        <item name="android:textColor">@drawable/tab_text_selector</item>
+        <item name="android:textSize">@dimen/ts_12</item>
+        <item name="android:paddingBottom">@dimen/partner_space_mini</item>
+        <item name="android:gravity">center_horizontal|bottom</item>
+        <item name="android:layout_gravity">bottom</item>
+        <!--<item name="android:background" >@drawable/tab_checked_bg</item>-->
+    </style>
+
 </resources>

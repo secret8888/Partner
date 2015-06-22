@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white" >
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager_guide"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" 
+            android:background="@drawable/im_guide_1"
+            />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" 
+            android:background="@drawable/im_guide_2"
+            />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" 
+            android:background="@drawable/im_guide_3"
+            />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" 
+            android:background="@drawable/im_guide_4"
+            />
+    </android.support.v4.view.ViewPager>
+
+</RelativeLayout>

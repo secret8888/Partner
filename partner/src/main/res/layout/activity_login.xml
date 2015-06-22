@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <com.partner.view.TitleView
+        android:id="@+id/view_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="@dimen/partner_space_common"
+        android:paddingLeft="@dimen/partner_space_large"
+        android:paddingRight="@dimen/partner_space_large"
+        android:orientation="vertical"
+        >
+        <LinearLayout
+            style="@style/ItemLayout"
+            >
+            <ImageView
+                style="@style/ItemIndexImage"
+                android:src="@drawable/ic_info"
+                />
+
+            <EditText
+                android:id="@+id/edit_phone"
+                style="@style/ItemText"
+                android:inputType="phone"
+                android:hint="@string/input_phone_tip"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/partner_space_medium"
+            style="@style/ItemLayout"
+            >
+            <ImageView
+                style="@style/ItemIndexImage"
+                android:src="@drawable/ic_psd"
+                />
+
+            <EditText
+                android:id="@+id/edit_psd"
+                style="@style/ItemText"
+                android:inputType="textPassword"
+                android:hint="@string/input_psd_tip"
+                />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_height"
+            android:layout_marginTop="@dimen/partner_space_common"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/ts_16"
+            android:text="@string/login_space"
+            android:clickable="true"
+            android:onClick="onLoginClick"
+            android:background="@drawable/btn_operate"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/partner_space_middle"
+                android:paddingBottom="@dimen/partner_space_middle"
+                android:textColor="@color/black"
+                android:textSize="@dimen/ts_14"
+                android:text="@string/find_psd"
+                android:clickable="true"
+                android:onClick="onFindPsdClick"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:paddingTop="@dimen/partner_space_middle"
+                android:paddingBottom="@dimen/partner_space_middle"
+                android:textColor="@color/black"
+                android:textSize="@dimen/ts_14"
+                android:text="@string/new_user_register"
+                android:clickable="true"
+                android:onClick="onRegisterClick"
+                />
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

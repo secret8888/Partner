@@ -12,8 +12,9 @@
     <color name="bg_input_gray">#f3f3f3</color>
     <color name="bg_live_gray">#f2f2f2</color>
     <color name="text_black">#808080</color>
+    <color name="text_blue">#18a9e0</color>
     <color name="edge_input">#bababa</color>
-    <color name="text_name_gray">#888888</color>
+    <color name="text_name_gray">#535353</color>
     <color name="text_grey">#b6afa2</color>
     <color name="transparent_cover_gray">#c6222222</color>
 

@@ -18,6 +18,32 @@
     <string name="footer_hint_load_ready">松手立即加载更多...</string>
     <!-- pull to refresh end -->
 
+    <!-- login -->
+    <string name="login">登录</string>
+    <string name="login_space">登 录</string>
+    <string name="confirm">确 定</string>
+    <string name="register_space">注 册</string>
+    <string name="input_phone_tip">请输入手机号码</string>
+    <string name="input_psd_tip">请输入密码</string>
+    <string name="input_code_tip">请输入验证码</string>
+    <string name="find_psd">找回密码</string>
+    <string name="modify_psd">重置密码</string>
+    <string name="new_user_register">新用户注册</string>
+    <string name="get_code">获取验证码</string>
+    <string name="institution_register">机构注册></string>
+    <string name="input_institution_tip">请输入机构名称</string>
+    <string name="input_address_tip">请输入机构地址</string>
+    <string name="input_intro_tip">请输入机构简介</string>
+
+    <!-- main -->
+    <string name="activity">活动</string>
+    <string name="personal">个人</string>
+    <string name="all">所有</string>
+    <string name="part_in">参加</string>
+    <string name="follow">关注</string>
+    <string name="qrcode">扫一扫</string>
+    <string name="message_center">消息中心</string>
+    <string name="setting">设置</string>
 
     <!-- share begin -->
     <string name="share">分享</string>

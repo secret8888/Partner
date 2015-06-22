@@ -7,13 +7,16 @@ import android.os.Bundle;
 import com.partner.PartnerApplication;
 import com.partner.R;
 import com.partner.common.annotation.Injector;
+import com.partner.common.annotation.ViewId;
 import com.partner.common.util.ViewUtils;
 import com.partner.listener.OnLoadingViewListener;
+import com.partner.listener.OnTitleClickListener;
+import com.partner.view.TitleView;
 
-public abstract class BaseActivity extends Activity implements OnLoadingViewListener{
+public abstract class BaseActivity extends Activity implements OnLoadingViewListener, OnTitleClickListener {
 
     /* 加载等待dialog*/
-    private Dialog loadingDialog = null;
+    private Dialog loadingDialog;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -53,6 +56,16 @@ public abstract class BaseActivity extends Activity implements OnLoadingViewList
             loadingDialog.dismiss();
             loadingDialog = null;
         }
+    }
+
+    @Override
+    public void onTitleBackClick() {
+        onBackPressed();
+    }
+
+    @Override
+    public void onTitleOperateClick() {
+
     }
 
     /**

@@ -1,20 +1,63 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:fresco="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
 
-    <com.facebook.drawee.view.SimpleDraweeView
-        android:id="@+id/image_view"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_centerInParent="true"
-        fresco:roundAsCircle="false"
-        fresco:progressBarImageScaleType="centerInside"
-        fresco:progressBarAutoRotateInterval="1000"
-        fresco:placeholderImage="@drawable/ic_launcher"
-        fresco:roundedCornerRadius="20dp"
-        fresco:roundingBorderColor="#6E9BD5"
-        fresco:roundingBorderWidth="1dp"
-        fresco:actualImageScaleType="fitCenter"/>
+    <FrameLayout
+        android:id="@+id/realtabcontent"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
-</RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/bg_gray"
+        />
+
+    <RadioGroup
+        android:id="@+id/tab_rg_menu"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="1dp"
+        android:background="@color/white"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/tab_main"
+            style="@style/tab_rb_style"
+            android:checked="true"
+            android:paddingTop="@dimen/partner_space_normal"
+            android:drawableTop="@drawable/tab_main_selector"
+            android:text="@string/activity"
+            />
+
+        <RadioButton
+            android:id="@+id/tab_activity"
+            style="@style/tab_rb_style"
+            android:paddingTop="@dimen/partner_space_normal"
+            android:drawableTop="@drawable/tab_project_selector"
+            android:text="@string/app_name" />
+
+        <RadioButton
+            android:id="@+id/tab_mine"
+            style="@style/tab_rb_style"
+            android:paddingTop="@dimen/partner_space_normal"
+            android:drawableTop="@drawable/tab_mine_selector"
+            android:text="@string/personal" />
+    </RadioGroup>
+
+    <android.support.v4.app.FragmentTabHost
+        android:id="@android:id/tabhost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" >
+
+        <FrameLayout
+            android:id="@android:id/tabcontent"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="0" />
+    </android.support.v4.app.FragmentTabHost>
+
+</LinearLayout>

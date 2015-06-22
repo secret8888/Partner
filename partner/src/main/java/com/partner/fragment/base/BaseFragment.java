@@ -20,14 +20,23 @@ public abstract class BaseFragment extends Fragment implements OnLoadingViewList
 
     private Dialog loadingDialog = null;
 
+    protected View rootView = null;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(getLayoutId(), null);
-        Injector.inject(this, rootView);
-        readIntent();
-        initControls(savedInstanceState);
-        setListeners();
+        if (rootView == null) {
+            rootView = inflater.inflate(getLayoutId(), null);
+            Injector.inject(this, rootView);
+            readIntent();
+            initControls(savedInstanceState);
+            setListeners();
+        }
+        // 缓存的rootView需要判断是否已经被加过parent，如果有parent需要从parent删除，要不然会发生这个rootview已经有parent的错误。
+        ViewGroup parent = (ViewGroup) rootView.getParent();
+        if (parent != null) {
+            parent.removeView(rootView);
+        }
         return rootView;
     }
 

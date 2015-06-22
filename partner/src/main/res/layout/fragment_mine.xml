@@ -1,0 +1,129 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/ts_20"
+        android:text="@string/personal"
+        android:background="@drawable/bg_title"
+        />
+
+    <RelativeLayout
+        android:layout_marginTop="@dimen/partner_space_medium"
+        style="@style/ItemLayout"
+        >
+        <ImageView
+            android:id="@+id/im_avatar"
+            style="@style/PersonalIndexImage"
+            android:layout_height="80dp"
+            android:layout_width="80dp"
+            android:src="@drawable/ic_launcher"
+            />
+
+        <ImageView
+            style="@style/PersonalArrowStyle"
+            />
+        <TextView
+            style="@style/PersonalItemText"
+            android:layout_toRightOf="@id/im_avatar"
+            android:text="小蓝"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="@dimen/partner_space_medium"
+        style="@style/ItemLayout"
+        >
+        <ImageView
+            android:id="@+id/im_part"
+            style="@style/PersonalIndexImage"
+            android:src="@drawable/ic_message"
+            />
+
+        <ImageView
+            style="@style/PersonalArrowStyle"
+            />
+        <TextView
+            style="@style/PersonalItemText"
+            android:layout_toRightOf="@id/im_part"
+            android:text="报名常用信息"
+            />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/bg_gray"
+        />
+
+    <RelativeLayout
+        style="@style/ItemLayout"
+        >
+        <ImageView
+            android:id="@+id/im_qrcode"
+            style="@style/PersonalIndexImage"
+            android:src="@drawable/ic_qrcode"
+            />
+
+        <ImageView
+            style="@style/PersonalArrowStyle"
+            />
+        <TextView
+            style="@style/PersonalItemText"
+            android:layout_toRightOf="@id/im_qrcode"
+            android:text="@string/qrcode"
+            />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/bg_gray"
+        />
+
+    <RelativeLayout
+        style="@style/ItemLayout"
+        >
+        <ImageView
+            android:id="@+id/im_message_center"
+            style="@style/PersonalIndexImage"
+            android:src="@drawable/ic_message"
+            />
+
+        <ImageView
+            style="@style/PersonalArrowStyle"
+            />
+        <TextView
+            style="@style/PersonalItemText"
+            android:layout_toRightOf="@id/im_message_center"
+            android:text="@string/message_center"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="@dimen/partner_space_medium"
+        style="@style/ItemLayout"
+        >
+        <ImageView
+            android:id="@+id/im_setting"
+            style="@style/PersonalIndexImage"
+            android:src="@drawable/ic_setting"
+            />
+
+        <ImageView
+            style="@style/PersonalArrowStyle"
+            />
+        <TextView
+            style="@style/PersonalItemText"
+            android:layout_toRightOf="@id/im_setting"
+            android:text="@string/setting"
+            />
+    </RelativeLayout>
+</LinearLayout>

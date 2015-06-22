@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <com.partner.view.TitleView
+        android:id="@+id/view_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="@dimen/partner_space_common"
+        android:paddingLeft="@dimen/partner_space_large"
+        android:paddingRight="@dimen/partner_space_large"
+        android:orientation="vertical"
+        >
+        <LinearLayout
+            style="@style/ItemLayout"
+            >
+            <ImageView
+                style="@style/ItemIndexImage"
+                android:src="@drawable/ic_info"
+                />
+
+            <EditText
+                android:id="@+id/edit_phone"
+                style="@style/ItemText"
+                android:inputType="phone"
+                android:hint="@string/input_phone_tip"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/partner_space_medium"
+            style="@style/ItemLayout"
+            >
+            <ImageView
+                style="@style/ItemIndexImage"
+                android:src="@drawable/ic_psd"
+                />
+
+            <EditText
+                android:id="@+id/edit_psd"
+                style="@style/ItemText"
+                android:inputType="textPassword"
+                android:hint="@string/input_psd_tip"
+                />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_height"
+            android:layout_marginTop="@dimen/partner_space_medium">
+
+            <TextView
+                android:id="@+id/tv_get_code"
+                android:layout_width="140dp"
+                android:layout_height="@dimen/item_height"
+                android:layout_alignParentRight="true"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="@dimen/ts_16"
+                android:text="@string/get_code"
+                android:clickable="true"
+                android:onClick="onCodeClick"
+                android:background="@drawable/btn_operate"
+                />
+            <LinearLayout
+                style="@style/ItemLayout"
+                android:layout_marginRight="@dimen/partner_space_medium"
+                android:layout_toLeftOf="@id/tv_get_code"
+                >
+                <ImageView
+                    style="@style/ItemIndexImage"
+                    android:src="@drawable/ic_code"
+                    />
+
+                <EditText
+                    android:id="@+id/edit_code"
+                    style="@style/ItemText"
+                    android:hint="@string/input_code_tip"
+                    />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_height"
+            android:layout_marginTop="@dimen/partner_space_common"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/ts_16"
+            android:text="@string/confirm"
+            android:clickable="true"
+            android:onClick="onConfirmClick"
+            android:background="@drawable/btn_operate"
+            />
+    </LinearLayout>
+
+</LinearLayout>

@@ -2,102 +2,102 @@
 <items version="2" >
 
     <item
-        jar="D:\android\studioworkspace\Partner_V1.0.0\partner\build\intermediates\exploded-aar\com.facebook.fresco\fresco\0.5.2\classes.jar"
+        jar="/home/emilyu/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.4.0/5b72bf48563ea8410e650de14aa33ff69a3e8c35/okio-1.4.0.jar"
         jumboMode="false"
-        revision="21.1.2"
-        sha1="309967f02af11bd65974c8bf6a783994d04c25c9">
-        <dex dex="D:\android\studioworkspace\Partner_V1.0.0\partner\build\intermediates\pre-dexed\debug\classes-3586d7b2faf908cf6951b75f0f7d3561330a97a4.jar" />
-    </item>
-    <item
-        jar="D:\android\studioworkspace\Partner_V1.0.0\partner\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
-        <dex dex="D:\android\studioworkspace\Partner_V1.0.0\partner\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-8e1325ed5dc88a8f33924089c68a176e79d3ed43.jar" />
-    </item>
-    <item
-        jar="D:\android\studioworkspace\Partner_V1.0.0\partner\build\intermediates\exploded-aar\com.facebook.fresco\drawee\0.5.2\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="668c66ef994fec47f1861ea185fe6aa205205f72">
-        <dex dex="D:\android\studioworkspace\Partner_V1.0.0\partner\build\intermediates\pre-dexed\debug\classes-9b9c0713b3421368454e56f19d6d3c31a51a5d23.jar" />
-    </item>
-    <item
-        jar="D:\android\studioworkspace\Partner_V1.0.0\partner\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
-        <dex dex="D:\android\studioworkspace\Partner_V1.0.0\partner\build\intermediates\pre-dexed\debug\classes-f5199e3b100db07919601d616cfc4d8c83ac1d75.jar" />
-    </item>
-    <item
-        jar="D:\android\studioworkspace\Partner_V1.0.0\partner\libs\YDAnimation-1.0.1.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="9f47f9f40e3935bc7277fa36de1d9ff324c62be6">
-        <dex dex="D:\android\studioworkspace\Partner_V1.0.0\partner\build\intermediates\pre-dexed\debug\YDAnimation-1.0.1-e7d8dff0db4b321827461dffe48c14e253b9efbe.jar" />
-    </item>
-    <item
-        jar="C:\Users\yuym\AppData\Local\Android\sdk1\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
-        <dex dex="D:\android\studioworkspace\Partner_V1.0.0\partner\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-81e75f1bfbfd12efde938fa601d9e2286b94fc93.jar" />
-    </item>
-    <item
-        jar="D:\android\studioworkspace\Partner_V1.0.0\partner\build\intermediates\exploded-aar\com.facebook.fresco\imagepipeline\0.5.2\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="cd611c5cbb4dec30ebd4ebea227eacbc7c3379c2">
-        <dex dex="D:\android\studioworkspace\Partner_V1.0.0\partner\build\intermediates\pre-dexed\debug\classes-0fc8e2f831a8c8a86566c1ebd20bd373db54c62c.jar" />
-    </item>
-    <item
-        jar="C:\Users\yuym\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.4.0\5b72bf48563ea8410e650de14aa33ff69a3e8c35\okio-1.4.0.jar"
-        jumboMode="false"
-        revision="21.1.2"
+        revision="22.0.0"
         sha1="5b72bf48563ea8410e650de14aa33ff69a3e8c35">
-        <dex dex="D:\android\studioworkspace\Partner_V1.0.0\partner\build\intermediates\pre-dexed\debug\okio-1.4.0-076d319cbab1330603feb54d9445a275f8150c75.jar" />
+        <dex dex="/home/emilyu/android/studioworkspace/Partner_V1.0.0/partner/build/intermediates/pre-dexed/debug/okio-1.4.0-5c5b96c3e5d878865c0bec0706493043da50c175.jar" />
     </item>
     <item
-        jar="D:\android\studioworkspace\Partner_V1.0.0\partner\build\intermediates\exploded-aar\com.facebook.fresco\fbcore\0.5.2\classes.jar"
+        jar="/home/emilyu/android/studioworkspace/Partner_V1.0.0/partner/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/libs/internal_impl-22.2.0.jar"
         jumboMode="false"
-        revision="21.1.2"
+        revision="22.0.0"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="/home/emilyu/android/studioworkspace/Partner_V1.0.0/partner/build/intermediates/pre-dexed/debug/internal_impl-22.2.0-f3c70bf330c7d7ffce744494108efe8bf1d9f397.jar" />
+    </item>
+    <item
+        jar="/home/emilyu/android/studioworkspace/Partner_V1.0.0/partner/build/intermediates/exploded-aar/com.facebook.fresco/fbcore/0.5.2/classes.jar"
+        jumboMode="false"
+        revision="22.0.0"
         sha1="7ec8bddbe9ea6919c141bbca6986c5499e049461">
-        <dex dex="D:\android\studioworkspace\Partner_V1.0.0\partner\build\intermediates\pre-dexed\debug\classes-f8b8f381c17f44b5a18f12856cd5fd5a3f2b5cad.jar" />
+        <dex dex="/home/emilyu/android/studioworkspace/Partner_V1.0.0/partner/build/intermediates/pre-dexed/debug/classes-2da2a48e1bb42bd7cf90c3de7b51f0ddb66cab99.jar" />
     </item>
     <item
-        jar="C:\Users\yuym\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-android\1.1.4\129874135e6081269ace2312092031558865de12\bolts-android-1.1.4.jar"
+        jar="/home/emilyu/android/studioworkspace/Partner_V1.0.0/partner/build/intermediates/exploded-aar/com.facebook.fresco/drawee/0.5.2/classes.jar"
         jumboMode="false"
-        revision="21.1.2"
-        sha1="129874135e6081269ace2312092031558865de12">
-        <dex dex="D:\android\studioworkspace\Partner_V1.0.0\partner\build\intermediates\pre-dexed\debug\bolts-android-1.1.4-76078272a59897cbd4d62fc4a6aee64e8a76f6e8.jar" />
+        revision="22.0.0"
+        sha1="668c66ef994fec47f1861ea185fe6aa205205f72">
+        <dex dex="/home/emilyu/android/studioworkspace/Partner_V1.0.0/partner/build/intermediates/pre-dexed/debug/classes-a0044a7171a364474c68e3e31d972873d19f2d44.jar" />
     </item>
     <item
-        jar="D:\android\studioworkspace\Partner_V1.0.0\partner\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
+        jar="/home/emilyu/android/studioworkspace/Partner_V1.0.0/partner/build/intermediates/exploded-aar/com.facebook.fresco/fresco/0.5.2/classes.jar"
         jumboMode="false"
-        revision="21.1.2"
-        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
-        <dex dex="D:\android\studioworkspace\Partner_V1.0.0\partner\build\intermediates\pre-dexed\debug\classes-f65659edf4cb3c96050ec07af37de5475d49977b.jar" />
+        revision="22.0.0"
+        sha1="309967f02af11bd65974c8bf6a783994d04c25c9">
+        <dex dex="/home/emilyu/android/studioworkspace/Partner_V1.0.0/partner/build/intermediates/pre-dexed/debug/classes-3bdf38f324917d2bfa39664cd5f133e6b887ffc5.jar" />
     </item>
     <item
-        jar="C:\Users\yuym\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
+        jar="/home/emilyu/android/studioworkspace/Partner_V1.0.0/partner/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/classes.jar"
         jumboMode="false"
-        revision="21.1.2"
-        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
-        <dex dex="D:\android\studioworkspace\Partner_V1.0.0\partner\build\intermediates\pre-dexed\debug\library-2.4.0-43e376381fa7acd68d5a422e3a171445c84b5e96.jar" />
+        revision="22.0.0"
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="/home/emilyu/android/studioworkspace/Partner_V1.0.0/partner/build/intermediates/pre-dexed/debug/classes-4a64ba6166c03546a067e814a32fabe576e55d7b.jar" />
     </item>
     <item
-        jar="D:\android\studioworkspace\Partner_V1.0.0\partner\libs\YDJson-1.0.3.jar"
+        jar="/home/emilyu/android/eclipse/adt-bundle-linux/sdk/extras/android/m2repository/com/android/support/support-annotations/22.2.0/support-annotations-22.2.0.jar"
         jumboMode="false"
-        revision="21.1.2"
-        sha1="a5bd94bfb8ec4d86457e9306ca85c0614bf5c393">
-        <dex dex="D:\android\studioworkspace\Partner_V1.0.0\partner\build\intermediates\pre-dexed\debug\YDJson-1.0.3-0bc4c62b3791689c6db8b6c5cf649b35e5df29a5.jar" />
+        revision="22.0.0"
+        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
+        <dex dex="/home/emilyu/android/studioworkspace/Partner_V1.0.0/partner/build/intermediates/pre-dexed/debug/support-annotations-22.2.0-90e59e49c2f72341e4c70a3f57f25d5689dda586.jar" />
     </item>
     <item
-        jar="C:\Users\yuym\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp\okhttp\2.4.0\40340c0748190fe897baf7bffbc1b282734294e5\okhttp-2.4.0.jar"
+        jar="/home/emilyu/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp/okhttp/2.4.0/40340c0748190fe897baf7bffbc1b282734294e5/okhttp-2.4.0.jar"
         jumboMode="false"
-        revision="21.1.2"
+        revision="22.0.0"
         sha1="40340c0748190fe897baf7bffbc1b282734294e5">
-        <dex dex="D:\android\studioworkspace\Partner_V1.0.0\partner\build\intermediates\pre-dexed\debug\okhttp-2.4.0-8fe76e0625970087413e8d4765ed6ea8ddc17ecf.jar" />
+        <dex dex="/home/emilyu/android/studioworkspace/Partner_V1.0.0/partner/build/intermediates/pre-dexed/debug/okhttp-2.4.0-cdc3c1063c12744827be9006b61570a93e26e511.jar" />
+    </item>
+    <item
+        jar="/home/emilyu/android/studioworkspace/Partner_V1.0.0/partner/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline/0.5.2/classes.jar"
+        jumboMode="false"
+        revision="22.0.0"
+        sha1="cd611c5cbb4dec30ebd4ebea227eacbc7c3379c2">
+        <dex dex="/home/emilyu/android/studioworkspace/Partner_V1.0.0/partner/build/intermediates/pre-dexed/debug/classes-2e8cf70ce912c25a5ef90b26e1599a22f5f3512e.jar" />
+    </item>
+    <item
+        jar="/home/emilyu/android/studioworkspace/Partner_V1.0.0/partner/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/classes.jar"
+        jumboMode="false"
+        revision="22.0.0"
+        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
+        <dex dex="/home/emilyu/android/studioworkspace/Partner_V1.0.0/partner/build/intermediates/pre-dexed/debug/classes-54064041d32494465dd0a09b6126aec2bade2c57.jar" />
+    </item>
+    <item
+        jar="/home/emilyu/android/studioworkspace/Partner_V1.0.0/partner/libs/YDAnimation-1.0.1.jar"
+        jumboMode="false"
+        revision="22.0.0"
+        sha1="9f47f9f40e3935bc7277fa36de1d9ff324c62be6">
+        <dex dex="/home/emilyu/android/studioworkspace/Partner_V1.0.0/partner/build/intermediates/pre-dexed/debug/YDAnimation-1.0.1-edfc611cbe56b57bb06b44b1c3c485970480e794.jar" />
+    </item>
+    <item
+        jar="/home/emilyu/android/studioworkspace/Partner_V1.0.0/partner/libs/YDJson-1.0.3.jar"
+        jumboMode="false"
+        revision="22.0.0"
+        sha1="a5bd94bfb8ec4d86457e9306ca85c0614bf5c393">
+        <dex dex="/home/emilyu/android/studioworkspace/Partner_V1.0.0/partner/build/intermediates/pre-dexed/debug/YDJson-1.0.3-18e82a2858647a6af6149028e66192abd90d6cc3.jar" />
+    </item>
+    <item
+        jar="/home/emilyu/.gradle/caches/modules-2/files-2.1/com.nineoldandroids/library/2.4.0/e9b63380f3a242dbdbf103a2355ad7e43bad17cb/library-2.4.0.jar"
+        jumboMode="false"
+        revision="22.0.0"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="/home/emilyu/android/studioworkspace/Partner_V1.0.0/partner/build/intermediates/pre-dexed/debug/library-2.4.0-d1c78cc0a97b734d305025c0b61bd71d4d1e0c6e.jar" />
+    </item>
+    <item
+        jar="/home/emilyu/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.1.4/129874135e6081269ace2312092031558865de12/bolts-android-1.1.4.jar"
+        jumboMode="false"
+        revision="22.0.0"
+        sha1="129874135e6081269ace2312092031558865de12">
+        <dex dex="/home/emilyu/android/studioworkspace/Partner_V1.0.0/partner/build/intermediates/pre-dexed/debug/bolts-android-1.1.4-7caf0b718e091a9cac4a8aff54bf3af234637b32.jar" />
     </item>
 
 </items>
