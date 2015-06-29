@@ -1,5 +1,6 @@
 package com.partner.activity;
 
+import com.partner.PartnerApplication;
 import com.partner.R;
 import com.partner.activity.base.BaseFragmentActivity;
 import com.partner.common.constant.Consts;
@@ -38,6 +39,7 @@ public class MainActivity extends BaseFragmentActivity {
 
 	@Override
 	protected void initControls(Bundle savedInstanceState) {
+		PartnerApplication.getInstance().initUserInfo();
 		initView();
 	}
 

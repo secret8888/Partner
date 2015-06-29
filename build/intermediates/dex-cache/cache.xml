@@ -23,18 +23,18 @@
         <dex dex="/home/emilyu/android/studioworkspace/Partner_V1.0.0/partner/build/intermediates/pre-dexed/debug/classes-2da2a48e1bb42bd7cf90c3de7b51f0ddb66cab99.jar" />
     </item>
     <item
-        jar="/home/emilyu/android/studioworkspace/Partner_V1.0.0/partner/build/intermediates/exploded-aar/com.facebook.fresco/drawee/0.5.2/classes.jar"
-        jumboMode="false"
-        revision="22.0.0"
-        sha1="668c66ef994fec47f1861ea185fe6aa205205f72">
-        <dex dex="/home/emilyu/android/studioworkspace/Partner_V1.0.0/partner/build/intermediates/pre-dexed/debug/classes-a0044a7171a364474c68e3e31d972873d19f2d44.jar" />
-    </item>
-    <item
         jar="/home/emilyu/android/studioworkspace/Partner_V1.0.0/partner/build/intermediates/exploded-aar/com.facebook.fresco/fresco/0.5.2/classes.jar"
         jumboMode="false"
         revision="22.0.0"
         sha1="309967f02af11bd65974c8bf6a783994d04c25c9">
         <dex dex="/home/emilyu/android/studioworkspace/Partner_V1.0.0/partner/build/intermediates/pre-dexed/debug/classes-3bdf38f324917d2bfa39664cd5f133e6b887ffc5.jar" />
+    </item>
+    <item
+        jar="/home/emilyu/android/studioworkspace/Partner_V1.0.0/partner/build/intermediates/exploded-aar/com.facebook.fresco/drawee/0.5.2/classes.jar"
+        jumboMode="false"
+        revision="22.0.0"
+        sha1="668c66ef994fec47f1861ea185fe6aa205205f72">
+        <dex dex="/home/emilyu/android/studioworkspace/Partner_V1.0.0/partner/build/intermediates/pre-dexed/debug/classes-a0044a7171a364474c68e3e31d972873d19f2d44.jar" />
     </item>
     <item
         jar="/home/emilyu/android/studioworkspace/Partner_V1.0.0/partner/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/classes.jar"

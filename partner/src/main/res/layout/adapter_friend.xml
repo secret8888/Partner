@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_marginTop="@dimen/partner_space_medium"
+    style="@style/ItemLayout"
+    >
+    <ImageView
+        android:id="@+id/im_avatar"
+        android:layout_height="66dp"
+        android:layout_width="80dp"
+        android:paddingLeft="@dimen/partner_space_medium_12"
+        android:paddingTop="@dimen/partner_space_middle"
+        android:paddingBottom="@dimen/partner_space_middle"
+        android:paddingRight="@dimen/partner_space_big"
+        android:src="@drawable/ic_avatar"
+        />
+
+    <ImageView
+        style="@style/PersonalArrowStyle"
+        />
+    <TextView
+        style="@style/PersonalItemText"
+        android:layout_toRightOf="@id/im_avatar"
+        android:drawableLeft="@drawable/ic_info"
+        android:drawablePadding="@dimen/partner_space_normal"
+        android:text="青青的小草"
+        />
+</RelativeLayout>

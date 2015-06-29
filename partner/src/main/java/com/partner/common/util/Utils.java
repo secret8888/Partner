@@ -19,6 +19,7 @@ import android.view.inputmethod.InputMethodManager;
 import com.partner.PartnerApplication;
 import com.partner.R;
 import com.partner.common.constant.Consts;
+import com.squareup.okhttp.Response;
 
 import java.io.BufferedOutputStream;
 import java.io.File;

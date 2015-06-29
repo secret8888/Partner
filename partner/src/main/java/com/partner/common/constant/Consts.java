@@ -20,6 +20,11 @@ public class Consts {
     public static boolean ON_TEST_MODEl = false;
 
     /**
+     * log tag
+     */
+    public static String LOG_TAG = "Partner";
+
+    /**
      * File Path *
      */
     public static final String ASSET_PATH_PREFIX = "file:///android_asset/";

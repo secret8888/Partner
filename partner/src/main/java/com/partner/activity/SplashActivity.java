@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
 
+import com.partner.PartnerApplication;
 import com.partner.R;
 import com.partner.activity.base.BaseActivity;
 import com.partner.common.constant.PreferenceConsts;
@@ -40,8 +41,8 @@ public class SplashActivity extends BaseActivity {
 			if(isFirstLogin){
 				IntentManager.startGuideActivity(SplashActivity.this);
 			}else{
-				String userToken = PreferenceUtils.getString(PreferenceConsts.KEY_USER_TOKEN, null);
-				if(TextUtils.isEmpty(userToken)){
+				String userInfo = PreferenceUtils.getString(PreferenceConsts.KEY_USER_INFO, null);
+				if(TextUtils.isEmpty(userInfo)){
                     IntentManager.startLoginActivity(SplashActivity.this);
 				}else{
                     IntentManager.startMainActivity(SplashActivity.this);

@@ -107,11 +107,6 @@ public class MainFragment extends BaseFragment implements OnClickListener, ViewP
 				followTypeView.setTextColor(selectedColor);
 				break;
 		}
-		if(position == 0) {
-			allTypeView.setTextColor(getResources().getColor(R.color.text_blue));
-		} else {
-			allTypeView.setTextColor(getResources().getColor(R.color.black));
-		}
 	}
 
 	@Override

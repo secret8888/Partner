@@ -1,8 +1,7 @@
 package com.partner.common.http;
 
-import android.app.DownloadManager;
-
 import com.partner.common.constant.Consts;
+import com.partner.common.util.Logcat;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.FormEncodingBuilder;
 import com.squareup.okhttp.Headers;
@@ -81,6 +80,7 @@ public class PartnerHttpClient {
      * @param url
      */
     public static String syncGet(String url) throws IOException {
+        Logcat.d("syncGet request url : " + url);
         Request request = new Request.Builder().url(url).build();
         return getResponseBody(request);
     }
@@ -89,11 +89,22 @@ public class PartnerHttpClient {
      * 异步执行get请求
      *
      * @param url
-     * @param callback
+     * @param callBack
      */
-    public static void asyncGet(String url, Callback callback) {
+    public static void asyncGet(String url, final AsyncHttpCallback callBack) {
+        Logcat.d("asyncGet request url : " + url);
         Request request = new Request.Builder().url(url).build();
-        enqueue(request, callback);
+        enqueue(request, new Callback() {
+            @Override
+            public void onFailure(Request request, IOException e) {
+                callBack.sendFailureMessage(request, e);
+            }
+
+            @Override
+            public void onResponse(Response response) throws IOException {
+                callBack.sendResponseMessage(response);
+            }
+        });
     }
 
     /**
@@ -113,11 +124,21 @@ public class PartnerHttpClient {
      *
      * @param url
      * @param values
-     * @param callback
+     * @param callBack
      */
-    public static void asyncPost(String url, Map<String, String> values, Callback callback) {
+    public static void asyncPost(String url, Map<String, String> values, final AsyncHttpCallback callBack) {
         Request request = getRequest(url, values);
-        enqueue(request, callback);
+        enqueue(request, new Callback() {
+            @Override
+            public void onFailure(Request request, IOException e) {
+                callBack.sendFailureMessage(request, e);
+            }
+
+            @Override
+            public void onResponse(Response response) throws IOException {
+                callBack.sendResponseMessage(response);
+            }
+        });
     }
 
     /**
@@ -140,10 +161,20 @@ public class PartnerHttpClient {
      * @param json
      * @param callback
      */
-    public static void asyncPost(String url, String json, Callback callback) {
+    public static void asyncPost(String url, String json, final AsyncHttpCallback callback) {
         RequestBody requestBody = RequestBody.create(JSON, json);
         Request request = getRequest(url, requestBody);
-        enqueue(request, callback);
+        enqueue(request, new Callback() {
+            @Override
+            public void onFailure(Request request, IOException e) {
+                callback.sendFailureMessage(request, e);
+            }
+
+            @Override
+            public void onResponse(Response response) throws IOException {
+                callback.sendResponseMessage(response);
+            }
+        });
     }
 
     /**
@@ -153,10 +184,20 @@ public class PartnerHttpClient {
      * @param file
      * @param callback
      */
-    public static void asyncPostFile(String url, File file, Callback callback) {
+    public static void asyncPostFile(String url, File file, final AsyncHttpCallback callback) {
         RequestBody requestBody = RequestBody.create(MEDIA_TYPE_MARKDOWN, file);
         Request request = getRequest(url, requestBody);
-        enqueue(request, callback);
+        enqueue(request, new Callback() {
+            @Override
+            public void onFailure(Request request, IOException e) {
+                callback.sendFailureMessage(request, e);
+            }
+
+            @Override
+            public void onResponse(Response response) throws IOException {
+                callback.sendResponseMessage(response);
+            }
+        });
     }
 
     /**
@@ -167,7 +208,7 @@ public class PartnerHttpClient {
      * @param file
      * @param callback
      */
-    public static void asyncPostFile(String url, String json, File file, Callback callback) {
+    public static void asyncPostFile(String url, String json, File file, final AsyncHttpCallback callback) {
         RequestBody requestBody = new MultipartBuilder()
                 .type(MultipartBuilder.FORM)
                 .addPart(
@@ -178,7 +219,17 @@ public class PartnerHttpClient {
                         RequestBody.create(MEDIA_TYPE_PNG, new File("website/static/logo-square.png")))
                 .build();
         Request request = getRequest(url, requestBody);
-        enqueue(request, callback);
+        enqueue(request, new Callback() {
+            @Override
+            public void onFailure(Request request, IOException e) {
+                callback.sendFailureMessage(request, e);
+            }
+
+            @Override
+            public void onResponse(Response response) throws IOException {
+                callback.sendResponseMessage(response);
+            }
+        });
     }
 
     /**

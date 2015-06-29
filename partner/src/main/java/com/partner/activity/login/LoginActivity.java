@@ -1,14 +1,30 @@
 package com.partner.activity.login;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 
 import com.partner.R;
 import com.partner.activity.base.BaseActivity;
 import com.partner.common.annotation.ViewId;
+import com.partner.common.constant.PreferenceConsts;
+import com.partner.common.http.AsyncHttpCallback;
+import com.partner.common.http.HttpManager;
+import com.partner.common.util.HttpUtils;
 import com.partner.common.util.IntentManager;
+import com.partner.common.util.Logcat;
+import com.partner.common.util.PreferenceUtils;
+import com.partner.common.util.Toaster;
+import com.partner.common.util.Utils;
+import com.partner.model.UserInfo;
 import com.partner.view.TitleView;
+import com.squareup.okhttp.Callback;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
+import com.youdao.yjson.YJson;
+
+import java.io.IOException;
 
 public class LoginActivity extends BaseActivity {
 
@@ -44,35 +60,32 @@ public class LoginActivity extends BaseActivity {
 	}
 
 	public void onLoginClick(View view) {
-		IntentManager.startMainActivity(this);
-		finish();
-//		if (Utils.checkMetworkConnected(this)) {
-//			String phone = phoneEdit.getText().toString();
-//			String psd = psdEdit.getText().toString();
-//
-//			if (TextUtils.isEmpty(phone)) {
-//				MyToast.show(this, R.string.phone_not_null);
-//				return;
-//			}
-//
-//			if (TextUtils.isEmpty(psd)) {
-//				MyToast.show(this, R.string.psd_not_null);
-//				return;
-//			}
-//			showRefreshingView();
-//			HttpManager.login(new CoinvsHandler(this) {
-//
-//				@Override
-//				protected void handleSuccessMessage(Object object) {
-//					handleLoginResult((HandleInfo) object);
-//				}
-//
-//				@Override
-//				protected void handleError(int errorCode) {
-//					hideRefreshingView();
-//				}
-//			}, phone, psd);
-//		}
+		if (Utils.checkMetworkConnected(this)) {
+			String phone = phoneEdit.getText().toString();
+			String psd = psdEdit.getText().toString();
+
+			if (TextUtils.isEmpty(phone)) {
+				Toaster.show(this, R.string.phone_not_null);
+				return;
+			}
+
+			if (TextUtils.isEmpty(psd)) {
+				Toaster.show(this, R.string.psd_not_null);
+				return;
+			}
+			onShowLoadingDialog();
+			HttpManager.login(phone, psd, new AsyncHttpCallback() {
+				@Override
+				public void onRequestResponse(Response response) {
+					handleLoginResult(response);
+				}
+
+				@Override
+				public void onRequestFailure(Request request, IOException e) {
+					onDismissLoadingDialog();
+				}
+			});
+		}
 	}
 
 	public void onFindPsdClick(View view) {
@@ -83,24 +96,13 @@ public class LoginActivity extends BaseActivity {
 		IntentManager.startRegisterActivity(this);
 	}
 
-//	private void handleLoginResult(HandleInfo handleInfo) {
-//		hideRefreshingView();
-//		if(handleInfo == null || handleInfo.getData() == null) {
-//			return;
-//		}
-//		Consts.IS_MINE_NEED_REFRESH = true;
-//		try {
-//			JSONObject dataObject = new JSONObject(handleInfo.getData());
-//			PreferenceUtils.putString(PreferenceConsts.KEY_LOGIN_ID,
-//					dataObject.optString("login_id"));
-//			PreferenceUtils.putString(PreferenceConsts.KEY_LOGIN_NAME,
-//					dataObject.optString("login_name"));
-//			PreferenceUtils.putString(PreferenceConsts.KEY_USER_PHONE,
-//					dataObject.optString("login_phone"));
-//			ActivityUtils.startMainActivity(this);
-//			finish();
-//		} catch (JSONException e) {
-//			Logcat.e(TAG, "handleLoginResult Json error", e);
-//		}
-//	}
+	private void handleLoginResult(Response response) {
+		onDismissLoadingDialog();
+		String result = HttpUtils.getResponseData(response);
+		if(!TextUtils.isEmpty(result)) {
+			PreferenceUtils.putString(PreferenceConsts.KEY_USER_INFO, result);
+			IntentManager.startMainActivity(this);
+			finish();
+		}
+	}
 }

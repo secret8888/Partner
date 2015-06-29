@@ -51,9 +51,9 @@ public class GuideActivity extends BaseActivity implements OnPageChangeListener{
 
 	@Override
 	public void onPageScrolled(int arg0, float arg1, int arg2) {
-		if(!isStartActivity && scrollState == 1 && arg0 == 3){
+		if(!isStartActivity && scrollState == 1 && arg0 == 2){
 			isStartActivity = true;
-			IntentManager.startMainActivity(this);
+			IntentManager.startLoginActivity(this);
 	        finish();
 		}
 	}

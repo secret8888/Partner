@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.partner.fragment.ActivityFragment;
+import com.partner.fragment.ActivityListFragment;
 
 public class ActivityFragmentAdapter extends FragmentPagerAdapter{
 
@@ -17,7 +17,7 @@ public class ActivityFragmentAdapter extends FragmentPagerAdapter{
 
 	@Override
 	public Fragment getItem(int position) {
-		return ActivityFragment.newInstance();
+		return ActivityListFragment.newInstance();
 	}
 
 	@Override

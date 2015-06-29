@@ -29,11 +29,23 @@
     <string name="find_psd">找回密码</string>
     <string name="modify_psd">重置密码</string>
     <string name="new_user_register">新用户注册</string>
+    <string name="user_register">用户注册</string>
     <string name="get_code">获取验证码</string>
     <string name="institution_register">机构注册></string>
     <string name="input_institution_tip">请输入机构名称</string>
     <string name="input_address_tip">请输入机构地址</string>
     <string name="input_intro_tip">请输入机构简介</string>
+    <string name="login_phone_tip">请输入您的手机号登录</string>
+    <string name="register_phone_tip">请输入注册手机号</string>
+    <string name="login_psd_tip">请输入您的登录密码</string>
+    <string name="login_repsd_tip">请再次输入您的登录密码</string>
+    <string name="register_psd_tip">请输入注册密码</string>
+    <string name="code_tip">请输入您的验证码</string>
+    <string name="phone_not_null">手机号不能为空!</string>
+    <string name="psd_not_null">密码不能为空!</string>
+    <string name="psd_not_same">两次输入的密码不一致，请重新输入</string>
+    <string name="register_success">注册成功</string>
+    <string name="send_success">发送成功</string>
 
     <!-- main -->
     <string name="activity">活动</string>
@@ -44,6 +56,16 @@
     <string name="qrcode">扫一扫</string>
     <string name="message_center">消息中心</string>
     <string name="setting">设置</string>
+
+    <!-- info -->
+    <string name="delete">删除</string>
+    <string name="leave_message">留 言</string>
+    <string name="nickname">昵称</string>
+    <string name="note_name">备注名</string>
+    <string name="message_title_hint">请输入留言标题</string>
+    <string name="send">发送</string>
+    <string name="pick_a_picture">可选择添加一张图片</string>
+
 
     <!-- share begin -->
     <string name="share">分享</string>

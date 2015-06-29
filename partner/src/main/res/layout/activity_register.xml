@@ -102,22 +102,19 @@
             android:background="@drawable/btn_operate"
             />
 
-        <FrameLayout
+        <TextView
+            android:id="@+id/tv_institution_register"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:id="@+id/tv_institution_register"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/partner_space_medium"
-                android:layout_gravity="center"
-                android:textColor="@color/black"
-                android:textSize="@dimen/ts_14"
-                android:text="@string/institution_register"
-                android:clickable="true"
-                android:onClick="onInstitutionRegisterClick"
-                />
-        </FrameLayout>
+            android:layout_height="@dimen/item_height"
+            android:layout_marginTop="@dimen/partner_space_medium"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/ts_16"
+            android:text="@string/institution_register"
+            android:clickable="true"
+            android:onClick="onInstitutionRegisterClick"
+            android:background="@drawable/bg_edit"
+            />
     </LinearLayout>
 
 </LinearLayout>

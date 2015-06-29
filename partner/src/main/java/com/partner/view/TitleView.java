@@ -28,6 +28,9 @@ public class TitleView extends RelativeLayout implements View.OnClickListener {
     @ViewId(R.id.im_operate)
     private ImageView operateView;
 
+    @ViewId(R.id.tv_operate)
+    private TextView operateTextView;
+
     private OnTitleClickListener mListener;
 
     public TitleView(Context context) {
@@ -52,6 +55,7 @@ public class TitleView extends RelativeLayout implements View.OnClickListener {
     private void setListeners() {
         backView.setOnClickListener(this);
         operateView.setOnClickListener(this);
+        operateTextView.setOnClickListener(this);
     }
 
     public void setTitle(String title) {
@@ -60,6 +64,16 @@ public class TitleView extends RelativeLayout implements View.OnClickListener {
 
     public void setTitle(int resId) {
         titleView.setText(resId);
+    }
+
+    public void setOperate(int resId) {
+        operateView.setVisibility(View.VISIBLE);
+        operateView.setImageResource(resId);
+    }
+
+    public void setOperateText(int resId) {
+        operateTextView.setVisibility(View.VISIBLE);
+        operateTextView.setText(resId);
     }
 
     public void setListener(OnTitleClickListener listener) {
@@ -75,6 +89,11 @@ public class TitleView extends RelativeLayout implements View.OnClickListener {
                 }
                 break;
             case R.id.im_operate:
+                if(mListener != null) {
+                    mListener.onTitleOperateClick();
+                }
+                break;
+            case R.id.tv_operate:
                 if(mListener != null) {
                     mListener.onTitleOperateClick();
                 }

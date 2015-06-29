@@ -7,6 +7,8 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.widget.Toast;
 
+import com.partner.PartnerApplication;
+
 /**
  * @author emilyu
  * @category toast 封装
@@ -14,8 +16,19 @@ import android.widget.Toast;
  */
 public class Toaster {
 
+    public static void show(int msgId) {
+        Toast.makeText(PartnerApplication.getInstance(), msgId, Toast.LENGTH_SHORT).show();
+    }
+
     public static void show(Context context, int msgId) {
         Toast.makeText(context, msgId, Toast.LENGTH_SHORT).show();
+    }
+
+    public static void showMsg(String msg) {
+        if (TextUtils.isEmpty(msg)) {
+            return;
+        }
+        Toast.makeText(PartnerApplication.getInstance(), msg, Toast.LENGTH_SHORT).show();
     }
 
     public static void showMsg(Context context, String msg) {

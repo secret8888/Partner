@@ -22,6 +22,15 @@ public class Logcat {
         }
     }
 
+    public static void d(String msg) {
+        if (TextUtils.isEmpty(msg)) {
+            return;
+        }
+        if (Consts.ON_DEBUG) {
+            Log.d(Consts.LOG_TAG, msg);
+        }
+    }
+
     /**
      * log.e
      * 

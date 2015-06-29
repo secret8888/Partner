@@ -4,11 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.partner.activity.GuideActivity;
+import com.partner.activity.info.InfoEditActivity;
+import com.partner.activity.info.LeaveMessageActivity;
 import com.partner.activity.login.InstitutionRegisterActivity;
 import com.partner.activity.login.LoginActivity;
 import com.partner.activity.MainActivity;
 import com.partner.activity.login.ModifyPsdActivity;
 import com.partner.activity.login.RegisterActivity;
+import com.partner.common.constant.IntentConsts;
 
 /**
  * intent manager for the whole application
@@ -74,6 +77,26 @@ public class IntentManager {
      */
     public static void startModifyPsdActivity(Context context) {
         Intent intent = new Intent(context, ModifyPsdActivity.class);
+        context.startActivity(intent);
+    }
+
+    /**
+     * start info edit activity
+     *
+     * @param context
+     */
+    public static void startInfoEditActivity(Context context) {
+        Intent intent = new Intent(context, InfoEditActivity.class);
+        context.startActivity(intent);
+    }
+
+    /**
+     * start leave message activity
+     *
+     * @param context
+     */
+    public static void startLeaveMessageActivity(Context context) {
+        Intent intent = new Intent(context, LeaveMessageActivity.class);
         context.startActivity(intent);
     }
 }
