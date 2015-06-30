@@ -53,11 +53,15 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".activity.info.InfoEditActivity"
+            android:name=".activity.info.UserInfoEditActivity"
             android:screenOrientation="portrait" />
 
         <activity
             android:name=".activity.info.LeaveMessageActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.info.MyInfoActivity"
             android:screenOrientation="portrait" />
     </application>
 

@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -38,6 +39,9 @@ public class RegisterActivity extends BaseActivity {
 	@ViewId(R.id.view_title)
 	private TitleView titleView;
 
+	@ViewId(R.id.edit_nickname)
+	private EditText nicknameEdit;
+
 	@ViewId(R.id.edit_phone)
 	private EditText phoneEdit;
 
@@ -52,6 +56,9 @@ public class RegisterActivity extends BaseActivity {
 
 	@ViewId(R.id.tv_institution_register)
 	private TextView institutionRegisterView;
+
+	@ViewId(R.id.cbox_law)
+	private CheckBox lawBox;
 
 	private Timer codeTimer = null;
 
@@ -107,9 +114,15 @@ public class RegisterActivity extends BaseActivity {
 
 	public void onConfirmClick(View view) {
 		if (Utils.checkMetworkConnected(this)) {
+			String nickname = nicknameEdit.getText().toString();
 			String phone = phoneEdit.getText().toString();
 			String psd = psdEdit.getText().toString();
 			String code = codeEdit.getText().toString();
+
+			if (TextUtils.isEmpty(nickname)) {
+				Toaster.show(this, R.string.input_nickname_tip);
+				return;
+			}
 
 			if (TextUtils.isEmpty(phone)) {
 				Toaster.show(this, R.string.phone_not_null);
@@ -126,8 +139,13 @@ public class RegisterActivity extends BaseActivity {
 				return;
 			}
 
+			if(!lawBox.isChecked()) {
+				Toaster.show(this, R.string.check_law_tip);
+				return;
+			}
+
 			onShowLoadingDialog();
-			HttpManager.register(phone, psd, code, 0, null, null, null, new AsyncHttpCallback() {
+			HttpManager.register(phone, psd, code, 0, nickname, null, null, new AsyncHttpCallback() {
 				@Override
 				public void onRequestResponse(Response response) {
 					handleRegisterResult(response);

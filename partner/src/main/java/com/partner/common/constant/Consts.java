@@ -28,6 +28,7 @@ public class Consts {
      * File Path *
      */
     public static final String ASSET_PATH_PREFIX = "file:///android_asset/";
+
     public static final String SDCARD_PATH_PREFIX = "file:///mnt/sdcard/";
     /*
      * 本地文件路径

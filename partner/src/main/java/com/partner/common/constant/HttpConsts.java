@@ -9,6 +9,14 @@ import com.partner.BuildConfig;
  */
 public class HttpConsts {
 
+    public static final int RESPONSE_CODE_SUCCESS = 0;
+
+    //请求成功
+    public static final int REQUEST_SUCCESS = 0;
+
+    //请求失败
+    public static final int REQUEST_FAIL = 1;
+
     //服务端地址
     public static final String BASE_URL = "http://101.200.235.17:8080/playfun";
 
@@ -19,16 +27,11 @@ public class HttpConsts {
     public static final String GET_CODE_URL = BASE_URL + "/getVerifyCode?cellphone=%s";
 
     //注册地址
-    public static final String REGISTER_URL = BASE_URL + "/register?cellphone=%s&verifycode=%s&type=%d&password=%s";
+    public static final String REGISTER_URL = BASE_URL + "/register?cellphone=%s&verifycode=%s&type=%d&password=%s&username=%s";
 
     //重置密码地址
     public static final String RESET_PSD_URL = BASE_URL + "/resetPassword?cellphone=%s&verifycode=%s&type=%d&password=%s";
 
-    public static final int RESPONSE_CODE_SUCCESS = 0;
-
-    //请求成功
-    public static final int REQUEST_SUCCESS = 0;
-
-    //请求失败
-    public static final int REQUEST_FAIL = 1;
+    //获取用户信息地址
+    public static final String GET_USER_INFO_URL = BASE_URL + "/getUserInfo?token=%s";
 }

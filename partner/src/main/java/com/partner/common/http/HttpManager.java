@@ -44,15 +44,15 @@ public class HttpManager {
      */
     public static void register(String phone, String password, String code, int type,
                                 String username, String address, String description, AsyncHttpCallback callback) {
-        String registerUrl = String.format(HttpConsts.REGISTER_URL, phone, code, type, password);
+        String registerUrl = String.format(HttpConsts.REGISTER_URL, phone, code, type, password, username);
         if(type == 1) {
-            registerUrl += ("&username=" + username + "&address" + address + "&description" + description);
+            registerUrl += ("&address" + address + "&description" + description);
         }
         PartnerHttpClient.asyncGet(registerUrl + HttpUtils.getUserSign(), callback);
     }
 
     /**
-     * 充值密码接口
+     * 重置密码接口
      * @param phone
      * @param password
      * @param code
@@ -62,5 +62,15 @@ public class HttpManager {
     public static void resetPassword(String phone, String password, String code, int type, AsyncHttpCallback callback) {
         String registerUrl = String.format(HttpConsts.RESET_PSD_URL, phone, code, type, password);
         PartnerHttpClient.asyncGet(registerUrl + HttpUtils.getUserSign(), callback);
+    }
+
+    /**
+     * 获取用户信息接口
+     * @param token
+     * @param callback
+     */
+    public static void getUserInfo(String token, AsyncHttpCallback callback) {
+        String codeUrl = String.format(HttpConsts.GET_USER_INFO_URL, token);
+        PartnerHttpClient.asyncGet(codeUrl + HttpUtils.getUserSign(), callback);
     }
 }

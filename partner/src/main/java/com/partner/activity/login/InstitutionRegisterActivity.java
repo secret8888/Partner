@@ -3,6 +3,7 @@ package com.partner.activity.login;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -48,6 +49,9 @@ public class InstitutionRegisterActivity extends BaseActivity {
 	@ViewId(R.id.tv_get_code)
 	private TextView codeView;
 
+	@ViewId(R.id.cbox_law)
+	private CheckBox lawBox;
+
 	private Timer codeTimer = null;
 
 	private int timeLen = 60;
@@ -66,7 +70,7 @@ public class InstitutionRegisterActivity extends BaseActivity {
 
 	@Override
 	protected void initControls(Bundle savedInstanceState) {
-		titleView.setTitle(R.string.institution_register);
+		titleView.setTitle(R.string.institution_register_title);
 	}
 
 	@Override
@@ -137,8 +141,13 @@ public class InstitutionRegisterActivity extends BaseActivity {
 				return;
 			}
 
+			if(!lawBox.isChecked()) {
+				Toaster.show(this, R.string.check_law_tip);
+				return;
+			}
+
 			onShowLoadingDialog();
-			HttpManager.register(phone, psd, code, 0, institutionName, institutionAddress, institutionIntro, new AsyncHttpCallback() {
+			HttpManager.register(phone, psd, code, 1, institutionName, institutionAddress, institutionIntro, new AsyncHttpCallback() {
 				@Override
 				public void onRequestResponse(Response response) {
 					onDismissLoadingDialog();

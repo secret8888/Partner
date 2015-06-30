@@ -4,14 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.partner.activity.GuideActivity;
-import com.partner.activity.info.InfoEditActivity;
+import com.partner.activity.info.MyInfoActivity;
+import com.partner.activity.info.UserInfoEditActivity;
 import com.partner.activity.info.LeaveMessageActivity;
 import com.partner.activity.login.InstitutionRegisterActivity;
 import com.partner.activity.login.LoginActivity;
 import com.partner.activity.MainActivity;
 import com.partner.activity.login.ModifyPsdActivity;
 import com.partner.activity.login.RegisterActivity;
-import com.partner.common.constant.IntentConsts;
 
 /**
  * intent manager for the whole application
@@ -86,7 +86,7 @@ public class IntentManager {
      * @param context
      */
     public static void startInfoEditActivity(Context context) {
-        Intent intent = new Intent(context, InfoEditActivity.class);
+        Intent intent = new Intent(context, UserInfoEditActivity.class);
         context.startActivity(intent);
     }
 
@@ -97,6 +97,15 @@ public class IntentManager {
      */
     public static void startLeaveMessageActivity(Context context) {
         Intent intent = new Intent(context, LeaveMessageActivity.class);
+        context.startActivity(intent);
+    }
+
+    /**
+     * my info activity
+     * @param context
+     */
+    public static void startMyInfoActivity(Context context) {
+        Intent intent = new Intent(context, MyInfoActivity.class);
         context.startActivity(intent);
     }
 }

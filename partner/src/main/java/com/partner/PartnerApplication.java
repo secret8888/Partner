@@ -44,4 +44,8 @@ public class PartnerApplication extends Application {
             userInfo = YJson.getObj(info, UserInfo.class);
         }
     }
+
+    public UserInfo getUserInfo () {
+        return userInfo;
+    }
 }

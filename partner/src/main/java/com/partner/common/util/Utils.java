@@ -169,7 +169,7 @@ public class Utils {
 		if (Environment.getExternalStorageState().equals(
 				Environment.MEDIA_MOUNTED)) {
 			filePath = Environment.getExternalStorageDirectory()
-					.getAbsolutePath() + "/txer/";
+					.getAbsolutePath() + "/Partner/";
 		}
 		if (TextUtils.isEmpty(filePath)) {
 			PartnerApplication app = PartnerApplication.getInstance();
@@ -178,6 +178,10 @@ public class Utils {
 					+ "/Partner/";
 		}
 		return filePath;
+	}
+
+	public static String getTempDir() {
+		return getExternStorage() + "temp/";
 	}
 
 	/**

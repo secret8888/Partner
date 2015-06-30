@@ -139,10 +139,21 @@
             </LinearLayout>
         </RelativeLayout>
 
+        <CheckBox
+            android:id="@+id/cbox_law"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/partner_space_middle"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/ts_16"
+            android:text="@string/law_article"
+            />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="@dimen/item_height"
-            android:layout_marginTop="@dimen/partner_space_common"
+            android:layout_marginTop="@dimen/partner_space_middle"
             android:gravity="center"
             android:textColor="@color/white"
             android:textSize="@dimen/ts_16"

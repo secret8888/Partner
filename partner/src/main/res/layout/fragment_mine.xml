@@ -1,4 +1,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_gray"
@@ -16,24 +17,25 @@
         />
 
     <RelativeLayout
+        android:id="@+id/lv_info"
         android:layout_marginTop="@dimen/partner_space_medium"
         style="@style/ItemLayout"
         >
-        <ImageView
+        <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/im_avatar"
             style="@style/PersonalIndexImage"
             android:layout_height="80dp"
             android:layout_width="80dp"
-            android:src="@drawable/ic_launcher"
+            fresco:placeholderImage="@drawable/ic_loading"
             />
 
         <ImageView
             style="@style/PersonalArrowStyle"
             />
         <TextView
+            android:id="@+id/tv_name"
             style="@style/PersonalItemText"
             android:layout_toRightOf="@id/im_avatar"
-            android:text="小蓝"
             />
     </RelativeLayout>
 
@@ -108,6 +110,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/lv_setting"
         android:layout_marginTop="@dimen/partner_space_medium"
         style="@style/ItemLayout"
         >
