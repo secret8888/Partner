@@ -26,4 +26,5 @@ dependencies {
     compile 'com.squareup.okhttp:okhttp:2.4.0'
     compile 'com.facebook.fresco:fresco:0.5.2+'
     compile 'com.android.support:appcompat-v7:22.2.0'
+    compile files('libs/umeng-update-v2.6.0.1.jar')
 }

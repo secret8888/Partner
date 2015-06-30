@@ -87,6 +87,26 @@
         <activity
             android:name=".activity.info.setting.FeedbackActivity"
             android:screenOrientation="portrait" />
+
+        <!-- umeng start-->
+        <service
+            android:name="com.umeng.update.net.DownloadingService"
+            android:process=":DownloadingService" >
+        </service>
+        <activity
+            android:name="com.umeng.update.UpdateDialogActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+        </activity>
+
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="5587823267e58e43ab007180" >
+        </meta-data>
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="Umeng" >
+        </meta-data>
+        <!-- umeng end -->
     </application>
 
 </manifest>

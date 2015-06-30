@@ -52,11 +52,30 @@ public class SettingActivity extends BaseActivity {
 	}
 
 	public void onModifyPsdClick(View view) {
+		IntentManager.startModifyPsdActivity(this);
 	}
 
 	public void onModifyPhoneClick(View view) {
+
 	}
 
 	public void onCheckUpdateClick(View view) {
+		onShowLoadingDialog();
+		UmengUpdateAgent.setUpdateAutoPopup(false);
+		UmengUpdateAgent.setUpdateListener(new UmengUpdateListener() {
+			@Override
+			public void onUpdateReturned(int updateStatus,UpdateResponse updateInfo) {
+				onDismissLoadingDialog();
+				switch (updateStatus) {
+					case UpdateStatus.Yes: // has update
+						UmengUpdateAgent.showUpdateDialog(SettingActivity.this, updateInfo);
+						break;
+					case UpdateStatus.No: // has no update
+						Toaster.showMsg(SettingActivity.this, "已是最新版本");
+						break;
+				}
+			}
+		});
+		UmengUpdateAgent.update(this);
 	}
 }

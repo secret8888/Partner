@@ -41,6 +41,7 @@ public class MainActivity extends BaseFragmentActivity {
 	protected void initControls(Bundle savedInstanceState) {
 		PartnerApplication.getInstance().initUserInfo();
 		initView();
+		UmengUpdateAgent.update(this);
 	}
 
 	@Override
