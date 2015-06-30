@@ -76,6 +76,24 @@
     <string name="cancel">取消</string>
     <string name="take_photo">拍照</string>
     <string name="choose_from_album">从手机相册选择</string>
+    <string name="save">保存</string>
+    <string name="update_success">修改成功</string>
+    <string name="registration_info">报名常用信息</string>
+    <string name="finish">完成</string>
+    <string name="parent_info_edit">家长详情编辑</string>
+    <string name="parent_add">家长添加</string>
+    <string name="name_title">姓 名:</string>
+    <string name="phone_title">电 话:</string>
+    <string name="input_name_tip">请输入姓名</string>
+    <string name="message_push">消息推送</string>
+    <string name="check_update">检查更新</string>
+    <string name="change_psd">修改密码</string>
+    <string name="modify_phone">修改手机号</string>
+    <string name="feedback">反馈</string>
+    <string name="about">关于</string>
+    <string name="exit">退 出</string>
+    <string name="feedback_tip">这里输入您宝贵的建议</string>
+    <string name="submit">提交</string>
 
 
     <!-- share begin -->

@@ -11,45 +11,21 @@
         android:layout_height="wrap_content" />
 
     <RelativeLayout
-        android:id="@+id/lv_info"
+        android:id="@+id/lv_registration_info"
         android:layout_marginTop="@dimen/partner_space_medium"
         style="@style/ItemLayout"
-        android:onClick="onAvatarClick"
-        >
-        <com.facebook.drawee.view.SimpleDraweeView
-            android:id="@+id/im_avatar"
-            style="@style/PersonalIndexImage"
-            android:layout_alignParentRight="true"
-            android:layout_height="80dp"
-            android:layout_width="80dp"
-            android:layout_marginRight="@dimen/partner_space_large"
-            fresco:placeholderImage="@drawable/ic_loading"
-            />
-
-        <ImageView
-            style="@style/PersonalArrowStyle"
-            />
-        <TextView
-            android:id="@+id/tv_name"
-            style="@style/PersonalItemText"
-            android:layout_marginLeft="@dimen/partner_space_common"
-            />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_marginTop="@dimen/partner_space_medium"
-        style="@style/ItemLayout"
-        android:onClick="onNameClick"
-        android:minHeight="45dp"
         >
 
         <ImageView
+            android:id="@+id/im_message_switch"
             style="@style/PersonalArrowStyle"
+            android:background="@drawable/pref_check_box_on"
+            android:onClick="onSwitchClick"
             />
         <TextView
             style="@style/PersonalItemText"
             android:layout_marginLeft="@dimen/partner_space_common"
-            android:text="@string/name"
+            android:text="@string/message_push"
             />
     </RelativeLayout>
 
@@ -61,8 +37,23 @@
 
     <RelativeLayout
         style="@style/ItemLayout"
-        android:onClick="onNicknameClick"
-        android:minHeight="45dp"
+        android:onClick="onCheckUpdateClick"
+        >
+        <ImageView
+            style="@style/PersonalArrowStyle"
+            />
+        <TextView
+            style="@style/PersonalItemText"
+            android:layout_marginLeft="@dimen/partner_space_common"
+            android:text="@string/check_update"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/lv_modify_psd"
+        android:layout_marginTop="@dimen/partner_space_medium"
+        style="@style/ItemLayout"
+        android:onClick="onModifyPsdClick"
         >
 
         <ImageView
@@ -71,7 +62,7 @@
         <TextView
             style="@style/PersonalItemText"
             android:layout_marginLeft="@dimen/partner_space_common"
-            android:text="@string/nickname"
+            android:text="@string/change_psd"
             />
     </RelativeLayout>
 
@@ -83,8 +74,23 @@
 
     <RelativeLayout
         style="@style/ItemLayout"
-        android:onClick="onQrcodeClick"
-        android:minHeight="45dp"
+        android:onClick="onModifyPhoneClick"
+        >
+        <ImageView
+            style="@style/PersonalArrowStyle"
+            />
+        <TextView
+            style="@style/PersonalItemText"
+            android:layout_marginLeft="@dimen/partner_space_common"
+            android:text="@string/modify_phone"
+            />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_marginTop="@dimen/partner_space_medium"
+        style="@style/ItemLayout"
+        android:onClick="onFeedbackClick"
         >
 
         <ImageView
@@ -93,7 +99,42 @@
         <TextView
             style="@style/PersonalItemText"
             android:layout_marginLeft="@dimen/partner_space_common"
-            android:text="@string/my_qrcode"
+            android:text="@string/feedback"
             />
     </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/bg_gray"
+        />
+
+    <RelativeLayout
+        style="@style/ItemLayout"
+        android:onClick="onAboutClick"
+        >
+        <ImageView
+            style="@style/PersonalArrowStyle"
+            />
+        <TextView
+            style="@style/PersonalItemText"
+            android:layout_marginLeft="@dimen/partner_space_common"
+            android:text="@string/about"
+            />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_height"
+        android:layout_marginTop="@dimen/partner_space_common"
+        android:layout_marginLeft="@dimen/partner_space_huge"
+        android:layout_marginRight="@dimen/partner_space_huge"
+        android:gravity="center"
+        android:textColor="@color/red"
+        android:textSize="@dimen/ts_16"
+        android:text="@string/exit"
+        android:clickable="true"
+        android:onClick="onLoginClick"
+        android:background="@drawable/bg_edit"
+        />
 </LinearLayout>

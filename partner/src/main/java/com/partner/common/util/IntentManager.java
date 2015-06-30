@@ -7,6 +7,10 @@ import com.partner.activity.GuideActivity;
 import com.partner.activity.info.InfoItemEditActivity;
 import com.partner.activity.info.MyInfoActivity;
 import com.partner.activity.info.MyQrCodeActivity;
+import com.partner.activity.info.RegistrationEditActivity;
+import com.partner.activity.info.RegistrationInfoActivity;
+import com.partner.activity.info.setting.FeedbackActivity;
+import com.partner.activity.info.setting.SettingActivity;
 import com.partner.activity.info.UserInfoEditActivity;
 import com.partner.activity.info.LeaveMessageActivity;
 import com.partner.activity.login.InstitutionRegisterActivity;
@@ -122,4 +126,26 @@ public class IntentManager {
         Intent intent = new Intent(context, MyQrCodeActivity.class);
         context.startActivity(intent);
     }
+
+    public static void startRegistrationInfoActivity(Context context) {
+        Intent intent = new Intent(context, RegistrationInfoActivity.class);
+        context.startActivity(intent);
+    }
+
+    public static void startRegistrationEditActivity(Context context, boolean isParentAdd) {
+        Intent intent = new Intent(context, RegistrationEditActivity.class);
+        intent.putExtra(IntentConsts.ITEM_EDIT_KEY, isParentAdd);
+        context.startActivity(intent);
+    }
+
+    public static void startSettingActivity(Context context) {
+        Intent intent = new Intent(context, SettingActivity.class);
+        context.startActivity(intent);
+    }
+
+    public static void startFeedbackActivity(Context context) {
+        Intent intent = new Intent(context, FeedbackActivity.class);
+        context.startActivity(intent);
+    }
+
 }

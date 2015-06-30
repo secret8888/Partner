@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/partner_space_medium"
+    android:paddingBottom="@dimen/partner_space_medium"
+    android:paddingLeft="@dimen/partner_space_common"
+    android:background="@color/white"
+    >
+
+    <ImageView
+        style="@style/PersonalArrowStyle"
+        />
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_info"
+        android:drawablePadding="@dimen/partner_space_normal"
+        android:layout_marginRight="@dimen/partner_space_huge"
+        android:textColor="@color/black"
+        android:textSize="@dimen/ts_16"
+        android:singleLine="true"
+        android:text="青青的小草"
+        />
+
+    <TextView
+        android:id="@+id/tv_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_phone"
+        android:layout_below="@+id/tv_name"
+        android:drawablePadding="@dimen/partner_space_normal"
+        android:layout_marginRight="@dimen/partner_space_huge"
+        android:layout_marginTop="@dimen/partner_space_middle"
+        android:textColor="@color/text_black"
+        android:textSize="@dimen/ts_14"
+        android:singleLine="true"
+        android:text="afjhhkajhfakjhfkajhfkjah"
+        />
+</RelativeLayout>

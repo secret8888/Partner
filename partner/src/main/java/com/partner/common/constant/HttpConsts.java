@@ -34,4 +34,7 @@ public class HttpConsts {
 
     //获取用户信息地址
     public static final String GET_USER_INFO_URL = BASE_URL + "/getUserInfo?token=%s";
+
+    //修改用户信息地址
+    public static final String UPDATE_USER_INFO_URL = BASE_URL + "/updateUserInfo?token=%s";
 }

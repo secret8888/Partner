@@ -13,4 +13,6 @@ public class IntentConsts {
 	public static final String TITLE_KEY = "title";
 
 	public static final String UPDATE_ITEM_KEY = "update_item_type";
+
+	public static final String ITEM_EDIT_KEY = "item_edit";
 }

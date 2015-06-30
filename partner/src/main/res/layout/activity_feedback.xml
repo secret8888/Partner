@@ -1,0 +1,24 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray"
+    android:orientation="vertical" >
+
+    <com.partner.view.TitleView
+        android:id="@+id/view_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/edit_content"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="@dimen/partner_space_medium"
+        android:padding="@dimen/partner_space_common"
+        android:gravity="top"
+        android:hint="@string/feedback_tip"
+        android:textSize="@dimen/ts_16"
+        android:background="@color/white"
+        />
+
+</LinearLayout>

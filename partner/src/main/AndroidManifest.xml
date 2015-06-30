@@ -71,6 +71,22 @@
         <activity
             android:name=".activity.info.MyQrCodeActivity"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.info.RegistrationInfoActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.info.RegistrationEditActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.info.setting.SettingActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.info.setting.FeedbackActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

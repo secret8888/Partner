@@ -1,9 +1,13 @@
 package com.partner.common.http;
 
+import android.text.TextUtils;
+
 import com.partner.common.constant.HttpConsts;
 import com.partner.common.util.HttpUtils;
 import com.partner.common.util.Utils;
 import com.squareup.okhttp.Callback;
+
+import org.w3c.dom.Text;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -72,5 +76,32 @@ public class HttpManager {
     public static void getUserInfo(String token, AsyncHttpCallback callback) {
         String codeUrl = String.format(HttpConsts.GET_USER_INFO_URL, token);
         PartnerHttpClient.asyncGet(codeUrl + HttpUtils.getUserSign(), callback);
+    }
+
+    /**
+     * 修改用户信息接口
+     * @param token
+     * @param userName
+     * @param nickName
+     * @param address
+     * @param description
+     * @param callback
+     */
+    public static void updateUserInfo(String token, String userName, String nickName,
+                                      String address, String description, AsyncHttpCallback callback) {
+        String infoUrl = String.format(HttpConsts.UPDATE_USER_INFO_URL, token);
+        if(!TextUtils.isEmpty(userName)) {
+            infoUrl += "&username=" + userName;
+        }
+        if(!TextUtils.isEmpty(nickName)) {
+            infoUrl += "&nickname=" + nickName;
+        }
+        if(!TextUtils.isEmpty(address)) {
+            infoUrl += "&address=" + address;
+        }
+        if(!TextUtils.isEmpty(description)) {
+            infoUrl += "&description=" + description;
+        }
+        PartnerHttpClient.asyncGet(infoUrl + HttpUtils.getUserSign(), callback);
     }
 }

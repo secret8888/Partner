@@ -39,6 +39,9 @@ public class MineFragment extends BaseFragment implements OnClickListener {
 	@ViewId(R.id.lv_info)
 	private RelativeLayout infoLayout;
 
+	@ViewId(R.id.lv_registration_info)
+	private RelativeLayout registrationInfoLayout;
+
 	@ViewId(R.id.lv_setting)
 	private RelativeLayout settingLayout;
 
@@ -61,6 +64,7 @@ public class MineFragment extends BaseFragment implements OnClickListener {
 	protected void setListeners() {
 		infoLayout.setOnClickListener(this);
 		settingLayout.setOnClickListener(this);
+		registrationInfoLayout.setOnClickListener(this);
 	}
 
 	@Override
@@ -86,9 +90,13 @@ public class MineFragment extends BaseFragment implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.lv_setting:
+			IntentManager.startSettingActivity(getActivity());
 			break;
 		case R.id.lv_info:
 			IntentManager.startMyInfoActivity(getActivity());
+			break;
+		case R.id.lv_registration_info:
+			IntentManager.startRegistrationInfoActivity(getActivity());
 			break;
 		default:
 			break;

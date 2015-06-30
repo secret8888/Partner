@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray"
+    android:orientation="vertical" >
+
+    <com.partner.view.TitleView
+        android:id="@+id/view_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <RelativeLayout
+        android:id="@+id/lv_registration_info"
+        android:layout_marginTop="@dimen/partner_space_medium"
+        style="@style/ItemLayout"
+        >
+        <ImageView
+            android:id="@+id/im_name"
+            style="@style/PersonalIndexImage"
+            android:src="@drawable/ic_info"
+            />
+
+        <TextView
+            android:id="@+id/tv_name"
+            style="@style/PersonalItemText"
+            android:layout_width="wrap_content"
+            android:layout_toRightOf="@id/im_name"
+            android:text="@string/name_title"
+            />
+
+        <EditText
+            style="@style/PersonalItemText"
+            android:layout_toRightOf="@id/tv_name"
+            android:background="@null"
+            android:hint="@string/input_name_tip"
+            />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/bg_gray"
+        />
+
+    <RelativeLayout
+        style="@style/ItemLayout"
+        >
+        <ImageView
+            android:id="@+id/im_phone"
+            style="@style/PersonalIndexImage"
+            android:src="@drawable/ic_phone"
+            />
+
+        <TextView
+            android:id="@+id/tv_phone"
+            style="@style/PersonalItemText"
+            android:layout_width="wrap_content"
+            android:layout_toRightOf="@id/im_phone"
+            android:text="@string/phone_title"
+            />
+
+        <EditText
+            style="@style/PersonalItemText"
+            android:layout_toRightOf="@id/tv_phone"
+            android:background="@null"
+            android:hint="@string/input_phone_tip"
+            />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/bg_gray"
+        />
+</LinearLayout>

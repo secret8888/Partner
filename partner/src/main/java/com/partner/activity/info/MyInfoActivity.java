@@ -58,7 +58,6 @@ public class MyInfoActivity extends BaseActivity {
 	@Override
 	protected void initControls(Bundle savedInstanceState) {
 		titleView.setTitle(R.string.personal_info);
-		nameView.setText(PartnerApplication.getInstance().getUserInfo().getUserName());
 		String avatarImage = PartnerApplication.getInstance().getUserInfo().getHeadImage();
 		if(!TextUtils.isEmpty(avatarImage)) {
 			Uri uri = Uri.parse(avatarImage);
@@ -69,6 +68,12 @@ public class MyInfoActivity extends BaseActivity {
 	@Override
 	protected void setListeners() {
 		titleView.setListener(this);
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		nameView.setText(PartnerApplication.getInstance().getUserInfo().getUserName());
 	}
 
 	public void onAvatarClick(View view) {
