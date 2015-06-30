@@ -63,6 +63,14 @@
         <activity
             android:name=".activity.info.MyInfoActivity"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.info.InfoItemEditActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.info.MyQrCodeActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

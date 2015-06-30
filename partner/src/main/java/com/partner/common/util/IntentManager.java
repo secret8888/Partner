@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.partner.activity.GuideActivity;
+import com.partner.activity.info.InfoItemEditActivity;
 import com.partner.activity.info.MyInfoActivity;
+import com.partner.activity.info.MyQrCodeActivity;
 import com.partner.activity.info.UserInfoEditActivity;
 import com.partner.activity.info.LeaveMessageActivity;
 import com.partner.activity.login.InstitutionRegisterActivity;
@@ -12,6 +14,7 @@ import com.partner.activity.login.LoginActivity;
 import com.partner.activity.MainActivity;
 import com.partner.activity.login.ModifyPsdActivity;
 import com.partner.activity.login.RegisterActivity;
+import com.partner.common.constant.IntentConsts;
 
 /**
  * intent manager for the whole application
@@ -106,6 +109,17 @@ public class IntentManager {
      */
     public static void startMyInfoActivity(Context context) {
         Intent intent = new Intent(context, MyInfoActivity.class);
+        context.startActivity(intent);
+    }
+
+    public static void startInfoItemEditActivity(Context context, int type) {
+        Intent intent = new Intent(context, InfoItemEditActivity.class);
+        intent.putExtra(IntentConsts.UPDATE_ITEM_KEY, type);
+        context.startActivity(intent);
+    }
+
+    public static void startMyQrCodeActivity(Context context) {
+        Intent intent = new Intent(context, MyQrCodeActivity.class);
         context.startActivity(intent);
     }
 }

@@ -18,6 +18,7 @@ import com.partner.R;
 import com.partner.activity.base.BaseActivity;
 import com.partner.common.annotation.ViewId;
 import com.partner.common.constant.Consts;
+import com.partner.common.constant.IntentConsts;
 import com.partner.common.util.IntentManager;
 import com.partner.common.util.Toaster;
 import com.partner.common.util.Utils;
@@ -71,17 +72,21 @@ public class MyInfoActivity extends BaseActivity {
 	}
 
 	public void onAvatarClick(View view) {
-
+		createChooseDialog();
 	}
 
 	public void onNameClick(View view) {
+		IntentManager.startInfoItemEditActivity(this, IntentConsts.USER_NAME_TYPE);
 	}
 
 	public void onNicknameClick(View view) {
+		IntentManager.startInfoItemEditActivity(this, IntentConsts.NICK_NAME_TYPE);
 	}
 
 	public void onQrcodeClick(View view) {
+		IntentManager.startMyQrCodeActivity(this);
 	}
+
 	private void createChooseDialog() {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setItems(new String[] {

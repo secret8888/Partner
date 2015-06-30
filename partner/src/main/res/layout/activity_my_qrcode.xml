@@ -1,0 +1,59 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray"
+    android:orientation="vertical" >
+
+    <com.partner.view.TitleView
+        android:id="@+id/view_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:id="@+id/lv_info"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="@dimen/partner_space_huge"
+        android:layout_marginRight="@dimen/partner_space_huge"
+        android:gravity="center_horizontal"
+        style="@style/ItemLayout"
+        android:orientation="vertical"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/im_avatar"
+                style="@style/PersonalIndexImage"
+                android:layout_height="100dp"
+                android:layout_width="100dp"
+                fresco:placeholderImage="@drawable/ic_loading"
+                />
+
+            <TextView
+                android:id="@+id/tv_name"
+                style="@style/PersonalItemText"
+                android:layout_toRightOf="@id/im_avatar"
+                android:text="fakhakjfhakfh"
+                />
+        </RelativeLayout>
+
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="@dimen/partner_space_huge"
+            android:background="@drawable/ic_loading_big"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="@dimen/ts_13"
+            android:layout_marginTop="@dimen/partner_space_huge"
+            android:layout_marginBottom="@dimen/partner_space_huge"
+            android:text="扫描上面的二维码图案，加我为好友"
+            />
+    </LinearLayout>
+</LinearLayout>
