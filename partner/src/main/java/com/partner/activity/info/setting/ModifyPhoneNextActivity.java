@@ -1,11 +1,10 @@
-package com.partner.activity.login;
+package com.partner.activity.info.setting;
 
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.partner.PartnerApplication;
@@ -26,19 +25,13 @@ import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class ModifyPsdActivity extends BaseActivity {
+public class ModifyPhoneNextActivity extends BaseActivity {
 
 	@ViewId(R.id.view_title)
 	private TitleView titleView;
 
-	@ViewId(R.id.lv_phone)
-	private LinearLayout phoneLayout;
-
-	@ViewId(R.id.edit_phone)
-	private EditText phoneEdit;
-
-	@ViewId(R.id.edit_psd)
-	private EditText psdEdit;
+	@ViewId(R.id.tv_phone)
+	private TextView phoneView;
 
 	@ViewId(R.id.edit_code)
 	private EditText codeEdit;
@@ -46,32 +39,28 @@ public class ModifyPsdActivity extends BaseActivity {
 	@ViewId(R.id.tv_get_code)
 	private TextView codeView;
 
-	private boolean isSettingModify = false;
+	private String phone;
 
 	private Timer codeTimer = null;
 
 	private int timeLen = 60;
 
-	private static final String TAG = ModifyPsdActivity.class.getSimpleName();
+	private static final String TAG = ModifyPhoneNextActivity.class.getSimpleName();
 
 	@Override
 	protected int getLayoutId() {
-		return R.layout.activity_modify_psd;
+		return R.layout.activity_modify_phone_next;
 	}
 
 	@Override
 	protected void readIntent() {
-		isSettingModify = getIntent().getBooleanExtra(IntentConsts.SETTING_MODIFY_KEY, false);
+		phone = getIntent().getStringExtra(IntentConsts.PHONE_KEY);
 	}
 
 	@Override
 	protected void initControls(Bundle savedInstanceState) {
-		if(isSettingModify) {
-			titleView.setTitle(R.string.change_psd);
-			phoneLayout.setVisibility(View.GONE);
-		} else {
-			titleView.setTitle(R.string.modify_psd);
-		}
+		titleView.setTitle(R.string.input_code);
+		phoneView.setText(phone);
 	}
 
 	@Override
@@ -81,11 +70,9 @@ public class ModifyPsdActivity extends BaseActivity {
 
 	public void onCodeClick(View view) {
 		if (Utils.checkMetworkConnected(this)) {
-			String phone = phoneEdit.getText().toString();
+			String phone = phoneView.getText().toString();
 
-			if(isSettingModify) {
-				phone = PartnerApplication.getInstance().getUserInfo().getCellphone();
-			} else if (TextUtils.isEmpty(phone)) {
+			if (TextUtils.isEmpty(phone)) {
 				Toaster.show(this, R.string.phone_not_null);
 				return;
 			}
@@ -107,21 +94,8 @@ public class ModifyPsdActivity extends BaseActivity {
 
 	public void onConfirmClick(View view) {
 		if (Utils.checkMetworkConnected(this)) {
-			String phone = phoneEdit.getText().toString();
-			String psd = psdEdit.getText().toString();
+			String phone = phoneView.getText().toString();
 			String code = codeEdit.getText().toString();
-
-			if(isSettingModify) {
-				phone = PartnerApplication.getInstance().getUserInfo().getCellphone();
-			} else if (TextUtils.isEmpty(phone)) {
-				Toaster.show(this, R.string.phone_not_null);
-				return;
-			}
-
-			if (TextUtils.isEmpty(psd)) {
-				Toaster.show(this, R.string.psd_not_null);
-				return;
-			}
 
 			if (TextUtils.isEmpty(code)) {
 				Toaster.show(this, R.string.input_code_tip);
@@ -129,18 +103,18 @@ public class ModifyPsdActivity extends BaseActivity {
 			}
 
 			onShowLoadingDialog();
-			HttpManager.resetPassword(phone, psd, code, 0, new AsyncHttpCallback() {
-				@Override
-				public void onRequestResponse(Response response) {
-					onDismissLoadingDialog();
-					onBackPressed();
-				}
-
-				@Override
-				public void onRequestFailure(Request request, IOException e) {
-					onDismissLoadingDialog();
-				}
-			});
+//			HttpManager.resetPassword(phone, psd, code, 0, new AsyncHttpCallback() {
+//				@Override
+//				public void onRequestResponse(Response response) {
+//					onDismissLoadingDialog();
+//					onBackPressed();
+//				}
+//
+//				@Override
+//				public void onRequestFailure(Request request, IOException e) {
+//					onDismissLoadingDialog();
+//				}
+//			});
 		}
 	}
 
@@ -172,4 +146,5 @@ public class ModifyPsdActivity extends BaseActivity {
 			}
 		}, 1000, 1000);
 	}
+
 }

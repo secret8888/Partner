@@ -88,6 +88,18 @@
             android:name=".activity.info.setting.FeedbackActivity"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".activity.info.setting.ModifyPhoneActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.info.setting.ModifyPhoneNextActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.info.setting.AboutActivity"
+            android:screenOrientation="portrait" />
+
         <!-- umeng start-->
         <service
             android:name="com.umeng.update.net.DownloadingService"

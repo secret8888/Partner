@@ -1,5 +1,6 @@
 package com.partner.activity.info.setting;
 
+import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
@@ -8,8 +9,16 @@ import android.widget.ImageView;
 import com.partner.R;
 import com.partner.activity.base.BaseActivity;
 import com.partner.common.annotation.ViewId;
+import com.partner.common.constant.IntentConsts;
+import com.partner.common.constant.PreferenceConsts;
 import com.partner.common.util.IntentManager;
+import com.partner.common.util.PreferenceUtils;
+import com.partner.common.util.Toaster;
 import com.partner.view.TitleView;
+import com.umeng.update.UmengUpdateAgent;
+import com.umeng.update.UmengUpdateListener;
+import com.umeng.update.UpdateResponse;
+import com.umeng.update.UpdateStatus;
 
 public class SettingActivity extends BaseActivity {
 
@@ -40,8 +49,15 @@ public class SettingActivity extends BaseActivity {
 		titleView.setListener(this);
 	}
 
-	public void onSwitchClick() {
-		messageSwitchView.setBackgroundResource(R.drawable.pref_check_box_off);
+	public void onSwitchClick(View view) {
+		boolean isMessagePush = PreferenceUtils.getBoolean(PreferenceConsts.KEY_MESSAGE_PUSH, false);
+		if(isMessagePush) {
+			PreferenceUtils.putBoolean(PreferenceConsts.KEY_MESSAGE_PUSH, false);
+			messageSwitchView.setBackgroundResource(R.drawable.pref_check_box_off);
+		} else {
+			PreferenceUtils.putBoolean(PreferenceConsts.KEY_MESSAGE_PUSH, true);
+			messageSwitchView.setBackgroundResource(R.drawable.pref_check_box_on);
+		}
 	}
 
 	public void onFeedbackClick(View view) {
@@ -49,14 +65,15 @@ public class SettingActivity extends BaseActivity {
 	}
 
 	public void onAboutClick(View view) {
+		IntentManager.startAboutActivity(this);
 	}
 
 	public void onModifyPsdClick(View view) {
-		IntentManager.startModifyPsdActivity(this);
+		IntentManager.startModifyPsdActivity(this, true);
 	}
 
 	public void onModifyPhoneClick(View view) {
-
+		IntentManager.startModifyPhoneActivity(this);
 	}
 
 	public void onCheckUpdateClick(View view) {
@@ -77,5 +94,13 @@ public class SettingActivity extends BaseActivity {
 			}
 		});
 		UmengUpdateAgent.update(this);
+	}
+
+	public void onLogoutClick(View view) {
+		PreferenceUtils.remove(PreferenceConsts.KEY_USER_INFO);
+		Intent intent = new Intent();
+		intent.putExtra(IntentConsts.LOGOUT_KEY, true);
+		setResult(RESULT_OK, intent);
+		onBackPressed();
 	}
 }

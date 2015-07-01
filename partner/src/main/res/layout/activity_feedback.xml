@@ -17,7 +17,7 @@
         android:padding="@dimen/partner_space_common"
         android:gravity="top"
         android:hint="@string/feedback_tip"
-        android:textSize="@dimen/ts_16"
+        android:textSize="@dimen/ts_15"
         android:background="@color/white"
         />
 

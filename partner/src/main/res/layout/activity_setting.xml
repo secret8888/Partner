@@ -14,12 +14,13 @@
         android:id="@+id/lv_registration_info"
         android:layout_marginTop="@dimen/partner_space_medium"
         style="@style/ItemLayout"
+        android:minHeight="45dp"
         >
 
         <ImageView
             android:id="@+id/im_message_switch"
             style="@style/PersonalArrowStyle"
-            android:background="@drawable/pref_check_box_on"
+            android:background="@drawable/pref_check_box_off"
             android:onClick="onSwitchClick"
             />
         <TextView
@@ -38,6 +39,7 @@
     <RelativeLayout
         style="@style/ItemLayout"
         android:onClick="onCheckUpdateClick"
+        android:minHeight="45dp"
         >
         <ImageView
             style="@style/PersonalArrowStyle"
@@ -54,6 +56,7 @@
         android:layout_marginTop="@dimen/partner_space_medium"
         style="@style/ItemLayout"
         android:onClick="onModifyPsdClick"
+        android:minHeight="45dp"
         >
 
         <ImageView
@@ -75,6 +78,7 @@
     <RelativeLayout
         style="@style/ItemLayout"
         android:onClick="onModifyPhoneClick"
+        android:minHeight="45dp"
         >
         <ImageView
             style="@style/PersonalArrowStyle"
@@ -91,6 +95,7 @@
         android:layout_marginTop="@dimen/partner_space_medium"
         style="@style/ItemLayout"
         android:onClick="onFeedbackClick"
+        android:minHeight="45dp"
         >
 
         <ImageView
@@ -112,6 +117,7 @@
     <RelativeLayout
         style="@style/ItemLayout"
         android:onClick="onAboutClick"
+        android:minHeight="45dp"
         >
         <ImageView
             style="@style/PersonalArrowStyle"
@@ -134,7 +140,7 @@
         android:textSize="@dimen/ts_16"
         android:text="@string/exit"
         android:clickable="true"
-        android:onClick="onLoginClick"
+        android:onClick="onLogoutClick"
         android:background="@drawable/bg_edit"
         />
 </LinearLayout>

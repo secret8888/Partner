@@ -15,4 +15,10 @@ public class IntentConsts {
 	public static final String UPDATE_ITEM_KEY = "update_item_type";
 
 	public static final String ITEM_EDIT_KEY = "item_edit";
+
+	public static final String LOGOUT_KEY = "logout";
+
+	public static final String SETTING_MODIFY_KEY = "setting_modify";
+
+	public static final String PHONE_KEY = "phone";
 }

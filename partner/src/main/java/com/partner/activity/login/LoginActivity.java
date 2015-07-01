@@ -89,7 +89,7 @@ public class LoginActivity extends BaseActivity {
 	}
 
 	public void onFindPsdClick(View view) {
-		IntentManager.startModifyPsdActivity(this);
+		IntentManager.startModifyPsdActivity(this, false);
 	}
 
 	public void onRegisterClick(View view) {

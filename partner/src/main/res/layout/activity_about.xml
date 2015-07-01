@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <com.partner.view.TitleView
+        android:id="@+id/view_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/ic_logo"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/partner_space_huge"
+        android:textSize="@dimen/ts_16"
+        android:textColor="@color/black"
+        android:text="V1.0.0"
+        />
+
+    <RelativeLayout
+        style="@style/ItemLayout"
+        android:onClick="onFeedbackClick"
+        android:layout_marginTop="@dimen/partner_space_huge"
+        android:minHeight="45dp"
+        >
+
+        <TextView
+            style="@style/PersonalItemText"
+            android:layout_marginLeft="90dp"
+            android:text="1234567890"
+            />
+        <TextView
+            style="@style/PersonalItemText"
+            android:layout_marginLeft="@dimen/partner_space_large"
+            android:text="电 话"
+            />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/bg_gray"
+        />
+
+    <RelativeLayout
+        style="@style/ItemLayout"
+        android:onClick="onAboutClick"
+        android:minHeight="45dp"
+        >
+        <TextView
+            style="@style/PersonalItemText"
+            android:layout_marginLeft="90dp"
+            android:text="Pinlalll"
+            />
+        <TextView
+            style="@style/PersonalItemText"
+            android:layout_marginLeft="@dimen/partner_space_large"
+            android:text="微 信"
+            />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/bg_gray"
+        />
+
+    <RelativeLayout
+        style="@style/ItemLayout"
+        android:onClick="onAboutClick"
+        android:minHeight="45dp"
+        >
+        <TextView
+            style="@style/PersonalItemText"
+            android:layout_marginLeft="90dp"
+            android:text="kahfahfkajhfkah"
+            />
+        <TextView
+            style="@style/PersonalItemText"
+            android:layout_marginLeft="@dimen/partner_space_large"
+            android:text="微 博"
+            />
+    </RelativeLayout>
+</LinearLayout>

@@ -1,5 +1,6 @@
 package com.partner.common.util;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
@@ -9,7 +10,10 @@ import com.partner.activity.info.MyInfoActivity;
 import com.partner.activity.info.MyQrCodeActivity;
 import com.partner.activity.info.RegistrationEditActivity;
 import com.partner.activity.info.RegistrationInfoActivity;
+import com.partner.activity.info.setting.AboutActivity;
 import com.partner.activity.info.setting.FeedbackActivity;
+import com.partner.activity.info.setting.ModifyPhoneActivity;
+import com.partner.activity.info.setting.ModifyPhoneNextActivity;
 import com.partner.activity.info.setting.SettingActivity;
 import com.partner.activity.info.UserInfoEditActivity;
 import com.partner.activity.info.LeaveMessageActivity;
@@ -82,8 +86,9 @@ public class IntentManager {
      *
      * @param context
      */
-    public static void startModifyPsdActivity(Context context) {
+    public static void startModifyPsdActivity(Context context, boolean isSettingModify) {
         Intent intent = new Intent(context, ModifyPsdActivity.class);
+        intent.putExtra(IntentConsts.SETTING_MODIFY_KEY, isSettingModify);
         context.startActivity(intent);
     }
 
@@ -138,13 +143,29 @@ public class IntentManager {
         context.startActivity(intent);
     }
 
-    public static void startSettingActivity(Context context) {
+    public static void startSettingActivity(Activity context, int requestCode) {
         Intent intent = new Intent(context, SettingActivity.class);
-        context.startActivity(intent);
+        context.startActivityForResult(intent, requestCode);
     }
 
     public static void startFeedbackActivity(Context context) {
         Intent intent = new Intent(context, FeedbackActivity.class);
+        context.startActivity(intent);
+    }
+
+    public static void startModifyPhoneActivity(Context context) {
+        Intent intent = new Intent(context, ModifyPhoneActivity.class);
+        context.startActivity(intent);
+    }
+
+    public static void startModifyPhoneNextActivity(Context context, String phone) {
+        Intent intent = new Intent(context, ModifyPhoneNextActivity.class);
+        intent.putExtra(IntentConsts.PHONE_KEY, phone);
+        context.startActivity(intent);
+    }
+
+    public static void startAboutActivity(Context context) {
+        Intent intent = new Intent(context, AboutActivity.class);
         context.startActivity(intent);
     }
 

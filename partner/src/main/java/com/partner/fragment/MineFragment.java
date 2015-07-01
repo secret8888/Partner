@@ -1,5 +1,6 @@
 package com.partner.fragment;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -83,6 +84,13 @@ public class MineFragment extends BaseFragment implements OnClickListener {
 					onDismissLoadingDialog();
 				}
 			});
+		} else {
+			nameView.setText(PartnerApplication.getInstance().getUserInfo().getUserName());
+			String avatarImage = PartnerApplication.getInstance().getUserInfo().getHeadImage();
+			if(!TextUtils.isEmpty(avatarImage)) {
+				Uri uri = Uri.parse(avatarImage);
+				avatarView.setImageURI(uri);
+			}
 		}
 	}
 
@@ -90,7 +98,7 @@ public class MineFragment extends BaseFragment implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.lv_setting:
-			IntentManager.startSettingActivity(getActivity());
+			IntentManager.startSettingActivity(getActivity(), 0);
 			break;
 		case R.id.lv_info:
 			IntentManager.startMyInfoActivity(getActivity());
