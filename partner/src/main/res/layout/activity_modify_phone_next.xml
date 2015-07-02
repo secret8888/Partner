@@ -21,36 +21,26 @@
         android:orientation="vertical"
         >
         <LinearLayout
-            android:id="@+id/lv_phone"
-            style="@style/ItemLayout"
-            android:layout_marginBottom="@dimen/partner_space_medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
             >
-            <ImageView
-                style="@style/ItemIndexImage"
-                android:src="@drawable/ic_info"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/ts_16"
+                android:textColor="@color/text_black"
+                android:text="新手机号"
                 />
 
-            <EditText
-                android:id="@+id/edit_phone"
-                style="@style/ItemText"
+            <TextView
+                android:id="@+id/tv_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/partner_space_medium"
+                android:textSize="@dimen/ts_16"
+                android:textColor="@color/black"
                 android:inputType="phone"
-                android:hint="@string/input_phone_tip"
-                />
-        </LinearLayout>
-
-        <LinearLayout
-            style="@style/ItemLayout"
-            >
-            <ImageView
-                style="@style/ItemIndexImage"
-                android:src="@drawable/ic_psd"
-                />
-
-            <EditText
-                android:id="@+id/edit_psd"
-                style="@style/ItemText"
-                android:inputType="textPassword"
-                android:hint="@string/input_psd_tip"
                 />
         </LinearLayout>
 

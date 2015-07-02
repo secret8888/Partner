@@ -28,6 +28,7 @@
     <string name="input_phone_tip">请输入手机号码</string>
     <string name="input_psd_tip">请输入密码</string>
     <string name="input_code_tip">请输入验证码</string>
+    <string name="input_code">输入验证码</string>
     <string name="find_psd">找回密码</string>
     <string name="modify_psd">重置密码</string>
     <string name="new_user_register">新用户注册</string>
@@ -94,6 +95,8 @@
     <string name="exit">退 出</string>
     <string name="feedback_tip">这里输入您宝贵的建议</string>
     <string name="submit">提交</string>
+    <string name="next">下一步</string>
+    <string name="phone_tip">您的当前手机号为：%s</string>
 
 
     <!-- share begin -->

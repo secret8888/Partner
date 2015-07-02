@@ -4,11 +4,15 @@ import com.partner.PartnerApplication;
 import com.partner.R;
 import com.partner.activity.base.BaseFragmentActivity;
 import com.partner.common.constant.Consts;
+import com.partner.common.constant.IntentConsts;
+import com.partner.common.util.IntentManager;
 import com.partner.common.util.Toaster;
 import com.partner.fragment.MainFragment;
 import com.partner.fragment.MineFragment;
 import com.partner.fragment.FriendFragment;
+import com.umeng.update.UmengUpdateAgent;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTabHost;
 import android.view.KeyEvent;
@@ -41,6 +45,7 @@ public class MainActivity extends BaseFragmentActivity {
 	protected void initControls(Bundle savedInstanceState) {
 		PartnerApplication.getInstance().initUserInfo();
 		initView();
+		UmengUpdateAgent.update(this);
 	}
 
 	@Override
@@ -81,6 +86,18 @@ public class MainActivity extends BaseFragmentActivity {
 				}
 			}
 		});
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		if(requestCode == 0 && resultCode == RESULT_OK) {
+			boolean isLogout = data.getBooleanExtra(IntentConsts.LOGOUT_KEY, false);
+			if(isLogout) {
+				IntentManager.startLoginActivity(this);
+				finish();
+			}
+		}
 	}
 
 	@Override
