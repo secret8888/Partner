@@ -21,8 +21,6 @@
     <TextView
         style="@style/PersonalItemText"
         android:layout_toRightOf="@id/im_avatar"
-        android:drawableLeft="@drawable/ic_info"
-        android:drawablePadding="@dimen/partner_space_normal"
         android:text="青青的小草"
         />
 </RelativeLayout>

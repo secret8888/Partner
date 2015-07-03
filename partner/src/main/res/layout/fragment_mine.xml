@@ -67,6 +67,7 @@
         />
 
     <RelativeLayout
+        android:id="@+id/lv_qrcode"
         style="@style/ItemLayout"
         >
         <ImageView

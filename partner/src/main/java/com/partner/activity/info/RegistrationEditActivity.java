@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.partner.R;
 import com.partner.activity.base.BaseActivity;
@@ -18,6 +19,9 @@ public class RegistrationEditActivity extends BaseActivity {
 
 	@ViewId(R.id.view_title)
 	private TitleView titleView;
+
+	@ViewId(R.id.tv_delete)
+	private TextView deleteView;
 
 	private boolean isParentAdd = false;
 
@@ -39,6 +43,7 @@ public class RegistrationEditActivity extends BaseActivity {
 			titleView.setTitle(R.string.parent_add);
 		} else {
 			titleView.setTitle(R.string.parent_info_edit);
+			deleteView.setVisibility(View.VISIBLE);
 		}
 		titleView.setOperateText(R.string.finish);
 	}
@@ -56,5 +61,9 @@ public class RegistrationEditActivity extends BaseActivity {
 	public void onTitleOperateClick() {
 		super.onTitleOperateClick();
 		onBackPressed();
+	}
+
+	public void onDeleteClick(View view) {
+
 	}
 }

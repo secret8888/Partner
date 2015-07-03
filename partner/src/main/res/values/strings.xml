@@ -60,7 +60,7 @@
     <string name="all">所有</string>
     <string name="part_in">参加</string>
     <string name="follow">关注</string>
-    <string name="qrcode">扫一扫</string>
+    <string name="qrcode">扫一扫加好友</string>
     <string name="message_center">消息中心</string>
     <string name="setting">设置</string>
     <string name="name">姓名</string>
@@ -98,6 +98,8 @@
     <string name="next">下一步</string>
     <string name="phone_tip">您的当前手机号为：%s</string>
 
+    <!-- qr code -->
+    <string name="scan_tips">\"将二维码图片对准扫描框即可自动扫描\"</string>
 
     <!-- share begin -->
     <string name="share">分享</string>

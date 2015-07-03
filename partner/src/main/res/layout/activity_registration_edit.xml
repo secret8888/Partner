@@ -74,4 +74,21 @@
         android:layout_height="1dp"
         android:background="@color/bg_gray"
         />
+
+    <TextView
+        android:id="@+id/tv_delete"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_height"
+        android:layout_marginTop="@dimen/partner_space_common"
+        android:layout_marginLeft="@dimen/partner_space_huge"
+        android:layout_marginRight="@dimen/partner_space_huge"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/ts_16"
+        android:text="@string/delete"
+        android:clickable="true"
+        android:onClick="onDeleteClick"
+        android:background="@drawable/btn_operate"
+        android:visibility="gone"
+        />
 </LinearLayout>

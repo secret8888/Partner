@@ -24,6 +24,7 @@ import com.partner.common.util.Toaster;
 import com.partner.common.util.Utils;
 import com.partner.fragment.base.BaseFragment;
 import com.partner.model.UserInfo;
+import com.partner.qrcode.activity.QrcodeActivity;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
@@ -42,6 +43,9 @@ public class MineFragment extends BaseFragment implements OnClickListener {
 
 	@ViewId(R.id.lv_registration_info)
 	private RelativeLayout registrationInfoLayout;
+
+	@ViewId(R.id.lv_qrcode)
+	private RelativeLayout qrcodeLayout;
 
 	@ViewId(R.id.lv_setting)
 	private RelativeLayout settingLayout;
@@ -66,6 +70,7 @@ public class MineFragment extends BaseFragment implements OnClickListener {
 		infoLayout.setOnClickListener(this);
 		settingLayout.setOnClickListener(this);
 		registrationInfoLayout.setOnClickListener(this);
+		qrcodeLayout.setOnClickListener(this);
 	}
 
 	@Override
@@ -106,6 +111,10 @@ public class MineFragment extends BaseFragment implements OnClickListener {
 		case R.id.lv_registration_info:
 			IntentManager.startRegistrationInfoActivity(getActivity());
 			break;
+			case R.id.lv_qrcode:
+				Intent intent = new Intent(getActivity(), QrcodeActivity.class);
+				startActivity(intent);
+				break;
 		default:
 			break;
 		}
