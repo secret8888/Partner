@@ -14,7 +14,9 @@ import com.squareup.okhttp.Response;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -185,6 +187,7 @@ public class PartnerHttpClient {
      * @param callback
      */
     public static void asyncPostFile(String url, File file, final AsyncHttpCallback callback) {
+        Logcat.d("asyncPostFile request url : " + url);
         RequestBody requestBody = RequestBody.create(MEDIA_TYPE_MARKDOWN, file);
         Request request = getRequest(url, requestBody);
         enqueue(request, new Callback() {
@@ -204,20 +207,25 @@ public class PartnerHttpClient {
      * 异步上传文件和其他
      *
      * @param url
-     * @param json
+     * @param params
      * @param file
      * @param callback
      */
-    public static void asyncPostFile(String url, String json, File file, final AsyncHttpCallback callback) {
-        RequestBody requestBody = new MultipartBuilder()
-                .type(MultipartBuilder.FORM)
-                .addPart(
-                        Headers.of("Content-Disposition", "form-data; name=\"title\""),
-                        RequestBody.create(JSON, json))
-                .addPart(
-                        Headers.of("Content-Disposition", "form-data; name=\"image\""),
-                        RequestBody.create(MEDIA_TYPE_PNG, new File("website/static/logo-square.png")))
-                .build();
+    public static void asyncPostFile(String url, HashMap<String, String> params, File file, final AsyncHttpCallback callback) {
+
+        MultipartBuilder builder = new MultipartBuilder().type(MultipartBuilder.FORM);
+        for(Map.Entry<String, String> entry : params.entrySet()) {
+            builder.addPart(
+                    Headers.of("Content-Disposition", "form-data; name=\"" + entry.getKey() + "\""),
+                    RequestBody.create(null, entry.getValue()));
+        }
+
+        builder.addPart(
+                Headers.of("Content-Disposition", "form-data; name=\"file\"; filename=\"" + file.getName() + "\""),
+                RequestBody.create(MEDIA_TYPE_PNG, file));
+
+        RequestBody requestBody = builder.build();
+
         Request request = getRequest(url, requestBody);
         enqueue(request, new Callback() {
             @Override

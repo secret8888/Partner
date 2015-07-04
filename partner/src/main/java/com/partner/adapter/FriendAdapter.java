@@ -7,7 +7,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.partner.R;
+import com.partner.model.FriendInfo;
 
 import java.util.ArrayList;
 
@@ -15,11 +17,11 @@ public class FriendAdapter extends BaseAdapter {
 
 	private Context context;
 
-	private ArrayList<String> mItems;
+	private ArrayList<FriendInfo> mItems;
 
-	public FriendAdapter(Context context, ArrayList<String> projectInfos) {
+	public FriendAdapter(Context context, ArrayList<FriendInfo> items) {
 		this.context = context;
-		this.mItems = projectInfos;
+		this.mItems = items;
 	}
 
 	@Override
@@ -44,30 +46,21 @@ public class FriendAdapter extends BaseAdapter {
 			holder = new ViewHolder();
 			convertView = View.inflate(context, R.layout.adapter_friend, null);
 
-//			holder.projectCoverView = (ImageView) convertView
-//					.findViewById(R.id.im_project_cover);
-//			holder.projectNameView = (TextView) convertView
-//					.findViewById(R.id.tv_project_name);
-//			holder.projectDescView = (TextView) convertView
-//					.findViewById(R.id.tv_project_desc);
-//			holder.investAmountView = (TextView) convertView
-//					.findViewById(R.id.tv_invest_amount);
-//			holder.investStatusView = (TextView) convertView
-//					.findViewById(R.id.tv_invest_status);
+			holder.avatarView = (SimpleDraweeView) convertView.findViewById(R.id.im_avatar);
+			holder.nameView = (TextView) convertView.findViewById(R.id.tv_name);
 
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
 
+		FriendInfo info = mItems.get(position);
+		holder.nameView.setText(info.getFriendRealName());
 		return convertView;
 	}
 
-	private class ViewHolder {
-		private ImageView projectCoverView = null;
-		private TextView projectNameView = null;
-		private TextView projectDescView = null;
-		private TextView investAmountView = null;
-		private TextView investStatusView = null;
+	private static class ViewHolder {
+		private SimpleDraweeView avatarView;
+		private TextView nameView;
 	}
 }

@@ -18,7 +18,7 @@ public class FriendFragmentAdapter extends FragmentPagerAdapter{
 
 	@Override
 	public Fragment getItem(int position) {
-		return FriendListFragment.newInstance();
+		return FriendListFragment.newInstance(position);
 	}
 
 	@Override

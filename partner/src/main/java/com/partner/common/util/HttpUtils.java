@@ -12,6 +12,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.HashMap;
 
 /**
  * Created by emilyu on 6/27/15.
@@ -22,6 +23,19 @@ public class HttpUtils {
         long time = new Date().getTime()/1000;
         String sig = TextUtils.isEmpty(udid)?"":udid + "hyl" + time;
         return "&sig=" + Utils.getMD5Code(sig) + "&time=" + time + "&udid=" + udid;
+    }
+
+    public static HashMap getUserSignMap() {
+        HashMap<String, String> paramsMap = new HashMap<>();
+        String udid = PartnerApplication.getInstance().getImei();
+        long time = new Date().getTime()/1000;
+        String sig = TextUtils.isEmpty(udid)?"":udid + "hyl" + time;
+
+        paramsMap.put("sig", Utils.getMD5Code(sig));
+        paramsMap.put("time", String.valueOf(time));
+        paramsMap.put("udid", udid);
+
+        return paramsMap;
     }
 
     public static boolean checkResponse(Response response) {

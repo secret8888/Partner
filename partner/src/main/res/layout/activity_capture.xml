@@ -45,8 +45,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginTop="5dp"
                     android:src="@drawable/scan_line" />
             </RelativeLayout>
 
@@ -83,10 +81,23 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/capture_crop_view"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="@dimen/partner_space_large"
                 android:text="@string/scan_tips"
-                android:textColor="@android:color/white"
+                android:textColor="@color/text_grey"
                 android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/capture_crop_view"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="60dp"
+                android:text="@string/my_qrcode"
+                android:textColor="@color/text_blue"
+                android:textSize="@dimen/ts_17"
+                android:clickable="true"
+                android:onClick="onMyQrcodeClick"
+                />
         </RelativeLayout>
 
         <LinearLayout
@@ -96,7 +107,9 @@
             android:background="#00000000"
             android:orientation="horizontal"
             android:layout_marginTop="16dp"
-            android:weightSum="2.0" >
+            android:weightSum="2.0"
+            android:visibility="gone"
+            >
 
             <ToggleButton
                 android:id="@+id/capture_flashlight"

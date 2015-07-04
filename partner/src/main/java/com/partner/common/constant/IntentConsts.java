@@ -21,4 +21,8 @@ public class IntentConsts {
 	public static final String SETTING_MODIFY_KEY = "setting_modify";
 
 	public static final String PHONE_KEY = "phone";
+
+	public static final String REFISTRATION_KEY = "registration";
+
+	public static final String INFO_KEY = "info";
 }

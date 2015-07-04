@@ -10,6 +10,7 @@ import com.partner.R;
 import com.partner.adapter.ActivityFragmentAdapter;
 import com.partner.common.annotation.ViewId;
 import com.partner.fragment.base.BaseFragment;
+import com.partner.view.CustomViewPager;
 
 public class MainFragment extends BaseFragment implements OnClickListener, ViewPager.OnPageChangeListener {
 
@@ -23,7 +24,7 @@ public class MainFragment extends BaseFragment implements OnClickListener, ViewP
 	private TextView followTypeView;
 
 	@ViewId(R.id.pager_activity)
-	private ViewPager activityPager;
+	private CustomViewPager activityPager;
 
 	@Override
 	protected int getLayoutId() {

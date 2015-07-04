@@ -19,12 +19,22 @@ import com.partner.activity.base.BaseActivity;
 import com.partner.common.annotation.ViewId;
 import com.partner.common.constant.Consts;
 import com.partner.common.constant.IntentConsts;
+import com.partner.common.constant.PreferenceConsts;
+import com.partner.common.http.AsyncHttpCallback;
+import com.partner.common.http.HttpManager;
+import com.partner.common.util.HttpUtils;
 import com.partner.common.util.IntentManager;
+import com.partner.common.util.PreferenceUtils;
 import com.partner.common.util.Toaster;
 import com.partner.common.util.Utils;
+import com.partner.model.UserInfo;
 import com.partner.view.TitleView;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
+import com.youdao.yjson.YJson;
 
 import java.io.File;
+import java.io.IOException;
 
 public class MyInfoActivity extends BaseActivity {
 
@@ -190,7 +200,28 @@ public class MyInfoActivity extends BaseActivity {
 									Consts.AVATAR_CACHE_FILE);
 							File file = new File(Utils.getTempDir() + Consts.AVATAR_CACHE_FILE);
 							if(file.exists()){
+								onShowLoadingDialog();
+								HttpManager.updateUserHeadImage(PartnerApplication.getInstance().getUserInfo().getToken(), file, new AsyncHttpCallback() {
+									@Override
+									public void onRequestResponse(Response response) {
+										onDismissLoadingDialog();
+										String result = HttpUtils.getResponseData(response);
+										if(!TextUtils.isEmpty(result)) {
+											UserInfo userInfo = YJson.getObj(result, UserInfo.class);
+											PartnerApplication.getInstance().getUserInfo().setHeadImage(userInfo.getHeadImage());
+											if(!TextUtils.isEmpty(userInfo.getHeadImage())) {
+												Uri uri = Uri.parse(userInfo.getHeadImage());
+												avatarView.setImageURI(uri);
+											}
+										}
+									}
 
+									@Override
+									public void onRequestFailure(Request request, IOException e) {
+										super.onRequestFailure(request, e);
+										onDismissLoadingDialog();
+									}
+								});
 							}
 						} else {
 							Toaster.show(R.string.no_sdcard);

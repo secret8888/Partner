@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.partner.R;
+import com.partner.model.RegistrationInfo;
 
 import java.util.ArrayList;
 
@@ -15,11 +16,11 @@ public class RegistrationInfoAdapter extends BaseAdapter {
 
 	private Context context;
 
-	private ArrayList<String> mItems;
+	private ArrayList<RegistrationInfo> mItems;
 
-	public RegistrationInfoAdapter(Context context, ArrayList<String> projectInfos) {
+	public RegistrationInfoAdapter(Context context, ArrayList<RegistrationInfo> items) {
 		this.context = context;
-		this.mItems = projectInfos;
+		this.mItems = items;
 	}
 
 	@Override
@@ -44,27 +45,24 @@ public class RegistrationInfoAdapter extends BaseAdapter {
 			holder = new ViewHolder();
 			convertView = View.inflate(context, R.layout.adapter_registration_info, null);
 
-//			holder.projectCoverView = (ImageView) convertView
-//					.findViewById(R.id.im_project_cover);
-//			holder.projectNameView = (TextView) convertView
-//					.findViewById(R.id.tv_project_name);
-//			holder.projectDescView = (TextView) convertView
-//					.findViewById(R.id.tv_project_desc);
-//			holder.investAmountView = (TextView) convertView
-//					.findViewById(R.id.tv_invest_amount);
-//			holder.investStatusView = (TextView) convertView
-//					.findViewById(R.id.tv_invest_status);
+			holder.nameView = (TextView) convertView
+					.findViewById(R.id.tv_name);
+			holder.phoneView = (TextView) convertView
+					.findViewById(R.id.tv_phone);
 
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
 
+		RegistrationInfo info = mItems.get(position);
+		holder.nameView.setText(info.getUserenrollInfoParent());
+		holder.phoneView.setText(info.getUserenrollCellphone());
 		return convertView;
 	}
 
 	private static class ViewHolder {
-		private TextView nameView = null;
-		private TextView phoneView = null;
+		private TextView nameView;
+		private TextView phoneView;
 	}
 }

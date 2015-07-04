@@ -1,13 +1,23 @@
 package com.partner.activity.info.setting;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.widget.EditText;
 
 import com.partner.R;
 import com.partner.activity.base.BaseActivity;
 import com.partner.common.annotation.ViewId;
+import com.partner.common.util.Logcat;
+import com.partner.common.util.Toaster;
 import com.partner.view.TitleView;
+import com.umeng.fb.FeedbackAgent;
+import com.umeng.fb.SyncListener;
+import com.umeng.fb.model.Conversation;
+import com.umeng.fb.model.Reply;
+
+import java.util.List;
 
 public class FeedbackActivity extends BaseActivity {
 
@@ -37,5 +47,31 @@ public class FeedbackActivity extends BaseActivity {
 	@Override
 	protected void setListeners() {
 		titleView.setListener(this);
+	}
+
+	@Override
+	public void onTitleOperateClick() {
+		super.onTitleOperateClick();
+		String content = contentText.getText().toString();
+		if(!TextUtils.isEmpty(content)) {
+			onShowLoadingDialog();
+			Conversation conversation = new FeedbackAgent(this).getDefaultConversation();
+			conversation.addUserReply(content);
+			conversation.sync(new SyncListener() {
+				@Override
+				public void onReceiveDevReply(List<Reply> list) {
+					onDismissLoadingDialog();
+				}
+
+				@Override
+				public void onSendUserReply(List<Reply> list) {
+					onDismissLoadingDialog();
+					Toaster.show(R.string.feedback_success);
+					onBackPressed();
+				}
+			});
+		} else {
+			Toaster.show(R.string.input_feedback_tip);
+		}
 	}
 }

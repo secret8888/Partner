@@ -1,14 +1,21 @@
 package com.partner.common.http;
 
 import android.text.TextUtils;
+import android.util.Log;
 
+import com.partner.PartnerApplication;
 import com.partner.common.constant.HttpConsts;
 import com.partner.common.util.HttpUtils;
+import com.partner.common.util.Logcat;
 import com.partner.common.util.Utils;
 import com.squareup.okhttp.Callback;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
 
+import java.io.File;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -88,7 +95,7 @@ public class HttpManager {
      * @param callback
      */
     public static void updateUserInfo(String token, String userName, String nickName,
-                                      String address, String description, AsyncHttpCallback callback) {
+                                      String address, String description, String cellphone, AsyncHttpCallback callback) {
         String infoUrl = String.format(HttpConsts.UPDATE_USER_INFO_URL, token);
         if(!TextUtils.isEmpty(userName)) {
             infoUrl += "&username=" + userName;
@@ -102,6 +109,99 @@ public class HttpManager {
         if(!TextUtils.isEmpty(description)) {
             infoUrl += "&description=" + description;
         }
+        if(!TextUtils.isEmpty(cellphone)) {
+            infoUrl += "&cellphone=" + cellphone;
+        }
         PartnerHttpClient.asyncGet(infoUrl + HttpUtils.getUserSign(), callback);
+    }
+
+    /**
+     * 获取用户信息接口
+     * @param token
+     * @param callback
+     */
+    public static void updateUserHeadImage(String token, File avatarFile, AsyncHttpCallback callback) {
+        HashMap paramsMap = HttpUtils.getUserSignMap();
+        paramsMap.put("token", token);
+        PartnerHttpClient.asyncPostFile(HttpConsts.UPDATE_AVATAR_URL, paramsMap, avatarFile, callback);
+    }
+
+    /**
+     * 获取所有报名人信息
+     * @param token
+     * @param callback
+     */
+    public static void getAllRegistList(String token, AsyncHttpCallback callback) {
+        String codeUrl = String.format(HttpConsts.GET_ALL_REGISTRATION_URL, token);
+        PartnerHttpClient.asyncGet(codeUrl + HttpUtils.getUserSign(), callback);
+    }
+
+    /**
+     * 添加报名人
+     * @param token
+     * @param cellphone
+     * @param parentName
+     * @param callback
+     */
+    public static void addRegistrationInfo(String token, String cellphone, String parentName, AsyncHttpCallback callback) {
+        String codeUrl = String.format(HttpConsts.ADD_REGISTRATION_URL, cellphone, parentName, token);
+        PartnerHttpClient.asyncGet(codeUrl + HttpUtils.getUserSign(), callback);
+    }
+
+    /**
+     * 修改报名人接口
+     * @param token
+     * @param userInrollInfoId
+     * @param cellphone
+     * @param parentName
+     * @param callback
+     */
+    public static void modifyRegistrationInfo(String token, int userInrollInfoId, String cellphone, String parentName, AsyncHttpCallback callback) {
+        String codeUrl = String.format(HttpConsts.MODIFY_REGISTRATION_URL, cellphone, parentName, token, userInrollInfoId);
+        PartnerHttpClient.asyncGet(codeUrl + HttpUtils.getUserSign(), callback);
+    }
+
+    /**
+     * 删除报名人
+     * @param token
+     * @param userInrollInfoId
+     * @param callback
+     */
+    public static void deleteRegistrationInfo(String token, int userInrollInfoId, AsyncHttpCallback callback) {
+        String codeUrl = String.format(HttpConsts.DELETE_REGISTRATION_URL, token, userInrollInfoId);
+        PartnerHttpClient.asyncGet(codeUrl + HttpUtils.getUserSign(), callback);
+    }
+
+    /**
+     * 添加好友
+     * @param token
+     * @param friendToken
+     * @param callback
+     */
+    public static void addFriend(String token, String friendToken, AsyncHttpCallback callback) {
+        String codeUrl = String.format(HttpConsts.ADD_FRIEND_URL, token, friendToken);
+        PartnerHttpClient.asyncGet(codeUrl + HttpUtils.getUserSign(), callback);
+    }
+
+    /**
+     * 查看好友
+     * @param token
+     * @param type
+     * @param callback
+     */
+    public static void getFriendsList(String token, int type, AsyncHttpCallback callback) {
+        String codeUrl = String.format(HttpConsts.GET_FRIENDS_URL, token, type);
+        PartnerHttpClient.asyncGet(codeUrl + HttpUtils.getUserSign(), callback);
+    }
+
+    /**
+     * 删除好友
+     * @param token
+     * @param friendId
+     * @param callback
+     */
+    public static void deleteFriend(String token, int friendId, AsyncHttpCallback callback) {
+        String codeUrl = String.format(HttpConsts.DELETE_FRIEND_URL, token, friendId);
+        PartnerHttpClient.asyncGet(codeUrl + HttpUtils.getUserSign(), callback);
     }
 }

@@ -1,5 +1,6 @@
 package com.partner.activity.info.setting;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.EditText;
@@ -57,6 +58,14 @@ public class ModifyPhoneActivity extends BaseActivity {
 			Toaster.show(R.string.input_phone_tip);
 			return;
 		}
-		IntentManager.startModifyPhoneNextActivity(this, phone);
+		IntentManager.startModifyPhoneNextActivity(this, phone, 0);
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		if(requestCode == 0 && resultCode == RESULT_OK) {
+			onBackPressed();
+		}
 	}
 }

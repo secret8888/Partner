@@ -37,4 +37,28 @@ public class HttpConsts {
 
     //修改用户信息地址
     public static final String UPDATE_USER_INFO_URL = BASE_URL + "/updateUserInfo?token=%s";
+
+    // 修改头像地址
+    public static final String UPDATE_AVATAR_URL = BASE_URL + "/updateUserHeadimage";
+
+    //获取所有报名人信息
+    public static final String GET_ALL_REGISTRATION_URL = BASE_URL + "/getAllUserInrollInfos?token=%s";
+
+    //添加报名人信息
+    public static final String ADD_REGISTRATION_URL = BASE_URL + "/addUserInrollInfo?cellphone=%s&parentname=%s&token=%s";
+
+    //修改报名人信息
+    public static final String MODIFY_REGISTRATION_URL = BASE_URL + "/updateUserInrollInfo?cellphone=%s&parentname=%s&token=%s&userInrollInfoId=%d";
+
+    //删除报名人
+    public static final String DELETE_REGISTRATION_URL = BASE_URL + "/deleteUserInrollInfo?token=%s&userInrollInfoId=%d";
+
+    //添加好友
+    public static final String ADD_FRIEND_URL = BASE_URL + "/addFriend?token=%s&friendtoken=%s";
+
+    //获取好友列表
+    public static final String GET_FRIENDS_URL = BASE_URL + "/getFriends?token=%s&type=%d";
+
+    //删除好友
+    public static final String DELETE_FRIEND_URL = BASE_URL + "/deleteFriend?token=%s&friendId=%d";
 }

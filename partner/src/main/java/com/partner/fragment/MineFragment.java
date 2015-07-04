@@ -1,18 +1,19 @@
 package com.partner.fragment;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.partner.PartnerApplication;
 import com.partner.R;
+import com.partner.activity.MainActivity;
 import com.partner.common.annotation.ViewId;
 import com.partner.common.constant.PreferenceConsts;
 import com.partner.common.http.AsyncHttpCallback;
@@ -20,11 +21,10 @@ import com.partner.common.http.HttpManager;
 import com.partner.common.util.HttpUtils;
 import com.partner.common.util.IntentManager;
 import com.partner.common.util.PreferenceUtils;
-import com.partner.common.util.Toaster;
 import com.partner.common.util.Utils;
 import com.partner.fragment.base.BaseFragment;
-import com.partner.model.UserInfo;
-import com.partner.qrcode.activity.QrcodeActivity;
+import com.partner.qrcode.activity.CaptureActivity;
+import com.partner.qrcode.activity.ResultActivity;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
@@ -111,10 +111,9 @@ public class MineFragment extends BaseFragment implements OnClickListener {
 		case R.id.lv_registration_info:
 			IntentManager.startRegistrationInfoActivity(getActivity());
 			break;
-			case R.id.lv_qrcode:
-				Intent intent = new Intent(getActivity(), QrcodeActivity.class);
-				startActivity(intent);
-				break;
+		case R.id.lv_qrcode:
+			IntentManager.startCaptureActivity(getActivity(), 1);
+			break;
 		default:
 			break;
 		}

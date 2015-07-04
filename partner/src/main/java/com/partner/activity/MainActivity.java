@@ -12,6 +12,7 @@ import com.partner.fragment.MineFragment;
 import com.partner.fragment.FriendFragment;
 import com.umeng.update.UmengUpdateAgent;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTabHost;
@@ -26,6 +27,7 @@ public class MainActivity extends BaseFragmentActivity {
 
 	private RadioGroup mTabRg;
 
+	private boolean isFriendNeedRefresh = false;
 	// exit time
 	private long mExitTime;
 
@@ -80,12 +82,17 @@ public class MainActivity extends BaseFragmentActivity {
 					case R.id.tab_mine:
 						mTabHost.setCurrentTab(2);
 						break;
-
-					default:
-						break;
 				}
 			}
 		});
+	}
+
+	public boolean isFriendNeedRefresh() {
+		return isFriendNeedRefresh;
+	}
+
+	public void setIsFriendNeedRefresh(boolean isFriendNeedRefresh) {
+		this.isFriendNeedRefresh = isFriendNeedRefresh;
 	}
 
 	@Override
@@ -97,6 +104,8 @@ public class MainActivity extends BaseFragmentActivity {
 				IntentManager.startLoginActivity(this);
 				finish();
 			}
+		} else if(requestCode == 1 && resultCode == Activity.RESULT_OK) {
+			setIsFriendNeedRefresh(true);
 		}
 	}
 

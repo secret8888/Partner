@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_gray"
@@ -22,11 +23,11 @@
         android:background="@color/white"
         android:orientation="vertical"
         >
-        <ImageView
+        <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/im_avatar"
             android:layout_height="@dimen/avatar_size"
             android:layout_width="@dimen/avatar_size"
-            android:src="@drawable/ic_avatar"
+            fresco:placeholderImage="@drawable/ic_loading"
             />
 
         <LinearLayout
@@ -42,6 +43,7 @@
                 />
 
             <TextView
+                android:id="@+id/tv_nickname"
                 style="@style/PersonalItemText"
                 android:text="青青的小草"
                 />
@@ -61,6 +63,7 @@
                 />
 
             <EditText
+                android:id="@+id/tv_note_name"
                 style="@style/PersonalItemText"
                 android:text="青青的小草"
                 />

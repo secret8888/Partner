@@ -1,19 +1,33 @@
 package com.partner.fragment;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 
+import com.partner.PartnerApplication;
 import com.partner.R;
+import com.partner.activity.MainActivity;
 import com.partner.adapter.ActivityAdapter;
 import com.partner.adapter.FriendAdapter;
 import com.partner.common.annotation.ViewId;
+import com.partner.common.http.AsyncHttpCallback;
+import com.partner.common.http.HttpManager;
+import com.partner.common.util.HttpUtils;
 import com.partner.common.util.IntentManager;
 import com.partner.common.util.Utils;
 import com.partner.fragment.base.BaseFragment;
+import com.partner.model.FriendInfo;
+import com.partner.model.FriendList;
 import com.partner.view.refresh.RefreshListView;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
+import com.youdao.yjson.YJson;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class FriendListFragment extends BaseFragment implements OnItemClickListener{
@@ -21,10 +35,9 @@ public class FriendListFragment extends BaseFragment implements OnItemClickListe
 	@ViewId(R.id.list_content)
 	private RefreshListView contentView;
 
-//	private ProjectAdapter projectAdapter = null;
-//
-//	private ArrayList<ProjectInfo> projectInfos = null;
-	
+	private FriendList friendList;
+
+	private int type = 0;
 	@Override
 	protected int getLayoutId() {
 		return R.layout.fragment_friend_list;
@@ -38,27 +51,26 @@ public class FriendListFragment extends BaseFragment implements OnItemClickListe
 	@Override
 	protected void initControls(Bundle savedInstanceState) {
 		contentView.setRefreshTime(Utils.getTime());
-//		loadData(0);
-		ArrayList list = new ArrayList();
-		for(int i = 0; i < 100; i ++) {
-			list.add("");
-		}
-		FriendAdapter adapter = new FriendAdapter(getActivity(), list);
-		contentView.setAdapter(adapter);
 	}
 
 	@Override
 	public void onResume() {
 		super.onResume();
+		if(friendList == null || ((MainActivity)getActivity()).isFriendNeedRefresh()) {
+			onShowLoadingDialog();
+			((MainActivity)getActivity()).setIsFriendNeedRefresh(false);
+			getFriendsList();
+		}
 	}
 
 	@Override
 	protected void setListeners() {
+		contentView.setPullLoadEnable(false);
 		contentView.setOnItemClickListener(this);
 		contentView.setListViewRefreshListener(new RefreshListView.ListViewRefreshListener() {
 			@Override
 			public void onRefresh() {
-				onMessageLoad();
+				getFriendsList();
 			}
 
 			@Override
@@ -71,11 +83,20 @@ public class FriendListFragment extends BaseFragment implements OnItemClickListe
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
-		IntentManager.startInfoEditActivity(getActivity());
+		IntentManager.startInfoEditActivity(this, friendList.getFriends().get(position - 1), 0);
 	}
 
-	public static FriendListFragment newInstance() {
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		if(requestCode == 0 && resultCode == Activity.RESULT_OK) {
+			contentView.autoRefresh();
+		}
+	}
+
+	public static FriendListFragment newInstance(int type) {
 		FriendListFragment fragment = new FriendListFragment();
+		fragment.type = type;
 		return fragment;
 	}
 
@@ -83,6 +104,33 @@ public class FriendListFragment extends BaseFragment implements OnItemClickListe
 		contentView.stopRefresh();
 		contentView.stopLoadMore();
 		contentView.setRefreshTime(Utils.getTime());
+		onDismissLoadingDialog();
+	}
+
+	public void getFriendsList() {
+		if(Utils.isNetworkConnected(getActivity())) {
+			HttpManager.getFriendsList(PartnerApplication.getInstance().getUserInfo().getToken(), type, new AsyncHttpCallback() {
+				@Override
+				public void onRequestResponse(Response response) {
+					super.onRequestResponse(response);
+					onMessageLoad();
+					String result = HttpUtils.getResponseData(response);
+					if(!TextUtils.isEmpty(result)) {
+						friendList = YJson.getObj(result, FriendList.class);
+						FriendAdapter adapter = new FriendAdapter(getActivity(), friendList.getFriends());
+						contentView.setAdapter(adapter);
+					}
+				}
+
+				@Override
+				public void onRequestFailure(Request request, IOException e) {
+					super.onRequestFailure(request, e);
+					onMessageLoad();
+				}
+			});
+		} else {
+			onMessageLoad();
+		}
 	}
 
 }

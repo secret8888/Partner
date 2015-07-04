@@ -92,7 +92,8 @@ public class InfoItemEditActivity extends BaseActivity {
 				nickName = updateView.getText().toString();
 				break;
 		}
-		HttpManager.updateUserInfo(PartnerApplication.getInstance().getUserInfo().getToken(), userName, nickName, null, null, new AsyncHttpCallback() {
+		HttpManager.updateUserInfo(PartnerApplication.getInstance().getUserInfo().getToken(),
+				userName, nickName, null, null, null, new AsyncHttpCallback() {
 			@Override
 			public void onRequestResponse(Response response) {
 				Toaster.show(R.string.update_success);

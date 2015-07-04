@@ -31,6 +31,7 @@
             />
 
         <EditText
+            android:id="@+id/edit_name"
             style="@style/PersonalItemText"
             android:layout_toRightOf="@id/tv_name"
             android:background="@null"
@@ -62,7 +63,9 @@
             />
 
         <EditText
+            android:id="@+id/edit_phone"
             style="@style/PersonalItemText"
+            android:inputType="phone"
             android:layout_toRightOf="@id/tv_phone"
             android:background="@null"
             android:hint="@string/input_phone_tip"

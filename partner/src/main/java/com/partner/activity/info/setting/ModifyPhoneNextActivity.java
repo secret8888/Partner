@@ -15,6 +15,7 @@ import com.partner.common.constant.IntentConsts;
 import com.partner.common.http.AsyncHttpCallback;
 import com.partner.common.http.HttpManager;
 import com.partner.common.util.HttpUtils;
+import com.partner.common.util.IntentManager;
 import com.partner.common.util.Toaster;
 import com.partner.common.util.Utils;
 import com.partner.view.TitleView;
@@ -94,27 +95,33 @@ public class ModifyPhoneNextActivity extends BaseActivity {
 
 	public void onConfirmClick(View view) {
 		if (Utils.checkMetworkConnected(this)) {
-			String phone = phoneView.getText().toString();
-			String code = codeEdit.getText().toString();
+			final String phone = phoneView.getText().toString();
 
-			if (TextUtils.isEmpty(code)) {
+			if (TextUtils.isEmpty(codeEdit.getText().toString())) {
 				Toaster.show(this, R.string.input_code_tip);
 				return;
 			}
 
 			onShowLoadingDialog();
-//			HttpManager.resetPassword(phone, psd, code, 0, new AsyncHttpCallback() {
-//				@Override
-//				public void onRequestResponse(Response response) {
-//					onDismissLoadingDialog();
-//					onBackPressed();
-//				}
-//
-//				@Override
-//				public void onRequestFailure(Request request, IOException e) {
-//					onDismissLoadingDialog();
-//				}
-//			});
+			HttpManager.updateUserInfo(PartnerApplication.getInstance().getUserInfo().getToken(),
+					null, null, null, null, phone, new AsyncHttpCallback() {
+						@Override
+						public void onRequestResponse(Response response) {
+							String result = HttpUtils.getResponseData(response);
+							if(!TextUtils.isEmpty(result)) {
+								onDismissLoadingDialog();
+								Toaster.show(R.string.update_success);
+								PartnerApplication.getInstance().getUserInfo().setCellphone(phone);
+								setResult(RESULT_OK);
+								onBackPressed();
+							}
+						}
+
+						@Override
+						public void onRequestFailure(Request request, IOException e) {
+							onDismissLoadingDialog();
+						}
+					});
 		}
 	}
 

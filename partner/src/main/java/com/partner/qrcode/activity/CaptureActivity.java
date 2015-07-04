@@ -21,6 +21,7 @@ import java.lang.reflect.Field;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -31,6 +32,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.SurfaceHolder;
@@ -47,8 +49,17 @@ import android.widget.Toast;
 
 import com.google.zxing.Result;
 import com.google.zxing.client.result.ResultParser;
+import com.partner.PartnerApplication;
 import com.partner.R;
+import com.partner.common.annotation.ViewId;
+import com.partner.common.http.AsyncHttpCallback;
+import com.partner.common.http.HttpManager;
+import com.partner.common.util.HttpUtils;
+import com.partner.common.util.IntentManager;
+import com.partner.common.util.Toaster;
 import com.partner.common.util.Utils;
+import com.partner.common.util.ViewUtils;
+import com.partner.listener.OnTitleClickListener;
 import com.partner.qrcode.camera.CameraManager;
 import com.partner.qrcode.decode.BitmapDecoder;
 import com.partner.qrcode.decode.DecodeThread;
@@ -56,6 +67,11 @@ import com.partner.qrcode.utils.BeepManager;
 import com.partner.qrcode.utils.BitmapUtils;
 import com.partner.qrcode.utils.CaptureActivityHandler;
 import com.partner.qrcode.utils.InactivityTimer;
+import com.partner.view.TitleView;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
+
+import org.w3c.dom.Text;
 
 /**
  * This activity opens the camera and does the actual scanning on a background
@@ -66,21 +82,15 @@ import com.partner.qrcode.utils.InactivityTimer;
  * @author dswitkin@google.com (Daniel Switkin)
  * @author Sean Owen
  */
-public final class CaptureActivity extends Activity implements SurfaceHolder.Callback,OnClickListener {
-
-	private static final String TAG = CaptureActivity.class.getSimpleName();
-	
-	private static final int REQUEST_CODE = 100;
-
-	private static final int PARSE_BARCODE_FAIL = 300;
-	
-	private static final int PARSE_BARCODE_SUC = 200;
+public final class CaptureActivity extends Activity implements
+		SurfaceHolder.Callback,OnClickListener, OnTitleClickListener {
 
 	private CameraManager cameraManager;
 	private CaptureActivityHandler handler;
 	private InactivityTimer inactivityTimer;
 	private BeepManager beepManager;
 
+	private TitleView titleView;
 	private SurfaceView scanPreview = null;
 	private RelativeLayout scanContainer;
 	private RelativeLayout scanCropView;
@@ -89,6 +99,14 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 	private Rect mCropRect = null;
 	
 	private boolean isFlashlightOpen;
+
+	private static final String TAG = CaptureActivity.class.getSimpleName();
+
+	private static final int REQUEST_CODE = 100;
+
+	private static final int PARSE_BARCODE_FAIL = 300;
+
+	private static final int PARSE_BARCODE_SUC = 200;
 
 	/**
 	 * 图片的路径
@@ -141,6 +159,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 		window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		setContentView(R.layout.activity_capture);
 
+		titleView = (TitleView) findViewById(R.id.view_title);
 		scanPreview = (SurfaceView) findViewById(R.id.capture_preview);
 		scanContainer = (RelativeLayout) findViewById(R.id.capture_container);
 		scanCropView = (RelativeLayout) findViewById(R.id.capture_crop_view);
@@ -149,15 +168,19 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 		inactivityTimer = new InactivityTimer(this);
 		beepManager = new BeepManager(this);
 
-		TranslateAnimation animation = new TranslateAnimation(Animation.RELATIVE_TO_PARENT, 0.0f, Animation.RELATIVE_TO_PARENT, 0.0f, Animation.RELATIVE_TO_PARENT, 0.0f, Animation.RELATIVE_TO_PARENT,
-				0.9f);
-		animation.setDuration(4500);
+		TranslateAnimation animation = new TranslateAnimation(Animation.RELATIVE_TO_PARENT, 0.0f,
+				Animation.RELATIVE_TO_PARENT, 0.0f, Animation.RELATIVE_TO_PARENT, 0.0f, Animation.RELATIVE_TO_PARENT,
+				1.0f);
+		animation.setDuration(3000);
 		animation.setRepeatCount(-1);
-		animation.setRepeatMode(Animation.RESTART);
+		animation.setRepeatMode(Animation.REVERSE);
 		scanLine.startAnimation(animation);
-		
+
 		findViewById(R.id.capture_flashlight).setOnClickListener(this);
 		findViewById(R.id.capture_scan_photo).setOnClickListener(this);
+
+		titleView.setTitle(R.string.qr_code);
+		titleView.setListener(this);
 	}
 
 	@Override
@@ -242,6 +265,20 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 
 	}
 
+	@Override
+	public void onTitleBackClick() {
+		onBackPressed();
+	}
+
+	@Override
+	public void onTitleOperateClick() {
+
+	}
+
+	public void onMyQrcodeClick(View view) {
+		IntentManager.startMyQrCodeActivity(this);
+	}
+
 	/**
 	 * A valid barcode has been found, so give an indication of success and show
 	 * the results.
@@ -254,13 +291,29 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 	 */
 	public void handleDecode(Result rawResult, Bundle bundle) {
 		inactivityTimer.onActivity();
-		beepManager.playBeepSoundAndVibrate();
+		String result = rawResult.getText();
+		if (Utils.checkMetworkConnected(this)) {
+			onShowLoadingDialog();
+			HttpManager.addFriend(PartnerApplication.getInstance().getUserInfo().getToken(), result, new AsyncHttpCallback() {
+				@Override
+				public void onRequestResponse(Response response) {
+					onDismissLoadingDialog();
+					String result = HttpUtils.getResponseData(response);
+					if(!TextUtils.isEmpty(result)) {
+						Toaster.show(R.string.add_success);
+					}
+					setResult(RESULT_OK);
+					onBackPressed();
+				}
 
-		bundle.putInt("width", mCropRect.width());
-		bundle.putInt("height", mCropRect.height());
-		bundle.putString("result", rawResult.getText());
-
-		startActivity(new Intent(CaptureActivity.this, ResultActivity.class).putExtras(bundle));
+				@Override
+				public void onRequestFailure(Request request, IOException e) {
+					onDismissLoadingDialog();
+					Toaster.show(R.string.add_fail);
+					onBackPressed();
+				}
+			});
+		}
 	}
 
 	private void initCamera(SurfaceHolder surfaceHolder) {
@@ -450,6 +503,21 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 			break;
 		default:
 			break;
+		}
+	}
+
+	private Dialog loadingDialog;
+
+	public void onShowLoadingDialog() {
+		loadingDialog = ViewUtils.createLoadingDialog(this,
+				PartnerApplication.getInstance().getString(R.string.wating_hint));
+		loadingDialog.show();
+	}
+
+	public void onDismissLoadingDialog() {
+		if(loadingDialog != null){
+			loadingDialog.dismiss();
+			loadingDialog = null;
 		}
 	}
 }

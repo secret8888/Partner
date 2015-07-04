@@ -3,6 +3,7 @@ package com.partner.common.util;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.app.Fragment;
 
 import com.partner.activity.GuideActivity;
 import com.partner.activity.info.InfoItemEditActivity;
@@ -23,6 +24,9 @@ import com.partner.activity.MainActivity;
 import com.partner.activity.login.ModifyPsdActivity;
 import com.partner.activity.login.RegisterActivity;
 import com.partner.common.constant.IntentConsts;
+import com.partner.model.FriendInfo;
+import com.partner.model.RegistrationInfo;
+import com.partner.qrcode.activity.CaptureActivity;
 
 /**
  * intent manager for the whole application
@@ -95,11 +99,12 @@ public class IntentManager {
     /**
      * start info edit activity
      *
-     * @param context
+     * @param fragment
      */
-    public static void startInfoEditActivity(Context context) {
-        Intent intent = new Intent(context, UserInfoEditActivity.class);
-        context.startActivity(intent);
+    public static void startInfoEditActivity(Fragment fragment, FriendInfo info, int requestCode) {
+        Intent intent = new Intent(fragment.getActivity(), UserInfoEditActivity.class);
+        intent.putExtra(IntentConsts.INFO_KEY, info);
+        fragment.startActivityForResult(intent, requestCode);
     }
 
     /**
@@ -137,9 +142,9 @@ public class IntentManager {
         context.startActivity(intent);
     }
 
-    public static void startRegistrationEditActivity(Context context, boolean isParentAdd) {
+    public static void startRegistrationEditActivity(Context context, RegistrationInfo info) {
         Intent intent = new Intent(context, RegistrationEditActivity.class);
-        intent.putExtra(IntentConsts.ITEM_EDIT_KEY, isParentAdd);
+        intent.putExtra(IntentConsts.REFISTRATION_KEY, info);
         context.startActivity(intent);
     }
 
@@ -158,15 +163,20 @@ public class IntentManager {
         context.startActivity(intent);
     }
 
-    public static void startModifyPhoneNextActivity(Context context, String phone) {
+    public static void startModifyPhoneNextActivity(Activity context, String phone, int requestCode) {
         Intent intent = new Intent(context, ModifyPhoneNextActivity.class);
         intent.putExtra(IntentConsts.PHONE_KEY, phone);
-        context.startActivity(intent);
+        context.startActivityForResult(intent, requestCode);
     }
 
     public static void startAboutActivity(Context context) {
         Intent intent = new Intent(context, AboutActivity.class);
         context.startActivity(intent);
+    }
+
+    public static void startCaptureActivity(Activity context, int requestCode) {
+        Intent intent = new Intent(context, CaptureActivity.class);
+        context.startActivityForResult(intent, requestCode);
     }
 
 }

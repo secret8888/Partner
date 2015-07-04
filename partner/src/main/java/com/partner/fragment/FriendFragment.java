@@ -9,7 +9,9 @@ import com.partner.R;
 import com.partner.adapter.ActivityFragmentAdapter;
 import com.partner.adapter.FriendFragmentAdapter;
 import com.partner.common.annotation.ViewId;
+import com.partner.common.util.Logcat;
 import com.partner.fragment.base.BaseFragment;
+import com.partner.view.CustomViewPager;
 
 public class FriendFragment extends BaseFragment implements View.OnClickListener, ViewPager.OnPageChangeListener {
 
@@ -20,7 +22,7 @@ public class FriendFragment extends BaseFragment implements View.OnClickListener
 	private TextView followTypeView;
 
 	@ViewId(R.id.pager_friend)
-	private ViewPager friendPager;
+	private CustomViewPager friendPager;
 
 	@Override
 	protected int getLayoutId() {
