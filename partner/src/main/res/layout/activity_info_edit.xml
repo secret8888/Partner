@@ -73,7 +73,24 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_height"
-        android:layout_margin="@dimen/partner_space_common"
+        android:layout_marginTop="@dimen/partner_space_common"
+        android:layout_marginLeft="@dimen/partner_space_common"
+        android:layout_marginRight="@dimen/partner_space_common"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/ts_16"
+        android:text="@string/change_note_name"
+        android:clickable="true"
+        android:onClick="onChangeNoteNameClick"
+        android:background="@drawable/btn_operate"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_height"
+        android:layout_marginTop="@dimen/partner_space_medium"
+        android:layout_marginLeft="@dimen/partner_space_common"
+        android:layout_marginRight="@dimen/partner_space_common"
         android:gravity="center"
         android:textColor="@color/white"
         android:textSize="@dimen/ts_16"

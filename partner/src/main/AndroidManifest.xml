@@ -90,23 +90,23 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".activity.info.setting.SettingActivity"
+            android:name=".activity.setting.SettingActivity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".activity.info.setting.FeedbackActivity"
+            android:name=".activity.setting.FeedbackActivity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".activity.info.setting.ModifyPhoneActivity"
+            android:name=".activity.setting.ModifyPhoneActivity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".activity.info.setting.ModifyPhoneNextActivity"
+            android:name=".activity.setting.ModifyPhoneNextActivity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".activity.info.setting.AboutActivity"
+            android:name=".activity.setting.AboutActivity"
             android:screenOrientation="portrait" />
 
         <!-- qr code-->

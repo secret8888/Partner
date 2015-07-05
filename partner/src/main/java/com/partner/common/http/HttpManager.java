@@ -204,4 +204,16 @@ public class HttpManager {
         String codeUrl = String.format(HttpConsts.DELETE_FRIEND_URL, token, friendId);
         PartnerHttpClient.asyncGet(codeUrl + HttpUtils.getUserSign(), callback);
     }
+
+    /**
+     * 更新好友
+     * @param token
+     * @param friendId
+     * @param friendName
+     * @param callback
+     */
+    public static void updateFriend(String token, int friendId, String friendName, AsyncHttpCallback callback) {
+        String codeUrl = String.format(HttpConsts.UPDATE_FRIEND_URL, token, friendId, friendName);
+        PartnerHttpClient.asyncGet(codeUrl + HttpUtils.getUserSign(), callback);
+    }
 }

@@ -1,10 +1,9 @@
-package com.partner.activity.info.setting;
+package com.partner.activity.setting;
 
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.partner.PartnerApplication;
@@ -15,7 +14,6 @@ import com.partner.common.constant.IntentConsts;
 import com.partner.common.http.AsyncHttpCallback;
 import com.partner.common.http.HttpManager;
 import com.partner.common.util.HttpUtils;
-import com.partner.common.util.IntentManager;
 import com.partner.common.util.Toaster;
 import com.partner.common.util.Utils;
 import com.partner.view.TitleView;

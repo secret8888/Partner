@@ -1,6 +1,8 @@
 package com.partner.adapter;
 
 import android.content.Context;
+import android.net.Uri;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -55,6 +57,10 @@ public class FriendAdapter extends BaseAdapter {
 		}
 
 		FriendInfo info = mItems.get(position);
+		if(!TextUtils.isEmpty(info.getFriendHeadImage())) {
+			Uri uri = Uri.parse(info.getFriendHeadImage());
+			holder.avatarView.setImageURI(uri);
+		}
 		holder.nameView.setText(info.getFriendRealName());
 		return convertView;
 	}

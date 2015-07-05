@@ -1,4 +1,4 @@
-package com.partner.activity.info.setting;
+package com.partner.activity.setting;
 
 import android.content.Intent;
 import android.os.Bundle;

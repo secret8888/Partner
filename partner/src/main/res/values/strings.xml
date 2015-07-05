@@ -70,6 +70,7 @@
     <!-- info -->
     <string name="delete">删除</string>
     <string name="leave_message">留 言</string>
+    <string name="change_note_name">修改备注名</string>
     <string name="nickname">昵称</string>
     <string name="note_name">备注名</string>
     <string name="message_title_hint">请输入留言标题</string>
@@ -80,6 +81,7 @@
     <string name="choose_from_album">从手机相册选择</string>
     <string name="save">保存</string>
     <string name="update_success">修改成功</string>
+    <string name="update_fail">修改失败</string>
     <string name="registration_info">报名常用信息</string>
     <string name="finish">完成</string>
     <string name="parent_info_edit">家长详情编辑</string>

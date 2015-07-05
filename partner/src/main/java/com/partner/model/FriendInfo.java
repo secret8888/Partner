@@ -18,6 +18,8 @@ public class FriendInfo implements Serializable{
 
     private String friendCellphone;
 
+    private String friendHeadImage;
+
     public int getFriendId() {
         return friendId;
     }
@@ -56,5 +58,13 @@ public class FriendInfo implements Serializable{
 
     public void setFriendNickName(String friendNickName) {
         this.friendNickName = friendNickName;
+    }
+
+    public String getFriendHeadImage() {
+        return friendHeadImage;
+    }
+
+    public void setFriendHeadImage(String friendHeadImage) {
+        this.friendHeadImage = friendHeadImage;
     }
 }

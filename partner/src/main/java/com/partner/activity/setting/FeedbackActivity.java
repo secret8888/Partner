@@ -1,15 +1,12 @@
-package com.partner.activity.info.setting;
+package com.partner.activity.setting;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.text.Editable;
 import android.text.TextUtils;
 import android.widget.EditText;
 
 import com.partner.R;
 import com.partner.activity.base.BaseActivity;
 import com.partner.common.annotation.ViewId;
-import com.partner.common.util.Logcat;
 import com.partner.common.util.Toaster;
 import com.partner.view.TitleView;
 import com.umeng.fb.FeedbackAgent;

@@ -1,5 +1,6 @@
 package com.partner.activity.info;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -40,6 +41,8 @@ public class UserInfoEditActivity extends BaseActivity {
 
 	private FriendInfo mInfo;
 
+	private boolean isUpdate = false;
+
 	private static final String TAG = UserInfoEditActivity.class.getSimpleName();
 
 	@Override
@@ -59,6 +62,9 @@ public class UserInfoEditActivity extends BaseActivity {
 
 		nicknameView.setText(mInfo.getFriendNickName());
 		noteNameView.setText(mInfo.getFriendMyName());
+		if(!TextUtils.isEmpty(mInfo.getFriendHeadImage())) {
+			avatarView.setImageURI(Uri.parse(mInfo.getFriendHeadImage()));
+		}
 	}
 
 	@Override
@@ -66,8 +72,43 @@ public class UserInfoEditActivity extends BaseActivity {
 		titleView.setListener(this);
 	}
 
+	@Override
+	public void onBackPressed() {
+		if(isUpdate) {
+			setResult(RESULT_OK);
+		}
+		super.onBackPressed();
+	}
+
 	public void onMessageClick(View view) {
 		IntentManager.startLeaveMessageActivity(this);
+	}
+
+	public void onChangeNoteNameClick(View view) {
+		String noteName = noteNameView.getText().toString();
+		if(Utils.isNetworkConnected(this)) {
+			onShowLoadingDialog();
+			HttpManager.updateFriend(PartnerApplication.getInstance().getUserInfo().getToken(),
+					mInfo.getFriendId(), noteName, new AsyncHttpCallback() {
+						@Override
+						public void onRequestResponse(Response response) {
+							super.onRequestResponse(response);
+							onDismissLoadingDialog();
+							String result = HttpUtils.getResponseData(response);
+							if (!TextUtils.isEmpty(result)) {
+								isUpdate = true;
+								Toaster.show(R.string.update_success);
+							}
+						}
+
+						@Override
+						public void onRequestFailure(Request request, IOException e) {
+							super.onRequestFailure(request, e);
+							onDismissLoadingDialog();
+							Toaster.show(R.string.update_fail);
+						}
+					});
+		}
 	}
 
 	@Override
@@ -83,8 +124,8 @@ public class UserInfoEditActivity extends BaseActivity {
 					onDismissLoadingDialog();
 					String result = HttpUtils.getResponseData(response);
 					if(!TextUtils.isEmpty(result)) {
+						isUpdate = true;
 						Toaster.show(R.string.delete_success);
-						setResult(RESULT_OK);
 						onBackPressed();
 					}
 				}

@@ -1,7 +1,6 @@
-package com.partner.activity.info.setting;
+package com.partner.activity.setting;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;

@@ -61,4 +61,7 @@ public class HttpConsts {
 
     //删除好友
     public static final String DELETE_FRIEND_URL = BASE_URL + "/deleteFriend?token=%s&friendId=%d";
+
+    //修改朋友
+    public static final String UPDATE_FRIEND_URL = BASE_URL + "/updateFriend?token=%s&friendId=%d&friendName=%s";
 }
