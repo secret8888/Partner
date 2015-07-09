@@ -216,4 +216,13 @@ public class HttpManager {
         String codeUrl = String.format(HttpConsts.UPDATE_FRIEND_URL, token, friendId, friendName);
         PartnerHttpClient.asyncGet(codeUrl + HttpUtils.getUserSign(), callback);
     }
+
+    /**
+     * 获取活动列表
+     * @param callback
+     */
+    public static void getAllActivities(String token, AsyncHttpCallback callback) {
+        String url = String.format(HttpConsts.GET_ACTIVITIES_URL, token);
+        PartnerHttpClient.asyncGet(url + HttpUtils.getUserSign(), callback);
+    }
 }

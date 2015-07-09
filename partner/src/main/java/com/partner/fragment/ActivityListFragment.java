@@ -1,17 +1,26 @@
 package com.partner.fragment;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 
+import com.partner.PartnerApplication;
 import com.partner.R;
 import com.partner.adapter.ActivityAdapter;
 import com.partner.common.annotation.ViewId;
+import com.partner.common.http.AsyncHttpCallback;
+import com.partner.common.http.HttpManager;
+import com.partner.common.util.HttpUtils;
+import com.partner.common.util.Toaster;
 import com.partner.common.util.Utils;
 import com.partner.fragment.base.BaseFragment;
 import com.partner.view.refresh.RefreshListView;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ActivityListFragment extends BaseFragment implements OnItemClickListener{
@@ -48,6 +57,7 @@ public class ActivityListFragment extends BaseFragment implements OnItemClickLis
 	@Override
 	public void onResume() {
 		super.onResume();
+		getActivityList();
 //		contentView.autoRefresh();
 	}
 
@@ -82,45 +92,21 @@ public class ActivityListFragment extends BaseFragment implements OnItemClickLis
 		contentView.setRefreshTime(Utils.getTime());
 	}
 
-//	private void loadData(final int start) {
-//		HttpManager.getProjectList(new CoinvsHandler(getActivity()) {
-//
-//			@Override
-//			protected void handleSuccessMessage(Object object) {
-//				hideRefreshingView();
-//				HandleInfo handleInfo = (HandleInfo) object;
-//				ArrayList<ProjectInfo> localInfos = GsonUtils
-//						.getProjectsFromJson(handleInfo.getData());
-//
-//				if(start == 0) {
-//					allProjectView.onRefreshComplete();
-//					if(localInfos == null) {
-//						return;
-//					}
-//					projectInfos = new ArrayList<ProjectInfo>();
-//					projectInfos.addAll(localInfos);
-//					projectAdapter = new ProjectAdapter(getActivity(), projectInfos);
-//					allProjectView.setAdapter(projectAdapter);
-//				} else {
-//					allProjectView.onLoadMoreComplete();
-//					if(localInfos == null) {
-//						return;
-//					}
-//					projectInfos.addAll(localInfos);
-//					projectAdapter.notifyDataSetChanged();
-//				}
-//			}
-//
-//			@Override
-//			protected void handleError(int errorCode) {
-//				hideRefreshingView();
-//				if(start == 0) {
-//					allProjectView.onRefreshComplete();
-//				} else {
-//					allProjectView.onLoadMoreComplete();
-//				}
-//			}
-//		}, String.valueOf(start), String.valueOf(Consts.PAGE_OFFSET));
-//	}
+	private void getActivityList() {
+		if (Utils.checkMetworkConnected(getActivity())) {
+			onShowLoadingDialog();
+			HttpManager.getAllActivities(PartnerApplication.getInstance().getUserInfo().getToken(), new AsyncHttpCallback() {
+				@Override
+				public void onRequestResponse(Response response) {
+					HttpUtils.getResponseData(response);
+				}
+
+				@Override
+				public void onRequestFailure(Request request, IOException e) {
+					onDismissLoadingDialog();
+				}
+			});
+		}
+	}
 
 }

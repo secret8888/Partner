@@ -64,4 +64,7 @@ public class HttpConsts {
 
     //修改朋友
     public static final String UPDATE_FRIEND_URL = BASE_URL + "/updateFriend?token=%s&friendId=%d&friendName=%s";
+
+    //获取活动列表
+    public static final String GET_ACTIVITIES_URL = BASE_URL + "/getAllActivities?token=%s";
 }
