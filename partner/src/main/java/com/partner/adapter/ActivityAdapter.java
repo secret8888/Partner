@@ -80,7 +80,7 @@ public class ActivityAdapter extends BaseAdapter {
 		holder.monthView.setText(dateFormat.format(date));
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(date);
-		holder.monthView.setText(calendar.get(Calendar.DAY_OF_MONTH));
+		holder.monthView.setText(String.valueOf(calendar.get(Calendar.DAY_OF_MONTH)));
 		holder.activityNameView.setText(info.getActivityTitle());
 		return convertView;
 	}
