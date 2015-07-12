@@ -106,6 +106,9 @@ public class ActivityListFragment extends BaseFragment implements OnItemClickLis
 				public void onRequestResponse(Response response) {
 					onDismissLoadingDialog();
 					String data = HttpUtils.getResponseData(response);
+					if(TextUtils.isEmpty(data)) {
+						return;
+					}
 					if(start == 0) {
 						activityList = YJson.getObj(data, ActivityList.class);
 						adapter = new ActivityAdapter(getActivity(), activityList.getActivities());
