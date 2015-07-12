@@ -1,8 +1,13 @@
 package com.partner.adapter;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import android.content.Context;
+import android.net.Uri;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -10,16 +15,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.partner.R;
+import com.partner.model.ActivityInfo;
 
 public class ActivityAdapter extends BaseAdapter {
 
 	private Context context;
 
-	private ArrayList<String> mItems;
+	private ArrayList<ActivityInfo> mItems;
 
-	public ActivityAdapter(Context context, ArrayList<String> projectInfos) {
+	public ActivityAdapter(Context context, ArrayList<ActivityInfo> items) {
 		this.context = context;
-		this.mItems = projectInfos;
+		this.mItems = items;
 	}
 
 	@Override
@@ -44,30 +50,48 @@ public class ActivityAdapter extends BaseAdapter {
 			holder = new ViewHolder();
 			convertView = View.inflate(context, R.layout.adapter_activity, null);
 
-//			holder.projectCoverView = (ImageView) convertView
-//					.findViewById(R.id.im_project_cover);
-//			holder.projectNameView = (TextView) convertView
-//					.findViewById(R.id.tv_project_name);
-//			holder.projectDescView = (TextView) convertView
-//					.findViewById(R.id.tv_project_desc);
-//			holder.investAmountView = (TextView) convertView
-//					.findViewById(R.id.tv_invest_amount);
-//			holder.investStatusView = (TextView) convertView
-//					.findViewById(R.id.tv_invest_status);
+			holder.activityIntroView = (ImageView) convertView
+					.findViewById(R.id.im_activity_intro);
+			holder.monthView = (TextView) convertView
+					.findViewById(R.id.tv_month);
+			holder.dateView = (TextView) convertView
+					.findViewById(R.id.tv_date);
+			holder.activityNameView = (TextView) convertView
+					.findViewById(R.id.tv_activity_name);
+			holder.signNumView = (TextView) convertView
+					.findViewById(R.id.tv_sign_num);
+			holder.viewNumView = (TextView) convertView
+					.findViewById(R.id.tv_view_num);
+			holder.locationView = (TextView) convertView
+					.findViewById(R.id.tv_location);
 
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
 
+		ActivityInfo info = mItems.get(position);
+		if(!TextUtils.isEmpty(info.getActivityImage())) {
+			holder.activityIntroView.setImageURI(Uri.parse(info.getActivityImage()));
+		}
+		long createTime = info.getCreateTime();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM");
+		Date date = new Date(createTime);
+		holder.monthView.setText(dateFormat.format(date));
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(date);
+		holder.monthView.setText(calendar.get(Calendar.DAY_OF_MONTH));
+		holder.activityNameView.setText(info.getActivityTitle());
 		return convertView;
 	}
 
-	private class ViewHolder {
-		private ImageView projectCoverView = null;
-		private TextView projectNameView = null;
-		private TextView projectDescView = null;
-		private TextView investAmountView = null;
-		private TextView investStatusView = null;
+	private static class ViewHolder {
+		private ImageView activityIntroView;
+		private TextView monthView;
+		private TextView dateView;
+		private TextView activityNameView;
+		private TextView signNumView;
+		private TextView viewNumView;
+		private TextView locationView;
 	}
 }

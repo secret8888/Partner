@@ -48,6 +48,11 @@ public class Consts {
     public static final int INTERVAL = 2000;
 
     /*
+     * page offset
+     */
+    public static final int PAGE_OFFSET = 20;
+
+    /*
      * 临时文件
      */
     public final static String TEMP_NAME = "temp.jpg";

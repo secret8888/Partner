@@ -1,0 +1,91 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <com.partner.view.TitleView
+        android:id="@+id/view_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:id="@+id/lv_info"
+        android:gravity="center_horizontal"
+        style="@style/ItemLayout"
+        android:orientation="vertical"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="@dimen/partner_space_common"
+            >
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/im_activity_intro"
+                android:layout_height="80dp"
+                android:layout_width="80dp"
+                android:layout_marginRight="@dimen/partner_space_medium"
+                fresco:placeholderImageScaleType="centerCrop"
+                fresco:placeholderImage="@drawable/ic_loading"
+                />
+
+            <TextView
+                android:id="@+id/tv_sign_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/im_activity_intro"
+                android:layout_marginTop="@dimen/partner_space_common"
+                android:textColor="@color/black"
+                android:textSize="@dimen/ts_17"
+                android:text="蓝天亲自中心"
+                />
+
+            <TextView
+                android:id="@+id/tv_view_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/im_activity_intro"
+                android:layout_below="@+id/tv_sign_num"
+                android:layout_marginTop="@dimen/partner_space_medium"
+                android:textColor="@color/black"
+                android:textSize="@dimen/ts_15"
+                android:drawablePadding="@dimen/partner_space_normal"
+                android:drawableLeft="@drawable/ic_address"
+                android:text="北京是朝阳公园"
+                />
+        </RelativeLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/bg_gray"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/partner_space_common"
+            android:layout_marginRight="@dimen/partner_space_common"
+            android:layout_marginTop="@dimen/partner_space_large"
+            android:singleLine="true"
+            android:textSize="@dimen/ts_15"
+            android:textColor="@color/black"
+            android:text="机构简介"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/partner_space_common"
+            android:layout_marginRight="@dimen/partner_space_common"
+            android:layout_marginBottom="@dimen/partner_space_common"
+            android:layout_marginTop="@dimen/partner_space_normal"
+            android:lineSpacingExtra="@dimen/partner_space_normal"
+            android:textSize="@dimen/ts_15"
+            android:textColor="@color/black"
+            android:text="案件科技发哈科技发哈科技发挥可案件科技发哈科技发哈科技发挥可案件科技发哈科技发哈科技发挥可案件科技发哈科技发哈科技发挥可"
+            />
+    </LinearLayout>
+</LinearLayout>

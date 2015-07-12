@@ -75,6 +75,7 @@ public class MainActivity extends BaseFragmentActivity {
 				switch (checkedId) {
 					case R.id.tab_main:
 						mTabHost.setCurrentTab(0);
+						IntentManager.startDetailActivity(MainActivity.this);
 						break;
 					case R.id.tab_activity:
 						mTabHost.setCurrentTab(1);

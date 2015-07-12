@@ -67,6 +67,31 @@
     <string name="name">姓名</string>
     <string name="my_qrcode">我的二维码</string>
 
+    <!-- activity -->
+    <string name="activity_detail">活动详情</string>
+    <string name="activity_user">活动用户</string>
+    <string name="signed_user">已报名用户</string>
+    <string name="institution_info">查看机构信息</string>
+    <string name="activity_intro">活动介绍</string>
+    <string name="activity_info">活动信息</string>
+    <string name="detail_intro">详细介绍》</string>
+    <string name="gather_time">集合时间</string>
+    <string name="gather_address">集合地点</string>
+    <string name="start_address">起始地点</string>
+    <string name="activity_address">活动地点</string>
+    <string name="charter_notice">包车公示</string>
+    <string name="distance">总里程 </string>
+    <string name="more_intro">更多描述</string>
+    <string name="path_intro">路线描述</string>
+    <string name="activity_cost">活动费用</string>
+    <string name="travel_assign">行程安排</string>
+    <string name="equipment_require">装备要求</string>
+    <string name="tab_follow">关注</string>
+    <string name="tab_sign">报名</string>
+    <string name="tab_invite">邀请</string>
+    <string name="activity_mark">活动评价</string>
+    <string name="institution_detail">机构信息</string>
+
     <!-- info -->
     <string name="delete">删除</string>
     <string name="leave_message">留 言</string>

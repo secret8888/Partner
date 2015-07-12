@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="@dimen/partner_space_medium"
+    style="@style/ItemLayout"
+    >
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/im_avatar"
+        android:layout_height="66dp"
+        android:layout_width="80dp"
+        android:paddingLeft="@dimen/partner_space_medium_12"
+        android:paddingTop="@dimen/partner_space_middle"
+        android:paddingBottom="@dimen/partner_space_middle"
+        android:paddingRight="@dimen/partner_space_big"
+        fresco:placeholderImage="@drawable/ic_loading"
+        />
+
+    <TextView
+        android:id="@+id/tv_follow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/partner_space_common"
+        android:gravity="center"
+        android:text="关注"
+        android:background="@drawable/btn_edge"
+        />
+    <TextView
+        android:id="@+id/tv_name"
+        style="@style/PersonalItemText"
+        android:layout_toRightOf="@id/im_avatar"
+        android:layout_toLeftOf="@+id/tv_follow"
+        android:text="青青的小草啊哈客家话发咔叽恢复咔叽发挥"
+        />
+</RelativeLayout>

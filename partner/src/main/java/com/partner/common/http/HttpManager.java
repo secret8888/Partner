@@ -221,8 +221,20 @@ public class HttpManager {
      * 获取活动列表
      * @param callback
      */
-    public static void getAllActivities(String token, AsyncHttpCallback callback) {
-        String url = String.format(HttpConsts.GET_ACTIVITIES_URL, token);
+    public static void getActivities(int start, int offset, String receivedIds, AsyncHttpCallback callback) {
+        String url = String.format(HttpConsts.GET_ACTIVITIES_URL, start, offset, receivedIds);
+        PartnerHttpClient.asyncGet(url + HttpUtils.getUserSign(), callback);
+    }
+
+    /**
+     * 查看已经参加的活动
+     * @param start
+     * @param offset
+     * @param receivedIds
+     * @param callback
+     */
+    public static void getJoinedActivities(String token, int start, int offset, String receivedIds, AsyncHttpCallback callback) {
+        String url = String.format(HttpConsts.GET_JOINED_ACTIVITIES_URL, token, start, offset, receivedIds);
         PartnerHttpClient.asyncGet(url + HttpUtils.getUserSign(), callback);
     }
 }

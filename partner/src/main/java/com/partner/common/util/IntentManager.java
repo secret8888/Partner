@@ -5,7 +5,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 
+import com.partner.activity.activity.DetailActivity;
 import com.partner.activity.GuideActivity;
+import com.partner.activity.activity.InstitutionInfoActivity;
+import com.partner.activity.activity.MarkActivity;
+import com.partner.activity.activity.SignedUserActivity;
 import com.partner.activity.info.InfoItemEditActivity;
 import com.partner.activity.info.MyInfoActivity;
 import com.partner.activity.info.MyQrCodeActivity;
@@ -177,6 +181,26 @@ public class IntentManager {
     public static void startCaptureActivity(Activity context, int requestCode) {
         Intent intent = new Intent(context, CaptureActivity.class);
         context.startActivityForResult(intent, requestCode);
+    }
+
+    public static void startDetailActivity(Activity context) {
+        Intent intent = new Intent(context, DetailActivity.class);
+        context.startActivity(intent);
+    }
+
+    public static void startMarkActivity(Activity context) {
+        Intent intent = new Intent(context, MarkActivity.class);
+        context.startActivity(intent);
+    }
+
+    public static void startInstitutionInfoActivity(Activity context) {
+        Intent intent = new Intent(context, InstitutionInfoActivity.class);
+        context.startActivity(intent);
+    }
+
+    public static void startSignedUserActivity(Activity context) {
+        Intent intent = new Intent(context, SignedUserActivity.class);
+        context.startActivity(intent);
     }
 
 }

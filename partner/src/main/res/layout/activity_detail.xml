@@ -1,0 +1,562 @@
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:fresco="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_gray">
+
+        <com.partner.view.TitleView
+            android:id="@+id/view_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    <RadioGroup
+        android:id="@+id/tab_rg_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:padding="1dp"
+        android:background="@color/white"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/tab_follow"
+            style="@style/tab_rb_style"
+            android:checked="true"
+            android:paddingTop="@dimen/partner_space_normal"
+            android:drawableTop="@drawable/tab_follow_selector"
+            android:text="@string/tab_follow"
+            />
+
+        <RadioButton
+            android:id="@+id/tab_sign"
+            style="@style/tab_rb_style"
+            android:paddingTop="@dimen/partner_space_normal"
+            android:drawableTop="@drawable/tab_sign_selector"
+            android:text="@string/tab_sign" />
+
+        <RadioButton
+            android:id="@+id/tab_invite"
+            style="@style/tab_rb_style"
+            android:paddingTop="@dimen/partner_space_normal"
+            android:drawableTop="@drawable/tab_invite_selector"
+            android:text="@string/tab_invite" />
+    </RadioGroup>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/view_title"
+            android:layout_above="@+id/tab_rg_menu"
+            android:scrollbars="none"
+            android:background="@color/bg_gray"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="北国风光，雪山之星"
+                    android:textColor="@color/black"
+                    android:padding="@dimen/partner_space_medium"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/ts_16"
+                    android:background="@color/white"
+                    />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/bg_gray"
+                    />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:padding="@dimen/partner_space_medium_12"
+                    >
+                    <com.facebook.drawee.view.SimpleDraweeView
+                        android:id="@+id/im_activity_intro"
+                        android:layout_height="110dp"
+                        android:layout_width="80dp"
+                        android:layout_marginRight="@dimen/partner_space_medium"
+                        fresco:placeholderImageScaleType="centerCrop"
+                        fresco:placeholderImage="@drawable/ic_loading"
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_sign_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/im_activity_intro"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/ts_13"
+                        android:drawablePadding="@dimen/partner_space_normal"
+                        android:drawableLeft="@drawable/ic_num"
+                        android:text="2人/已报名"
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_view_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/im_activity_intro"
+                        android:layout_below="@+id/tv_sign_num"
+                        android:layout_marginTop="@dimen/partner_space_medium"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/ts_13"
+                        android:drawablePadding="@dimen/partner_space_normal"
+                        android:drawableLeft="@drawable/ic_num"
+                        android:text="598次/浏览"
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/im_activity_intro"
+                        android:layout_below="@+id/tv_view_num"
+                        android:layout_marginTop="@dimen/partner_space_medium"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/ts_13"
+                        android:drawablePadding="@dimen/partner_space_normal"
+                        android:drawableLeft="@drawable/ic_address"
+                        android:text="内蒙古呼和浩特"
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_publish_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/im_activity_intro"
+                        android:layout_below="@+id/tv_location"
+                        android:layout_marginTop="@dimen/partner_space_medium"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/ts_13"
+                        android:drawablePadding="@dimen/partner_space_normal"
+                        android:drawableLeft="@drawable/ic_people"
+                        android:text="发布人姓名：李静"
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/im_activity_intro"
+                        android:layout_below="@+id/tv_publish_name"
+                        android:layout_marginTop="@dimen/partner_space_medium"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/ts_13"
+                        android:drawablePadding="@dimen/partner_space_normal"
+                        android:drawableLeft="@drawable/ic_phone_small"
+                        android:text="12365965842"
+                        />
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activity_user"
+                    android:drawableLeft="@drawable/ic_apart_red"
+                    android:drawablePadding="@dimen/partner_space_medium"
+                    android:textColor="@color/black"
+                    android:padding="@dimen/partner_space_medium"
+                    android:textSize="@dimen/ts_13"
+                    />
+
+                <RelativeLayout
+                    android:id="@+id/lv_signed"
+                    style="@style/ItemLayout"
+                    android:onClick="onSignedClick"
+                    >
+                    <ImageView
+                        android:id="@+id/im_signed"
+                        style="@style/PersonalIndexImage"
+                        android:src="@drawable/ic_signed"
+                        />
+
+                    <ImageView
+                        style="@style/PersonalArrowStyle"
+                        />
+                    <TextView
+                        style="@style/PersonalItemText"
+                        android:layout_toRightOf="@id/im_signed"
+                        android:textSize="@dimen/ts_14"
+                        android:text="@string/signed_user"
+                        />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/lv_institution"
+                    android:layout_marginTop="@dimen/partner_space_medium"
+                    style="@style/ItemLayout"
+                    android:onClick="onInstitutionClick"
+                    >
+                    <ImageView
+                        android:id="@+id/im_institution"
+                        style="@style/PersonalIndexImage"
+                        android:src="@drawable/ic_institution"
+                        />
+
+                    <ImageView
+                        style="@style/PersonalArrowStyle"
+                        />
+                    <TextView
+                        style="@style/PersonalItemText"
+                        android:layout_toRightOf="@id/im_institution"
+                        android:textSize="@dimen/ts_14"
+                        android:text="@string/institution_info"
+                        />
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activity_intro"
+                    android:drawableLeft="@drawable/ic_apart_red"
+                    android:drawablePadding="@dimen/partner_space_medium"
+                    android:textColor="@color/black"
+                    android:padding="@dimen/partner_space_medium"
+                    android:textSize="@dimen/ts_13"
+                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/partner_space_common"
+                    android:paddingBottom="@dimen/partner_space_common"
+                    android:paddingLeft="@dimen/partner_space_common"
+                    android:paddingRight="@dimen/partner_space_common"
+                    android:orientation="vertical"
+                    android:background="@color/white"
+                    >
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/ts_14"
+                        android:text="啊回复可见啊回复可见啊回复哈方科技爱好啊回复可见啊回复可见哈卡减肥哈空间发挥"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:textColor="@color/text_blue"
+                        android:textSize="@dimen/ts_14"
+                        android:text="@string/detail_intro"
+                        />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activity_info"
+                    android:drawableLeft="@drawable/ic_apart_red"
+                    android:drawablePadding="@dimen/partner_space_medium"
+                    android:textColor="@color/black"
+                    android:padding="@dimen/partner_space_medium"
+                    android:textSize="@dimen/ts_13"
+                    />
+
+                <LinearLayout
+                    style="@style/ItemLayout"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/ts_13"
+                        android:layout_marginLeft="@dimen/partner_space_large"
+                        android:text="@string/gather_time"
+                        />
+
+                    <TextView
+                        style="@style/PersonalItemText"
+                        android:textSize="@dimen/ts_14"
+                        android:layout_toRightOf="@id/im_institution"
+                        android:layout_marginLeft="@dimen/partner_space_common"
+                        android:text="@string/institution_info"
+                        />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+
+                <LinearLayout
+                    style="@style/ItemLayout"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/ts_13"
+                        android:layout_marginLeft="@dimen/partner_space_large"
+                        android:text="@string/gather_address"
+                        />
+
+                    <TextView
+                        style="@style/PersonalItemText"
+                        android:textSize="@dimen/ts_14"
+                        android:layout_toRightOf="@id/im_institution"
+                        android:layout_marginLeft="@dimen/partner_space_common"
+                        android:text="@string/institution_info"
+                        />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+
+                <LinearLayout
+                    style="@style/ItemLayout"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/ts_13"
+                        android:layout_marginLeft="@dimen/partner_space_large"
+                        android:text="@string/start_address"
+                        />
+
+                    <TextView
+                        style="@style/PersonalItemText"
+                        android:textSize="@dimen/ts_14"
+                        android:layout_toRightOf="@id/im_institution"
+                        android:layout_marginLeft="@dimen/partner_space_common"
+                        android:text="@string/institution_info"
+                        />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+
+                <LinearLayout
+                    style="@style/ItemLayout"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/ts_13"
+                        android:layout_marginLeft="@dimen/partner_space_large"
+                        android:text="@string/activity_address"
+                        />
+
+                    <TextView
+                        style="@style/PersonalItemText"
+                        android:textSize="@dimen/ts_14"
+                        android:layout_toRightOf="@id/im_institution"
+                        android:layout_marginLeft="@dimen/partner_space_common"
+                        android:text="@string/institution_info"
+                        />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+
+                <LinearLayout
+                    style="@style/ItemLayout"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/ts_13"
+                        android:layout_marginLeft="@dimen/partner_space_large"
+                        android:text="@string/charter_notice"
+                        />
+
+                    <TextView
+                        style="@style/PersonalItemText"
+                        android:textSize="@dimen/ts_14"
+                        android:layout_toRightOf="@id/im_institution"
+                        android:layout_marginLeft="@dimen/partner_space_common"
+                        android:text="@string/institution_info"
+                        />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+
+                <LinearLayout
+                    style="@style/ItemLayout"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/ts_13"
+                        android:layout_marginLeft="@dimen/partner_space_large"
+                        android:text="@string/distance"
+                        />
+
+                    <TextView
+                        style="@style/PersonalItemText"
+                        android:textSize="@dimen/ts_14"
+                        android:layout_toRightOf="@id/im_institution"
+                        android:layout_marginLeft="@dimen/partner_space_huge"
+                        android:text="@string/institution_info"
+                        />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/more_intro"
+                    android:drawableLeft="@drawable/ic_apart_red"
+                    android:drawablePadding="@dimen/partner_space_medium"
+                    android:textColor="@color/black"
+                    android:padding="@dimen/partner_space_medium"
+                    android:textSize="@dimen/ts_13"
+                    />
+
+                <RelativeLayout
+                    android:id="@+id/lv_path_intro"
+                    style="@style/ItemLayout"
+                    >
+
+                    <ImageView
+                        style="@style/PersonalArrowStyle"
+                        />
+                    <TextView
+                        style="@style/PersonalItemText"
+                        android:textSize="@dimen/ts_14"
+                        android:layout_marginLeft="@dimen/partner_space_large"
+                        android:textColor="@color/text_blue"
+                        android:text="@string/path_intro"
+                        />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+
+                <RelativeLayout
+                    android:id="@+id/lv_activity_cost"
+                    style="@style/ItemLayout"
+                    >
+
+                    <ImageView
+                        style="@style/PersonalArrowStyle"
+                        />
+                    <TextView
+                        style="@style/PersonalItemText"
+                        android:textSize="@dimen/ts_14"
+                        android:layout_marginLeft="@dimen/partner_space_large"
+                        android:textColor="@color/text_blue"
+                        android:text="@string/activity_cost"
+                        />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+
+                <RelativeLayout
+                    android:id="@+id/lv_travel_assign"
+                    style="@style/ItemLayout"
+                    >
+
+                    <ImageView
+                        style="@style/PersonalArrowStyle"
+                        />
+                    <TextView
+                        style="@style/PersonalItemText"
+                        android:textSize="@dimen/ts_14"
+                        android:layout_marginLeft="@dimen/partner_space_large"
+                        android:textColor="@color/text_blue"
+                        android:text="@string/travel_assign"
+                        />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+
+                <RelativeLayout
+                    android:id="@+id/lv_equipment_require"
+                    style="@style/ItemLayout"
+                    >
+
+                    <ImageView
+                        style="@style/PersonalArrowStyle"
+                        />
+                    <TextView
+                        style="@style/PersonalItemText"
+                        android:textSize="@dimen/ts_14"
+                        android:layout_marginLeft="@dimen/partner_space_large"
+                        android:textColor="@color/text_blue"
+                        android:text="@string/equipment_require"
+                        />
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/partner_space_large"
+                    android:layout_marginLeft="@dimen/partner_space_large"
+                    android:layout_marginRight="@dimen/partner_space_large"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/ts_14"
+                    android:text="活动已结束，如果您期待商家再次举办该活动,"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/partner_space_large"
+                    android:layout_marginLeft="@dimen/partner_space_large"
+                    android:layout_marginRight="@dimen/partner_space_large"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/red"
+                        android:textSize="@dimen/ts_14"
+                        android:text="请点击"
+                        />
+
+                    <Button
+                        android:layout_width="100dp"
+                        android:layout_height="35dp"
+                        android:text="@string/confirm"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/ts_14"
+                        android:layout_margin="@dimen/partner_space_middle"
+                        android:background="@drawable/btn_operate"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/red"
+                        android:textSize="@dimen/ts_14"
+                        android:text="按钮"
+                        />
+                </LinearLayout>
+                </LinearLayout>
+        </ScrollView>
+
+    </RelativeLayout>

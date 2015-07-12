@@ -1,0 +1,95 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray"
+    android:orientation="vertical" >
+
+    <com.partner.view.TitleView
+        android:id="@+id/view_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:id="@+id/lv_info"
+        android:gravity="center_horizontal"
+        style="@style/ItemLayout"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/partner_space_common"
+            android:layout_marginRight="@dimen/partner_space_common"
+            android:layout_marginTop="@dimen/partner_space_large"
+            android:singleLine="true"
+            android:textSize="@dimen/ts_17"
+            android:textColor="@color/black"
+            android:text="活动标题：哈哈发客户发卡机恢复快结婚"
+            />
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/partner_space_common"
+            android:layout_marginRight="@dimen/partner_space_common"
+            android:layout_marginTop="@dimen/partner_space_medium"
+            android:singleLine="true"
+            android:textSize="@dimen/ts_17"
+            android:textColor="@color/black"
+            android:text="活动时间：2015-06-08"
+            />
+
+        <TextView
+            android:id="@+id/tv_institution"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/partner_space_common"
+            android:layout_marginRight="@dimen/partner_space_common"
+            android:layout_marginTop="@dimen/partner_space_medium"
+            android:layout_marginBottom="@dimen/partner_space_large"
+            android:singleLine="true"
+            android:textSize="@dimen/ts_17"
+            android:textColor="@color/black"
+            android:text="活动机构：2015-06-08"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/bg_gray"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/partner_space_common"
+            android:layout_marginRight="@dimen/partner_space_common"
+            android:layout_marginTop="@dimen/partner_space_large"
+            android:layout_marginBottom="@dimen/partner_space_large"
+            android:singleLine="true"
+            android:textSize="@dimen/ts_15"
+            android:textColor="@color/black"
+            android:text="本地活动中，对机构的整体评价："
+            />
+
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="@dimen/item_height"
+            android:layout_marginTop="@dimen/partner_space_common"
+            android:layout_marginBottom="50dp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/ts_16"
+            android:text="@string/submit"
+            android:clickable="true"
+            android:onClick="onLoginClick"
+            android:background="@drawable/btn_operate"
+            />
+    </LinearLayout>
+</LinearLayout>
