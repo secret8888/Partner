@@ -1,17 +1,5 @@
 package com.partner.activity;
 
-import com.partner.PartnerApplication;
-import com.partner.R;
-import com.partner.activity.base.BaseFragmentActivity;
-import com.partner.common.constant.Consts;
-import com.partner.common.constant.IntentConsts;
-import com.partner.common.util.IntentManager;
-import com.partner.common.util.Toaster;
-import com.partner.fragment.MainFragment;
-import com.partner.fragment.MineFragment;
-import com.partner.fragment.FriendFragment;
-import com.umeng.update.UmengUpdateAgent;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,6 +7,21 @@ import android.support.v4.app.FragmentTabHost;
 import android.view.KeyEvent;
 import android.widget.RadioGroup;
 import android.widget.TabHost;
+
+import com.baidu.android.pushservice.PushConstants;
+import com.baidu.android.pushservice.PushManager;
+import com.partner.PartnerApplication;
+import com.partner.R;
+import com.partner.activity.base.BaseFragmentActivity;
+import com.partner.common.constant.Consts;
+import com.partner.common.constant.IntentConsts;
+import com.partner.common.util.IntentManager;
+import com.partner.common.util.Toaster;
+import com.partner.common.util.Utils;
+import com.partner.fragment.FriendFragment;
+import com.partner.fragment.MainFragment;
+import com.partner.fragment.MineFragment;
+import com.umeng.update.UmengUpdateAgent;
 
 public class MainActivity extends BaseFragmentActivity {
 
@@ -48,6 +51,9 @@ public class MainActivity extends BaseFragmentActivity {
 		PartnerApplication.getInstance().initUserInfo();
 		initView();
 		UmengUpdateAgent.update(this);
+		PushManager.startWork(getApplicationContext(),
+				PushConstants.LOGIN_TYPE_API_KEY,
+				Utils.getMetaValue(MainActivity.this, "api_key"));
 	}
 
 	@Override

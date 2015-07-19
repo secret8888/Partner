@@ -1,16 +1,16 @@
 package com.partner;
 
-import android.app.Application;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 
+import com.baidu.frontia.FrontiaApplication;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.partner.common.constant.PreferenceConsts;
 import com.partner.common.util.PreferenceUtils;
 import com.partner.model.UserInfo;
 import com.youdao.yjson.YJson;
 
-public class PartnerApplication extends Application {
+public class PartnerApplication extends FrontiaApplication {
 
     private static PartnerApplication application = null;
 
