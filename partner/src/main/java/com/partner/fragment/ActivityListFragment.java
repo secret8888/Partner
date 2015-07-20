@@ -63,6 +63,7 @@ public class ActivityListFragment extends BaseFragment implements OnItemClickLis
 
 	@Override
 	protected void setListeners() {
+		contentView.setOnItemClickListener(this);
 		contentView.setListViewRefreshListener(new RefreshListView.ListViewRefreshListener() {
 			@Override
 			public void onRefresh() {

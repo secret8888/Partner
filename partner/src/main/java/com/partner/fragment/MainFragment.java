@@ -39,6 +39,7 @@ public class MainFragment extends BaseFragment implements OnClickListener, ViewP
 	@Override
 	protected void initControls(Bundle savedInstanceState) {
 		activityPager.setAdapter(new ActivityFragmentAdapter(getFragmentManager()));
+		activityPager.setOffscreenPageLimit(3);
 //		showRefreshingView();
 //		HttpManager.getRecommendedProjects(new CoinvsHandler(getActivity()) {
 //
