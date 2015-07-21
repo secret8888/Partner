@@ -88,7 +88,7 @@ public class RegistrationInfoActivity extends BaseActivity implements AdapterVie
 	}
 
 	private void getRegistList() {
-		if (Utils.checkMetworkConnected(this)) {
+		if (Utils.checkNetworkConnected(this)) {
 			onShowLoadingDialog();
 			HttpManager.getAllRegistList(PartnerApplication.getInstance().getUserInfo().getToken(), new AsyncHttpCallback() {
 				@Override

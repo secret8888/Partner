@@ -80,7 +80,8 @@ public class ActivityListFragment extends BaseFragment implements OnItemClickLis
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
-		IntentManager.startDetailActivity(getActivity());
+		IntentManager.startDetailActivity(getActivity(), activityList
+				.getActivities().get(position - 1).getActivityId());
 	}
 
 	public static ActivityListFragment newInstance(int position) {
@@ -100,7 +101,7 @@ public class ActivityListFragment extends BaseFragment implements OnItemClickLis
 	}
 
 	private void getActivityList(final int start) {
-		if (Utils.checkMetworkConnected(getActivity())) {
+		if (Utils.checkNetworkConnected(getActivity())) {
 			onShowLoadingDialog();
 			AsyncHttpCallback callback = new AsyncHttpCallback() {
 				@Override

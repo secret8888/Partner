@@ -1,8 +1,12 @@
 package com.partner.receiver;
 
 import android.content.Context;
+import android.content.Intent;
 
 import com.baidu.frontia.api.FrontiaPushMessageReceiver;
+import com.partner.PartnerApplication;
+import com.partner.activity.MainActivity;
+import com.partner.common.http.HttpManager;
 import com.partner.common.util.Logcat;
 
 import java.util.List;
@@ -60,6 +64,7 @@ public class PushMessageReceiver extends FrontiaPushMessageReceiver {
                 + appid + " userId=" + userId + " channelId=" + channelId
                 + " requestId=" + requestId;
         Logcat.d(TAG, responseString);
+        HttpManager.putChannelId(PartnerApplication.getInstance().getUserInfo().getToken(), channelId);
     }
 
     /**
@@ -98,10 +103,10 @@ public class PushMessageReceiver extends FrontiaPushMessageReceiver {
         String notifyString = "通知点击 title=\"" + title + "\" description=\""
                 + description + "\" customContent=" + customContentString;
         Logcat.d(TAG, notifyString);
-//        Intent intent = new Intent();
-//        intent.setClass(context.getApplicationContext(), MainActivity.class);
-//        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//        context.getApplicationContext().startActivity(intent);
+        Intent intent = new Intent();
+        intent.setClass(context.getApplicationContext(), MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.getApplicationContext().startActivity(intent);
      }
 
     /**

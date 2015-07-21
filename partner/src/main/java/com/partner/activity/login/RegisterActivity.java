@@ -89,7 +89,7 @@ public class RegisterActivity extends BaseActivity {
 	}
 
 	public void onCodeClick(View view) {
-		if (Utils.checkMetworkConnected(this)) {
+		if (Utils.checkNetworkConnected(this)) {
 			String phone = phoneEdit.getText().toString();
 
 			if (TextUtils.isEmpty(phone)) {
@@ -113,7 +113,7 @@ public class RegisterActivity extends BaseActivity {
 	}
 
 	public void onConfirmClick(View view) {
-		if (Utils.checkMetworkConnected(this)) {
+		if (Utils.checkNetworkConnected(this)) {
 			String nickname = nicknameEdit.getText().toString();
 			String phone = phoneEdit.getText().toString();
 			String psd = psdEdit.getText().toString();

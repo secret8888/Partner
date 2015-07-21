@@ -91,6 +91,9 @@
     <string name="tab_invite">邀请</string>
     <string name="activity_mark">活动评价</string>
     <string name="institution_detail">机构信息</string>
+    <string name="sign_num">%d人/已报名</string>
+    <string name="view_num">%d次/浏览</string>
+    <string name="publish_name">发布人姓名：%s</string>
 
     <!-- info -->
     <string name="delete">删除</string>

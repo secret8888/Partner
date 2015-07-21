@@ -60,7 +60,7 @@ public class LoginActivity extends BaseActivity {
 	}
 
 	public void onLoginClick(View view) {
-		if (Utils.checkMetworkConnected(this)) {
+		if (Utils.checkNetworkConnected(this)) {
 			String phone = phoneEdit.getText().toString();
 			String psd = psdEdit.getText().toString();
 

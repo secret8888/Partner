@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 
-import com.partner.activity.activity.DetailActivity;
+import com.partner.activity.activity.ActivityDetailActivity;
 import com.partner.activity.GuideActivity;
 import com.partner.activity.activity.InstitutionInfoActivity;
 import com.partner.activity.activity.MarkActivity;
@@ -183,8 +183,9 @@ public class IntentManager {
         context.startActivityForResult(intent, requestCode);
     }
 
-    public static void startDetailActivity(Activity context) {
-        Intent intent = new Intent(context, DetailActivity.class);
+    public static void startDetailActivity(Activity context, int activityId) {
+        Intent intent = new Intent(context, ActivityDetailActivity.class);
+        intent.putExtra(IntentConsts.ID_KEY, activityId);
         context.startActivity(intent);
     }
 

@@ -76,7 +76,7 @@ public class MineFragment extends BaseFragment implements OnClickListener {
 	@Override
 	public void onResume() {
 		super.onResume();
-		if (Utils.checkMetworkConnected(getActivity()) && TextUtils.isEmpty(nameView.getText())) {
+		if (Utils.checkNetworkConnected(getActivity()) && TextUtils.isEmpty(nameView.getText())) {
 			onShowLoadingDialog();
 			HttpManager.getUserInfo(PartnerApplication.getInstance().getUserInfo().getToken(), new AsyncHttpCallback() {
 				@Override

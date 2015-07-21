@@ -70,4 +70,10 @@ public class HttpConsts {
 
     //查看已经参加的活动
     public static final String GET_JOINED_ACTIVITIES_URL = BASE_URL + "/getJoinedActivities?token=%s&start=%d&offset=%d&receivedIds=%s";
+
+    //查看已经参加的活动
+    public static final String PUT_CHANNEL_ID_URL = BASE_URL + "/putChannelId?token=%s&channelId=%s&osType=3";
+
+    //查看活动详情
+    public static final String GET_ACTIVITY_DETAIL = BASE_URL + "/getActivityDetail?token=%s&activityId=%d";
 }

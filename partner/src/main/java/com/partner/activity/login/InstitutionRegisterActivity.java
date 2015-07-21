@@ -79,7 +79,7 @@ public class InstitutionRegisterActivity extends BaseActivity {
 	}
 
 	public void onCodeClick(View view) {
-		if (Utils.checkMetworkConnected(this)) {
+		if (Utils.checkNetworkConnected(this)) {
 			String phone = phoneEdit.getText().toString();
 
 			if (TextUtils.isEmpty(phone)) {
@@ -103,7 +103,7 @@ public class InstitutionRegisterActivity extends BaseActivity {
 	}
 
 	public void onConfirmClick(View view) {
-		if (Utils.checkMetworkConnected(this)) {
+		if (Utils.checkNetworkConnected(this)) {
 			String phone = phoneEdit.getText().toString();
 			String psd = psdEdit.getText().toString();
 			String code = codeEdit.getText().toString();

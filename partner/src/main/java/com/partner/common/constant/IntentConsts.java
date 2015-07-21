@@ -25,4 +25,6 @@ public class IntentConsts {
 	public static final String REFISTRATION_KEY = "registration";
 
 	public static final String INFO_KEY = "info";
+
+	public static final String ID_KEY = "id";
 }

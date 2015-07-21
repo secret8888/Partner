@@ -80,7 +80,7 @@ public class ModifyPsdActivity extends BaseActivity {
 	}
 
 	public void onCodeClick(View view) {
-		if (Utils.checkMetworkConnected(this)) {
+		if (Utils.checkNetworkConnected(this)) {
 			String phone = phoneEdit.getText().toString();
 
 			if(isSettingModify) {
@@ -106,7 +106,7 @@ public class ModifyPsdActivity extends BaseActivity {
 	}
 
 	public void onConfirmClick(View view) {
-		if (Utils.checkMetworkConnected(this)) {
+		if (Utils.checkNetworkConnected(this)) {
 			String phone = phoneEdit.getText().toString();
 			String psd = psdEdit.getText().toString();
 			String code = codeEdit.getText().toString();

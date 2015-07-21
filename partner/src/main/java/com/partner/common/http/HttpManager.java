@@ -237,4 +237,25 @@ public class HttpManager {
         String url = String.format(HttpConsts.GET_JOINED_ACTIVITIES_URL, token, start, offset, receivedIds);
         PartnerHttpClient.asyncGet(url + HttpUtils.getUserSign(), callback);
     }
+
+    /**
+     * 推送接口，传递channelId参数
+     * @param token
+     * @param channelId
+     */
+    public static void putChannelId(String token, String channelId) {
+        String url = String.format(HttpConsts.PUT_CHANNEL_ID_URL, token, channelId);
+        PartnerHttpClient.asyncGet(url + HttpUtils.getUserSign());
+    }
+
+    /**
+     * 获取活动详情
+     * @param token
+     * @param channelId
+     * @param callback
+     */
+    public static void getActivityDetail(String token, int channelId, AsyncHttpCallback callback) {
+        String url = String.format(HttpConsts.GET_ACTIVITY_DETAIL, token, channelId);
+        PartnerHttpClient.asyncGet(url + HttpUtils.getUserSign(), callback);
+    }
 }

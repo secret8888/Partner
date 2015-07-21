@@ -292,7 +292,7 @@ public final class CaptureActivity extends Activity implements
 	public void handleDecode(Result rawResult, Bundle bundle) {
 		inactivityTimer.onActivity();
 		String result = rawResult.getText();
-		if (Utils.checkMetworkConnected(this)) {
+		if (Utils.checkNetworkConnected(this)) {
 			onShowLoadingDialog();
 			HttpManager.addFriend(PartnerApplication.getInstance().getUserInfo().getToken(), result, new AsyncHttpCallback() {
 				@Override

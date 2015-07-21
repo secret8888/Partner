@@ -119,7 +119,7 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".activity.activity.DetailActivity"
+            android:name=".activity.activity.ActivityDetailActivity"
             android:screenOrientation="portrait" />
 
         <activity

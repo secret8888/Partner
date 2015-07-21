@@ -111,7 +111,7 @@ public class Utils {
 		return false;
 	}
 	
-	public static boolean checkMetworkConnected(Context context) {
+	public static boolean checkNetworkConnected(Context context) {
 		if(!isNetworkConnected(context)) {
 			Toaster.show(context, R.string.network_connect_unavailable);
 			return false;

@@ -62,7 +62,7 @@ public class PartnerHttpClient {
      *
      * @param request
      */
-    public static void enqueue(Request request) {
+    public static void enqueue(final Request request) {
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Request request, IOException e) {
@@ -71,7 +71,7 @@ public class PartnerHttpClient {
 
             @Override
             public void onResponse(Response response) throws IOException {
-
+                Logcat.d("http result : " + response.body().string());
             }
         });
     }
@@ -85,6 +85,16 @@ public class PartnerHttpClient {
         Logcat.d("syncGet request url : " + url);
         Request request = new Request.Builder().url(url).build();
         return getResponseBody(request);
+    }
+
+    /**
+     * 异步执行get请求，无回调
+     * @param url
+     */
+    public static void asyncGet(String url) {
+        Logcat.d("asyncGet request url : " + url);
+        Request request = new Request.Builder().url(url).build();
+        enqueue(request);
     }
 
     /**

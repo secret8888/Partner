@@ -68,7 +68,7 @@ public class ModifyPhoneNextActivity extends BaseActivity {
 	}
 
 	public void onCodeClick(View view) {
-		if (Utils.checkMetworkConnected(this)) {
+		if (Utils.checkNetworkConnected(this)) {
 			String phone = phoneView.getText().toString();
 
 			if (TextUtils.isEmpty(phone)) {
@@ -92,7 +92,7 @@ public class ModifyPhoneNextActivity extends BaseActivity {
 	}
 
 	public void onConfirmClick(View view) {
-		if (Utils.checkMetworkConnected(this)) {
+		if (Utils.checkNetworkConnected(this)) {
 			final String phone = phoneView.getText().toString();
 
 			if (TextUtils.isEmpty(codeEdit.getText().toString())) {

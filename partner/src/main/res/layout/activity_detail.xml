@@ -56,9 +56,9 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical" >
                 <TextView
+                    android:id="@+id/tv_activity_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="北国风光，雪山之星"
                     android:textColor="@color/black"
                     android:padding="@dimen/partner_space_medium"
                     android:textStyle="bold"
@@ -96,7 +96,6 @@
                         android:textSize="@dimen/ts_13"
                         android:drawablePadding="@dimen/partner_space_normal"
                         android:drawableLeft="@drawable/ic_num"
-                        android:text="2人/已报名"
                         />
 
                     <TextView
@@ -125,7 +124,6 @@
                         android:textSize="@dimen/ts_13"
                         android:drawablePadding="@dimen/partner_space_normal"
                         android:drawableLeft="@drawable/ic_address"
-                        android:text="内蒙古呼和浩特"
                         />
 
                     <TextView
@@ -139,7 +137,6 @@
                         android:textSize="@dimen/ts_13"
                         android:drawablePadding="@dimen/partner_space_normal"
                         android:drawableLeft="@drawable/ic_people"
-                        android:text="发布人姓名：李静"
                         />
 
                     <TextView
@@ -153,7 +150,6 @@
                         android:textSize="@dimen/ts_13"
                         android:drawablePadding="@dimen/partner_space_normal"
                         android:drawableLeft="@drawable/ic_phone_small"
-                        android:text="12365965842"
                         />
                 </RelativeLayout>
 
@@ -234,11 +230,11 @@
                     android:background="@color/white"
                     >
                     <TextView
+                        android:id="@+id/tv_desc"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
                         android:textSize="@dimen/ts_14"
-                        android:text="啊回复可见啊回复可见啊回复哈方科技爱好啊回复可见啊回复可见哈卡减肥哈空间发挥"
                         />
 
                     <TextView
@@ -277,11 +273,11 @@
                         />
 
                     <TextView
+                        android:id="@+id/tv_gather_time"
                         style="@style/PersonalItemText"
                         android:textSize="@dimen/ts_14"
                         android:layout_toRightOf="@id/im_institution"
                         android:layout_marginLeft="@dimen/partner_space_common"
-                        android:text="@string/institution_info"
                         />
                 </LinearLayout>
 
@@ -304,11 +300,11 @@
                         />
 
                     <TextView
+                        android:id="@+id/tv_gather_address"
                         style="@style/PersonalItemText"
                         android:textSize="@dimen/ts_14"
                         android:layout_toRightOf="@id/im_institution"
                         android:layout_marginLeft="@dimen/partner_space_common"
-                        android:text="@string/institution_info"
                         />
                 </LinearLayout>
 
@@ -331,11 +327,11 @@
                         />
 
                     <TextView
+                        android:id="@+id/tv_start_address"
                         style="@style/PersonalItemText"
                         android:textSize="@dimen/ts_14"
                         android:layout_toRightOf="@id/im_institution"
                         android:layout_marginLeft="@dimen/partner_space_common"
-                        android:text="@string/institution_info"
                         />
                 </LinearLayout>
 
@@ -358,11 +354,11 @@
                         />
 
                     <TextView
+                        android:id="@+id/tv_activity_address"
                         style="@style/PersonalItemText"
                         android:textSize="@dimen/ts_14"
                         android:layout_toRightOf="@id/im_institution"
                         android:layout_marginLeft="@dimen/partner_space_common"
-                        android:text="@string/institution_info"
                         />
                 </LinearLayout>
 
@@ -385,6 +381,7 @@
                         />
 
                     <TextView
+                        android:id="@+id/tv_charter_notice"
                         style="@style/PersonalItemText"
                         android:textSize="@dimen/ts_14"
                         android:layout_toRightOf="@id/im_institution"
@@ -412,11 +409,11 @@
                         />
 
                     <TextView
+                        android:id="@+id/tv_distance"
                         style="@style/PersonalItemText"
                         android:textSize="@dimen/ts_14"
                         android:layout_toRightOf="@id/im_institution"
                         android:layout_marginLeft="@dimen/partner_space_huge"
-                        android:text="@string/institution_info"
                         />
                 </LinearLayout>
 

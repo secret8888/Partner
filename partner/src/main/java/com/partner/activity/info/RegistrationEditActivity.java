@@ -79,7 +79,7 @@ public class RegistrationEditActivity extends BaseActivity {
 	@Override
 	public void onTitleOperateClick() {
 		super.onTitleOperateClick();
-		if (Utils.checkMetworkConnected(this)) {
+		if (Utils.checkNetworkConnected(this)) {
 			if(mInfo == null) {
 				modifyRegistrationInfo(true);
 			} else {
