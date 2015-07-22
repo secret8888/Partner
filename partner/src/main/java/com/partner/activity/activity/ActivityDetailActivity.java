@@ -132,7 +132,7 @@ public class ActivityDetailActivity extends BaseActivity {
 	}
 
 	public void onSignedClick(View view) {
-		IntentManager.startSignedUserActivity(this);
+		IntentManager.startSignedUserActivity(this, activityId);
 	}
 
 	private void getActivityDetail() {

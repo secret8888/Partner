@@ -258,4 +258,15 @@ public class HttpManager {
         String url = String.format(HttpConsts.GET_ACTIVITY_DETAIL, token, channelId);
         PartnerHttpClient.asyncGet(url + HttpUtils.getUserSign(), callback);
     }
+
+    /**
+     * 获取活动报名人
+     * @param token
+     * @param channelId
+     * @param callback
+     */
+    public static void getSignedUsers(String token, int channelId, AsyncHttpCallback callback) {
+        String url = String.format(HttpConsts.GET_SIGNED_USER, token, channelId);
+        PartnerHttpClient.asyncGet(url + HttpUtils.getUserSign(), callback);
+    }
 }

@@ -56,12 +56,12 @@ public class SignedUserAdapter extends BaseAdapter {
 			holder = (ViewHolder) convertView.getTag();
 		}
 
-//		FriendInfo info = mItems.get(position);
-//		if(!TextUtils.isEmpty(info.getFriendHeadImage())) {
-//			Uri uri = Uri.parse(info.getFriendHeadImage());
-//			holder.avatarView.setImageURI(uri);
-//		}
-//		holder.nameView.setText(info.getFriendRealName());
+		FriendInfo info = mItems.get(position);
+		if(!TextUtils.isEmpty(info.getHeadimage())) {
+			Uri uri = Uri.parse(info.getHeadimage());
+			holder.avatarView.setImageURI(uri);
+		}
+		holder.nameView.setText(info.getNickname());
 		return convertView;
 	}
 

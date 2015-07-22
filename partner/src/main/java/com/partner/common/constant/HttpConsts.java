@@ -76,4 +76,7 @@ public class HttpConsts {
 
     //查看活动详情
     public static final String GET_ACTIVITY_DETAIL = BASE_URL + "/getActivityDetail?token=%s&activityId=%d";
+
+    //获取活动报名人接口
+    public static final String GET_SIGNED_USER = BASE_URL + "/getActivityJoinedUser?token=%s&activityId=%d";
 }

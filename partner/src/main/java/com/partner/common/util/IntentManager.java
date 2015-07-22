@@ -199,8 +199,9 @@ public class IntentManager {
         context.startActivity(intent);
     }
 
-    public static void startSignedUserActivity(Activity context) {
+    public static void startSignedUserActivity(Activity context, int activityId) {
         Intent intent = new Intent(context, SignedUserActivity.class);
+        intent.putExtra(IntentConsts.ID_KEY, activityId);
         context.startActivity(intent);
     }
 

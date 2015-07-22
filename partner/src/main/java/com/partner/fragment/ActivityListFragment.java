@@ -52,6 +52,7 @@ public class ActivityListFragment extends BaseFragment implements OnItemClickLis
 	@Override
 	protected void initControls(Bundle savedInstanceState) {
 		contentView.setRefreshTime(Utils.getTime());
+		onShowLoadingDialog();
 		getActivityList(0);
 	}
 
@@ -67,12 +68,12 @@ public class ActivityListFragment extends BaseFragment implements OnItemClickLis
 		contentView.setListViewRefreshListener(new RefreshListView.ListViewRefreshListener() {
 			@Override
 			public void onRefresh() {
-				onMessageLoad();
+				getActivityList(0);
 			}
 
 			@Override
 			public void onLoadMore() {
-				onMessageLoad();
+				getActivityList(activityList.getActivities().size());
 			}
 		});
 	}
@@ -102,11 +103,11 @@ public class ActivityListFragment extends BaseFragment implements OnItemClickLis
 
 	private void getActivityList(final int start) {
 		if (Utils.checkNetworkConnected(getActivity())) {
-			onShowLoadingDialog();
 			AsyncHttpCallback callback = new AsyncHttpCallback() {
 				@Override
 				public void onRequestResponse(Response response) {
 					onDismissLoadingDialog();
+					onMessageLoad();
 					String data = HttpUtils.getResponseData(response);
 					if(TextUtils.isEmpty(data)) {
 						return;
@@ -125,6 +126,7 @@ public class ActivityListFragment extends BaseFragment implements OnItemClickLis
 				@Override
 				public void onRequestFailure(Request request, IOException e) {
 					onDismissLoadingDialog();
+					onMessageLoad();
 				}
 			};
 			if(isAllActivities) {
