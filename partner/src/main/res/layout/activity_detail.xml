@@ -24,7 +24,7 @@
             style="@style/tab_rb_style"
             android:checked="true"
             android:paddingTop="@dimen/partner_space_normal"
-            android:drawableTop="@drawable/tab_follow_selector"
+            android:drawableTop="@drawable/tab_follow_selected"
             android:text="@string/tab_follow"
             />
 
@@ -32,15 +32,21 @@
             android:id="@+id/tab_sign"
             style="@style/tab_rb_style"
             android:paddingTop="@dimen/partner_space_normal"
-            android:drawableTop="@drawable/tab_sign_selector"
-            android:text="@string/tab_sign" />
+            android:textColor="@color/text_grey"
+            android:drawableTop="@drawable/tab_sign_normal"
+            android:text="@string/tab_sign"
+            android:onClick="onSignClick"
+            />
 
         <RadioButton
             android:id="@+id/tab_invite"
             style="@style/tab_rb_style"
             android:paddingTop="@dimen/partner_space_normal"
-            android:drawableTop="@drawable/tab_invite_selector"
-            android:text="@string/tab_invite" />
+            android:textColor="@color/text_grey"
+            android:drawableTop="@drawable/tab_invite_normal"
+            android:text="@string/tab_invite"
+            android:onClick="onInviteClick"
+            />
     </RadioGroup>
 
         <ScrollView

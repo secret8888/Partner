@@ -94,6 +94,8 @@
     <string name="sign_num">%d人/已报名</string>
     <string name="view_num">%d次/浏览</string>
     <string name="publish_name">发布人姓名：%s</string>
+    <string name="sign">报名</string>
+    <string name="signed_num">参加活动的小孩个数</string>
 
     <!-- info -->
     <string name="delete">删除</string>
@@ -113,6 +115,7 @@
     <string name="registration_info">报名常用信息</string>
     <string name="finish">完成</string>
     <string name="parent_info_edit">家长详情编辑</string>
+    <string name="add">添加</string>
     <string name="parent_add">家长添加</string>
     <string name="add_success">添加成功</string>
     <string name="add_fail">添加失败</string>

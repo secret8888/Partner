@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray"
+    android:orientation="vertical" >
+
+    <com.partner.view.TitleView
+        android:id="@+id/view_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <RelativeLayout
+        android:layout_marginTop="@dimen/partner_space_medium"
+        style="@style/ItemLayout"
+        android:onClick="onNameClick"
+        android:minHeight="45dp"
+        >
+
+        <TextView
+            android:id="@+id/tv_signed_num"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:text="0"
+            android:background="@drawable/btn_edge"
+            />
+        <TextView
+            style="@style/PersonalItemText"
+            android:layout_marginLeft="@dimen/partner_space_common"
+            android:text="@string/signed_num"
+            />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/list_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/partner_space_medium"
+        android:background="@color/white"
+        android:divider="@color/bg_gray"
+        android:dividerHeight="@dimen/partner_space_mini"
+        android:scrollbars="none"
+        >
+    </ListView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_height"
+        android:layout_marginTop="@dimen/partner_space_common"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/ts_16"
+        android:text="@string/finish"
+        android:clickable="true"
+        android:onClick="onFinishClick"
+        android:background="@drawable/btn_operate"
+        />
+</LinearLayout>

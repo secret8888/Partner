@@ -4,6 +4,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -133,6 +134,14 @@ public class ActivityDetailActivity extends BaseActivity {
 
 	public void onSignedClick(View view) {
 		IntentManager.startSignedUserActivity(this, activityId);
+	}
+
+	public void onSignClick(View view) {
+		IntentManager.startActivitySignActivity(ActivityDetailActivity.this);
+	}
+
+	public void onInviteClick(View view) {
+
 	}
 
 	private void getActivityDetail() {
