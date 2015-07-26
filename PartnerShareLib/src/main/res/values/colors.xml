@@ -1,0 +1,11 @@
+<resources>
+
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="list_divider_grey">#dad5cb</color>
+    <color name="gray_pressed">#dddddd</color>
+    <color name="text_deep_gray">#535353</color>
+    <color name="transparent">#00000000</color>
+    <color name="theme_gray_bg">#F0F0F0</color>
+    
+</resources>

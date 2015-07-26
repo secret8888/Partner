@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:padding="@dimen/normal_margin_5" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_dialog"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/normal_margin_25"
+        android:paddingLeft="@dimen/normal_margin_15"
+        android:paddingRight="@dimen/normal_margin_15"
+        android:paddingTop="@dimen/normal_margin_15" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/share_to"
+            android:textColor="@color/text_deep_gray"
+            android:textSize="@dimen/text_18sp" />
+
+        <GridView
+            android:id="@+id/grid_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/normal_margin_15"
+            android:cacheColorHint="@android:color/transparent"
+            android:listSelector="@color/transparent"
+            android:numColumns="4"
+            android:verticalSpacing="@dimen/normal_margin_15" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_dialog"
+        android:gravity="center"
+        android:paddingBottom="@dimen/normal_margin_15"
+        android:paddingTop="@dimen/normal_margin_15"
+        android:text="@string/cancel"
+        android:textColor="@color/text_deep_gray"
+        android:textSize="@dimen/text_17sp" />
+
+</LinearLayout>
