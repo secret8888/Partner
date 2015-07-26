@@ -36,6 +36,7 @@ public class Consts {
     public static final String MAIN_FILE_PATH = Environment.getExternalStorageDirectory() + "/Partner/partner/";
     public static final String TEMP_FILE_PATH = MAIN_FILE_PATH + "temp/";
     public static final String AVATAR_CACHE_FILE =  "avatar.png";
+    public static final String PLATFORM_SHARE_NAME = "share_temp.png";
 
     /*
      * 网络连接超时时间

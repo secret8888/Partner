@@ -4,7 +4,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -17,6 +16,7 @@ import com.partner.common.http.AsyncHttpCallback;
 import com.partner.common.http.HttpManager;
 import com.partner.common.util.HttpUtils;
 import com.partner.common.util.IntentManager;
+import com.partner.common.util.ShareSDKManager;
 import com.partner.common.util.Utils;
 import com.partner.model.ActivityInfo;
 import com.partner.view.TitleView;
@@ -106,6 +106,7 @@ public class ActivityDetailActivity extends BaseActivity {
 	@Override
 	public void onTitleOperateClick() {
 		super.onTitleOperateClick();
+		ShareSDKManager.getInstance(this).shareWebPage("title", "desc", "http://img1.cache.netease.com/catchpic/9/90/90F93C644F394EA8D7539EF4BA6DE4FE.jpg", "http://www.baidu.com");
 	}
 
 	private void initActivityInfo() {
@@ -141,7 +142,7 @@ public class ActivityDetailActivity extends BaseActivity {
 	}
 
 	public void onInviteClick(View view) {
-
+		IntentManager.startInviteActivity(ActivityDetailActivity.this);
 	}
 
 	private void getActivityDetail() {

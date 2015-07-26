@@ -11,11 +11,14 @@ import com.partner.R;
 import com.partner.activity.base.BaseActivity;
 import com.partner.adapter.RegistrationInfoAdapter;
 import com.partner.common.annotation.ViewId;
+import com.partner.common.constant.IntentConsts;
 import com.partner.common.http.AsyncHttpCallback;
 import com.partner.common.http.HttpManager;
 import com.partner.common.util.HttpUtils;
 import com.partner.common.util.IntentManager;
+import com.partner.common.util.Toaster;
 import com.partner.common.util.Utils;
+import com.partner.model.RegistrationInfo;
 import com.partner.model.RegistrationList;
 import com.partner.view.TitleView;
 import com.squareup.okhttp.Request;
@@ -24,7 +27,7 @@ import com.youdao.yjson.YJson;
 
 import java.io.IOException;
 
-public class ActivitySignActivity extends BaseActivity implements AdapterView.OnItemClickListener {
+public class ActivitySignActivity extends BaseActivity {
 
 	@ViewId(R.id.view_title)
 	private TitleView titleView;
@@ -35,7 +38,11 @@ public class ActivitySignActivity extends BaseActivity implements AdapterView.On
 	@ViewId(R.id.list_content)
 	private ListView contentView;
 
+	private int activityId;
+
 	private RegistrationList registrationList;
+
+	private StringBuilder inrollIdsBuilder;
 
 	private static final String TAG = ActivitySignActivity.class.getSimpleName();
 
@@ -46,7 +53,7 @@ public class ActivitySignActivity extends BaseActivity implements AdapterView.On
 
 	@Override
 	protected void readIntent() {
-
+		activityId = getIntent().getIntExtra(IntentConsts.ID_KEY, -1);
 	}
 
 	@Override
@@ -64,16 +71,23 @@ public class ActivitySignActivity extends BaseActivity implements AdapterView.On
 	@Override
 	protected void setListeners() {
 		titleView.setListener(this);
-		contentView.setOnItemClickListener(this);
-	}
-
-	@Override
-	public void onItemClick(AdapterView<?> parent, View view, int position,
-							long id) {
 	}
 
 	public void onFinishClick(View view) {
-		onBackPressed();
+		signActivity();
+	}
+
+	public void onAddNumChanged() {
+		int num = 0;
+		inrollIdsBuilder = new StringBuilder();
+		for(RegistrationInfo info : registrationList.getInrollInfos()) {
+			if(info.isRegistrationAdd()) {
+				num ++;
+				inrollIdsBuilder.append(info.getUserenrollInfoId());
+				inrollIdsBuilder.append(",");
+			}
+		}
+		signedNumView.setText(String.valueOf(num));
 	}
 
 	@Override
@@ -104,7 +118,31 @@ public class ActivitySignActivity extends BaseActivity implements AdapterView.On
 		String result = HttpUtils.getResponseData(response);
 
 		registrationList = YJson.getObj(result, RegistrationList.class);
-		RegistrationInfoAdapter adapter = new RegistrationInfoAdapter(this, registrationList.getInrollInfos());
+		RegistrationInfoAdapter adapter = new RegistrationInfoAdapter(this, registrationList.getInrollInfos(), true);
 		contentView.setAdapter(adapter);
+	}
+
+	private void signActivity() {
+		int signNum = Integer.parseInt(signedNumView.getText().toString());
+		if(signNum <= 0) {
+			Toaster.show(R.string.sign_select);
+			return;
+		}
+		if (Utils.checkNetworkConnected(this)) {
+			onShowLoadingDialog();
+			HttpManager.signActivity(PartnerApplication.getInstance().getUserInfo().getToken(), activityId,
+					signNum, inrollIdsBuilder.toString(), new AsyncHttpCallback() {
+				@Override
+				public void onRequestResponse(Response response) {
+					Toaster.show(R.string.activity_sign_success);
+					onBackPressed();
+				}
+
+				@Override
+				public void onRequestFailure(Request request, IOException e) {
+					onDismissLoadingDialog();
+				}
+			});
+		}
 	}
 }

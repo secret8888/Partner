@@ -251,22 +251,35 @@ public class HttpManager {
     /**
      * 获取活动详情
      * @param token
-     * @param channelId
+     * @param activityId
      * @param callback
      */
-    public static void getActivityDetail(String token, int channelId, AsyncHttpCallback callback) {
-        String url = String.format(HttpConsts.GET_ACTIVITY_DETAIL, token, channelId);
+    public static void getActivityDetail(String token, int activityId, AsyncHttpCallback callback) {
+        String url = String.format(HttpConsts.GET_ACTIVITY_DETAIL, token, activityId);
         PartnerHttpClient.asyncGet(url + HttpUtils.getUserSign(), callback);
     }
 
     /**
      * 获取活动报名人
      * @param token
-     * @param channelId
+     * @param activityId
      * @param callback
      */
-    public static void getSignedUsers(String token, int channelId, AsyncHttpCallback callback) {
-        String url = String.format(HttpConsts.GET_SIGNED_USER, token, channelId);
+    public static void getSignedUsers(String token, int activityId, AsyncHttpCallback callback) {
+        String url = String.format(HttpConsts.GET_SIGNED_USER, token, activityId);
+        PartnerHttpClient.asyncGet(url + HttpUtils.getUserSign(), callback);
+    }
+
+    /**
+     * 参加活动
+     * @param token
+     * @param activityId
+     * @param childrenNum
+     * @param inrollIds
+     * @param callback
+     */
+    public static void signActivity(String token, int activityId, int childrenNum, String inrollIds, AsyncHttpCallback callback) {
+        String url = String.format(HttpConsts.SIGN_ACTIVITY, token, activityId, childrenNum, inrollIds);
         PartnerHttpClient.asyncGet(url + HttpUtils.getUserSign(), callback);
     }
 }

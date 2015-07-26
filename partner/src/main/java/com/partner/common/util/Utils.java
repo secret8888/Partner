@@ -518,4 +518,21 @@ public class Utils {
 		}
 		return apiKey;
 	}
+
+	public static final String toSDCardPath(String path) {
+		return formatPath(Environment.getExternalStorageDirectory().getAbsolutePath()) + path;
+	}
+
+	public static final String formatPath(String path) {
+		if (path == null) {
+			return null;
+		}
+		if (path.length() == 0) {
+			return "/";
+		}
+		if (path.charAt(path.length() - 1) != '/') {
+			return path + "/";
+		}
+		return path;
+	}
 }

@@ -138,6 +138,10 @@
             android:name=".activity.activity.ActivitySignActivity"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".activity.activity.InviteActivity"
+            android:screenOrientation="portrait" />
+
         <!-- qr code-->
         <activity
             android:name=".qrcode.activity.ResultActivity"
@@ -145,6 +149,33 @@
         <activity
             android:name=".qrcode.activity.CaptureActivity"
             android:screenOrientation="portrait" />
+
+        <!-- share sdk start -->
+        <!-- weixin -->
+        <activity
+            android:name="com.partner.wxapi.WXEntryActivity"
+            android:exported="true" >
+        </activity>
+
+        <!-- for qq -->
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="tencent100586700" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!-- share sdk end -->
 
         <!-- umeng start-->
         <service

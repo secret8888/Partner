@@ -18,6 +18,8 @@ public class RegistrationInfo implements Serializable{
 
     private String userenrollInfoParent;
 
+    private boolean isRegistrationAdd = false;
+
     public long getCreateTime() {
         return createTime;
     }
@@ -64,5 +66,13 @@ public class RegistrationInfo implements Serializable{
 
     public void setUserenrollInfoParent(String userenrollInfoParent) {
         this.userenrollInfoParent = userenrollInfoParent;
+    }
+
+    public boolean isRegistrationAdd() {
+        return isRegistrationAdd;
+    }
+
+    public void setIsRegistrationAdd(boolean isRegistrationAdd) {
+        this.isRegistrationAdd = isRegistrationAdd;
     }
 }

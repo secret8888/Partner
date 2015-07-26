@@ -9,6 +9,7 @@ import com.partner.activity.activity.ActivityDetailActivity;
 import com.partner.activity.GuideActivity;
 import com.partner.activity.activity.ActivitySignActivity;
 import com.partner.activity.activity.InstitutionInfoActivity;
+import com.partner.activity.activity.InviteActivity;
 import com.partner.activity.activity.MarkActivity;
 import com.partner.activity.activity.SignedUserActivity;
 import com.partner.activity.info.InfoItemEditActivity;
@@ -208,6 +209,11 @@ public class IntentManager {
 
     public static void startActivitySignActivity(Activity context) {
         Intent intent = new Intent(context, ActivitySignActivity.class);
+        context.startActivity(intent);
+    }
+
+    public static void startInviteActivity(Activity context) {
+        Intent intent = new Intent(context, InviteActivity.class);
         context.startActivity(intent);
     }
 
