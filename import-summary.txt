@@ -1,0 +1,196 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+* build.xml
+* ic_launcher-web.png
+* lib_projects/
+* lib_projects/android_share_weibosdk/
+* lib_projects/android_share_weibosdk/.classpath
+* lib_projects/android_share_weibosdk/.project
+* lib_projects/android_share_weibosdk/.settings/
+* lib_projects/android_share_weibosdk/.settings/org.eclipse.jdt.core.prefs
+* lib_projects/android_share_weibosdk/AndroidManifest.xml
+* lib_projects/android_share_weibosdk/build.xml
+* lib_projects/android_share_weibosdk/libs/
+* lib_projects/android_share_weibosdk/libs/weibosdkcore.jar
+* lib_projects/android_share_weibosdk/lint.xml
+* lib_projects/android_share_weibosdk/local.properties
+* lib_projects/android_share_weibosdk/proguard-project.txt
+* lib_projects/android_share_weibosdk/project.properties
+* lib_projects/android_share_weibosdk/res/
+* lib_projects/android_share_weibosdk/res/drawable-hdpi/
+* lib_projects/android_share_weibosdk/res/drawable-hdpi/ic_com_sina_weibo_sdk_button_blue_focused.9.png
+* lib_projects/android_share_weibosdk/res/drawable-hdpi/ic_com_sina_weibo_sdk_button_blue_normal.9.png
+* lib_projects/android_share_weibosdk/res/drawable-hdpi/ic_com_sina_weibo_sdk_button_blue_pressed.9.png
+* lib_projects/android_share_weibosdk/res/drawable-hdpi/ic_com_sina_weibo_sdk_button_grey_focused.9.png
+* lib_projects/android_share_weibosdk/res/drawable-hdpi/ic_com_sina_weibo_sdk_button_grey_normal.9.png
+* lib_projects/android_share_weibosdk/res/drawable-hdpi/ic_com_sina_weibo_sdk_button_grey_pressed.9.png
+* lib_projects/android_share_weibosdk/res/drawable-hdpi/ic_com_sina_weibo_sdk_login_button_with_frame_logo_focused.png
+* lib_projects/android_share_weibosdk/res/drawable-hdpi/ic_com_sina_weibo_sdk_login_button_with_frame_logo_normal.png
+* lib_projects/android_share_weibosdk/res/drawable-hdpi/ic_com_sina_weibo_sdk_login_button_with_frame_logo_pressed.png
+* lib_projects/android_share_weibosdk/res/drawable-hdpi/ic_com_sina_weibo_sdk_login_with_account_text_focused.png
+* lib_projects/android_share_weibosdk/res/drawable-hdpi/ic_com_sina_weibo_sdk_login_with_account_text_normal.png
+* lib_projects/android_share_weibosdk/res/drawable-hdpi/ic_com_sina_weibo_sdk_login_with_account_text_pressed.png
+* lib_projects/android_share_weibosdk/res/drawable-hdpi/ic_com_sina_weibo_sdk_login_with_text.png
+* lib_projects/android_share_weibosdk/res/drawable-hdpi/ic_com_sina_weibo_sdk_logo.png
+* lib_projects/android_share_weibosdk/res/drawable-ldpi/
+* lib_projects/android_share_weibosdk/res/drawable-ldpi/ic_com_sina_weibo_sdk_login_button_with_frame_logo_focused.png
+* lib_projects/android_share_weibosdk/res/drawable-ldpi/ic_com_sina_weibo_sdk_login_button_with_frame_logo_normal.png
+* lib_projects/android_share_weibosdk/res/drawable-ldpi/ic_com_sina_weibo_sdk_login_button_with_frame_logo_pressed.png
+* lib_projects/android_share_weibosdk/res/drawable-ldpi/ic_com_sina_weibo_sdk_login_with_account_text_focused.png
+* lib_projects/android_share_weibosdk/res/drawable-ldpi/ic_com_sina_weibo_sdk_login_with_account_text_normal.png
+* lib_projects/android_share_weibosdk/res/drawable-ldpi/ic_com_sina_weibo_sdk_login_with_account_text_pressed.png
+* lib_projects/android_share_weibosdk/res/drawable-ldpi/ic_com_sina_weibo_sdk_login_with_text.png
+* lib_projects/android_share_weibosdk/res/drawable-ldpi/ic_com_sina_weibo_sdk_logo.png
+* lib_projects/android_share_weibosdk/res/drawable-mdpi/
+* lib_projects/android_share_weibosdk/res/drawable-mdpi/ic_com_sina_weibo_sdk_button_blue_focused.9.png
+* lib_projects/android_share_weibosdk/res/drawable-mdpi/ic_com_sina_weibo_sdk_button_blue_normal.9.png
+* lib_projects/android_share_weibosdk/res/drawable-mdpi/ic_com_sina_weibo_sdk_button_blue_pressed.9.png
+* lib_projects/android_share_weibosdk/res/drawable-mdpi/ic_com_sina_weibo_sdk_button_grey_focused.9.png
+* lib_projects/android_share_weibosdk/res/drawable-mdpi/ic_com_sina_weibo_sdk_button_grey_normal.9.png
+* lib_projects/android_share_weibosdk/res/drawable-mdpi/ic_com_sina_weibo_sdk_button_grey_pressed.9.png
+* lib_projects/android_share_weibosdk/res/drawable-mdpi/ic_com_sina_weibo_sdk_login_button_with_frame_logo_focused.png
+* lib_projects/android_share_weibosdk/res/drawable-mdpi/ic_com_sina_weibo_sdk_login_button_with_frame_logo_normal.png
+* lib_projects/android_share_weibosdk/res/drawable-mdpi/ic_com_sina_weibo_sdk_login_button_with_frame_logo_pressed.png
+* lib_projects/android_share_weibosdk/res/drawable-mdpi/ic_com_sina_weibo_sdk_login_with_account_text_focused.png
+* lib_projects/android_share_weibosdk/res/drawable-mdpi/ic_com_sina_weibo_sdk_login_with_account_text_normal.png
+* lib_projects/android_share_weibosdk/res/drawable-mdpi/ic_com_sina_weibo_sdk_login_with_account_text_pressed.png
+* lib_projects/android_share_weibosdk/res/drawable-mdpi/ic_com_sina_weibo_sdk_login_with_text.png
+* lib_projects/android_share_weibosdk/res/drawable-mdpi/ic_com_sina_weibo_sdk_logo.png
+* lib_projects/android_share_weibosdk/res/drawable-xhdpi/
+* lib_projects/android_share_weibosdk/res/drawable-xhdpi/ic_com_sina_weibo_sdk_button_blue_focused.9.png
+* lib_projects/android_share_weibosdk/res/drawable-xhdpi/ic_com_sina_weibo_sdk_button_blue_normal.9.png
+* lib_projects/android_share_weibosdk/res/drawable-xhdpi/ic_com_sina_weibo_sdk_button_blue_pressed.9.png
+* lib_projects/android_share_weibosdk/res/drawable-xhdpi/ic_com_sina_weibo_sdk_button_grey_focused.9.png
+* lib_projects/android_share_weibosdk/res/drawable-xhdpi/ic_com_sina_weibo_sdk_button_grey_normal.9.png
+* lib_projects/android_share_weibosdk/res/drawable-xhdpi/ic_com_sina_weibo_sdk_button_grey_pressed.9.png
+* lib_projects/android_share_weibosdk/res/drawable-xhdpi/ic_com_sina_weibo_sdk_login_button_with_frame_logo_focused.png
+* lib_projects/android_share_weibosdk/res/drawable-xhdpi/ic_com_sina_weibo_sdk_login_button_with_frame_logo_normal.png
+* lib_projects/android_share_weibosdk/res/drawable-xhdpi/ic_com_sina_weibo_sdk_login_button_with_frame_logo_pressed.png
+* lib_projects/android_share_weibosdk/res/drawable-xhdpi/ic_com_sina_weibo_sdk_login_with_account_text_focused.png
+* lib_projects/android_share_weibosdk/res/drawable-xhdpi/ic_com_sina_weibo_sdk_login_with_account_text_normal.png
+* lib_projects/android_share_weibosdk/res/drawable-xhdpi/ic_com_sina_weibo_sdk_login_with_account_text_pressed.png
+* lib_projects/android_share_weibosdk/res/drawable-xhdpi/ic_com_sina_weibo_sdk_logo.png
+* lib_projects/android_share_weibosdk/res/drawable-xxhdpi/
+* lib_projects/android_share_weibosdk/res/drawable-xxhdpi/ic_com_sina_weibo_sdk_login_button_with_frame_logo_focused.png
+* lib_projects/android_share_weibosdk/res/drawable-xxhdpi/ic_com_sina_weibo_sdk_login_button_with_frame_logo_normal.png
+* lib_projects/android_share_weibosdk/res/drawable-xxhdpi/ic_com_sina_weibo_sdk_login_button_with_frame_logo_pressed.png
+* lib_projects/android_share_weibosdk/res/drawable-xxhdpi/ic_com_sina_weibo_sdk_login_with_account_text_focused.png
+* lib_projects/android_share_weibosdk/res/drawable-xxhdpi/ic_com_sina_weibo_sdk_login_with_account_text_normal.png
+* lib_projects/android_share_weibosdk/res/drawable-xxhdpi/ic_com_sina_weibo_sdk_login_with_account_text_pressed.png
+* lib_projects/android_share_weibosdk/res/drawable/
+* lib_projects/android_share_weibosdk/res/drawable/com_sina_weibo_sdk_button_blue.xml
+* lib_projects/android_share_weibosdk/res/drawable/com_sina_weibo_sdk_button_grey.xml
+* lib_projects/android_share_weibosdk/res/drawable/com_sina_weibo_sdk_login_button_with_account_text.xml
+* lib_projects/android_share_weibosdk/res/drawable/com_sina_weibo_sdk_login_button_with_frame_logo.xml
+* lib_projects/android_share_weibosdk/res/drawable/com_sina_weibo_sdk_login_button_with_original_logo.xml
+* lib_projects/android_share_weibosdk/res/values-large-long/
+* lib_projects/android_share_weibosdk/res/values-large-long/dimens.xml
+* lib_projects/android_share_weibosdk/res/values-normal-notlong/
+* lib_projects/android_share_weibosdk/res/values-normal-notlong/dimens.xml
+* lib_projects/android_share_weibosdk/res/values-v11/
+* lib_projects/android_share_weibosdk/res/values-v11/styles.xml
+* lib_projects/android_share_weibosdk/res/values-v14/
+* lib_projects/android_share_weibosdk/res/values-v14/styles.xml
+* lib_projects/android_share_weibosdk/res/values-zh-rTW/
+* lib_projects/android_share_weibosdk/res/values-zh-rTW/strings.xml
+* lib_projects/android_share_weibosdk/res/values/
+* lib_projects/android_share_weibosdk/res/values/dimens.xml
+* lib_projects/android_share_weibosdk/res/values/strings.xml
+* lib_projects/android_share_weibosdk/res/values/styles.xml
+* lib_projects/android_share_weibosdk/src/
+* lib_projects/android_share_weibosdk/src/com/
+* lib_projects/android_share_weibosdk/src/com/sina/
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/codestyle/
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/codestyle/CodingRuler.java
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/codestyle/SampleCode.java
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/openapi/
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/openapi/AbsOpenAPI.java
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/openapi/CommentsAPI.java
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/openapi/InviteAPI.java
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/openapi/LogoutAPI.java
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/openapi/StatusesAPI.java
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/openapi/UsersAPI.java
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/openapi/legacy/
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/openapi/legacy/AccountAPI.java
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/openapi/legacy/ActivityInvokeAPI.java
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/openapi/legacy/CommonAPI.java
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/openapi/legacy/FavoritesAPI.java
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/openapi/legacy/FriendshipsAPI.java
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/openapi/legacy/GroupAPI.java
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/openapi/legacy/LocationAPI.java
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/openapi/legacy/PlaceAPI.java
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/openapi/legacy/RegisterAPI.java
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/openapi/legacy/SearchAPI.java
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/openapi/legacy/ShortUrlAPI.java
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/openapi/legacy/StatusesAPI.java
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/openapi/legacy/SuggestionsAPI.java
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/openapi/legacy/TagsAPI.java
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/openapi/legacy/TrendsAPI.java
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/openapi/models/
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/openapi/models/AbsDataObject.java
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/openapi/models/Comment.java
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/openapi/models/CommentList.java
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/openapi/models/Coordinate.java
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/openapi/models/ErrorInfo.java
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/openapi/models/Favorite.java
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/openapi/models/FavoriteList.java
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/openapi/models/Geo.java
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/openapi/models/GeoList.java
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/openapi/models/Group.java
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/openapi/models/GroupList.java
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/openapi/models/GroupTag.java
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/openapi/models/IParseable.java
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/openapi/models/MusicInfo.java
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/openapi/models/OffsetGeo.java
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/openapi/models/Poi.java
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/openapi/models/PoiList.java
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/openapi/models/Privacy.java
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/openapi/models/Remind.java
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/openapi/models/Status.java
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/openapi/models/StatusList.java
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/openapi/models/Tag.java
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/openapi/models/User.java
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/openapi/models/Visible.java
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/widget/
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/widget/LoginButton.java
+* lib_projects/android_share_weibosdk/src/com/sina/weibo/sdk/widget/LoginoutButton.java
+* proguard-project.txt
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+* AndroidManifest.xml => PartnerShareLib/src/main/AndroidManifest.xml
+* assets/ => PartnerShareLib/src/main/assets
+* libs/android_sdk_v2.2.2.jar => PartnerShareLib/libs/android_sdk_v2.2.2.jar
+* libs/libammsdk.jar => PartnerShareLib/libs/libammsdk.jar
+* libs/mta-sdk-1.0.0.jar => PartnerShareLib/libs/mta-sdk-1.0.0.jar
+* libs/open_sdk.jar => PartnerShareLib/libs/open_sdk.jar
+* libs/weibosdkcore.jar => PartnerShareLib/libs/weibosdkcore.jar
+* res/ => PartnerShareLib/src/main/res/
+* src/ => PartnerShareLib/src/main/java/
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)

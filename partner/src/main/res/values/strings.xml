@@ -60,6 +60,9 @@
     <string name="all">所有</string>
     <string name="part_in">参加</string>
     <string name="follow">关注</string>
+    <string name="cancel_follow">取消关注</string>
+    <string name="follow_success">关注成功</string>
+    <string name="follow_fail">关注失败</string>
     <string name="qrcode">扫一扫加好友</string>
     <string name="qr_code">二维码</string>
     <string name="message_center">消息中心</string>
@@ -75,13 +78,14 @@
     <string name="activity_intro">活动介绍</string>
     <string name="activity_info">活动信息</string>
     <string name="detail_intro">详细介绍》</string>
-    <string name="gather_time">集合时间</string>
-    <string name="gather_address">集合地点</string>
+    <string name="start_time">开始时间</string>
+    <string name="end_time">结束时间</string>
     <string name="start_address">起始地点</string>
     <string name="activity_address">活动地点</string>
     <string name="charter_notice">包车公示</string>
-    <string name="distance">总里程 </string>
+    <string name="activity_num">活动人数</string>
     <string name="more_intro">更多描述</string>
+    <string name="activity_detail_intro">活动详细介绍</string>
     <string name="path_intro">路线描述</string>
     <string name="activity_cost">活动费用</string>
     <string name="travel_assign">行程安排</string>
@@ -94,11 +98,16 @@
     <string name="institution_detail">机构信息</string>
     <string name="sign_num">%d人/已报名</string>
     <string name="view_num">%d次/浏览</string>
+    <string name="people_num">%d人</string>
     <string name="publish_name">发布人姓名：%s</string>
     <string name="sign">报名</string>
-    <string name="sign_select">请选择报名人员</string>
+    <string name="sign_select">请填写活动小孩的个数</string>
+    <string name="parent_select">请至少选一名陪同家长</string>
+    <string name="friend_select">请选择分享好友</string>
     <string name="signed_num">参加活动的小孩个数</string>
     <string name="activity_sign_success">活动报名成功</string>
+    <string name="signed_num_tip">%d人/已报名</string>
+    <string name="invite_success">邀请好友成功</string>
 
     <!-- info -->
     <string name="delete">删除</string>
@@ -107,6 +116,8 @@
     <string name="nickname">昵称</string>
     <string name="note_name">备注名</string>
     <string name="message_title_hint">请输入留言标题</string>
+    <string name="message_content_hint">请输入留言内容</string>
+    <string name="leave_msg_success">留言成功</string>
     <string name="send">发送</string>
     <string name="pick_a_picture">可选择添加一张图片</string>
     <string name="cancel">取消</string>

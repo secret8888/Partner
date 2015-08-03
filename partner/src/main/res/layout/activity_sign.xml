@@ -18,16 +18,17 @@
         android:minHeight="45dp"
         >
 
-        <TextView
-            android:id="@+id/tv_signed_num"
+        <EditText
+            android:id="@+id/edit_signed_num"
             android:layout_width="40dp"
             android:layout_height="30dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
             android:gravity="center"
+            android:inputType="number"
             android:textColor="@color/black"
-            android:text="0"
+            android:text="1"
             android:background="@drawable/btn_edge"
             />
         <TextView
@@ -37,11 +38,18 @@
             />
     </RelativeLayout>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/partner_space_common"
+        android:layout_marginLeft="@dimen/partner_space_normal"
+        android:layout_marginBottom="@dimen/partner_space_normal"
+        android:text="陪同家长"
+        />
     <ListView
         android:id="@+id/list_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/partner_space_medium"
         android:background="@color/white"
         android:divider="@color/bg_gray"
         android:dividerHeight="@dimen/partner_space_mini"

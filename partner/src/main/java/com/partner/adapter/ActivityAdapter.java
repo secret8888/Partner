@@ -76,12 +76,15 @@ public class ActivityAdapter extends BaseAdapter {
 		}
 		long createTime = info.getCreateTime();
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM");
-		Date date = new Date(createTime);
+		Date date = new Date(createTime*1000);
 		holder.monthView.setText(dateFormat.format(date));
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(date);
-		holder.monthView.setText(String.valueOf(calendar.get(Calendar.DAY_OF_MONTH)));
+		holder.dateView.setText(String.valueOf(calendar.get(Calendar.DAY_OF_MONTH)));
 		holder.activityNameView.setText(info.getActivityTitle());
+		holder.signNumView.setText(String.format(context.getResources().getString(R.string.signed_num_tip), info.getActivityAgainNum()));
+		holder.viewNumView.setText(String.format(context.getString(R.string.view_num), info.getActivityViewNum()));
+		holder.locationView.setText(info.getActivityAddress());
 		return convertView;
 	}
 

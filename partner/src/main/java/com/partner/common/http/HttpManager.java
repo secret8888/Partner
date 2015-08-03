@@ -282,4 +282,69 @@ public class HttpManager {
         String url = String.format(HttpConsts.SIGN_ACTIVITY, token, activityId, childrenNum, inrollIds);
         PartnerHttpClient.asyncGet(url + HttpUtils.getUserSign(), callback);
     }
+
+    /**
+     * 获取关注的机构
+     * @param token
+     * @param callback
+     */
+    public static void getFollowedInstitutions(String token, AsyncHttpCallback callback) {
+        String url = String.format(HttpConsts.FOLLOWED_INSTITUTION, token);
+        PartnerHttpClient.asyncGet(url + HttpUtils.getUserSign(), callback);
+    }
+
+    /**
+     * 关注活动的举办方
+     * @param token
+     * @param callback
+     */
+    public static void followActivity(String token, int activityId, AsyncHttpCallback callback) {
+        String url = String.format(HttpConsts.FOLLOW_ACTIVITY, token, activityId);
+        PartnerHttpClient.asyncGet(url + HttpUtils.getUserSign(), callback);
+    }
+
+    /**
+     * 好友留言接口
+     * @param token
+     * @param userId
+     * @param callback
+     */
+    public static void sendMessage(String token, int userId, String content, AsyncHttpCallback callback) {
+        String url = String.format(HttpConsts.SEND_MESSAGE, token, userId, content);
+        PartnerHttpClient.asyncGet(url + HttpUtils.getUserSign(), callback);
+    }
+
+    /**
+     * 查看机构信息接口
+     * @param token
+     * @param id
+     * @param callback
+     */
+    public static void getOrgInfo(String token, int id, AsyncHttpCallback callback) {
+        String url = String.format(HttpConsts.GET_INSTITUTION_INFO, token, id);
+        PartnerHttpClient.asyncGet(url + HttpUtils.getUserSign(), callback);
+    }
+
+    /**
+     * 关注好友
+     * @param token
+     * @param friendToken
+     * @param callback
+     */
+    public static void followFriend(String token, String friendToken, AsyncHttpCallback callback) {
+        String url = String.format(HttpConsts.FOLLOW_FRIEND, token, friendToken);
+        PartnerHttpClient.asyncGet(url + HttpUtils.getUserSign(), callback);
+    }
+
+    /**
+     * 邀请好友
+     * @param token
+     * @param activityId
+     * @param inviteUserIds
+     * @param callback
+     */
+    public static void inviteFriend(String token, int activityId, String inviteUserIds, AsyncHttpCallback callback) {
+        String url = String.format(HttpConsts.INVITE_ACTIVITY, token, activityId, inviteUserIds);
+        PartnerHttpClient.asyncGet(url + HttpUtils.getUserSign(), callback);
+    }
 }

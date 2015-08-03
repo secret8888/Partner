@@ -1,10 +1,18 @@
-<com.partner.view.refresh.RefreshListView
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/list_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    android:divider="@color/bg_gray"
-    android:dividerHeight="@dimen/partner_space_mini"
+    android:background="@color/bg_gray"
     >
-</com.partner.view.refresh.RefreshListView>
+    <ListView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/list_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/partner_space_middle"
+        android:background="@color/white"
+        android:divider="@color/bg_gray"
+        android:dividerHeight="@dimen/partner_space_mini"
+        >
+    </ListView>
+</FrameLayout>

@@ -17,8 +17,20 @@
         />
 
     <ImageView
+        android:id="@+id/im_arrow"
         style="@style/PersonalArrowStyle"
         />
+
+    <CheckBox
+        android:id="@+id/cbox_select"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/partner_space_medium"
+        android:visibility="gone"
+        />
+
     <TextView
         android:id="@+id/tv_name"
         style="@style/PersonalItemText"

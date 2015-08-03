@@ -24,7 +24,7 @@
         android:layout_centerVertical="true"
         android:layout_marginRight="@dimen/partner_space_common"
         android:gravity="center"
-        android:text="关注"
+        android:text="@string/follow"
         android:background="@drawable/btn_edge"
         />
     <TextView
@@ -32,6 +32,5 @@
         style="@style/PersonalItemText"
         android:layout_toRightOf="@id/im_avatar"
         android:layout_toLeftOf="@+id/tv_follow"
-        android:text="青青的小草啊哈客家话发咔叽恢复咔叽发挥"
         />
 </RelativeLayout>

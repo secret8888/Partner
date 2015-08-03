@@ -40,31 +40,6 @@ public class MainFragment extends BaseFragment implements OnClickListener, ViewP
 	protected void initControls(Bundle savedInstanceState) {
 		activityPager.setAdapter(new ActivityFragmentAdapter(getFragmentManager()));
 		activityPager.setOffscreenPageLimit(3);
-//		showRefreshingView();
-//		HttpManager.getRecommendedProjects(new CoinvsHandler(getActivity()) {
-//
-//			@Override
-//			protected void handleSuccessMessage(Object object) {
-//				hideRefreshingView();
-//				HandleInfo handleInfo = (HandleInfo) object;
-//				ArrayList<ProjectInfo> projectInfos = GsonUtils
-//						.getProjectsFromJson(handleInfo.getData());
-//				if (projectInfos != null) {
-//					ProjectFragmentAdapter mAdapter = new ProjectFragmentAdapter(
-//							getActivity().getSupportFragmentManager(),
-//							projectInfos);
-//					projectPager.setAdapter(mAdapter);
-//					projectIndicator.setViewPager(projectPager);
-//				}
-//				getNews();
-//			}
-//
-//			@Override
-//			protected void handleError(int errorCode) {
-//				hideRefreshingView();
-//				getNews();
-//			}
-//		});
 	}
 
 	@Override
@@ -79,13 +54,13 @@ public class MainFragment extends BaseFragment implements OnClickListener, ViewP
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.tv_type_all:
-			activityPager.setCurrentItem(0);
+			activityPager.setCurrentItem(0, false);
 			break;
 		case R.id.tv_type_activity:
-			activityPager.setCurrentItem(1);
+			activityPager.setCurrentItem(1, false);
 			break;
 		case R.id.tv_type_follow:
-			activityPager.setCurrentItem(2);
+			activityPager.setCurrentItem(2, false);
 			break;
 		default:
 			break;

@@ -2,12 +2,14 @@ package com.partner.fragment;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 
 import com.partner.PartnerApplication;
 import com.partner.R;
+import com.partner.activity.MainActivity;
 import com.partner.adapter.ActivityAdapter;
 import com.partner.common.annotation.ViewId;
 import com.partner.common.constant.Consts;
@@ -52,14 +54,15 @@ public class ActivityListFragment extends BaseFragment implements OnItemClickLis
 	@Override
 	protected void initControls(Bundle savedInstanceState) {
 		contentView.setRefreshTime(Utils.getTime());
-		onShowLoadingDialog();
-		getActivityList(0);
 	}
 
 	@Override
 	public void onResume() {
 		super.onResume();
-//		contentView.autoRefresh();
+		if(activityList == null || activityList.getActivities().size() < 1) {
+			onShowLoadingDialog();
+			getActivityList(0);
+		}
 	}
 
 	@Override
@@ -108,7 +111,7 @@ public class ActivityListFragment extends BaseFragment implements OnItemClickLis
 				public void onRequestResponse(Response response) {
 					onDismissLoadingDialog();
 					onMessageLoad();
-					String data = HttpUtils.getResponseData(response);
+					String data = HttpUtils.getResponseData(response, false);
 					if(TextUtils.isEmpty(data)) {
 						return;
 					}

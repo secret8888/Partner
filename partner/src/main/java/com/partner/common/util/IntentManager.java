@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import com.partner.activity.activity.ActivityDetailActivity;
 import com.partner.activity.GuideActivity;
 import com.partner.activity.activity.ActivitySignActivity;
+import com.partner.activity.activity.ContentActivity;
 import com.partner.activity.activity.InstitutionInfoActivity;
 import com.partner.activity.activity.InviteActivity;
 import com.partner.activity.activity.MarkActivity;
@@ -118,8 +119,9 @@ public class IntentManager {
      *
      * @param context
      */
-    public static void startLeaveMessageActivity(Context context) {
+    public static void startLeaveMessageActivity(Context context, int friendId) {
         Intent intent = new Intent(context, LeaveMessageActivity.class);
+        intent.putExtra(IntentConsts.ID_KEY, friendId);
         context.startActivity(intent);
     }
 
@@ -196,8 +198,9 @@ public class IntentManager {
         context.startActivity(intent);
     }
 
-    public static void startInstitutionInfoActivity(Activity context) {
+    public static void startInstitutionInfoActivity(Activity context, int id) {
         Intent intent = new Intent(context, InstitutionInfoActivity.class);
+        intent.putExtra(IntentConsts.ID_KEY, id);
         context.startActivity(intent);
     }
 
@@ -207,13 +210,21 @@ public class IntentManager {
         context.startActivity(intent);
     }
 
-    public static void startActivitySignActivity(Activity context) {
+    public static void startActivitySignActivity(Activity context, int activityId) {
         Intent intent = new Intent(context, ActivitySignActivity.class);
+        intent.putExtra(IntentConsts.ID_KEY, activityId);
         context.startActivity(intent);
     }
 
     public static void startInviteActivity(Activity context) {
         Intent intent = new Intent(context, InviteActivity.class);
+        context.startActivity(intent);
+    }
+
+    public static void startContentActivity(Activity context, String title, String content) {
+        Intent intent = new Intent(context, ContentActivity.class);
+        intent.putExtra(IntentConsts.TITLE_KEY, title);
+        intent.putExtra(IntentConsts.INFO_KEY, content);
         context.startActivity(intent);
     }
 

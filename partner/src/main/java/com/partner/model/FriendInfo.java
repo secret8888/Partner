@@ -11,6 +11,8 @@ public class FriendInfo implements Serializable{
 
     private int friendId;
 
+    private int id;
+
     //备注名
     private String friendMyName;
 
@@ -31,7 +33,11 @@ public class FriendInfo implements Serializable{
 
     private String headimage;
 
+    private String usertoken;
+
     private boolean isfriend;
+
+    private boolean isSelected = false;
 
     public int getFriendId() {
         return friendId;
@@ -119,5 +125,29 @@ public class FriendInfo implements Serializable{
 
     public void setIsfriend(boolean isfriend) {
         this.isfriend = isfriend;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getUsertoken() {
+        return usertoken;
+    }
+
+    public void setUsertoken(String usertoken) {
+        this.usertoken = usertoken;
+    }
+
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setIsSelected(boolean isSelected) {
+        this.isSelected = isSelected;
     }
 }

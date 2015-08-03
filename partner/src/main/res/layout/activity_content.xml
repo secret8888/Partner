@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray"
+    android:orientation="vertical" >
+
+    <com.partner.view.TitleView
+        android:id="@+id/view_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/partner_space_common"
+        android:scrollbars="none"
+        android:background="@color/white"
+        >
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="@dimen/ts_14"
+            android:minHeight="200dp"
+            android:gravity="top"
+            />
+    </ScrollView>
+
+</LinearLayout>

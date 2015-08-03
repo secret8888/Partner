@@ -9,9 +9,17 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.partner.PartnerApplication;
 import com.partner.R;
+import com.partner.activity.base.BaseActivity;
+import com.partner.common.http.AsyncHttpCallback;
+import com.partner.common.http.HttpManager;
+import com.partner.common.util.Utils;
 import com.partner.model.FriendInfo;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class SignedUserAdapter extends BaseAdapter {
@@ -56,13 +64,54 @@ public class SignedUserAdapter extends BaseAdapter {
 			holder = (ViewHolder) convertView.getTag();
 		}
 
-		FriendInfo info = mItems.get(position);
+		final FriendInfo info = mItems.get(position);
 		if(!TextUtils.isEmpty(info.getHeadimage())) {
 			Uri uri = Uri.parse(info.getHeadimage());
 			holder.avatarView.setImageURI(uri);
 		}
 		holder.nameView.setText(info.getNickname());
+		if(info.isfriend()) {
+			holder.followView.setText(R.string.cancel_follow);
+		} else {
+			holder.followView.setText(R.string.follow);
+		}
+		holder.followView.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				operaFriend(info);
+			}
+		});
 		return convertView;
+	}
+
+	private void operaFriend(final FriendInfo mInfo) {
+		final AsyncHttpCallback callback = new AsyncHttpCallback() {
+			@Override
+			public void onRequestResponse(Response response) {
+				((BaseActivity)context).onDismissLoadingDialog();
+				if(mInfo.isfriend()) {
+					mInfo.setIsfriend(false);
+				} else {
+					mInfo.setIsfriend(true);
+				}
+				notifyDataSetChanged();
+			}
+
+			@Override
+			public void onRequestFailure(Request request, IOException e) {
+				((BaseActivity)context).onDismissLoadingDialog();
+			}
+		};
+		if(Utils.checkNetworkConnected(context)) {
+			((BaseActivity)context).onShowLoadingDialog();
+			if(mInfo.isfriend()) {
+				HttpManager.deleteFriend(PartnerApplication.getInstance().getUserInfo().getToken(),
+						mInfo.getFriendId(), callback);
+			} else {
+				HttpManager.followFriend(PartnerApplication.getInstance().getUserInfo().getToken(),
+						mInfo.getUsertoken(), callback);
+			}
+		}
 	}
 
 	private static class ViewHolder {

@@ -62,6 +62,7 @@ public class InstitutionAdapter extends BaseAdapter {
 			holder.avatarView.setImageURI(uri);
 		}
 		holder.nameView.setText(info.getFriendRealName());
+		holder.phoneView.setText(info.getFriendCellphone());
 		return convertView;
 	}
 

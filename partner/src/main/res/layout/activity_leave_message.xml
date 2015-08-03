@@ -27,19 +27,22 @@
             android:minHeight="40dp"
             android:layout_marginRight="0dp"
             android:background="@null"
+            android:visibility="gone"
             />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
             android:background="@color/edge_input"
+            android:visibility="gone"
             />
 
         <EditText
+            android:id="@+id/edit_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:hint="@string/message_title_hint"
+            android:hint="@string/message_content_hint"
             android:textSize="@dimen/ts_14"
             android:paddingTop="@dimen/partner_space_medium"
             android:minHeight="200dp"
@@ -58,6 +61,7 @@
         android:text="@string/pick_a_picture"
         android:drawableLeft="@drawable/ic_apart_red"
         android:drawablePadding="@dimen/partner_space_normal"
+        android:visibility="gone"
         />
     
     <ImageView
@@ -66,5 +70,6 @@
         android:layout_marginTop="@dimen/partner_space_medium"
         android:layout_marginLeft="@dimen/partner_space_common"
         android:background="@drawable/ic_picture_add"
+        android:visibility="gone"
         />
 </LinearLayout>

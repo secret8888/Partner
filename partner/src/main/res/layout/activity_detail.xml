@@ -24,8 +24,10 @@
             style="@style/tab_rb_style"
             android:checked="true"
             android:paddingTop="@dimen/partner_space_normal"
-            android:drawableTop="@drawable/tab_follow_selected"
+            android:textColor="@color/text_grey"
+            android:drawableTop="@drawable/tab_follow_normal"
             android:text="@string/tab_follow"
+            android:onClick="onFollowClick"
             />
 
         <RadioButton
@@ -97,6 +99,7 @@
                         android:id="@+id/tv_sign_num"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/partner_space_normal"
                         android:layout_toRightOf="@+id/im_activity_intro"
                         android:textColor="@color/black"
                         android:textSize="@dimen/ts_13"
@@ -133,24 +136,11 @@
                         />
 
                     <TextView
-                        android:id="@+id/tv_publish_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/im_activity_intro"
-                        android:layout_below="@+id/tv_location"
-                        android:layout_marginTop="@dimen/partner_space_medium"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/ts_13"
-                        android:drawablePadding="@dimen/partner_space_normal"
-                        android:drawableLeft="@drawable/ic_people"
-                        />
-
-                    <TextView
                         android:id="@+id/tv_phone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@+id/im_activity_intro"
-                        android:layout_below="@+id/tv_publish_name"
+                        android:layout_below="@+id/tv_location"
                         android:layout_marginTop="@dimen/partner_space_medium"
                         android:textColor="@color/black"
                         android:textSize="@dimen/ts_13"
@@ -224,6 +214,7 @@
                     android:textColor="@color/black"
                     android:padding="@dimen/partner_space_medium"
                     android:textSize="@dimen/ts_13"
+                    android:visibility="gone"
                     />
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -234,6 +225,7 @@
                     android:paddingRight="@dimen/partner_space_common"
                     android:orientation="vertical"
                     android:background="@color/white"
+                    android:visibility="gone"
                     >
                     <TextView
                         android:id="@+id/tv_desc"
@@ -275,11 +267,11 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/ts_13"
                         android:layout_marginLeft="@dimen/partner_space_large"
-                        android:text="@string/gather_time"
+                        android:text="@string/start_time"
                         />
 
                     <TextView
-                        android:id="@+id/tv_gather_time"
+                        android:id="@+id/tv_start_time"
                         style="@style/PersonalItemText"
                         android:textSize="@dimen/ts_14"
                         android:layout_toRightOf="@id/im_institution"
@@ -302,38 +294,11 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/ts_13"
                         android:layout_marginLeft="@dimen/partner_space_large"
-                        android:text="@string/gather_address"
+                        android:text="@string/end_time"
                         />
 
                     <TextView
-                        android:id="@+id/tv_gather_address"
-                        style="@style/PersonalItemText"
-                        android:textSize="@dimen/ts_14"
-                        android:layout_toRightOf="@id/im_institution"
-                        android:layout_marginLeft="@dimen/partner_space_common"
-                        />
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"/>
-
-                <LinearLayout
-                    style="@style/ItemLayout"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="@dimen/ts_13"
-                        android:layout_marginLeft="@dimen/partner_space_large"
-                        android:text="@string/start_address"
-                        />
-
-                    <TextView
-                        android:id="@+id/tv_start_address"
+                        android:id="@+id/tv_end_time"
                         style="@style/PersonalItemText"
                         android:textSize="@dimen/ts_14"
                         android:layout_toRightOf="@id/im_institution"
@@ -383,43 +348,15 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/ts_13"
                         android:layout_marginLeft="@dimen/partner_space_large"
-                        android:text="@string/charter_notice"
+                        android:text="@string/activity_num"
                         />
 
                     <TextView
-                        android:id="@+id/tv_charter_notice"
+                        android:id="@+id/tv_activity_num"
                         style="@style/PersonalItemText"
                         android:textSize="@dimen/ts_14"
                         android:layout_toRightOf="@id/im_institution"
                         android:layout_marginLeft="@dimen/partner_space_common"
-                        android:text="@string/institution_info"
-                        />
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"/>
-
-                <LinearLayout
-                    style="@style/ItemLayout"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="@dimen/ts_13"
-                        android:layout_marginLeft="@dimen/partner_space_large"
-                        android:text="@string/distance"
-                        />
-
-                    <TextView
-                        android:id="@+id/tv_distance"
-                        style="@style/PersonalItemText"
-                        android:textSize="@dimen/ts_14"
-                        android:layout_toRightOf="@id/im_institution"
-                        android:layout_marginLeft="@dimen/partner_space_huge"
                         />
                 </LinearLayout>
 
@@ -435,8 +372,31 @@
                     />
 
                 <RelativeLayout
+                    android:id="@+id/lv_activity_intro"
+                    style="@style/ItemLayout"
+                    android:onClick="onDetailClick"
+                    >
+
+                    <ImageView
+                        style="@style/PersonalArrowStyle"
+                        />
+                    <TextView
+                        style="@style/PersonalItemText"
+                        android:textSize="@dimen/ts_14"
+                        android:layout_marginLeft="@dimen/partner_space_large"
+                        android:textColor="@color/text_blue"
+                        android:text="@string/activity_detail_intro"
+                        />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+
+                <RelativeLayout
                     android:id="@+id/lv_path_intro"
                     style="@style/ItemLayout"
+                    android:onClick="onPathClick"
                     >
 
                     <ImageView
@@ -458,6 +418,7 @@
                 <RelativeLayout
                     android:id="@+id/lv_activity_cost"
                     style="@style/ItemLayout"
+                    android:onClick="onCostClick"
                     >
 
                     <ImageView
@@ -479,6 +440,7 @@
                 <RelativeLayout
                     android:id="@+id/lv_travel_assign"
                     style="@style/ItemLayout"
+                    android:onClick="onTravelClick"
                     >
 
                     <ImageView
@@ -500,6 +462,7 @@
                 <RelativeLayout
                     android:id="@+id/lv_equipment_require"
                     style="@style/ItemLayout"
+                    android:onClick="onEquipClick"
                     >
 
                     <ImageView
@@ -514,6 +477,10 @@
                         />
                 </RelativeLayout>
 
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -523,6 +490,7 @@
                     android:textColor="@color/red"
                     android:textSize="@dimen/ts_14"
                     android:text="活动已结束，如果您期待商家再次举办该活动,"
+                    android:visibility="gone"
                     />
 
                 <LinearLayout
@@ -533,6 +501,7 @@
                     android:layout_marginRight="@dimen/partner_space_large"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
+                    android:visibility="gone"
                     >
                     <TextView
                         android:layout_width="wrap_content"

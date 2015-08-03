@@ -6,6 +6,10 @@ package com.partner.model;
 public class ActivityInfo {
     private String activityAddress;
 
+    private int activityAgainNum;
+
+    private int activityViewNum;
+
     private int activityCost;
 
     private String activityDescription;
@@ -39,6 +43,8 @@ public class ActivityInfo {
     private long createTime;
 
     private long lastModTime;
+
+    private boolean isfriend;
 
     public String getActivityAddress() {
         return activityAddress;
@@ -182,5 +188,29 @@ public class ActivityInfo {
 
     public void setLastModTime(long lastModTime) {
         this.lastModTime = lastModTime;
+    }
+
+    public int getActivityAgainNum() {
+        return activityAgainNum;
+    }
+
+    public void setActivityAgainNum(int activityAgainNum) {
+        this.activityAgainNum = activityAgainNum;
+    }
+
+    public boolean isfriend() {
+        return isfriend;
+    }
+
+    public void setIsfriend(boolean isfriend) {
+        this.isfriend = isfriend;
+    }
+
+    public int getActivityViewNum() {
+        return activityViewNum;
+    }
+
+    public void setActivityViewNum(int activityViewNum) {
+        this.activityViewNum = activityViewNum;
     }
 }

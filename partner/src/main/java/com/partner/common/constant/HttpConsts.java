@@ -82,4 +82,22 @@ public class HttpConsts {
 
     //活动参见
     public static final String SIGN_ACTIVITY = BASE_URL + "/joinActivity?token=%s&activityId=%d&childrenNum=%d&inrollIds=%s";
+
+    //获取关注的机构
+    public static final String FOLLOWED_INSTITUTION = BASE_URL + "/getOrgs?token=%s";
+
+    //关注机构
+    public static final String FOLLOW_ACTIVITY = BASE_URL + "/followActivity?token=%s&activityId=%d";
+
+    //好友留言接口
+    public static final String SEND_MESSAGE = BASE_URL + "/sendMessage?token=%s&userId=%d&content=%s";
+
+    //查看机构信息接口
+    public static final String GET_INSTITUTION_INFO = BASE_URL + "/getOrgInfo?token=%s&id=%d";
+
+    //关注好友
+    public static final String FOLLOW_FRIEND = BASE_URL + "/followFriend?token=%s&friendtoken=%s";
+
+    //邀请好友
+    public static final String INVITE_ACTIVITY = BASE_URL + "/inviteActivity?token=%s&activityId=%d&inviteUserIds=%s";
 }

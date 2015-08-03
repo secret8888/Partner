@@ -142,6 +142,10 @@
             android:name=".activity.activity.InviteActivity"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".activity.activity.ContentActivity"
+            android:screenOrientation="portrait" />
+
         <!-- qr code-->
         <activity
             android:name=".qrcode.activity.ResultActivity"

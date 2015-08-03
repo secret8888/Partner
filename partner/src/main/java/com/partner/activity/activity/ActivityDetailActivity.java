@@ -17,6 +17,7 @@ import com.partner.common.http.HttpManager;
 import com.partner.common.util.HttpUtils;
 import com.partner.common.util.IntentManager;
 import com.partner.common.util.ShareSDKManager;
+import com.partner.common.util.Toaster;
 import com.partner.common.util.Utils;
 import com.partner.model.ActivityInfo;
 import com.partner.view.TitleView;
@@ -48,32 +49,23 @@ public class ActivityDetailActivity extends BaseActivity {
 	@ViewId(R.id.tv_location)
 	private TextView locationView;
 
-	@ViewId(R.id.tv_publish_name)
-	private TextView publishNameView;
-
 	@ViewId(R.id.tv_phone)
 	private TextView phoneView;
 
 	@ViewId(R.id.tv_desc)
 	private TextView descView;
 
-	@ViewId(R.id.tv_gather_time)
-	private TextView gatherTimeView;
+	@ViewId(R.id.tv_start_time)
+	private TextView startTimeView;
 
-	@ViewId(R.id.tv_gather_address)
-	private TextView gatherAddressView;
-
-	@ViewId(R.id.tv_start_address)
-	private TextView startAddressView;
+	@ViewId(R.id.tv_end_time)
+	private TextView endTimeView;
 
 	@ViewId(R.id.tv_activity_address)
 	private TextView activityAddressView;
 
-	@ViewId(R.id.tv_charter_notice)
-	private TextView charterNoticeView;
-
-	@ViewId(R.id.tv_distance)
-	private TextView distanceView;
+	@ViewId(R.id.tv_activity_num)
+	private TextView activityNumView;
 
 	private ActivityInfo mInfo;
 
@@ -111,26 +103,73 @@ public class ActivityDetailActivity extends BaseActivity {
 
 	private void initActivityInfo() {
 		activityTitleView.setText(mInfo.getActivityTitle());
-		signNumView.setText(String.format(getString(R.string.sign_num), mInfo.getActivityPeapleNum()));
-		viewNumView.setText(String.format(getString(R.string.view_num), mInfo.getActivityPeapleNum()));
+		signNumView.setText(String.format(getString(R.string.sign_num), mInfo.getActivityAgainNum()));
+		viewNumView.setText(String.format(getString(R.string.view_num), mInfo.getActivityViewNum()));
 		locationView.setText(mInfo.getActivityAddress());
-		publishNameView.setText(String.format(getString(R.string.publish_name), mInfo.getActivityLinkmanName()));
 		phoneView.setText(mInfo.getActivityLinkmanPhone());
 		descView.setText(mInfo.getActivityDescription());
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-		gatherTimeView.setText(format.format(new Date(mInfo.getActivityGatherTime() * 1000)));
-		gatherAddressView.setText(mInfo.getActivityAddress());
-		startAddressView.setText(mInfo.getActivityAddress());
+		startTimeView.setText(format.format(new Date(mInfo.getCreateTime() * 1000)));
+		endTimeView.setText(format.format(new Date(mInfo.getCreateTime() * 1000)));
 		activityAddressView.setText(mInfo.getActivityAddress());
-		charterNoticeView.setText("================");
-		distanceView.setText("===============");
+		activityNumView.setText(String.format(getString(R.string.people_num), mInfo.getActivityPeapleNum()));
 
 		if(!TextUtils.isEmpty(mInfo.getActivityImage())) {
 			introView.setImageURI(Uri.parse(mInfo.getActivityImage()));
 		}
 	}
+
+	public void onFollowClick(View view) {
+		if(Utils.isNetworkConnected(this)) {
+			onShowLoadingDialog();
+			HttpManager.followActivity(PartnerApplication.getInstance().getUserInfo().getToken(), activityId, new AsyncHttpCallback() {
+				@Override
+				public void onRequestResponse(Response response) {
+					super.onRequestResponse(response);
+					onDismissLoadingDialog();
+					String result = HttpUtils.getResponseData(response);
+					if (!TextUtils.isEmpty(result)) {
+						Toaster.show(R.string.follow_success);
+					}
+				}
+
+				@Override
+				public void onRequestFailure(Request request, IOException e) {
+					super.onRequestFailure(request, e);
+					Toaster.show(R.string.follow_fail);
+					onDismissLoadingDialog();
+				}
+			});
+		}
+	}
+
 	public void onInstitutionClick(View view) {
-		IntentManager.startInstitutionInfoActivity(this);
+		IntentManager.startInstitutionInfoActivity(this, mInfo.getActivityUserId());
+	}
+
+	public void onDetailClick(View view) {
+		IntentManager.startContentActivity(this, getString(R.string.activity_detail_intro),
+				mInfo.getActivityDescription());
+	}
+
+	public void onPathClick(View view) {
+		IntentManager.startContentActivity(this, getString(R.string.path_intro),
+				mInfo.getActivityTransportInfo());
+	}
+
+	public void onCostClick(View view) {
+		IntentManager.startContentActivity(this, getString(R.string.activity_cost),
+				mInfo.getActivityCost() + " 元");
+	}
+
+	public void onTravelClick(View view) {
+		IntentManager.startContentActivity(this, getString(R.string.travel_assign),
+				mInfo.getActivityDescription());
+	}
+
+	public void onEquipClick(View view) {
+		IntentManager.startContentActivity(this, getString(R.string.equipment_require),
+				mInfo.getActivityDescription());
 	}
 
 	public void onSignedClick(View view) {
@@ -138,7 +177,7 @@ public class ActivityDetailActivity extends BaseActivity {
 	}
 
 	public void onSignClick(View view) {
-		IntentManager.startActivitySignActivity(ActivityDetailActivity.this);
+		IntentManager.startActivitySignActivity(ActivityDetailActivity.this, activityId);
 	}
 
 	public void onInviteClick(View view) {

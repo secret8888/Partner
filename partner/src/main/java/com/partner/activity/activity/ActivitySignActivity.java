@@ -3,6 +3,7 @@ package com.partner.activity.activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -32,8 +33,8 @@ public class ActivitySignActivity extends BaseActivity {
 	@ViewId(R.id.view_title)
 	private TitleView titleView;
 
-	@ViewId(R.id.tv_signed_num)
-	private TextView signedNumView;
+	@ViewId(R.id.edit_signed_num)
+	private EditText signedNumView;
 
 	@ViewId(R.id.list_content)
 	private ListView contentView;
@@ -78,16 +79,6 @@ public class ActivitySignActivity extends BaseActivity {
 	}
 
 	public void onAddNumChanged() {
-		int num = 0;
-		inrollIdsBuilder = new StringBuilder();
-		for(RegistrationInfo info : registrationList.getInrollInfos()) {
-			if(info.isRegistrationAdd()) {
-				num ++;
-				inrollIdsBuilder.append(info.getUserenrollInfoId());
-				inrollIdsBuilder.append(",");
-			}
-		}
-		signedNumView.setText(String.valueOf(num));
 	}
 
 	@Override
@@ -128,10 +119,22 @@ public class ActivitySignActivity extends BaseActivity {
 			Toaster.show(R.string.sign_select);
 			return;
 		}
+		inrollIdsBuilder = new StringBuilder();
+		for(RegistrationInfo info : registrationList.getInrollInfos()) {
+			if(info.isRegistrationAdd()) {
+				inrollIdsBuilder.append(info.getUserenrollInfoId());
+				inrollIdsBuilder.append(",");
+			}
+		}
+		String inrollIds = inrollIdsBuilder.toString();
+		if(inrollIds.length() < 1) {
+			Toaster.show(R.string.parent_select);
+			return;
+		}
 		if (Utils.checkNetworkConnected(this)) {
 			onShowLoadingDialog();
 			HttpManager.signActivity(PartnerApplication.getInstance().getUserInfo().getToken(), activityId,
-					signNum, inrollIdsBuilder.toString(), new AsyncHttpCallback() {
+					signNum, inrollIds, new AsyncHttpCallback() {
 				@Override
 				public void onRequestResponse(Response response) {
 					Toaster.show(R.string.activity_sign_success);

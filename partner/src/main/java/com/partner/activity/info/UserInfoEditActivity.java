@@ -81,7 +81,7 @@ public class UserInfoEditActivity extends BaseActivity {
 	}
 
 	public void onMessageClick(View view) {
-		IntentManager.startLeaveMessageActivity(this);
+		IntentManager.startLeaveMessageActivity(this, mInfo.getFriendId());
 	}
 
 	public void onChangeNoteNameClick(View view) {

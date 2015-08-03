@@ -62,6 +62,10 @@ public class HttpUtils {
     }
 
     public static String getResponseData(Response response) {
+        return getResponseData(response, true);
+    }
+
+    public static String getResponseData(Response response, boolean isShowErrorMsg) {
         String body = getResponseBody(response);
         Logcat.d("response body : " + body);
         try {
@@ -70,7 +74,9 @@ public class HttpUtils {
             if(errorCode == HttpConsts.RESPONSE_CODE_SUCCESS) {
                 return bodyObject.optString("data");
             } else {
-                Toaster.showMsg(bodyObject.optString("error_message"));
+                if(isShowErrorMsg) {
+                    Toaster.showMsg(bodyObject.optString("error_message"));
+                }
                 return null;
             }
         } catch (JSONException e) {

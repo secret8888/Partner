@@ -32,28 +32,26 @@
                 />
 
             <TextView
-                android:id="@+id/tv_sign_num"
+                android:id="@+id/tv_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/im_activity_intro"
                 android:layout_marginTop="@dimen/partner_space_common"
                 android:textColor="@color/black"
                 android:textSize="@dimen/ts_17"
-                android:text="蓝天亲自中心"
                 />
 
             <TextView
-                android:id="@+id/tv_view_num"
+                android:id="@+id/tv_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/im_activity_intro"
-                android:layout_below="@+id/tv_sign_num"
+                android:layout_below="@+id/tv_name"
                 android:layout_marginTop="@dimen/partner_space_medium"
                 android:textColor="@color/black"
                 android:textSize="@dimen/ts_15"
                 android:drawablePadding="@dimen/partner_space_normal"
                 android:drawableLeft="@drawable/ic_address"
-                android:text="北京是朝阳公园"
                 />
         </RelativeLayout>
 
@@ -76,6 +74,7 @@
             />
 
         <TextView
+            android:id="@+id/tv_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/partner_space_common"
@@ -85,7 +84,6 @@
             android:lineSpacingExtra="@dimen/partner_space_normal"
             android:textSize="@dimen/ts_15"
             android:textColor="@color/black"
-            android:text="案件科技发哈科技发哈科技发挥可案件科技发哈科技发哈科技发挥可案件科技发哈科技发哈科技发挥可案件科技发哈科技发哈科技发挥可"
             />
     </LinearLayout>
 </LinearLayout>

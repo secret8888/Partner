@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListView;
 
 import com.partner.PartnerApplication;
 import com.partner.R;
@@ -31,7 +32,7 @@ import java.io.IOException;
 public class InstitutionListFragment extends BaseFragment implements OnItemClickListener{
 
 	@ViewId(R.id.list_content)
-	private RefreshListView contentView;
+	private ListView contentView;
 
 	private FriendList friendList;
 
@@ -48,46 +49,34 @@ public class InstitutionListFragment extends BaseFragment implements OnItemClick
 
 	@Override
 	protected void initControls(Bundle savedInstanceState) {
-		contentView.setRefreshTime(Utils.getTime());
 	}
 
 	@Override
 	public void onResume() {
 		super.onResume();
 		if(friendList == null || ((MainActivity)getActivity()).isFriendNeedRefresh()) {
-//			onShowLoadingDialog();
-			getFriendsList();
+			onShowLoadingDialog();
+			getFollowedInstitutions();
 		}
 	}
 
 	@Override
 	protected void setListeners() {
-		contentView.setPullLoadEnable(false);
 		contentView.setOnItemClickListener(this);
-		contentView.setListViewRefreshListener(new RefreshListView.ListViewRefreshListener() {
-			@Override
-			public void onRefresh() {
-				getFriendsList();
-			}
-
-			@Override
-			public void onLoadMore() {
-				onMessageLoad();
-			}
-		});
 	}
 
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
-//		IntentManager.startInfoEditActivity(this, friendList.getFriends().get(position - 1), 0);
+		IntentManager.startInfoEditActivity(this, friendList.getOrgs().get(position), 0);
 	}
 
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		if(requestCode == 0 && resultCode == Activity.RESULT_OK) {
-			contentView.autoRefresh();
+			onShowLoadingDialog();
+			getFollowedInstitutions();
 		}
 	}
 
@@ -96,36 +85,27 @@ public class InstitutionListFragment extends BaseFragment implements OnItemClick
 		return fragment;
 	}
 
-	private void onMessageLoad() {
-		contentView.stopRefresh();
-		contentView.stopLoadMore();
-		contentView.setRefreshTime(Utils.getTime());
-		onDismissLoadingDialog();
-	}
-
-	public void getFriendsList() {
+	public void getFollowedInstitutions() {
 		if(Utils.isNetworkConnected(getActivity())) {
-//			HttpManager.getFriendsList(PartnerApplication.getInstance().getUserInfo().getToken(), type, new AsyncHttpCallback() {
-//				@Override
-//				public void onRequestResponse(Response response) {
-//					super.onRequestResponse(response);
-//					onMessageLoad();
-//					String result = HttpUtils.getResponseData(response);
-//					if(!TextUtils.isEmpty(result)) {
-//						friendList = YJson.getObj(result, FriendList.class);
-//						InstitutionAdapter adapter = new InstitutionAdapter(getActivity(), friendList.getFriends());
-//						contentView.setAdapter(adapter);
-//					}
-//				}
-//
-//				@Override
-//				public void onRequestFailure(Request request, IOException e) {
-//					super.onRequestFailure(request, e);
-//					onMessageLoad();
-//				}
-//			});
-		} else {
-			onMessageLoad();
+			HttpManager.getFollowedInstitutions(PartnerApplication.getInstance().getUserInfo().getToken(), new AsyncHttpCallback() {
+				@Override
+				public void onRequestResponse(Response response) {
+					super.onRequestResponse(response);
+					onDismissLoadingDialog();
+					String result = HttpUtils.getResponseData(response);
+					if (!TextUtils.isEmpty(result)) {
+						friendList = YJson.getObj(result, FriendList.class);
+						InstitutionAdapter adapter = new InstitutionAdapter(getActivity(), friendList.getOrgs());
+						contentView.setAdapter(adapter);
+					}
+				}
+
+				@Override
+				public void onRequestFailure(Request request, IOException e) {
+					super.onRequestFailure(request, e);
+					onDismissLoadingDialog();
+				}
+			});
 		}
 	}
 
