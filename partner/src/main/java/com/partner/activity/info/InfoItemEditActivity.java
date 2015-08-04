@@ -41,6 +41,8 @@ public class InfoItemEditActivity extends BaseActivity {
 
 	private int updateType;
 
+	private boolean isBusiness;
+
 	private static final String TAG = InfoItemEditActivity.class.getSimpleName();
 
 	@Override
@@ -55,12 +57,22 @@ public class InfoItemEditActivity extends BaseActivity {
 
 	@Override
 	protected void initControls(Bundle savedInstanceState) {
+		isBusiness = PartnerApplication.getInstance().getUserInfo().getUserType() == Consts.ROLE_BUSINESS;
 		if(updateType == IntentConsts.USER_NAME_TYPE) {
-			titleView.setTitle(R.string.name);
+			if(isBusiness) {
+				titleView.setTitle(R.string.company_name);
+			} else {
+				titleView.setTitle(R.string.name);
+			}
 			updateView.setText(PartnerApplication.getInstance().getUserInfo().getUserName());
 		} else {
-			titleView.setTitle(R.string.nickname);
-			updateView.setText(PartnerApplication.getInstance().getUserInfo().getNickName());
+			if(isBusiness) {
+				titleView.setTitle(R.string.company_address);
+				updateView.setText(PartnerApplication.getInstance().getUserInfo().getAddress());
+			} else {
+				titleView.setTitle(R.string.nickname);
+				updateView.setText(PartnerApplication.getInstance().getUserInfo().getNickName());
+			}
 		}
 		titleView.setOperateText(R.string.save);
 	}
@@ -84,16 +96,21 @@ public class InfoItemEditActivity extends BaseActivity {
 		onShowLoadingDialog();
 		String userName = null;
 		String nickName = null;
+		String address = null;
 		switch (updateType) {
 			case IntentConsts.USER_NAME_TYPE:
 				userName = updateView.getText().toString();
 				break;
 			case IntentConsts.NICK_NAME_TYPE:
-				nickName = updateView.getText().toString();
+				if(isBusiness) {
+					address = updateView.getText().toString();
+				} else {
+					nickName = updateView.getText().toString();
+				}
 				break;
 		}
 		HttpManager.updateUserInfo(PartnerApplication.getInstance().getUserInfo().getToken(),
-				userName, nickName, null, null, null, new AsyncHttpCallback() {
+				userName, nickName, address, null, null, new AsyncHttpCallback() {
 			@Override
 			public void onRequestResponse(Response response) {
 				Toaster.show(R.string.update_success);

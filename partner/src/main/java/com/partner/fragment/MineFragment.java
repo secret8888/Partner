@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -15,6 +16,7 @@ import com.partner.PartnerApplication;
 import com.partner.R;
 import com.partner.activity.MainActivity;
 import com.partner.common.annotation.ViewId;
+import com.partner.common.constant.Consts;
 import com.partner.common.constant.PreferenceConsts;
 import com.partner.common.http.AsyncHttpCallback;
 import com.partner.common.http.HttpManager;
@@ -32,6 +34,9 @@ import java.io.IOException;
 
 public class MineFragment extends BaseFragment implements OnClickListener {
 
+	@ViewId(R.id.tv_title)
+	private TextView titleView;
+
 	@ViewId(R.id.im_avatar)
 	private SimpleDraweeView avatarView;
 
@@ -44,11 +49,31 @@ public class MineFragment extends BaseFragment implements OnClickListener {
 	@ViewId(R.id.lv_registration_info)
 	private RelativeLayout registrationInfoLayout;
 
+	@ViewId(R.id.im_registration)
+	private ImageView registrationView;
+
+	@ViewId(R.id.tv_registration)
+	private TextView registrationTextView;
+
+	@ViewId(R.id.tv_activity_tip)
+	private TextView tipView;
+
 	@ViewId(R.id.lv_qrcode)
 	private RelativeLayout qrcodeLayout;
 
+	@ViewId(R.id.im_qrcode)
+	private ImageView qrcodeView;
+
+	@ViewId(R.id.tv_qrcode)
+	private TextView qrcodeTextView;
+
+	@ViewId(R.id.lv_message_center)
+	private RelativeLayout messageCenterLayout;
+
 	@ViewId(R.id.lv_setting)
 	private RelativeLayout settingLayout;
+
+	private boolean isBusiness;
 
 	@Override
 	protected int getLayoutId() {
@@ -62,7 +87,15 @@ public class MineFragment extends BaseFragment implements OnClickListener {
 
 	@Override
 	protected void initControls(Bundle savedInstanceState) {
-
+		isBusiness = PartnerApplication.getInstance().getUserInfo().getUserType() == Consts.ROLE_BUSINESS;
+		if(isBusiness) {
+			titleView.setText(R.string.mine);
+			registrationView.setImageResource(R.drawable.ic_publish);
+			registrationTextView.setText(R.string.publish_activity);
+			qrcodeView.setImageResource(R.drawable.ic_published);
+			qrcodeTextView.setText(R.string.published_activity);
+			tipView.setVisibility(View.VISIBLE);
+		}
 	}
 
 	@Override
@@ -71,6 +104,7 @@ public class MineFragment extends BaseFragment implements OnClickListener {
 		settingLayout.setOnClickListener(this);
 		registrationInfoLayout.setOnClickListener(this);
 		qrcodeLayout.setOnClickListener(this);
+		messageCenterLayout.setOnClickListener(this);
 	}
 
 	@Override
@@ -108,13 +142,22 @@ public class MineFragment extends BaseFragment implements OnClickListener {
 		case R.id.lv_info:
 			IntentManager.startMyInfoActivity(getActivity());
 			break;
-		case R.id.lv_registration_info:
-			IntentManager.startRegistrationInfoActivity(getActivity());
+		case R.id.lv_registration_info: //报名常用信息和发布活动
+			if(isBusiness) {
+
+			} else {
+				IntentManager.startRegistrationInfoActivity(getActivity());
+			}
 			break;
-		case R.id.lv_qrcode:
-			IntentManager.startCaptureActivity(getActivity(), 1);
+		case R.id.lv_qrcode: //扫一扫加好友和已经发布活动
+			if(isBusiness) {
+				IntentManager.startPublishedActivity(getActivity());
+			} else {
+				IntentManager.startCaptureActivity(getActivity(), 1);
+			}
 			break;
-		default:
+		case R.id.lv_message_center:
+			IntentManager.startMessageCenterActivity(getActivity());
 			break;
 		}
 	}

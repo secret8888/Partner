@@ -12,8 +12,10 @@ import com.partner.activity.activity.ContentActivity;
 import com.partner.activity.activity.InstitutionInfoActivity;
 import com.partner.activity.activity.InviteActivity;
 import com.partner.activity.activity.MarkActivity;
+import com.partner.activity.activity.PublishedActivity;
 import com.partner.activity.activity.SignedUserActivity;
 import com.partner.activity.info.InfoItemEditActivity;
+import com.partner.activity.info.MessageCenterActivity;
 import com.partner.activity.info.MyInfoActivity;
 import com.partner.activity.info.MyQrCodeActivity;
 import com.partner.activity.info.RegistrationEditActivity;
@@ -228,4 +230,13 @@ public class IntentManager {
         context.startActivity(intent);
     }
 
+    public static void startMessageCenterActivity(Activity context) {
+        Intent intent = new Intent(context, MessageCenterActivity.class);
+        context.startActivity(intent);
+    }
+
+    public static void startPublishedActivity(Activity context) {
+        Intent intent = new Intent(context, PublishedActivity.class);
+        context.startActivity(intent);
+    }
 }

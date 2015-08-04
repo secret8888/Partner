@@ -11,6 +11,7 @@ import com.partner.PartnerApplication;
 import com.partner.R;
 import com.partner.activity.base.BaseActivity;
 import com.partner.common.annotation.ViewId;
+import com.partner.common.constant.Consts;
 import com.partner.common.constant.IntentConsts;
 import com.partner.common.http.AsyncHttpCallback;
 import com.partner.common.http.HttpManager;
@@ -39,9 +40,14 @@ public class UserInfoEditActivity extends BaseActivity {
 	@ViewId(R.id.tv_note_name)
 	private TextView noteNameView;
 
+	@ViewId(R.id.tv_leave_msg)
+	private TextView leaveMsgView;
+
 	private FriendInfo mInfo;
 
 	private boolean isUpdate = false;
+
+	private boolean isBusiness;
 
 	private static final String TAG = UserInfoEditActivity.class.getSimpleName();
 
@@ -57,9 +63,12 @@ public class UserInfoEditActivity extends BaseActivity {
 
 	@Override
 	protected void initControls(Bundle savedInstanceState) {
+		isBusiness = PartnerApplication.getInstance().getUserInfo().getUserType() == Consts.ROLE_BUSINESS;
 		titleView.setTitle(R.string.app_name);
 		titleView.setOperateText(R.string.delete);
-
+//		if(isBusiness) {
+//			leaveMsgView.setText(R.string.send_notice);
+//		}
 		nicknameView.setText(mInfo.getFriendNickName());
 		noteNameView.setText(mInfo.getFriendMyName());
 		if(!TextUtils.isEmpty(mInfo.getFriendHeadImage())) {

@@ -45,18 +45,33 @@
         style="@style/ItemLayout"
         >
         <ImageView
-            android:id="@+id/im_part"
+            android:id="@+id/im_registration"
             style="@style/PersonalIndexImage"
             android:src="@drawable/ic_message"
             />
 
         <ImageView
+            android:id="@+id/im_arrow"
             style="@style/PersonalArrowStyle"
             />
         <TextView
+            android:id="@+id/tv_registration"
             style="@style/PersonalItemText"
-            android:layout_toRightOf="@id/im_part"
+            android:layout_toRightOf="@id/im_registration"
             android:text="@string/registration_info"
+            />
+
+        <TextView
+            android:id="@+id/tv_activity_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/partner_space_normal"
+            android:layout_toLeftOf="@id/im_arrow"
+            android:text="@string/activity_tip"
+            android:textSize="@dimen/ts_11"
+            android:textColor="@color/red"
+            android:visibility="gone"
             />
     </RelativeLayout>
 
@@ -80,6 +95,7 @@
             style="@style/PersonalArrowStyle"
             />
         <TextView
+            android:id="@+id/tv_qrcode"
             style="@style/PersonalItemText"
             android:layout_toRightOf="@id/im_qrcode"
             android:text="@string/qrcode"
@@ -93,6 +109,7 @@
         />
 
     <RelativeLayout
+        android:id="@+id/lv_message_center"
         style="@style/ItemLayout"
         >
         <ImageView

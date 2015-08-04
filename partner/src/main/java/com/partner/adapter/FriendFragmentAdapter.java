@@ -9,11 +9,11 @@ import com.partner.fragment.FriendListFragment;
 
 public class FriendFragmentAdapter extends FragmentPagerAdapter{
 
-//	private ArrayList<ProjectInfo> projectInfos;
+	private boolean isBusiness;
 
-	public FriendFragmentAdapter(FragmentManager fm) {
+	public FriendFragmentAdapter(FragmentManager fm, boolean isBusiness) {
 		super(fm);
-//		this.projectInfos = projectInfos;
+		this.isBusiness = isBusiness;
 	}
 
 	@Override
@@ -23,7 +23,7 @@ public class FriendFragmentAdapter extends FragmentPagerAdapter{
 
 	@Override
 	public int getCount() {
-		return 2;
+		return isBusiness? 1: 2;
 	}
 
 }

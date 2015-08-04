@@ -26,6 +26,8 @@ public class UserInfo {
     @SerializedName("usertype")
     private int userType;
 
+    private String address;
+
     public String getToken() {
         return token;
     }
@@ -80,5 +82,13 @@ public class UserInfo {
 
     public void setUserType(int userType) {
         this.userType = userType;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

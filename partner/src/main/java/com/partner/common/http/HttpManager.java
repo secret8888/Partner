@@ -227,6 +227,17 @@ public class HttpManager {
     }
 
     /**
+     * 获取已发布的活动
+     * @param start
+     * @param offset
+     * @param callback
+     */
+    public static void getPublishedActivities(String token, int start, int offset, AsyncHttpCallback callback) {
+        String url = String.format(HttpConsts.GET_PUBLISHED_ACTIVITIES, token, start, offset);
+        PartnerHttpClient.asyncGet(url + HttpUtils.getUserSign(), callback);
+    }
+
+    /**
      * 查看已经参加的活动
      * @param start
      * @param offset
@@ -306,11 +317,11 @@ public class HttpManager {
     /**
      * 好友留言接口
      * @param token
-     * @param userId
+     * @param userIds
      * @param callback
      */
-    public static void sendMessage(String token, int userId, String content, AsyncHttpCallback callback) {
-        String url = String.format(HttpConsts.SEND_MESSAGE, token, userId, content);
+    public static void sendMessage(String token, String userIds, String content, AsyncHttpCallback callback) {
+        String url = String.format(HttpConsts.SEND_MESSAGE, token, userIds, content);
         PartnerHttpClient.asyncGet(url + HttpUtils.getUserSign(), callback);
     }
 

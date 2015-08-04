@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTabHost;
 import android.view.KeyEvent;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TabHost;
 
@@ -13,6 +14,7 @@ import com.baidu.android.pushservice.PushManager;
 import com.partner.PartnerApplication;
 import com.partner.R;
 import com.partner.activity.base.BaseFragmentActivity;
+import com.partner.common.annotation.ViewId;
 import com.partner.common.constant.Consts;
 import com.partner.common.constant.IntentConsts;
 import com.partner.common.util.IntentManager;
@@ -28,11 +30,20 @@ public class MainActivity extends BaseFragmentActivity {
 	// 定义FragmentTabHost对象
 	private FragmentTabHost mTabHost;
 
+	@ViewId(R.id.tab_rg_menu)
 	private RadioGroup mTabRg;
+
+	@ViewId(R.id.tab_activity)
+	private RadioButton activityRadio;
+
+	@ViewId(R.id.tab_mine)
+	private RadioButton mineRadio;
 
 	private boolean isFriendNeedRefresh = false;
 	// exit time
 	private long mExitTime;
+
+	private boolean isBusiness;
 
 	private final Class<?>[] fragments = { MainFragment.class, FriendFragment.class, MineFragment.class };
 
@@ -49,6 +60,7 @@ public class MainActivity extends BaseFragmentActivity {
 	@Override
 	protected void initControls(Bundle savedInstanceState) {
 		PartnerApplication.getInstance().initUserInfo();
+		isBusiness = PartnerApplication.getInstance().getUserInfo().getUserType() == Consts.ROLE_BUSINESS;
 		initView();
 		UmengUpdateAgent.update(this);
 		PushManager.startWork(getApplicationContext(),
@@ -62,6 +74,10 @@ public class MainActivity extends BaseFragmentActivity {
 	}
 
 	private void initView() {
+		if(isBusiness) {
+			activityRadio.setText(R.string.fans);
+			mineRadio.setText(R.string.mine);
+		}
 		mTabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
 		mTabHost.setup(this, getSupportFragmentManager(), R.id.realtabcontent);
 		// 得到fragment的个数
@@ -73,7 +89,6 @@ public class MainActivity extends BaseFragmentActivity {
 			mTabHost.addTab(tabSpec, fragments[i], null);
 		}
 
-		mTabRg = (RadioGroup) findViewById(R.id.tab_rg_menu);
 		mTabRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 
 			@Override

@@ -47,6 +47,15 @@ public class MyInfoActivity extends BaseActivity {
 	@ViewId(R.id.tv_name)
 	private TextView nameView;
 
+	@ViewId(R.id.tv_name_key)
+	private TextView nameKeyView;
+
+	@ViewId(R.id.tv_nickname_key)
+	private TextView nickNameKeyView;
+
+	@ViewId(R.id.tv_qrcode_key)
+	private TextView qrcodeKeyView;
+
 	private File mCurrentPhotoFile = null;
 
 	private static final int CAMERA_WITH_DATA = 0;
@@ -68,6 +77,11 @@ public class MyInfoActivity extends BaseActivity {
 	@Override
 	protected void initControls(Bundle savedInstanceState) {
 		titleView.setTitle(R.string.personal_info);
+		if(PartnerApplication.getInstance().getUserInfo().getUserType() == Consts.ROLE_BUSINESS) {
+			nameKeyView.setText(R.string.company_name);
+			nickNameKeyView.setText(R.string.company_address);
+			qrcodeKeyView.setText(R.string.company_qrcode);
+		}
 		String avatarImage = PartnerApplication.getInstance().getUserInfo().getHeadImage();
 		if(!TextUtils.isEmpty(avatarImage)) {
 			Uri uri = Uri.parse(avatarImage);

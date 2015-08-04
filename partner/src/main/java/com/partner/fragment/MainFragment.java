@@ -6,9 +6,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
+import com.partner.PartnerApplication;
 import com.partner.R;
 import com.partner.adapter.ActivityFragmentAdapter;
 import com.partner.common.annotation.ViewId;
+import com.partner.common.constant.Consts;
 import com.partner.fragment.base.BaseFragment;
 import com.partner.view.CustomViewPager;
 
@@ -26,6 +28,8 @@ public class MainFragment extends BaseFragment implements OnClickListener, ViewP
 	@ViewId(R.id.pager_activity)
 	private CustomViewPager activityPager;
 
+	private boolean isBusiness;
+
 	@Override
 	protected int getLayoutId() {
 		return R.layout.fragment_main;
@@ -38,8 +42,13 @@ public class MainFragment extends BaseFragment implements OnClickListener, ViewP
 
 	@Override
 	protected void initControls(Bundle savedInstanceState) {
-		activityPager.setAdapter(new ActivityFragmentAdapter(getFragmentManager()));
+		isBusiness = PartnerApplication.getInstance().getUserInfo().getUserType() == Consts.ROLE_BUSINESS;
+		activityPager.setAdapter(new ActivityFragmentAdapter(getFragmentManager(), isBusiness));
 		activityPager.setOffscreenPageLimit(3);
+		if(isBusiness) {
+			activityTypeView.setText(R.string.publish);
+			followTypeView.setVisibility(View.GONE);
+		}
 	}
 
 	@Override

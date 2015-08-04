@@ -21,6 +21,7 @@ import com.partner.PartnerApplication;
 import com.partner.R;
 import com.partner.activity.base.BaseActivity;
 import com.partner.common.annotation.ViewId;
+import com.partner.common.constant.Consts;
 import com.partner.common.constant.IntentConsts;
 import com.partner.view.TitleView;
 
@@ -53,7 +54,11 @@ public class MyQrCodeActivity extends BaseActivity {
 
 	@Override
 	protected void initControls(Bundle savedInstanceState) {
-		titleView.setTitle(R.string.my_qrcode);
+		if(PartnerApplication.getInstance().getUserInfo().getUserType() == Consts.ROLE_BUSINESS) {
+			titleView.setTitle(R.string.company_qrcode);
+		} else {
+			titleView.setTitle(R.string.my_qrcode);
+		}
 		nameView.setText(PartnerApplication.getInstance().getUserInfo().getUserName());
 		String avatarImage = PartnerApplication.getInstance().getUserInfo().getHeadImage();
 		if(!TextUtils.isEmpty(avatarImage)) {

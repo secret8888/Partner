@@ -9,6 +9,7 @@ import com.partner.PartnerApplication;
 import com.partner.R;
 import com.partner.activity.base.BaseActivity;
 import com.partner.common.annotation.ViewId;
+import com.partner.common.constant.Consts;
 import com.partner.common.constant.IntentConsts;
 import com.partner.common.http.AsyncHttpCallback;
 import com.partner.common.http.HttpManager;
@@ -31,6 +32,8 @@ public class LeaveMessageActivity extends BaseActivity {
 
 	private int userId;
 
+	private boolean isBusiness;
+
 	private static final String TAG = LeaveMessageActivity.class.getSimpleName();
 
 	@Override
@@ -45,7 +48,12 @@ public class LeaveMessageActivity extends BaseActivity {
 
 	@Override
 	protected void initControls(Bundle savedInstanceState) {
-		titleView.setTitle(R.string.leave_message);
+		isBusiness = PartnerApplication.getInstance().getUserInfo().getUserType() == Consts.ROLE_BUSINESS;
+		if(isBusiness) {
+			titleView.setTitle(R.string.send_notice);
+		} else {
+			titleView.setTitle(R.string.leave_message);
+		}
 		titleView.setOperateText(R.string.send);
 	}
 
@@ -66,7 +74,7 @@ public class LeaveMessageActivity extends BaseActivity {
 		if(Utils.checkNetworkConnected(this)) {
 			onShowLoadingDialog();
 			UserInfo userInfo = PartnerApplication.getInstance().getUserInfo();
-			HttpManager.sendMessage(userInfo.getToken(), userId, content, new AsyncHttpCallback() {
+			HttpManager.sendMessage(userInfo.getToken(), String.valueOf(userId), content, new AsyncHttpCallback() {
 				@Override
 				public void onRequestResponse(Response response) {
 					onDismissLoadingDialog();

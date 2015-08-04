@@ -47,6 +47,7 @@
             style="@style/PersonalArrowStyle"
             />
         <TextView
+            android:id="@+id/tv_name_key"
             style="@style/PersonalItemText"
             android:layout_marginLeft="@dimen/partner_space_common"
             android:text="@string/name"
@@ -69,6 +70,7 @@
             style="@style/PersonalArrowStyle"
             />
         <TextView
+            android:id="@+id/tv_nickname_key"
             style="@style/PersonalItemText"
             android:layout_marginLeft="@dimen/partner_space_common"
             android:text="@string/nickname"
@@ -91,6 +93,7 @@
             style="@style/PersonalArrowStyle"
             />
         <TextView
+            android:id="@+id/tv_qrcode_key"
             style="@style/PersonalItemText"
             android:layout_marginLeft="@dimen/partner_space_common"
             android:text="@string/my_qrcode"

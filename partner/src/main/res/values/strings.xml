@@ -69,6 +69,9 @@
     <string name="setting">设置</string>
     <string name="name">姓名</string>
     <string name="my_qrcode">我的二维码</string>
+    <string name="fans">粉丝</string>
+    <string name="my_fans">我的粉丝</string>
+    <string name="mine">我的</string>
 
     <!-- activity -->
     <string name="activity_detail">活动详情</string>
@@ -100,6 +103,7 @@
     <string name="view_num">%d次/浏览</string>
     <string name="people_num">%d人</string>
     <string name="publish_name">发布人姓名：%s</string>
+    <string name="publish">发布</string>
     <string name="sign">报名</string>
     <string name="sign_select">请填写活动小孩的个数</string>
     <string name="parent_select">请至少选一名陪同家长</string>
@@ -108,10 +112,14 @@
     <string name="activity_sign_success">活动报名成功</string>
     <string name="signed_num_tip">%d人/已报名</string>
     <string name="invite_success">邀请好友成功</string>
+    <string name="publish_activity">我要发布活动</string>
+    <string name="published_activity">已发布活动</string>
+    <string name="activity_tip">*等待系统认证后，方能发活动</string>
 
     <!-- info -->
     <string name="delete">删除</string>
     <string name="leave_message">留 言</string>
+    <string name="send_notice">发通知</string>
     <string name="change_note_name">修改备注名</string>
     <string name="nickname">昵称</string>
     <string name="note_name">备注名</string>
@@ -151,6 +159,9 @@
     <string name="delete_fail">删除失败</string>
     <string name="input_feedback_tip">请输入反馈内容</string>
     <string name="feedback_success">反馈成功</string>
+    <string name="company_name">单位名称</string>
+    <string name="company_address">单位地址</string>
+    <string name="company_qrcode">单位二维码</string>
 
     <!-- qr code -->
     <string name="scan_tips">将二维码放入框内,即可自动扫描</string>

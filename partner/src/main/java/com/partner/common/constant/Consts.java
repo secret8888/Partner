@@ -77,4 +77,10 @@ public class Consts {
 
     public final static String YX_APP_ID = "yx88c1dfc92f7442a89e97aef991d30e07";
 
+    /**
+     * 用户角色, 0为普通用户，1为商家
+     */
+    public final static int ROLE_USER = 0;
+    public final static int ROLE_BUSINESS = 1;
+
 }

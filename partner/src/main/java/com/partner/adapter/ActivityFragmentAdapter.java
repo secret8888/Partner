@@ -8,9 +8,12 @@ import com.partner.fragment.ActivityListFragment;
 import com.partner.fragment.InstitutionListFragment;
 
 public class ActivityFragmentAdapter extends FragmentPagerAdapter{
-	
-	public ActivityFragmentAdapter(FragmentManager fm) {
+
+	private boolean isBusiness;
+
+	public ActivityFragmentAdapter(FragmentManager fm, boolean isBusiness) {
 		super(fm);
+		this.isBusiness = isBusiness;
 	}
 
 	@Override
@@ -24,7 +27,7 @@ public class ActivityFragmentAdapter extends FragmentPagerAdapter{
 
 	@Override
 	public int getCount() {
-		return 3;
+		return isBusiness? 2: 3;
 	}
 
 }

@@ -3,17 +3,26 @@ package com.partner.fragment;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.partner.PartnerApplication;
 import com.partner.R;
 import com.partner.adapter.ActivityFragmentAdapter;
 import com.partner.adapter.FriendFragmentAdapter;
 import com.partner.common.annotation.ViewId;
+import com.partner.common.constant.Consts;
 import com.partner.common.util.Logcat;
 import com.partner.fragment.base.BaseFragment;
 import com.partner.view.CustomViewPager;
 
 public class FriendFragment extends BaseFragment implements View.OnClickListener, ViewPager.OnPageChangeListener {
+
+	@ViewId(R.id.tv_title)
+	private TextView titleView;
+
+	@ViewId(R.id.lv_tab)
+	private LinearLayout tabLayout;
 
 	@ViewId(R.id.tv_type_friend)
 	private TextView friendView;
@@ -23,6 +32,8 @@ public class FriendFragment extends BaseFragment implements View.OnClickListener
 
 	@ViewId(R.id.pager_friend)
 	private CustomViewPager friendPager;
+
+	private boolean isBusiness;
 
 	@Override
 	protected int getLayoutId() {
@@ -36,7 +47,12 @@ public class FriendFragment extends BaseFragment implements View.OnClickListener
 
 	@Override
 	protected void initControls(Bundle savedInstanceState) {
-		friendPager.setAdapter(new FriendFragmentAdapter(getFragmentManager()));
+		isBusiness = PartnerApplication.getInstance().getUserInfo().getUserType() == Consts.ROLE_BUSINESS;
+		friendPager.setAdapter(new FriendFragmentAdapter(getFragmentManager(), isBusiness));
+		if(isBusiness) {
+			titleView.setText(R.string.my_fans);
+			tabLayout.setVisibility(View.GONE);
+		}
 	}
 
 	@Override

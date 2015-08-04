@@ -66,6 +66,7 @@ public class FriendListFragment extends BaseFragment implements OnItemClickListe
 	@Override
 	protected void setListeners() {
 		contentView.setPullLoadEnable(false);
+		contentView.setPullLoadEnable(false);
 		contentView.setOnItemClickListener(this);
 		contentView.setListViewRefreshListener(new RefreshListView.ListViewRefreshListener() {
 			@Override

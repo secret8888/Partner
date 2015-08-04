@@ -92,6 +92,9 @@ public class SignedUserActivity extends BaseActivity {
 		onDismissLoadingDialog();
 		String responseBody = HttpUtils.getResponseData(response);
 		friendList = YJson.getObj(responseBody, FriendList.class);
+		if(friendList == null || friendList.getFriends() == null) {
+			return;
+		}
 		adapter = new SignedUserAdapter(this, friendList.getFriends());
 		contentView.setAdapter(adapter);
 	}
