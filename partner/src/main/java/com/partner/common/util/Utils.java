@@ -125,17 +125,11 @@ public class Utils {
 	 * 
 	 * @param context
 	 * @param view
-	 * @param isShowInputMethod
 	 */
-	public static void inputMethodToggle(Context context, View view,
-			boolean isShowInputMethod) {
+	public static void inputMethodShow(Context context, View view) {
 		InputMethodManager imm = (InputMethodManager) context
 				.getSystemService(Context.INPUT_METHOD_SERVICE);
-		if (isShowInputMethod) {
-			imm.showSoftInput(view, 0);
-		} else {
-			imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-		}
+		imm.showSoftInput(view,InputMethodManager.SHOW_FORCED);
 	}
 
 	/**

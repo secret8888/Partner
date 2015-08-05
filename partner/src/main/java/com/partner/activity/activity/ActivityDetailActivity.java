@@ -197,27 +197,27 @@ public class ActivityDetailActivity extends BaseActivity {
 
 	public void onDetailClick(View view) {
 		IntentManager.startContentActivity(this, getString(R.string.activity_detail_intro),
-				mInfo.getActivityDescription());
+				mInfo.getActivityDescription(), false);
 	}
 
 	public void onPathClick(View view) {
 		IntentManager.startContentActivity(this, getString(R.string.path_intro),
-				mInfo.getActivityTransportInfo());
+				mInfo.getActivityTransportInfo(), false);
 	}
 
 	public void onCostClick(View view) {
 		IntentManager.startContentActivity(this, getString(R.string.activity_cost),
-				mInfo.getActivityCost() + " 元");
+				mInfo.getActivityCost() + " 元", false);
 	}
 
 	public void onTravelClick(View view) {
 		IntentManager.startContentActivity(this, getString(R.string.travel_assign),
-				mInfo.getActivityDescription());
+				mInfo.getActivityDescription(), false);
 	}
 
 	public void onEquipClick(View view) {
 		IntentManager.startContentActivity(this, getString(R.string.equipment_require),
-				mInfo.getActivityDescription());
+				mInfo.getActivityDescription(), false);
 	}
 
 	public void onSignedClick(View view) {

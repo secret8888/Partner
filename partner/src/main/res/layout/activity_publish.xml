@@ -9,63 +9,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-    <RadioGroup
-        android:id="@+id/tab_rg_menu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:padding="1dp"
-        android:background="@color/white"
-        android:orientation="horizontal" >
-
-        <RadioButton
-            android:id="@+id/tab_follow"
-            style="@style/tab_rb_style"
-            android:checked="true"
-            android:paddingTop="@dimen/partner_space_normal"
-            android:textColor="@color/text_grey"
-            android:drawableTop="@drawable/tab_follow_normal"
-            android:text="@string/tab_follow"
-            android:onClick="onFollowClick"
-            />
-
-        <RadioButton
-            android:id="@+id/tab_sign"
-            style="@style/tab_rb_style"
-            android:paddingTop="@dimen/partner_space_normal"
-            android:textColor="@color/text_grey"
-            android:drawableTop="@drawable/tab_sign_normal"
-            android:text="@string/tab_sign"
-            android:onClick="onSignClick"
-            />
-
-        <RadioButton
-            android:id="@+id/tab_invite"
-            style="@style/tab_rb_style"
-            android:paddingTop="@dimen/partner_space_normal"
-            android:textColor="@color/text_grey"
-            android:drawableTop="@drawable/tab_invite_normal"
-            android:text="@string/tab_invite"
-            android:onClick="onInviteClick"
-            />
-
-        <RadioButton
-            android:id="@+id/tab_share"
-            style="@style/tab_rb_style"
-            android:paddingTop="@dimen/partner_space_normal"
-            android:textColor="@color/text_grey"
-            android:drawableTop="@drawable/ic_share"
-            android:text="@string/share"
-            android:onClick="onShareClick"
-            android:visibility="gone"
-            />
-    </RadioGroup>
-
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/view_title"
-            android:layout_above="@+id/tab_rg_menu"
             android:scrollbars="none"
             android:background="@color/bg_gray"
             >
@@ -227,7 +174,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:background="@color/bg_gray"
-                        android:layout_alignLeft="@id/tv_time"
+                        android:layout_alignLeft="@id/lv_start_time"
                         android:layout_alignParentBottom="true"
                         />
                 </RelativeLayout>

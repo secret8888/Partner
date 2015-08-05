@@ -225,10 +225,11 @@ public class IntentManager {
         context.startActivity(intent);
     }
 
-    public static void startContentActivity(Activity context, String title, String content) {
+    public static void startContentActivity(Activity context, String title, String content, boolean isEditModel) {
         Intent intent = new Intent(context, ContentActivity.class);
         intent.putExtra(IntentConsts.TITLE_KEY, title);
         intent.putExtra(IntentConsts.INFO_KEY, content);
+        intent.putExtra(IntentConsts.EDIT_KEY, isEditModel);
         context.startActivity(intent);
     }
 
