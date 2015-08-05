@@ -4,6 +4,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.RadioButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -11,6 +13,7 @@ import com.partner.PartnerApplication;
 import com.partner.R;
 import com.partner.activity.base.BaseActivity;
 import com.partner.common.annotation.ViewId;
+import com.partner.common.constant.Consts;
 import com.partner.common.constant.IntentConsts;
 import com.partner.common.http.AsyncHttpCallback;
 import com.partner.common.http.HttpManager;
@@ -36,6 +39,9 @@ public class ActivityDetailActivity extends BaseActivity {
 
 	@ViewId(R.id.im_activity_intro)
 	private SimpleDraweeView introView;
+
+	@ViewId(R.id.lv_institution)
+	private RelativeLayout institutionLayout;
 
 	@ViewId(R.id.tv_activity_title)
 	private TextView activityTitleView;
@@ -67,9 +73,23 @@ public class ActivityDetailActivity extends BaseActivity {
 	@ViewId(R.id.tv_activity_num)
 	private TextView activityNumView;
 
+	@ViewId(R.id.tab_follow)
+	private RadioButton followButton;
+
+	@ViewId(R.id.tab_sign)
+	private RadioButton signButton;
+
+	@ViewId(R.id.tab_invite)
+	private RadioButton inviteButton;
+
+	@ViewId(R.id.tab_share)
+	private RadioButton shareButton;
+
 	private ActivityInfo mInfo;
 
 	private int activityId;
+
+	private boolean isBusiness;
 
 	private static final String TAG = ActivityDetailActivity.class.getSimpleName();
 
@@ -85,8 +105,9 @@ public class ActivityDetailActivity extends BaseActivity {
 
 	@Override
 	protected void initControls(Bundle savedInstanceState) {
+		isBusiness = PartnerApplication.getInstance().getUserInfo().getUserType() == Consts.ROLE_BUSINESS;
 		titleView.setTitle(R.string.activity_detail);
-		titleView.setOperate(R.drawable.ic_share);
+		checkBusinessRole();
 		getActivityDetail();
 	}
 
@@ -98,7 +119,30 @@ public class ActivityDetailActivity extends BaseActivity {
 	@Override
 	public void onTitleOperateClick() {
 		super.onTitleOperateClick();
-		ShareSDKManager.getInstance(this).shareWebPage("title", "desc", "http://img1.cache.netease.com/catchpic/9/90/90F93C644F394EA8D7539EF4BA6DE4FE.jpg", "http://www.baidu.com");
+		if(isBusiness) {
+			IntentManager.startPublishActivity(this);
+		} else {
+			shareActivity();
+		}
+	}
+
+	private void shareActivity() {
+		ShareSDKManager.getInstance(this).shareWebPage("title", "desc",
+				"http://img1.cache.netease.com/catchpic/9/90/90F93C644F394EA8D7539EF4BA6DE4FE.jpg", "http://www.baidu.com");
+	}
+
+	private void checkBusinessRole() {
+		if(isBusiness) {
+			titleView.setOperateText(R.string.edit);
+			institutionLayout.setVisibility(View.GONE);
+			followButton.setText(R.string.send_notice);
+			followButton.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_send_notice, 0, 0);
+			signButton.setText(R.string.message_record);
+			signButton.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_message_record, 0, 0);
+			shareButton.setVisibility(View.VISIBLE);
+		} else {
+			titleView.setOperate(R.drawable.ic_share);
+		}
 	}
 
 	private void initActivityInfo() {
@@ -120,26 +164,30 @@ public class ActivityDetailActivity extends BaseActivity {
 	}
 
 	public void onFollowClick(View view) {
-		if(Utils.isNetworkConnected(this)) {
-			onShowLoadingDialog();
-			HttpManager.followActivity(PartnerApplication.getInstance().getUserInfo().getToken(), activityId, new AsyncHttpCallback() {
-				@Override
-				public void onRequestResponse(Response response) {
-					super.onRequestResponse(response);
-					onDismissLoadingDialog();
-					String result = HttpUtils.getResponseData(response);
-					if (!TextUtils.isEmpty(result)) {
-						Toaster.show(R.string.follow_success);
+		if(isBusiness) {
+			IntentManager.startLeaveMessageActivity(this, -1, activityId);
+		} else {
+			if(Utils.isNetworkConnected(this)) {
+				onShowLoadingDialog();
+				HttpManager.followActivity(PartnerApplication.getInstance().getUserInfo().getToken(), activityId, new AsyncHttpCallback() {
+					@Override
+					public void onRequestResponse(Response response) {
+						super.onRequestResponse(response);
+						onDismissLoadingDialog();
+						String result = HttpUtils.getResponseData(response);
+						if (!TextUtils.isEmpty(result)) {
+							Toaster.show(R.string.follow_success);
+						}
 					}
-				}
 
-				@Override
-				public void onRequestFailure(Request request, IOException e) {
-					super.onRequestFailure(request, e);
-					Toaster.show(R.string.follow_fail);
-					onDismissLoadingDialog();
-				}
-			});
+					@Override
+					public void onRequestFailure(Request request, IOException e) {
+						super.onRequestFailure(request, e);
+						Toaster.show(R.string.follow_fail);
+						onDismissLoadingDialog();
+					}
+				});
+			}
 		}
 	}
 
@@ -177,11 +225,19 @@ public class ActivityDetailActivity extends BaseActivity {
 	}
 
 	public void onSignClick(View view) {
-		IntentManager.startActivitySignActivity(ActivityDetailActivity.this, activityId);
+		if(isBusiness) {
+			IntentManager.startMessageCenterActivity(this);
+		} else {
+			IntentManager.startActivitySignActivity(ActivityDetailActivity.this, activityId);
+		}
 	}
 
 	public void onInviteClick(View view) {
 		IntentManager.startInviteActivity(ActivityDetailActivity.this);
+	}
+
+	public void onShareClick(View view) {
+		shareActivity();
 	}
 
 	private void getActivityDetail() {

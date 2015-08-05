@@ -12,6 +12,7 @@ import com.partner.activity.activity.ContentActivity;
 import com.partner.activity.activity.InstitutionInfoActivity;
 import com.partner.activity.activity.InviteActivity;
 import com.partner.activity.activity.MarkActivity;
+import com.partner.activity.activity.PublishActivity;
 import com.partner.activity.activity.PublishedActivity;
 import com.partner.activity.activity.SignedUserActivity;
 import com.partner.activity.info.InfoItemEditActivity;
@@ -121,9 +122,10 @@ public class IntentManager {
      *
      * @param context
      */
-    public static void startLeaveMessageActivity(Context context, int friendId) {
+    public static void startLeaveMessageActivity(Context context, int friendId, int activityId) {
         Intent intent = new Intent(context, LeaveMessageActivity.class);
         intent.putExtra(IntentConsts.ID_KEY, friendId);
+        intent.putExtra(IntentConsts.ID_KEY, activityId);
         context.startActivity(intent);
     }
 
@@ -237,6 +239,11 @@ public class IntentManager {
 
     public static void startPublishedActivity(Activity context) {
         Intent intent = new Intent(context, PublishedActivity.class);
+        context.startActivity(intent);
+    }
+
+    public static void startPublishActivity(Activity context) {
+        Intent intent = new Intent(context, PublishActivity.class);
         context.startActivity(intent);
     }
 }

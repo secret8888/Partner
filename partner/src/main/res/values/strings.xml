@@ -66,6 +66,7 @@
     <string name="qrcode">扫一扫加好友</string>
     <string name="qr_code">二维码</string>
     <string name="message_center">消息中心</string>
+    <string name="message_record">消息记录</string>
     <string name="setting">设置</string>
     <string name="name">姓名</string>
     <string name="my_qrcode">我的二维码</string>
@@ -76,6 +77,8 @@
     <!-- activity -->
     <string name="activity_detail">活动详情</string>
     <string name="activity_user">活动用户</string>
+    <string name="activity_base_info">活动基本信息</string>
+    <string name="activity_base_info_tip">（必填）下面所有内容必填</string>
     <string name="signed_user">已报名用户</string>
     <string name="institution_info">查看机构信息</string>
     <string name="activity_intro">活动介绍</string>
@@ -115,6 +118,11 @@
     <string name="publish_activity">我要发布活动</string>
     <string name="published_activity">已发布活动</string>
     <string name="activity_tip">*等待系统认证后，方能发活动</string>
+    <string name="no_sign_user">该活动暂无人报名</string>
+    <string name="subject">主题</string>
+    <string name="address">地点</string>
+    <string name="num">人数</string>
+    <string name="time">时间</string>
 
     <!-- info -->
     <string name="delete">删除</string>
@@ -125,7 +133,7 @@
     <string name="note_name">备注名</string>
     <string name="message_title_hint">请输入留言标题</string>
     <string name="message_content_hint">请输入留言内容</string>
-    <string name="leave_msg_success">留言成功</string>
+    <string name="leave_msg_success">发送成功</string>
     <string name="send">发送</string>
     <string name="pick_a_picture">可选择添加一张图片</string>
     <string name="cancel">取消</string>
@@ -137,6 +145,7 @@
     <string name="registration_info">报名常用信息</string>
     <string name="finish">完成</string>
     <string name="parent_info_edit">家长详情编辑</string>
+    <string name="edit">编辑</string>
     <string name="add">添加</string>
     <string name="parent_add">家长添加</string>
     <string name="add_success">添加成功</string>

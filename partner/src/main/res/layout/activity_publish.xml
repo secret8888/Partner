@@ -1,6 +1,5 @@
 <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:fresco="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/bg_gray">
@@ -75,7 +74,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical" >
                 <TextView
-                    android:id="@+id/tv_activity_title"
+                    android:id="@+id/tv_activity_ad"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
@@ -83,294 +82,234 @@
                     android:textStyle="bold"
                     android:textSize="@dimen/ts_16"
                     android:background="@color/white"
-                    />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/bg_gray"
-                    />
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:padding="@dimen/partner_space_medium_12"
-                    >
-                    <com.facebook.drawee.view.SimpleDraweeView
-                        android:id="@+id/im_activity_intro"
-                        android:layout_height="110dp"
-                        android:layout_width="80dp"
-                        android:layout_marginRight="@dimen/partner_space_medium"
-                        fresco:placeholderImageScaleType="centerCrop"
-                        fresco:placeholderImage="@drawable/ic_loading"
-                        />
-
-                    <TextView
-                        android:id="@+id/tv_sign_num"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/partner_space_normal"
-                        android:layout_toRightOf="@+id/im_activity_intro"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/ts_13"
-                        android:drawablePadding="@dimen/partner_space_normal"
-                        android:drawableLeft="@drawable/ic_num"
-                        />
-
-                    <TextView
-                        android:id="@+id/tv_view_num"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/im_activity_intro"
-                        android:layout_below="@+id/tv_sign_num"
-                        android:layout_marginTop="@dimen/partner_space_medium"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/ts_13"
-                        android:drawablePadding="@dimen/partner_space_normal"
-                        android:drawableLeft="@drawable/ic_num"
-                        android:text="598次/浏览"
-                        />
-
-                    <TextView
-                        android:id="@+id/tv_location"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/im_activity_intro"
-                        android:layout_below="@+id/tv_view_num"
-                        android:layout_marginTop="@dimen/partner_space_medium"
-                        android:singleLine="true"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/ts_13"
-                        android:drawablePadding="@dimen/partner_space_normal"
-                        android:drawableLeft="@drawable/ic_address"
-                        />
-
-                    <TextView
-                        android:id="@+id/tv_phone"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/im_activity_intro"
-                        android:layout_below="@+id/tv_location"
-                        android:layout_marginTop="@dimen/partner_space_medium"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/ts_13"
-                        android:drawablePadding="@dimen/partner_space_normal"
-                        android:drawableLeft="@drawable/ic_phone_small"
-                        />
-                </RelativeLayout>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/activity_user"
-                    android:drawableLeft="@drawable/ic_apart_red"
-                    android:drawablePadding="@dimen/partner_space_medium"
-                    android:textColor="@color/black"
-                    android:padding="@dimen/partner_space_medium"
-                    android:textSize="@dimen/ts_13"
-                    />
-
-                <RelativeLayout
-                    android:id="@+id/lv_signed"
-                    style="@style/ItemLayout"
-                    android:onClick="onSignedClick"
-                    >
-                    <ImageView
-                        android:id="@+id/im_signed"
-                        style="@style/PersonalIndexImage"
-                        android:src="@drawable/ic_signed"
-                        />
-
-                    <ImageView
-                        style="@style/PersonalArrowStyle"
-                        />
-                    <TextView
-                        style="@style/PersonalItemText"
-                        android:layout_toRightOf="@id/im_signed"
-                        android:textSize="@dimen/ts_14"
-                        android:text="@string/signed_user"
-                        />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/lv_institution"
-                    android:layout_marginTop="@dimen/partner_space_medium"
-                    style="@style/ItemLayout"
-                    android:onClick="onInstitutionClick"
-                    >
-                    <ImageView
-                        android:id="@+id/im_institution"
-                        style="@style/PersonalIndexImage"
-                        android:src="@drawable/ic_institution"
-                        />
-
-                    <ImageView
-                        style="@style/PersonalArrowStyle"
-                        />
-                    <TextView
-                        style="@style/PersonalItemText"
-                        android:layout_toRightOf="@id/im_institution"
-                        android:textSize="@dimen/ts_14"
-                        android:text="@string/institution_info"
-                        />
-                </RelativeLayout>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/activity_intro"
-                    android:drawableLeft="@drawable/ic_apart_red"
-                    android:drawablePadding="@dimen/partner_space_medium"
-                    android:textColor="@color/black"
-                    android:padding="@dimen/partner_space_medium"
-                    android:textSize="@dimen/ts_13"
                     android:visibility="gone"
                     />
-                <LinearLayout
+
+
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="@dimen/partner_space_common"
-                    android:paddingBottom="@dimen/partner_space_common"
-                    android:paddingLeft="@dimen/partner_space_common"
-                    android:paddingRight="@dimen/partner_space_common"
-                    android:orientation="vertical"
-                    android:background="@color/white"
-                    android:visibility="gone"
                     >
                     <TextView
-                        android:id="@+id/tv_desc"
+                        android:id="@+id/tv_base_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/activity_base_info"
+                        android:drawableLeft="@drawable/ic_apart_red"
+                        android:drawablePadding="@dimen/partner_space_medium"
+                        android:textColor="@color/black"
+                        android:padding="@dimen/partner_space_medium"
+                        android:textSize="@dimen/ts_13"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/tv_base_info"
+                        android:layout_alignParentBottom="true"
+                        android:text="@string/activity_base_info_tip"
+                        android:textColor="@color/text_name_gray"
+                        android:layout_marginLeft="@dimen/partner_space_common"
+                        android:paddingBottom="@dimen/partner_space_medium_12"
+                        android:textSize="@dimen/ts_11"
+                        />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    style="@style/ItemLayout"
+                    android:orientation="horizontal"
+                    >
+
+                    <TextView
+                        android:id="@+id/tv_subject_key"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:textSize="@dimen/ts_15"
+                        android:layout_marginLeft="@dimen/partner_space_large"
+                        android:text="@string/subject"
+                        />
+
+                    <EditText
+                        android:id="@+id/tv_subject"
+                        style="@style/PersonalItemText"
+                        android:textSize="@dimen/ts_13"
+                        android:minHeight="50dp"
+                        android:gravity="center_vertical"
+                        android:hint="请输入活动主题"
+                        android:layout_toRightOf="@id/tv_subject_key"
+                        android:layout_marginLeft="@dimen/partner_space_huge"
+                        android:background="@null"
+                        />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/bg_gray"
+                        android:layout_alignLeft="@id/tv_subject"
+                        android:layout_alignParentBottom="true"
+                        />
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    style="@style/ItemLayout"
+                    android:orientation="horizontal"
+                    >
+
+                    <TextView
+                        android:id="@+id/tv_time_key"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:textSize="@dimen/ts_15"
+                        android:layout_marginLeft="@dimen/partner_space_large"
+                        android:text="@string/time"
+                        />
+
+                    <LinearLayout
+                        android:id="@+id/lv_start_time"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/ts_14"
+                        android:minHeight="50dp"
+                        android:layout_toRightOf="@id/tv_time_key"
+                        android:layout_marginLeft="@dimen/partner_space_huge"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        >
+                        <TextView
+                            style="@style/PersonalItemText"
+                            android:layout_width="wrap_content"
+                            android:textSize="@dimen/ts_13"
+                            android:gravity="center_vertical"
+                            android:hint="@string/start_time"
+                            />
+
+                        <TextView
+                            style="@style/PersonalItemText"
+                            android:layout_width="180dp"
+                            android:textSize="@dimen/ts_13"
+                            android:gravity="center"
+                            android:hint="请选择开始时间"
+                            android:background="@drawable/btn_edge"
+                            />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/lv_start_time"
+                        android:minHeight="50dp"
+                        android:layout_toRightOf="@id/tv_time_key"
+                        android:layout_marginLeft="@dimen/partner_space_huge"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        >
+                        <TextView
+                            style="@style/PersonalItemText"
+                            android:layout_width="wrap_content"
+                            android:textSize="@dimen/ts_13"
+                            android:gravity="center_vertical"
+                            android:hint="@string/end_time"
+                            />
+
+                        <TextView
+                            style="@style/PersonalItemText"
+                            android:layout_width="180dp"
+                            android:textSize="@dimen/ts_13"
+                            android:gravity="center"
+                            android:hint="请选择结束时间"
+                            android:background="@drawable/btn_edge"
+                            />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/bg_gray"
+                        android:layout_alignLeft="@id/tv_time"
+                        android:layout_alignParentBottom="true"
                         />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    style="@style/ItemLayout"
+                    android:orientation="horizontal"
+                    >
 
                     <TextView
+                        android:id="@+id/tv_address_key"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="right"
-                        android:textColor="@color/text_blue"
-                        android:textSize="@dimen/ts_14"
-                        android:text="@string/detail_intro"
+                        android:layout_centerVertical="true"
+                        android:textSize="@dimen/ts_15"
+                        android:layout_marginLeft="@dimen/partner_space_large"
+                        android:text="@string/address"
                         />
-                </LinearLayout>
 
-                <TextView
+                    <EditText
+                        android:id="@+id/tv_address"
+                        style="@style/PersonalItemText"
+                        android:textSize="@dimen/ts_13"
+                        android:minHeight="50dp"
+                        android:gravity="center_vertical"
+                        android:hint="请输入活动地点"
+                        android:layout_toRightOf="@id/tv_address_key"
+                        android:layout_marginLeft="@dimen/partner_space_huge"
+                        android:background="@null"
+                        />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/bg_gray"
+                        android:layout_alignLeft="@id/tv_address"
+                        android:layout_alignParentBottom="true"
+                        />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    style="@style/ItemLayout"
+                    android:orientation="horizontal"
+                    >
+
+                    <TextView
+                        android:id="@+id/tv_num_key"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:textSize="@dimen/ts_15"
+                        android:layout_marginLeft="@dimen/partner_space_large"
+                        android:text="@string/num"
+                        />
+
+                    <EditText
+                        android:id="@+id/tv_num"
+                        style="@style/PersonalItemText"
+                        android:textSize="@dimen/ts_13"
+                        android:minHeight="50dp"
+                        android:gravity="center_vertical"
+                        android:inputType="number"
+                        android:hint="请输入活动人数"
+                        android:layout_toRightOf="@id/tv_num_key"
+                        android:layout_marginLeft="@dimen/partner_space_huge"
+                        android:background="@null"
+                        />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/bg_gray"
+                        android:layout_alignLeft="@id/tv_num"
+                        android:layout_alignParentBottom="true"
+                        />
+                </RelativeLayout>
+
+                <View
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/activity_info"
-                    android:drawableLeft="@drawable/ic_apart_red"
-                    android:drawablePadding="@dimen/partner_space_medium"
-                    android:textColor="@color/black"
-                    android:padding="@dimen/partner_space_medium"
-                    android:textSize="@dimen/ts_13"
+                    android:layout_height="@dimen/partner_space_common"
+                    android:background="@color/white"
                     />
-
-                <LinearLayout
-                    style="@style/ItemLayout"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="@dimen/ts_13"
-                        android:layout_marginLeft="@dimen/partner_space_large"
-                        android:text="@string/start_time"
-                        />
-
-                    <TextView
-                        android:id="@+id/tv_start_time"
-                        style="@style/PersonalItemText"
-                        android:textSize="@dimen/ts_14"
-                        android:layout_toRightOf="@id/im_institution"
-                        android:layout_marginLeft="@dimen/partner_space_common"
-                        />
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"/>
-
-                <LinearLayout
-                    style="@style/ItemLayout"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="@dimen/ts_13"
-                        android:layout_marginLeft="@dimen/partner_space_large"
-                        android:text="@string/end_time"
-                        />
-
-                    <TextView
-                        android:id="@+id/tv_end_time"
-                        style="@style/PersonalItemText"
-                        android:textSize="@dimen/ts_14"
-                        android:layout_toRightOf="@id/im_institution"
-                        android:layout_marginLeft="@dimen/partner_space_common"
-                        />
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"/>
-
-                <LinearLayout
-                    style="@style/ItemLayout"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="@dimen/ts_13"
-                        android:layout_marginLeft="@dimen/partner_space_large"
-                        android:text="@string/activity_address"
-                        />
-
-                    <TextView
-                        android:id="@+id/tv_activity_address"
-                        style="@style/PersonalItemText"
-                        android:textSize="@dimen/ts_14"
-                        android:layout_toRightOf="@id/im_institution"
-                        android:layout_marginLeft="@dimen/partner_space_common"
-                        />
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"/>
-
-                <LinearLayout
-                    style="@style/ItemLayout"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="@dimen/ts_13"
-                        android:layout_marginLeft="@dimen/partner_space_large"
-                        android:text="@string/activity_num"
-                        />
-
-                    <TextView
-                        android:id="@+id/tv_activity_num"
-                        style="@style/PersonalItemText"
-                        android:textSize="@dimen/ts_14"
-                        android:layout_toRightOf="@id/im_institution"
-                        android:layout_marginLeft="@dimen/partner_space_common"
-                        />
-                </LinearLayout>
-
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

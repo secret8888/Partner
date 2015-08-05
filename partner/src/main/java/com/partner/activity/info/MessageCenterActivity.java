@@ -1,6 +1,7 @@
 package com.partner.activity.info;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -89,8 +90,10 @@ public class MessageCenterActivity extends BaseActivity implements AdapterView.O
 	private void handleRegitsResult(Response response) {
 		onDismissLoadingDialog();
 		String result = HttpUtils.getResponseData(response);
-
 		registrationList = YJson.getObj(result, RegistrationList.class);
+		if(registrationList == null || registrationList.getInrollInfos() == null) {
+			return;
+		}
 		MessageCenterAdapter adapter = new MessageCenterAdapter(this, registrationList.getInrollInfos());
 		contentView.setAdapter(adapter);
 	}

@@ -13,12 +13,16 @@ import com.partner.common.constant.Consts;
 import com.partner.common.constant.IntentConsts;
 import com.partner.common.http.AsyncHttpCallback;
 import com.partner.common.http.HttpManager;
+import com.partner.common.util.HttpUtils;
 import com.partner.common.util.Toaster;
 import com.partner.common.util.Utils;
+import com.partner.model.FriendInfo;
+import com.partner.model.FriendList;
 import com.partner.model.UserInfo;
 import com.partner.view.TitleView;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
+import com.youdao.yjson.YJson;
 
 import java.io.IOException;
 
@@ -30,7 +34,11 @@ public class LeaveMessageActivity extends BaseActivity {
 	@ViewId(R.id.edit_content)
 	private EditText contentEdit;
 
+	private FriendList friendList;
+
 	private int userId;
+
+	private int activityId;
 
 	private boolean isBusiness;
 
@@ -44,6 +52,7 @@ public class LeaveMessageActivity extends BaseActivity {
 	@Override
 	protected void readIntent() {
 		userId = getIntent().getIntExtra(IntentConsts.ID_KEY, -1);
+		activityId = getIntent().getIntExtra(IntentConsts.ID_KEY, -1);
 	}
 
 	@Override
@@ -51,6 +60,7 @@ public class LeaveMessageActivity extends BaseActivity {
 		isBusiness = PartnerApplication.getInstance().getUserInfo().getUserType() == Consts.ROLE_BUSINESS;
 		if(isBusiness) {
 			titleView.setTitle(R.string.send_notice);
+			getSignedUsers();
 		} else {
 			titleView.setTitle(R.string.leave_message);
 		}
@@ -73,13 +83,45 @@ public class LeaveMessageActivity extends BaseActivity {
 
 		if(Utils.checkNetworkConnected(this)) {
 			onShowLoadingDialog();
+			StringBuilder userIdsBuilder = new StringBuilder();
+			if(isBusiness) {
+				for(FriendInfo friendInfo : friendList.getFriends()) {
+					userIdsBuilder.append(friendInfo.getFriendId());
+					userIdsBuilder.append(",");
+				}
+			} else {
+				userIdsBuilder.append(userId);
+			}
 			UserInfo userInfo = PartnerApplication.getInstance().getUserInfo();
-			HttpManager.sendMessage(userInfo.getToken(), String.valueOf(userId), content, new AsyncHttpCallback() {
+			HttpManager.sendMessage(userInfo.getToken(), userIdsBuilder.toString(), content, new AsyncHttpCallback() {
 				@Override
 				public void onRequestResponse(Response response) {
 					onDismissLoadingDialog();
 					Toaster.show(R.string.leave_msg_success);
 					onBackPressed();
+				}
+
+				@Override
+				public void onRequestFailure(Request request, IOException e) {
+					onDismissLoadingDialog();
+				}
+			});
+		}
+	}
+
+	private void getSignedUsers() {
+		if(Utils.checkNetworkConnected(this)) {
+			onShowLoadingDialog();
+			HttpManager.getSignedUsers(PartnerApplication.getInstance().getUserInfo().getToken(), activityId, new AsyncHttpCallback() {
+				@Override
+				public void onRequestResponse(Response response) {
+					onDismissLoadingDialog();
+					String responseBody = HttpUtils.getResponseData(response);
+					friendList = YJson.getObj(responseBody, FriendList.class);
+					if(friendList == null || friendList.getFriends() == null || friendList.getFriends().size() == 0) {
+						Toaster.show(R.string.no_sign_user);
+						onBackPressed();
+					}
 				}
 
 				@Override

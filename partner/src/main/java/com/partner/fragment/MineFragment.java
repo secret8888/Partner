@@ -144,7 +144,7 @@ public class MineFragment extends BaseFragment implements OnClickListener {
 			break;
 		case R.id.lv_registration_info: //报名常用信息和发布活动
 			if(isBusiness) {
-
+				IntentManager.startPublishActivity(getActivity());
 			} else {
 				IntentManager.startRegistrationInfoActivity(getActivity());
 			}

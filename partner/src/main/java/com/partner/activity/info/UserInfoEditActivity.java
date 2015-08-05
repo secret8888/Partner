@@ -66,9 +66,9 @@ public class UserInfoEditActivity extends BaseActivity {
 		isBusiness = PartnerApplication.getInstance().getUserInfo().getUserType() == Consts.ROLE_BUSINESS;
 		titleView.setTitle(R.string.app_name);
 		titleView.setOperateText(R.string.delete);
-//		if(isBusiness) {
-//			leaveMsgView.setText(R.string.send_notice);
-//		}
+		if(isBusiness) {
+			leaveMsgView.setText(R.string.send_notice);
+		}
 		nicknameView.setText(mInfo.getFriendNickName());
 		noteNameView.setText(mInfo.getFriendMyName());
 		if(!TextUtils.isEmpty(mInfo.getFriendHeadImage())) {
@@ -90,7 +90,7 @@ public class UserInfoEditActivity extends BaseActivity {
 	}
 
 	public void onMessageClick(View view) {
-		IntentManager.startLeaveMessageActivity(this, mInfo.getFriendId());
+		IntentManager.startLeaveMessageActivity(this, mInfo.getFriendId(), -1);
 	}
 
 	public void onChangeNoteNameClick(View view) {
