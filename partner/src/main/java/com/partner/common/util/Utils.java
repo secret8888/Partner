@@ -306,7 +306,7 @@ public class Utils {
 			file.createNewFile();
 			BufferedOutputStream bos = new BufferedOutputStream(
 					new FileOutputStream(file));
-			bitmap.compress(Bitmap.CompressFormat.JPEG, 90, bos);
+			bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
 			bos.flush();
 			bos.close();
 			bos = null;

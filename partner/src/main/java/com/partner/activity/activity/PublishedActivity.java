@@ -1,5 +1,6 @@
 package com.partner.activity.activity;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -39,6 +40,8 @@ public class PublishedActivity extends BaseActivity implements AdapterView.OnIte
 
 	private ActivityList activityList = null;
 
+	private int friendId;
+
 	private static final String TAG = PublishedActivity.class.getSimpleName();
 
 	@Override
@@ -48,11 +51,17 @@ public class PublishedActivity extends BaseActivity implements AdapterView.OnIte
 
 	@Override
 	protected void readIntent() {
+		friendId = getIntent().getIntExtra(IntentConsts.ID_KEY, -1);
 	}
 
 	@Override
 	protected void initControls(Bundle savedInstanceState) {
-		titleView.setTitle(R.string.published_activity);
+		if(friendId == -1) {
+			titleView.setTitle(R.string.published_activity);
+		} else {
+			titleView.setTitle(R.string.all_institution_activity);
+		}
+
 		contentView.setRefreshTime(Utils.getTime());
 		onShowLoadingDialog();
 		getActivityList(0);
@@ -92,22 +101,31 @@ public class PublishedActivity extends BaseActivity implements AdapterView.OnIte
 		if (Utils.checkNetworkConnected(this)) {
 			AsyncHttpCallback callback = new AsyncHttpCallback() {
 				@Override
-				public void onRequestResponse(Response response) {
+				public void onRequestResponse(final Response response) {
 					onDismissLoadingDialog();
 					onMessageLoad();
-					String data = HttpUtils.getResponseData(response, false);
-					if(TextUtils.isEmpty(data)) {
-						return;
-					}
-					if(start == 0) {
-						activityList = YJson.getObj(data, ActivityList.class);
-						adapter = new ActivityAdapter(PublishedActivity.this, activityList.getActivities());
-						contentView.setAdapter(adapter);
-					} else {
-						ActivityList list = YJson.getObj(data, ActivityList.class);
-						activityList.getActivities().addAll(list.getActivities());
-						adapter.notifyDataSetChanged();
-					}
+					new AsyncTask<Void, Void, String>() {
+						@Override
+						protected String doInBackground(Void... params) {
+							return HttpUtils.getResponseData(response, false);
+						}
+
+						@Override
+						protected void onPostExecute(String data) {
+							if(TextUtils.isEmpty(data)) {
+								return;
+							}
+							if(start == 0) {
+								activityList = YJson.getObj(data, ActivityList.class);
+								adapter = new ActivityAdapter(PublishedActivity.this, activityList.getActivities());
+								contentView.setAdapter(adapter);
+							} else {
+								ActivityList list = YJson.getObj(data, ActivityList.class);
+								activityList.getActivities().addAll(list.getActivities());
+								adapter.notifyDataSetChanged();
+							}
+						}
+					}.execute();
 				}
 
 				@Override
@@ -116,8 +134,13 @@ public class PublishedActivity extends BaseActivity implements AdapterView.OnIte
 					onMessageLoad();
 				}
 			};
-			HttpManager.getPublishedActivities(PartnerApplication.getInstance().getUserInfo().getToken(),
-					start, Consts.PAGE_OFFSET, callback);
+			if (friendId == -1) {
+				HttpManager.getPublishedActivities(PartnerApplication.getInstance().getUserInfo().getToken(),
+						start, Consts.PAGE_OFFSET, callback);
+			} else {
+				HttpManager.getActivitiesByOtherOrg(PartnerApplication.getInstance().getUserInfo().getToken(), friendId, "",
+						start, Consts.PAGE_OFFSET, callback);
+			}
 		}
 	}
 }

@@ -13,6 +13,8 @@ public class FriendInfo implements Serializable{
 
     private int id;
 
+    private int userId;
+
     //备注名
     private String friendMyName;
 
@@ -149,5 +151,13 @@ public class FriendInfo implements Serializable{
 
     public void setIsSelected(boolean isSelected) {
         this.isSelected = isSelected;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 }

@@ -28,6 +28,9 @@ public class UserInfo {
 
     private String address;
 
+    @SerializedName("userstatus")
+    private int userStatus;
+
     public String getToken() {
         return token;
     }
@@ -90,5 +93,13 @@ public class UserInfo {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public int getUserStatus() {
+        return userStatus;
+    }
+
+    public void setUserStatus(int userStatus) {
+        this.userStatus = userStatus;
     }
 }

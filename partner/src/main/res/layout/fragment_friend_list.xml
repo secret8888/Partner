@@ -3,6 +3,7 @@
     android:id="@+id/list_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:footerDividersEnabled="false"
     android:background="@color/white"
     android:divider="@color/bg_gray"
     android:dividerHeight="@dimen/partner_space_mini"

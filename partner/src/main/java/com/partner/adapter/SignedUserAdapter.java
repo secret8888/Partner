@@ -12,6 +12,7 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.partner.PartnerApplication;
 import com.partner.R;
 import com.partner.activity.base.BaseActivity;
+import com.partner.common.constant.Consts;
 import com.partner.common.http.AsyncHttpCallback;
 import com.partner.common.http.HttpManager;
 import com.partner.common.util.Utils;
@@ -28,7 +29,10 @@ public class SignedUserAdapter extends BaseAdapter {
 
 	private ArrayList<FriendInfo> mItems;
 
+	private boolean isBusiness;
+
 	public SignedUserAdapter(Context context, ArrayList<FriendInfo> items) {
+		isBusiness = PartnerApplication.getInstance().getUserInfo().getUserType() == Consts.ROLE_BUSINESS;
 		this.context = context;
 		this.mItems = items;
 	}
@@ -70,17 +74,21 @@ public class SignedUserAdapter extends BaseAdapter {
 			holder.avatarView.setImageURI(uri);
 		}
 		holder.nameView.setText(info.getNickname());
-		if(info.isfriend()) {
-			holder.followView.setText(R.string.cancel_follow);
+		if(isBusiness) {
+			holder.followView.setVisibility(View.GONE);
 		} else {
-			holder.followView.setText(R.string.follow);
-		}
-		holder.followView.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				operaFriend(info);
+			if(info.isfriend()) {
+				holder.followView.setText(R.string.cancel_follow);
+			} else {
+				holder.followView.setText(R.string.follow);
 			}
-		});
+			holder.followView.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					operaFriend(info);
+				}
+			});
+		}
 		return convertView;
 	}
 

@@ -37,6 +37,7 @@ public class Consts {
     public static final String TEMP_FILE_PATH = MAIN_FILE_PATH + "temp/";
     public static final String AVATAR_CACHE_FILE =  "avatar.png";
     public static final String PLATFORM_SHARE_NAME = "share_temp.png";
+    public static final String IMAGE_CACHE_FILE =  "image.png";
 
     /*
      * 网络连接超时时间

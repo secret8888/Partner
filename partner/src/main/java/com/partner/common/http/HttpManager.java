@@ -195,6 +195,16 @@ public class HttpManager {
     }
 
     /**
+     *
+     * @param token
+     * @param callback
+     */
+    public static void getFans(String token, AsyncHttpCallback callback) {
+        String codeUrl = String.format(HttpConsts.GET_FANS_URL, token);
+        PartnerHttpClient.asyncGet(codeUrl + HttpUtils.getUserSign(), callback);
+    }
+
+    /**
      * 删除好友
      * @param token
      * @param friendId
@@ -234,6 +244,19 @@ public class HttpManager {
      */
     public static void getPublishedActivities(String token, int start, int offset, AsyncHttpCallback callback) {
         String url = String.format(HttpConsts.GET_PUBLISHED_ACTIVITIES, token, start, offset);
+        PartnerHttpClient.asyncGet(url + HttpUtils.getUserSign(), callback);
+    }
+
+    /**
+     * 其他机构的所有活动
+     * @param token
+     * @param friendId
+     * @param start
+     * @param offset
+     * @param callback
+     */
+    public static void getActivitiesByOtherOrg(String token, int friendId, String receivedIds, int start, int offset, AsyncHttpCallback callback) {
+        String url = String.format(HttpConsts.OTHER_PUBLISHED_ACTIVITIES, token, friendId, receivedIds, start, offset);
         PartnerHttpClient.asyncGet(url + HttpUtils.getUserSign(), callback);
     }
 
@@ -357,5 +380,73 @@ public class HttpManager {
     public static void inviteFriend(String token, int activityId, String inviteUserIds, AsyncHttpCallback callback) {
         String url = String.format(HttpConsts.INVITE_ACTIVITY, token, activityId, inviteUserIds);
         PartnerHttpClient.asyncGet(url + HttpUtils.getUserSign(), callback);
+    }
+
+    /**
+     * 已经结束的活动，还想再举办，点击按钮，提交接口
+     * @param token
+     * @param activityId
+     * @param callback
+     */
+    public static void wantFinishedActivity(String token, int activityId, AsyncHttpCallback callback) {
+        String url = String.format(HttpConsts.WANTED_FINISHED_ACTIVITY, token, activityId);
+        PartnerHttpClient.asyncGet(url + HttpUtils.getUserSign(), callback);
+    }
+
+    /**
+     * 获取消息列表
+     * @param token
+     * @param callback
+     */
+    public static void getMessageList(String token, AsyncHttpCallback callback) {
+        String codeUrl = String.format(HttpConsts.GET_MESSAGES_URL, token);
+        PartnerHttpClient.asyncGet(codeUrl + HttpUtils.getUserSign(), callback);
+    }
+
+    /**
+     * 机构，某个活动下发出的所有通知的消息记录列表
+     * @param activityId
+     * @param callback
+     */
+    public static void getMessagesByActivity(String token, int activityId, AsyncHttpCallback callback) {
+        String codeUrl = String.format(HttpConsts.GET_MESSAGES_ACTIVITY_URL, token, activityId);
+        PartnerHttpClient.asyncGet(codeUrl + HttpUtils.getUserSign(), callback);
+    }
+
+    /**
+     * 机构，发活动
+     * @param token
+     * @param title
+     * @param startTime
+     * @param endTime
+     * @param address
+     * @param peopleNum
+     * @param description
+     * @param transportInfo
+     * @param cost
+     * @param arrange
+     * @param equipment
+     * @param callback
+     */
+    public static void publishActivity(String token, int activityId, String title, File file, String startTime, String endTime, String address,
+                                       String peopleNum, String description, String transportInfo, String cost, String arrange,
+                                       String equipment, AsyncHttpCallback callback) {
+        HashMap paramsMap = HttpUtils.getUserSignMap();
+        paramsMap.put("token", token);
+        if(activityId != -1) {
+            paramsMap.put("activityId", String.valueOf(activityId));
+        }
+        paramsMap.put("title", title);
+        paramsMap.put("startTime", startTime);
+        paramsMap.put("endTime", endTime);
+        paramsMap.put("address", address);
+        paramsMap.put("peopleNum", peopleNum);
+        paramsMap.put("description", description);
+        paramsMap.put("transportInfo", transportInfo);
+        paramsMap.put("cost", cost);
+        paramsMap.put("arrange", arrange);
+        paramsMap.put("equipment", equipment);
+
+        PartnerHttpClient.asyncPostFile(HttpConsts.PUBLISH_ACTIVITY_URL, paramsMap, file, callback);
     }
 }

@@ -94,7 +94,9 @@ public class MineFragment extends BaseFragment implements OnClickListener {
 			registrationTextView.setText(R.string.publish_activity);
 			qrcodeView.setImageResource(R.drawable.ic_published);
 			qrcodeTextView.setText(R.string.published_activity);
-			tipView.setVisibility(View.VISIBLE);
+			if(PartnerApplication.getInstance().getUserInfo().getUserStatus() != 0) {
+				tipView.setVisibility(View.VISIBLE);
+			}
 		}
 	}
 
@@ -144,20 +146,22 @@ public class MineFragment extends BaseFragment implements OnClickListener {
 			break;
 		case R.id.lv_registration_info: //报名常用信息和发布活动
 			if(isBusiness) {
-				IntentManager.startPublishActivity(getActivity());
+				if(PartnerApplication.getInstance().getUserInfo().getUserStatus() == 0) {
+					IntentManager.startPublishActivity(getActivity(), null);
+				}
 			} else {
 				IntentManager.startRegistrationInfoActivity(getActivity());
 			}
 			break;
 		case R.id.lv_qrcode: //扫一扫加好友和已经发布活动
 			if(isBusiness) {
-				IntentManager.startPublishedActivity(getActivity());
+				IntentManager.startPublishedActivity(getActivity(), -1);
 			} else {
 				IntentManager.startCaptureActivity(getActivity(), 1);
 			}
 			break;
 		case R.id.lv_message_center:
-			IntentManager.startMessageCenterActivity(getActivity());
+			IntentManager.startMessageCenterActivity(getActivity(), -1);
 			break;
 		}
 	}

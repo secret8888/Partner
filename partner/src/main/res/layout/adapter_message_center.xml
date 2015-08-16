@@ -30,9 +30,8 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="@dimen/partner_space_huge"
             android:textColor="@color/text_black"
-            android:textSize="@dimen/ts_14"
+            android:textSize="@dimen/ts_12"
             android:singleLine="true"
-            android:text="2015-05-06"
             />
 
         <TextView
@@ -44,13 +43,12 @@
             android:textColor="@color/black"
             android:textSize="@dimen/ts_16"
             android:singleLine="true"
-            android:text="青青的小草"
             />
 
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/tv_phone"
+        android:id="@+id/tv_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/im_avatar"
@@ -61,6 +59,14 @@
         android:textColor="@color/text_black"
         android:textSize="@dimen/ts_14"
         android:singleLine="true"
-        android:text="afjhhkajhfakjhfkajhfkjah"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/partner_space_medium"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/ic_arrow"
         />
 </RelativeLayout>

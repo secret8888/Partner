@@ -1,16 +1,20 @@
 package com.partner.model;
 
+import java.io.Serializable;
+
 /**
  * Created by yuym on 2015/7/12.
  */
-public class ActivityInfo {
+public class ActivityInfo implements Serializable{
     private String activityAddress;
 
     private int activityAgainNum;
 
-    private int activityViewNum;
+    private String activityArrange;
 
-    private int activityCost;
+    private String activityCellphone;
+
+    private String activityCost;
 
     private String activityDescription;
 
@@ -40,9 +44,17 @@ public class ActivityInfo {
 
     private int activityUserId;
 
+    private int activityViewNum;
+
+    private String activityEquipment;
+
     private long createTime;
 
     private long lastModTime;
+
+    private long activityStartTime;
+
+    private long activityEndTime;
 
     private boolean isfriend;
 
@@ -54,11 +66,11 @@ public class ActivityInfo {
         this.activityAddress = activityAddress;
     }
 
-    public int getActivityCost() {
+    public String getActivityCost() {
         return activityCost;
     }
 
-    public void setActivityCost(int activityCost) {
+    public void setActivityCost(String activityCost) {
         this.activityCost = activityCost;
     }
 
@@ -212,5 +224,45 @@ public class ActivityInfo {
 
     public void setActivityViewNum(int activityViewNum) {
         this.activityViewNum = activityViewNum;
+    }
+
+    public String getActivityArrange() {
+        return activityArrange;
+    }
+
+    public void setActivityArrange(String activityArrange) {
+        this.activityArrange = activityArrange;
+    }
+
+    public String getActivityCellphone() {
+        return activityCellphone;
+    }
+
+    public void setActivityCellphone(String activityCellphone) {
+        this.activityCellphone = activityCellphone;
+    }
+
+    public String getActivityEquipment() {
+        return activityEquipment;
+    }
+
+    public void setActivityEquipment(String activityEquipment) {
+        this.activityEquipment = activityEquipment;
+    }
+
+    public long getActivityStartTime() {
+        return activityStartTime;
+    }
+
+    public void setActivityStartTime(long activityStartTime) {
+        this.activityStartTime = activityStartTime;
+    }
+
+    public long getActivityEndTime() {
+        return activityEndTime;
+    }
+
+    public void setActivityEndTime(long activityEndTime) {
+        this.activityEndTime = activityEndTime;
     }
 }

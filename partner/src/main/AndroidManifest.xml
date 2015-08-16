@@ -158,6 +158,10 @@
             android:name=".activity.info.MessageCenterActivity"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".activity.info.MessageDetailActivity"
+            android:screenOrientation="portrait" />
+
         <!-- qr code-->
         <activity
             android:name=".qrcode.activity.ResultActivity"

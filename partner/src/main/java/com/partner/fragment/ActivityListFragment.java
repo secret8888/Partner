@@ -1,5 +1,6 @@
 package com.partner.fragment;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -17,6 +18,7 @@ import com.partner.common.http.AsyncHttpCallback;
 import com.partner.common.http.HttpManager;
 import com.partner.common.util.HttpUtils;
 import com.partner.common.util.IntentManager;
+import com.partner.common.util.Logcat;
 import com.partner.common.util.Toaster;
 import com.partner.common.http.HttpManager;
 import com.partner.common.util.Utils;
@@ -111,22 +113,31 @@ public class ActivityListFragment extends BaseFragment implements OnItemClickLis
 		if (Utils.checkNetworkConnected(getActivity())) {
 			AsyncHttpCallback callback = new AsyncHttpCallback() {
 				@Override
-				public void onRequestResponse(Response response) {
+				public void onRequestResponse(final Response response) {
 					onDismissLoadingDialog();
 					onMessageLoad();
-					String data = HttpUtils.getResponseData(response, false);
-					if(TextUtils.isEmpty(data)) {
-						return;
-					}
-					if(start == 0) {
-						activityList = YJson.getObj(data, ActivityList.class);
-						adapter = new ActivityAdapter(getActivity(), activityList.getActivities());
-						contentView.setAdapter(adapter);
-					} else {
-						ActivityList list = YJson.getObj(data, ActivityList.class);
-						activityList.getActivities().addAll(list.getActivities());
-						adapter.notifyDataSetChanged();
-					}
+					new AsyncTask<Void, Void, String>() {
+						@Override
+						protected String doInBackground(Void... params) {
+							return HttpUtils.getResponseData(response, false);
+						}
+
+						@Override
+						protected void onPostExecute(String data) {
+							if(TextUtils.isEmpty(data)) {
+								return;
+							}
+							if(start == 0) {
+								activityList = YJson.getObj(data, ActivityList.class);
+								adapter = new ActivityAdapter(getActivity(), activityList.getActivities());
+								contentView.setAdapter(adapter);
+							} else {
+								ActivityList list = YJson.getObj(data, ActivityList.class);
+								activityList.getActivities().addAll(list.getActivities());
+								adapter.notifyDataSetChanged();
+							}
+						}
+					}.execute();
 				}
 
 				@Override

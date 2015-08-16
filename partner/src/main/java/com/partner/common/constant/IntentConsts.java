@@ -29,4 +29,6 @@ public class IntentConsts {
 	public static final String EDIT_KEY = "edit";
 
 	public static final String ID_KEY = "id";
+
+	public static final String TYPE_KEY = "type";
 }

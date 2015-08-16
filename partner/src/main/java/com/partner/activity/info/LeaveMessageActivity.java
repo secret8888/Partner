@@ -51,7 +51,7 @@ public class LeaveMessageActivity extends BaseActivity {
 
 	@Override
 	protected void readIntent() {
-		userId = getIntent().getIntExtra(IntentConsts.ID_KEY, -1);
+		userId = getIntent().getIntExtra(IntentConsts.INFO_KEY, -1);
 		activityId = getIntent().getIntExtra(IntentConsts.ID_KEY, -1);
 	}
 

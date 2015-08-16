@@ -14,6 +14,7 @@ import com.partner.activity.MainActivity;
 import com.partner.adapter.ActivityAdapter;
 import com.partner.adapter.FriendAdapter;
 import com.partner.common.annotation.ViewId;
+import com.partner.common.constant.Consts;
 import com.partner.common.http.AsyncHttpCallback;
 import com.partner.common.http.HttpManager;
 import com.partner.common.util.HttpUtils;
@@ -38,6 +39,9 @@ public class FriendListFragment extends BaseFragment implements OnItemClickListe
 	private FriendList friendList;
 
 	private int type = 0;
+
+	private boolean isBusiness;
+
 	@Override
 	protected int getLayoutId() {
 		return R.layout.fragment_friend_list;
@@ -50,6 +54,7 @@ public class FriendListFragment extends BaseFragment implements OnItemClickListe
 
 	@Override
 	protected void initControls(Bundle savedInstanceState) {
+		isBusiness = PartnerApplication.getInstance().getUserInfo().getUserType() == Consts.ROLE_BUSINESS;
 		contentView.setRefreshTime(Utils.getTime());
 	}
 
@@ -65,7 +70,7 @@ public class FriendListFragment extends BaseFragment implements OnItemClickListe
 
 	@Override
 	protected void setListeners() {
-		contentView.setPullLoadEnable(false);
+		contentView.setPullRefreshEnable(false);
 		contentView.setPullLoadEnable(false);
 		contentView.setOnItemClickListener(this);
 		contentView.setListViewRefreshListener(new RefreshListView.ListViewRefreshListener() {
@@ -110,7 +115,7 @@ public class FriendListFragment extends BaseFragment implements OnItemClickListe
 
 	public void getFriendsList() {
 		if(Utils.isNetworkConnected(getActivity())) {
-			HttpManager.getFriendsList(PartnerApplication.getInstance().getUserInfo().getToken(), type, new AsyncHttpCallback() {
+			AsyncHttpCallback callback = new AsyncHttpCallback() {
 				@Override
 				public void onRequestResponse(Response response) {
 					super.onRequestResponse(response);
@@ -128,7 +133,13 @@ public class FriendListFragment extends BaseFragment implements OnItemClickListe
 					super.onRequestFailure(request, e);
 					onMessageLoad();
 				}
-			});
+			};
+
+			if(isBusiness) {
+				HttpManager.getFans(PartnerApplication.getInstance().getUserInfo().getToken(), callback);
+			} else {
+				HttpManager.getFriendsList(PartnerApplication.getInstance().getUserInfo().getToken(), type, callback);
+			}
 		} else {
 			onMessageLoad();
 		}

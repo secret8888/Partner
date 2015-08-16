@@ -1,5 +1,6 @@
 package com.partner.activity.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputFilter;
 import android.text.Spanned;
@@ -28,6 +29,8 @@ public class ContentActivity extends BaseActivity {
 
 	private String content;
 
+	private int inputType;
+
 	private boolean isEditModel = false;
 
 	private static final String TAG = ContentActivity.class.getSimpleName();
@@ -42,6 +45,7 @@ public class ContentActivity extends BaseActivity {
 		title = getIntent().getStringExtra(IntentConsts.TITLE_KEY);
 		content = getIntent().getStringExtra(IntentConsts.INFO_KEY);
 		isEditModel = getIntent().getBooleanExtra(IntentConsts.EDIT_KEY, false);
+		inputType = getIntent().getIntExtra(IntentConsts.TYPE_KEY, -1);
 	}
 
 	@Override
@@ -54,11 +58,24 @@ public class ContentActivity extends BaseActivity {
 		if(!isEditModel) {
 			contentView.setFocusable(false);
 			contentView.setClickable(false);
+		} else if(inputType != -1) {
+			contentView.setInputType(inputType);
 		}
 	}
 
 	@Override
 	protected void setListeners() {
 		titleView.setListener(this);
+	}
+
+	@Override
+	public void onBackPressed() {
+		String result = contentView.getText().toString();
+		if(!TextUtils.isEmpty(result) && isEditModel) {
+			Intent intent = new Intent();
+			intent.putExtra("input_result", result);
+			setResult(RESULT_OK, intent);
+		}
+		super.onBackPressed();
 	}
 }

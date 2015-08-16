@@ -17,6 +17,7 @@ import com.partner.activity.activity.PublishedActivity;
 import com.partner.activity.activity.SignedUserActivity;
 import com.partner.activity.info.InfoItemEditActivity;
 import com.partner.activity.info.MessageCenterActivity;
+import com.partner.activity.info.MessageDetailActivity;
 import com.partner.activity.info.MyInfoActivity;
 import com.partner.activity.info.MyQrCodeActivity;
 import com.partner.activity.info.RegistrationEditActivity;
@@ -34,7 +35,9 @@ import com.partner.activity.MainActivity;
 import com.partner.activity.login.ModifyPsdActivity;
 import com.partner.activity.login.RegisterActivity;
 import com.partner.common.constant.IntentConsts;
+import com.partner.model.ActivityInfo;
 import com.partner.model.FriendInfo;
+import com.partner.model.MessageInfo;
 import com.partner.model.RegistrationInfo;
 import com.partner.qrcode.activity.CaptureActivity;
 
@@ -124,7 +127,7 @@ public class IntentManager {
      */
     public static void startLeaveMessageActivity(Context context, int friendId, int activityId) {
         Intent intent = new Intent(context, LeaveMessageActivity.class);
-        intent.putExtra(IntentConsts.ID_KEY, friendId);
+        intent.putExtra(IntentConsts.INFO_KEY, friendId);
         intent.putExtra(IntentConsts.ID_KEY, activityId);
         context.startActivity(intent);
     }
@@ -225,26 +228,37 @@ public class IntentManager {
         context.startActivity(intent);
     }
 
-    public static void startContentActivity(Activity context, String title, String content, boolean isEditModel) {
+    public static void startContentActivity(Activity context, String title, String content,
+                                            boolean isEditModel, int inputType, int requestCode) {
         Intent intent = new Intent(context, ContentActivity.class);
         intent.putExtra(IntentConsts.TITLE_KEY, title);
         intent.putExtra(IntentConsts.INFO_KEY, content);
         intent.putExtra(IntentConsts.EDIT_KEY, isEditModel);
-        context.startActivity(intent);
+        intent.putExtra(IntentConsts.TYPE_KEY, inputType);
+        context.startActivityForResult(intent, requestCode);
     }
 
-    public static void startMessageCenterActivity(Activity context) {
+    public static void startMessageCenterActivity(Activity context, int activityId) {
         Intent intent = new Intent(context, MessageCenterActivity.class);
+        intent.putExtra(IntentConsts.ID_KEY, activityId);
         context.startActivity(intent);
     }
 
-    public static void startPublishedActivity(Activity context) {
+    public static void startPublishedActivity(Activity context, int friendId) {
         Intent intent = new Intent(context, PublishedActivity.class);
+        intent.putExtra(IntentConsts.ID_KEY, friendId);
         context.startActivity(intent);
     }
 
-    public static void startPublishActivity(Activity context) {
+    public static void startPublishActivity(Activity context, ActivityInfo info) {
         Intent intent = new Intent(context, PublishActivity.class);
+        intent.putExtra(IntentConsts.INFO_KEY, info);
+        context.startActivity(intent);
+    }
+
+    public static void startMessageDetailActivity(Activity context, MessageInfo messageInfo) {
+        Intent intent = new Intent(context, MessageDetailActivity.class);
+        intent.putExtra(IntentConsts.INFO_KEY, messageInfo);
         context.startActivity(intent);
     }
 }

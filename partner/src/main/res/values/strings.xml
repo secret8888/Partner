@@ -66,7 +66,10 @@
     <string name="qrcode">扫一扫加好友</string>
     <string name="qr_code">二维码</string>
     <string name="message_center">消息中心</string>
+    <string name="message">消息</string>
     <string name="message_record">消息记录</string>
+    <string name="message_detail">消息详情</string>
+    <string name="activity_message_list">活动消息列表</string>
     <string name="setting">设置</string>
     <string name="name">姓名</string>
     <string name="my_qrcode">我的二维码</string>
@@ -90,7 +93,9 @@
     <string name="activity_address">活动地点</string>
     <string name="charter_notice">包车公示</string>
     <string name="activity_num">活动人数</string>
+    <string name="upload_image">上传活动图片</string>
     <string name="more_intro">更多描述</string>
+    <string name="special_tip">特别提示</string>
     <string name="activity_detail_intro">活动详细介绍</string>
     <string name="path_intro">路线描述</string>
     <string name="activity_cost">活动费用</string>
@@ -107,6 +112,7 @@
     <string name="people_num">%d人</string>
     <string name="publish_name">发布人姓名：%s</string>
     <string name="publish">发布</string>
+    <string name="publish_success">发布成功</string>
     <string name="sign">报名</string>
     <string name="sign_select">请填写活动小孩的个数</string>
     <string name="parent_select">请至少选一名陪同家长</string>
@@ -117,12 +123,24 @@
     <string name="invite_success">邀请好友成功</string>
     <string name="publish_activity">我要发布活动</string>
     <string name="published_activity">已发布活动</string>
+    <string name="all_institution_activity">机构的所有活动</string>
     <string name="activity_tip">*等待系统认证后，方能发活动</string>
     <string name="no_sign_user">该活动暂无人报名</string>
     <string name="subject">主题</string>
     <string name="address">地点</string>
     <string name="num">人数</string>
     <string name="time">时间</string>
+    <string name="input_subject">请输入活动主题</string>
+    <string name="input_address">请输入活动地点</string>
+    <string name="input_num">请输入活动人数</string>
+    <string name="select_start_time">请选择开始时间</string>
+    <string name="select_end_time">请选择结束时间</string>
+    <string name="upload_image_tip">请上传活动图片</string>
+    <string name="input_activity_detail">请输入活动详细介绍</string>
+    <string name="input_path_intro">请输入路线描述</string>
+    <string name="input_activity_cost">请输入活动费用</string>
+    <string name="input_activity_arrange">请输入行程安排</string>
+    <string name="input_equipment">请输入装备要求</string>
 
     <!-- info -->
     <string name="delete">删除</string>
@@ -171,6 +189,7 @@
     <string name="company_name">单位名称</string>
     <string name="company_address">单位地址</string>
     <string name="company_qrcode">单位二维码</string>
+    <string name="operate_success">操作成功</string>
 
     <!-- qr code -->
     <string name="scan_tips">将二维码放入框内,即可自动扫描</string>

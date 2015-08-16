@@ -59,6 +59,9 @@ public class HttpConsts {
     //获取好友列表
     public static final String GET_FRIENDS_URL = BASE_URL + "/getFriends?token=%s&type=%d";
 
+    //获取粉丝
+    public static final String GET_FANS_URL = BASE_URL + "/getFans?token=%s";
+
     //删除好友
     public static final String DELETE_FRIEND_URL = BASE_URL + "/deleteFriend?token=%s&friendId=%d";
 
@@ -103,4 +106,19 @@ public class HttpConsts {
 
     //获取已发布的活动
     public static final String GET_PUBLISHED_ACTIVITIES = BASE_URL + "/getActivitiesByOrg?token=%s&start=%d&offset=%d";
+
+    //其他机构的所有活动
+    public static final String OTHER_PUBLISHED_ACTIVITIES = BASE_URL + "/getActivitiesByOtherOrg?token=%s&userId=%d&receivedIds=%s&start=%d&offset=%d";
+
+    //已经结束的活动，还想再举办，点击按钮，提交接口
+    public static final String WANTED_FINISHED_ACTIVITY = BASE_URL + "/wantFinishedActivity?token=%s&activityId=%d";
+
+    //获取消息列表
+    public static final String GET_MESSAGES_URL = BASE_URL + "/getMessages?token=%s";
+
+    //机构，某个活动下发出的所有通知的消息记录列表
+    public static final String GET_MESSAGES_ACTIVITY_URL = BASE_URL + "/getMessagesByActivity?token=%s&activityId=%d";
+
+    //机构，发活动
+    public static final String PUBLISH_ACTIVITY_URL = BASE_URL + "/publishActivity";
 }

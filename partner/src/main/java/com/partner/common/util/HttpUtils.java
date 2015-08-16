@@ -68,6 +68,10 @@ public class HttpUtils {
     public static String getResponseData(Response response, boolean isShowErrorMsg) {
         String body = getResponseBody(response);
         Logcat.d("response body : " + body);
+        if(TextUtils.isEmpty(body)) {
+            Toaster.show(R.string.data_get_error);
+            return null;
+        }
         try {
             JSONObject bodyObject = new JSONObject(body);
             int errorCode = bodyObject.optInt("error_code");

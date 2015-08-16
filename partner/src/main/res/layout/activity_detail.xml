@@ -129,7 +129,6 @@
                         android:textSize="@dimen/ts_13"
                         android:drawablePadding="@dimen/partner_space_normal"
                         android:drawableLeft="@drawable/ic_num"
-                        android:text="598次/浏览"
                         />
 
                     <TextView
@@ -346,12 +345,15 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"/>
+                    android:layout_height="1dp"
+                    android:visibility="gone"
+                    />
 
                 <LinearLayout
                     style="@style/ItemLayout"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
+                    android:visibility="gone"
                     >
 
                     <TextView
@@ -493,6 +495,7 @@
                     android:layout_height="1dp"/>
 
                 <TextView
+                    android:id="@+id/tv_again_tip"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/partner_space_large"
@@ -505,6 +508,7 @@
                     />
 
                 <LinearLayout
+                    android:id="@+id/lv_again"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/partner_space_large"
@@ -530,6 +534,7 @@
                         android:textSize="@dimen/ts_14"
                         android:layout_margin="@dimen/partner_space_middle"
                         android:background="@drawable/btn_operate"
+                        android:onClick="onAgainClick"
                         />
                     <TextView
                         android:layout_width="wrap_content"

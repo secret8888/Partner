@@ -1,5 +1,6 @@
 package com.partner.activity.info;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -9,14 +10,18 @@ import android.widget.ListView;
 import com.partner.PartnerApplication;
 import com.partner.R;
 import com.partner.activity.base.BaseActivity;
+import com.partner.adapter.ActivityAdapter;
 import com.partner.adapter.MessageCenterAdapter;
 import com.partner.adapter.RegistrationInfoAdapter;
 import com.partner.common.annotation.ViewId;
+import com.partner.common.constant.IntentConsts;
 import com.partner.common.http.AsyncHttpCallback;
 import com.partner.common.http.HttpManager;
 import com.partner.common.util.HttpUtils;
 import com.partner.common.util.IntentManager;
 import com.partner.common.util.Utils;
+import com.partner.model.ActivityList;
+import com.partner.model.MessageList;
 import com.partner.model.RegistrationList;
 import com.partner.view.TitleView;
 import com.squareup.okhttp.Request;
@@ -33,7 +38,9 @@ public class MessageCenterActivity extends BaseActivity implements AdapterView.O
 	@ViewId(R.id.list_content)
 	private ListView contentView;
 
-	private RegistrationList registrationList;
+	private MessageList messageList;
+
+	private int activityId;
 
 	private static final String TAG = MessageCenterActivity.class.getSimpleName();
 
@@ -44,18 +51,17 @@ public class MessageCenterActivity extends BaseActivity implements AdapterView.O
 
 	@Override
 	protected void readIntent() {
-
+		activityId = getIntent().getIntExtra(IntentConsts.ID_KEY, -1);
 	}
 
 	@Override
 	protected void initControls(Bundle savedInstanceState) {
-		titleView.setTitle(R.string.message_center);
-	}
-
-	@Override
-	protected void onResume() {
-		super.onResume();
-		getRegistList();
+		if(activityId == -1) {
+			titleView.setTitle(R.string.message_center);
+		} else {
+			titleView.setTitle(R.string.activity_message_list);
+		}
+		getMessageList();
 	}
 
 	@Override
@@ -67,34 +73,52 @@ public class MessageCenterActivity extends BaseActivity implements AdapterView.O
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 							long id) {
-		IntentManager.startRegistrationEditActivity(this, registrationList.getInrollInfos().get(position));
+		IntentManager.startMessageDetailActivity(this, messageList.getMessages().get(position));
 	}
 
-	private void getRegistList() {
+	private void getMessageList() {
 		if (Utils.checkNetworkConnected(this)) {
 			onShowLoadingDialog();
-			HttpManager.getAllRegistList(PartnerApplication.getInstance().getUserInfo().getToken(), new AsyncHttpCallback() {
+			AsyncHttpCallback callback = new AsyncHttpCallback() {
 				@Override
 				public void onRequestResponse(Response response) {
-					handleRegitsResult(response);
+					handleMessageResult(response);
 				}
 
 				@Override
 				public void onRequestFailure(Request request, IOException e) {
 					onDismissLoadingDialog();
 				}
-			});
+			};
+			if(activityId == -1) {
+				HttpManager.getMessageList(PartnerApplication.getInstance().getUserInfo().getToken(), callback);
+			} else {
+				HttpManager.getMessagesByActivity(PartnerApplication.getInstance().getUserInfo().getToken(),
+						activityId, callback);
+			}
 		}
 	}
 
-	private void handleRegitsResult(Response response) {
+	private void handleMessageResult(final Response response) {
 		onDismissLoadingDialog();
-		String result = HttpUtils.getResponseData(response);
-		registrationList = YJson.getObj(result, RegistrationList.class);
-		if(registrationList == null || registrationList.getInrollInfos() == null) {
-			return;
-		}
-		MessageCenterAdapter adapter = new MessageCenterAdapter(this, registrationList.getInrollInfos());
-		contentView.setAdapter(adapter);
+		new AsyncTask<Void, Void, String>() {
+			@Override
+			protected String doInBackground(Void... params) {
+				return HttpUtils.getResponseData(response, false);
+			}
+
+			@Override
+			protected void onPostExecute(String result) {
+				if(TextUtils.isEmpty(result)) {
+					return;
+				}
+				messageList = YJson.getObj(result, MessageList.class);
+				if(messageList == null || messageList.getMessages() == null) {
+					return;
+				}
+				MessageCenterAdapter adapter = new MessageCenterAdapter(MessageCenterActivity.this, messageList.getMessages());
+				contentView.setAdapter(adapter);
+			}
+		}.execute();
 	}
 }

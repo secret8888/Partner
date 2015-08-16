@@ -68,7 +68,7 @@ public class InstitutionListFragment extends BaseFragment implements OnItemClick
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
-		IntentManager.startInfoEditActivity(this, friendList.getOrgs().get(position), 0);
+		IntentManager.startPublishedActivity(getActivity(), friendList.getOrgs().get(position).getUserId());
 	}
 
 	@Override

@@ -4,6 +4,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -85,6 +86,12 @@ public class ActivityDetailActivity extends BaseActivity {
 	@ViewId(R.id.tab_share)
 	private RadioButton shareButton;
 
+	@ViewId(R.id.lv_again)
+	private LinearLayout againLayout;
+
+	@ViewId(R.id.tv_again_tip)
+	private TextView againView;
+
 	private ActivityInfo mInfo;
 
 	private int activityId;
@@ -120,7 +127,7 @@ public class ActivityDetailActivity extends BaseActivity {
 	public void onTitleOperateClick() {
 		super.onTitleOperateClick();
 		if(isBusiness) {
-			IntentManager.startPublishActivity(this);
+			IntentManager.startPublishActivity(this, mInfo);
 		} else {
 			shareActivity();
 		}
@@ -133,7 +140,6 @@ public class ActivityDetailActivity extends BaseActivity {
 
 	private void checkBusinessRole() {
 		if(isBusiness) {
-			titleView.setOperateText(R.string.edit);
 			institutionLayout.setVisibility(View.GONE);
 			followButton.setText(R.string.send_notice);
 			followButton.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_send_notice, 0, 0);
@@ -147,19 +153,30 @@ public class ActivityDetailActivity extends BaseActivity {
 
 	private void initActivityInfo() {
 		activityTitleView.setText(mInfo.getActivityTitle());
-		signNumView.setText(String.format(getString(R.string.sign_num), mInfo.getActivityAgainNum()));
+		signNumView.setText(String.format(getString(R.string.sign_num), mInfo.getActivityPeapleNum()));
 		viewNumView.setText(String.format(getString(R.string.view_num), mInfo.getActivityViewNum()));
 		locationView.setText(mInfo.getActivityAddress());
-		phoneView.setText(mInfo.getActivityLinkmanPhone());
+		phoneView.setText(mInfo.getActivityCellphone());
 		descView.setText(mInfo.getActivityDescription());
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-		startTimeView.setText(format.format(new Date(mInfo.getCreateTime() * 1000)));
-		endTimeView.setText(format.format(new Date(mInfo.getCreateTime() * 1000)));
+		SimpleDateFormat format = new SimpleDateFormat("yyyy年MM月dd日 hh:mm:ss");
+		startTimeView.setText(format.format(new Date(mInfo.getActivityStartTime())));
+		endTimeView.setText(format.format(new Date(mInfo.getActivityEndTime())));
 		activityAddressView.setText(mInfo.getActivityAddress());
 		activityNumView.setText(String.format(getString(R.string.people_num), mInfo.getActivityPeapleNum()));
 
 		if(!TextUtils.isEmpty(mInfo.getActivityImage())) {
 			introView.setImageURI(Uri.parse(mInfo.getActivityImage()));
+		}
+
+		if(mInfo.getActivityStatus() == 1) {
+			againLayout.setVisibility(View.VISIBLE);
+			againView.setVisibility(View.VISIBLE);
+		}
+
+		if(isBusiness) {
+			if (mInfo.getActivityCellphone().equals(PartnerApplication.getInstance().getUserInfo().getCellphone())) {
+				titleView.setOperateText(R.string.edit);
+			}
 		}
 	}
 
@@ -197,27 +214,31 @@ public class ActivityDetailActivity extends BaseActivity {
 
 	public void onDetailClick(View view) {
 		IntentManager.startContentActivity(this, getString(R.string.activity_detail_intro),
-				mInfo.getActivityDescription(), false);
+				mInfo.getActivityDescription(), false, -1, -1);
 	}
 
 	public void onPathClick(View view) {
 		IntentManager.startContentActivity(this, getString(R.string.path_intro),
-				mInfo.getActivityTransportInfo(), false);
+				mInfo.getActivityTransportInfo(), false, -1, -1);
 	}
 
 	public void onCostClick(View view) {
 		IntentManager.startContentActivity(this, getString(R.string.activity_cost),
-				mInfo.getActivityCost() + " 元", false);
+				mInfo.getActivityCost() + " 元", false, -1, -1);
 	}
 
 	public void onTravelClick(View view) {
 		IntentManager.startContentActivity(this, getString(R.string.travel_assign),
-				mInfo.getActivityDescription(), false);
+				mInfo.getActivityArrange(), false, -1, -1);
 	}
 
 	public void onEquipClick(View view) {
 		IntentManager.startContentActivity(this, getString(R.string.equipment_require),
-				mInfo.getActivityDescription(), false);
+				mInfo.getActivityEquipment(), false, -1, -1);
+	}
+
+	public void onAgainClick(View view) {
+		wantFinishedActivity();
 	}
 
 	public void onSignedClick(View view) {
@@ -226,7 +247,7 @@ public class ActivityDetailActivity extends BaseActivity {
 
 	public void onSignClick(View view) {
 		if(isBusiness) {
-			IntentManager.startMessageCenterActivity(this);
+			IntentManager.startMessageCenterActivity(this, activityId);
 		} else {
 			IntentManager.startActivitySignActivity(ActivityDetailActivity.this, activityId);
 		}
@@ -262,5 +283,28 @@ public class ActivityDetailActivity extends BaseActivity {
 		String responseBody = HttpUtils.getResponseData(response);
 		mInfo = YJson.getObj(responseBody, ActivityInfo.class);
 		initActivityInfo();
+	}
+
+	private void wantFinishedActivity() {
+		if(Utils.checkNetworkConnected(this)) {
+			onShowLoadingDialog();
+			HttpManager.wantFinishedActivity(PartnerApplication.getInstance().getUserInfo().getToken(), activityId, new AsyncHttpCallback() {
+				@Override
+				public void onRequestResponse(Response response) {
+					onDismissLoadingDialog();
+					String responseBody = HttpUtils.getResponseData(response);
+					if(!TextUtils.isEmpty(responseBody)) {
+						Toaster.show(R.string.operate_success);
+						againLayout.setVisibility(View.GONE);
+						againView.setVisibility(View.GONE);
+					}
+				}
+
+				@Override
+				public void onRequestFailure(Request request, IOException e) {
+					onDismissLoadingDialog();
+				}
+			});
+		}
 	}
 }

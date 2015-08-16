@@ -64,6 +64,9 @@ public class PushMessageReceiver extends FrontiaPushMessageReceiver {
                 + appid + " userId=" + userId + " channelId=" + channelId
                 + " requestId=" + requestId;
         Logcat.d(TAG, responseString);
+        if(PartnerApplication.getInstance().getUserInfo() == null) {
+            return;
+        }
         HttpManager.putChannelId(PartnerApplication.getInstance().getUserInfo().getToken(), channelId);
     }
 

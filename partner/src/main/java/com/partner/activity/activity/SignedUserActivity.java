@@ -7,6 +7,7 @@ import com.partner.R;
 import com.partner.activity.base.BaseActivity;
 import com.partner.adapter.SignedUserAdapter;
 import com.partner.common.annotation.ViewId;
+import com.partner.common.constant.Consts;
 import com.partner.common.constant.IntentConsts;
 import com.partner.common.http.AsyncHttpCallback;
 import com.partner.common.http.HttpManager;
