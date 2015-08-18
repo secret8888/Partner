@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -74,6 +75,9 @@ public class ActivityDetailActivity extends BaseActivity {
 	@ViewId(R.id.tv_activity_num)
 	private TextView activityNumView;
 
+	@ViewId(R.id.tab_rg_menu)
+	private RadioGroup menuGroup;
+
 	@ViewId(R.id.tab_follow)
 	private RadioButton followButton;
 
@@ -98,6 +102,8 @@ public class ActivityDetailActivity extends BaseActivity {
 
 	private boolean isBusiness;
 
+	private boolean isMine;
+
 	private static final String TAG = ActivityDetailActivity.class.getSimpleName();
 
 	@Override
@@ -114,7 +120,6 @@ public class ActivityDetailActivity extends BaseActivity {
 	protected void initControls(Bundle savedInstanceState) {
 		isBusiness = PartnerApplication.getInstance().getUserInfo().getUserType() == Consts.ROLE_BUSINESS;
 		titleView.setTitle(R.string.activity_detail);
-		checkBusinessRole();
 		getActivityDetail();
 	}
 
@@ -126,7 +131,7 @@ public class ActivityDetailActivity extends BaseActivity {
 	@Override
 	public void onTitleOperateClick() {
 		super.onTitleOperateClick();
-		if(isBusiness) {
+		if(isBusiness && isMine) {
 			IntentManager.startPublishActivity(this, mInfo);
 		} else {
 			shareActivity();
@@ -139,13 +144,21 @@ public class ActivityDetailActivity extends BaseActivity {
 	}
 
 	private void checkBusinessRole() {
+		isMine = mInfo.getActivityCellphone().equals(PartnerApplication.getInstance().getUserInfo().getCellphone());
 		if(isBusiness) {
-			institutionLayout.setVisibility(View.GONE);
-			followButton.setText(R.string.send_notice);
-			followButton.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_send_notice, 0, 0);
-			signButton.setText(R.string.message_record);
-			signButton.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_message_record, 0, 0);
-			shareButton.setVisibility(View.VISIBLE);
+			if(isMine) {
+				titleView.setOperateText(R.string.edit);
+				institutionLayout.setVisibility(View.GONE);
+				followButton.setText(R.string.send_notice);
+				followButton.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_send_notice, 0, 0);
+				signButton.setText(R.string.message_record);
+				signButton.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_message_record, 0, 0);
+				shareButton.setVisibility(View.VISIBLE);
+			} else {
+				menuGroup.setVisibility(View.GONE);
+				titleView.setOperate(R.drawable.ic_share);
+			}
+
 		} else {
 			titleView.setOperate(R.drawable.ic_share);
 		}
@@ -173,11 +186,7 @@ public class ActivityDetailActivity extends BaseActivity {
 			againView.setVisibility(View.VISIBLE);
 		}
 
-		if(isBusiness) {
-			if (mInfo.getActivityCellphone().equals(PartnerApplication.getInstance().getUserInfo().getCellphone())) {
-				titleView.setOperateText(R.string.edit);
-			}
-		}
+		checkBusinessRole();
 	}
 
 	public void onFollowClick(View view) {
