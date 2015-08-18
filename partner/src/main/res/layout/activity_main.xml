@@ -15,37 +15,52 @@
         android:background="@color/bg_gray"
         />
 
-    <RadioGroup
-        android:id="@+id/tab_rg_menu"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:padding="1dp"
-        android:background="@color/white"
-        android:orientation="horizontal" >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RadioGroup
+            android:id="@+id/tab_rg_menu"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="1dp"
+            android:background="@color/white"
+            android:orientation="horizontal" >
 
-        <RadioButton
-            android:id="@+id/tab_main"
-            style="@style/tab_rb_style"
-            android:checked="true"
-            android:paddingTop="@dimen/partner_space_normal"
-            android:drawableTop="@drawable/tab_main_selector"
-            android:text="@string/activity"
+            <RadioButton
+                android:id="@+id/tab_main"
+                style="@style/tab_rb_style"
+                android:checked="true"
+                android:paddingTop="@dimen/partner_space_normal"
+                android:drawableTop="@drawable/tab_main_selector"
+                android:text="@string/activity"
+                />
+
+            <RadioButton
+                android:id="@+id/tab_activity"
+                style="@style/tab_rb_style"
+                android:paddingTop="@dimen/partner_space_normal"
+                android:drawableTop="@drawable/tab_project_selector"
+                android:text="@string/app_name" />
+
+            <RadioButton
+                android:id="@+id/tab_mine"
+                style="@style/tab_rb_style"
+                android:paddingTop="@dimen/partner_space_normal"
+                android:drawableTop="@drawable/tab_mine_selector"
+                android:text="@string/personal" />
+        </RadioGroup>
+
+        <ImageView
+            android:id="@+id/im_badge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_bagde"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="30dp"
+            android:visibility="gone"
             />
-
-        <RadioButton
-            android:id="@+id/tab_activity"
-            style="@style/tab_rb_style"
-            android:paddingTop="@dimen/partner_space_normal"
-            android:drawableTop="@drawable/tab_project_selector"
-            android:text="@string/app_name" />
-
-        <RadioButton
-            android:id="@+id/tab_mine"
-            style="@style/tab_rb_style"
-            android:paddingTop="@dimen/partner_space_normal"
-            android:drawableTop="@drawable/tab_mine_selector"
-            android:text="@string/personal" />
-    </RadioGroup>
+    </RelativeLayout>
 
     <android.support.v4.app.FragmentTabHost
         android:id="@android:id/tabhost"

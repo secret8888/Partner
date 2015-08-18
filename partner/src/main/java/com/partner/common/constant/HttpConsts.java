@@ -121,4 +121,6 @@ public class HttpConsts {
 
     //机构，发活动
     public static final String PUBLISH_ACTIVITY_URL = BASE_URL + "/publishActivity";
+
+    public static final String COMMENT_ACTIVITY_URL = BASE_URL + "/commentActivity?token=%s&activityParticipantId=%d&comment=%d";
 }

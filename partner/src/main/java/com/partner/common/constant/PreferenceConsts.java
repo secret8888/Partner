@@ -13,4 +13,6 @@ public class PreferenceConsts {
     public static final String KEY_USER_TOKEN = "key_user_token";
 
     public static final String KEY_MESSAGE_PUSH = "key_message_push";
+
+    public static final String KEY_MESSAGE_NUM = "key_message_num";
 }

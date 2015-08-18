@@ -126,6 +126,16 @@
             android:layout_toRightOf="@id/im_message_center"
             android:text="@string/message_center"
             />
+
+        <ImageView
+            android:id="@+id/im_badge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_bagde"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="120dp"
+            android:visibility="gone"
+            />
     </RelativeLayout>
 
     <RelativeLayout

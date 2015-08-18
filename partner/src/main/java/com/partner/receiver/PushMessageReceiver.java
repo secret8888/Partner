@@ -6,8 +6,10 @@ import android.content.Intent;
 import com.baidu.frontia.api.FrontiaPushMessageReceiver;
 import com.partner.PartnerApplication;
 import com.partner.activity.MainActivity;
+import com.partner.common.constant.PreferenceConsts;
 import com.partner.common.http.HttpManager;
 import com.partner.common.util.Logcat;
+import com.partner.common.util.PreferenceUtils;
 
 import java.util.List;
 
@@ -106,6 +108,8 @@ public class PushMessageReceiver extends FrontiaPushMessageReceiver {
         String notifyString = "通知点击 title=\"" + title + "\" description=\""
                 + description + "\" customContent=" + customContentString;
         Logcat.d(TAG, notifyString);
+        int num = PreferenceUtils.getInt(PreferenceConsts.KEY_MESSAGE_NUM, 0);
+        PreferenceUtils.putInt(PreferenceConsts.KEY_MESSAGE_NUM, ++num);
         Intent intent = new Intent();
         intent.setClass(context.getApplicationContext(), MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

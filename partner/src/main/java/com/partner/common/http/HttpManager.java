@@ -449,4 +449,9 @@ public class HttpManager {
 
         PartnerHttpClient.asyncPostFile(HttpConsts.PUBLISH_ACTIVITY_URL, paramsMap, file, callback);
     }
+
+    public static void commentActivity(String token, int activityParticipantId, int comment, AsyncHttpCallback callback) {
+        String codeUrl = String.format(HttpConsts.COMMENT_ACTIVITY_URL, token, activityParticipantId, comment);
+        PartnerHttpClient.asyncGet(codeUrl + HttpUtils.getUserSign(), callback);
+    }
 }

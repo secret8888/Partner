@@ -73,6 +73,9 @@ public class MineFragment extends BaseFragment implements OnClickListener {
 	@ViewId(R.id.lv_setting)
 	private RelativeLayout settingLayout;
 
+	@ViewId(R.id.im_badge)
+	private ImageView badgeView;
+
 	private boolean isBusiness;
 
 	@Override
@@ -98,6 +101,7 @@ public class MineFragment extends BaseFragment implements OnClickListener {
 				tipView.setVisibility(View.VISIBLE);
 			}
 		}
+		showBadge();
 	}
 
 	@Override
@@ -135,6 +139,15 @@ public class MineFragment extends BaseFragment implements OnClickListener {
 		}
 	}
 
+	private void showBadge() {
+		int num = PreferenceUtils.getInt(PreferenceConsts.KEY_MESSAGE_NUM, 0);
+		if(num > 0) {
+			badgeView.setVisibility(View.VISIBLE);
+		} else {
+			badgeView.setVisibility(View.GONE);
+		}
+	}
+
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
@@ -162,6 +175,10 @@ public class MineFragment extends BaseFragment implements OnClickListener {
 			break;
 		case R.id.lv_message_center:
 			IntentManager.startMessageCenterActivity(getActivity(), -1);
+			if (badgeView.getVisibility() == View.VISIBLE) {
+				badgeView.setVisibility(View.GONE);
+				PreferenceUtils.putInt(PreferenceConsts.KEY_MESSAGE_NUM, 0);
+			}
 			break;
 		}
 	}

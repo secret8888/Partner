@@ -5,8 +5,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTabHost;
 import android.view.KeyEvent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TabHost;
 
 import com.baidu.android.pushservice.PushConstants;
@@ -17,7 +21,9 @@ import com.partner.activity.base.BaseFragmentActivity;
 import com.partner.common.annotation.ViewId;
 import com.partner.common.constant.Consts;
 import com.partner.common.constant.IntentConsts;
+import com.partner.common.constant.PreferenceConsts;
 import com.partner.common.util.IntentManager;
+import com.partner.common.util.PreferenceUtils;
 import com.partner.common.util.Toaster;
 import com.partner.common.util.Utils;
 import com.partner.fragment.FriendFragment;
@@ -38,6 +44,9 @@ public class MainActivity extends BaseFragmentActivity {
 
 	@ViewId(R.id.tab_mine)
 	private RadioButton mineRadio;
+
+	@ViewId(R.id.im_badge)
+	private ImageView badgeView;
 
 	private boolean isFriendNeedRefresh = false;
 	// exit time
@@ -66,6 +75,7 @@ public class MainActivity extends BaseFragmentActivity {
 		PushManager.startWork(getApplicationContext(),
 				PushConstants.LOGIN_TYPE_API_KEY,
 				Utils.getMetaValue(MainActivity.this, "api_key"));
+		showBadge();
 	}
 
 	@Override
@@ -102,10 +112,25 @@ public class MainActivity extends BaseFragmentActivity {
 						break;
 					case R.id.tab_mine:
 						mTabHost.setCurrentTab(2);
+						if (badgeView.getVisibility() == View.VISIBLE) {
+							badgeView.setVisibility(View.GONE);
+						}
 						break;
 				}
 			}
 		});
+	}
+
+	private void showBadge() {
+		int num = PreferenceUtils.getInt(PreferenceConsts.KEY_MESSAGE_NUM, 0);
+		if(num > 0) {
+			badgeView.setVisibility(View.VISIBLE);
+			RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)badgeView.getLayoutParams();
+			params.rightMargin=Utils.getScreenWidth(this)/6 - 70;
+			badgeView.setLayoutParams(params);
+		} else {
+			badgeView.setVisibility(View.GONE);
+		}
 	}
 
 	public boolean isFriendNeedRefresh() {
