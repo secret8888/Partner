@@ -141,6 +141,9 @@
     <string name="input_activity_cost">请输入活动费用</string>
     <string name="input_activity_arrange">请输入行程安排</string>
     <string name="input_equipment">请输入装备要求</string>
+    <string name="activity_title">活动标题：%s</string>
+    <string name="activity_time">活动时间：%s</string>
+    <string name="activity_instrument">活动机构：%s</string>
 
     <!-- info -->
     <string name="delete">删除</string>

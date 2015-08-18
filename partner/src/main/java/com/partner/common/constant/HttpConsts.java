@@ -95,6 +95,8 @@ public class HttpConsts {
     //好友留言接口
     public static final String SEND_MESSAGE = BASE_URL + "/sendMessage?token=%s&userIds=%s&content=%s";
 
+    public static final String SEND_MESSAGE_BY_ACTIVITY = BASE_URL + "/sendMessagesByActivity?token=%s&activityId=%d&content=%s";
+
     //查看机构信息接口
     public static final String GET_INSTITUTION_INFO = BASE_URL + "/getOrgInfo?token=%s&id=%d";
 
@@ -122,5 +124,5 @@ public class HttpConsts {
     //机构，发活动
     public static final String PUBLISH_ACTIVITY_URL = BASE_URL + "/publishActivity";
 
-    public static final String COMMENT_ACTIVITY_URL = BASE_URL + "/commentActivity?token=%s&activityParticipantId=%d&comment=%d";
+    public static final String COMMENT_ACTIVITY_URL = BASE_URL + "/commentActivity?token=%s&activityId=%d&comment=%d";
 }

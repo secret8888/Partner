@@ -164,6 +164,10 @@ public class RegisterActivity extends BaseActivity {
 		finish();
 	}
 
+	public void onLawClick(View view) {
+		IntentManager.startLawActivity(this);
+	}
+
 	private void handleRegisterResult(Response response) {
 		onDismissLoadingDialog();
 		if(TextUtils.isEmpty(HttpUtils.getResponseData(response))) {

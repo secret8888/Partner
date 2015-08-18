@@ -74,7 +74,7 @@ public class MessageCenterActivity extends BaseActivity implements AdapterView.O
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 							long id) {
 		if(messageList.getMessages().get(position).getMessageType() == 4) {
-			IntentManager.startMarkActivity(this);
+			IntentManager.startMarkActivity(this, messageList.getMessages().get(position));
 		} else {
 			IntentManager.startMessageDetailActivity(this, messageList.getMessages().get(position));
 		}

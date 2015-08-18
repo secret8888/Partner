@@ -17,7 +17,7 @@
         android:orientation="vertical"
         >
         <TextView
-            android:id="@+id/tv_title"
+            android:id="@+id/tv_activity_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/partner_space_common"
@@ -26,7 +26,6 @@
             android:singleLine="true"
             android:textSize="@dimen/ts_17"
             android:textColor="@color/black"
-            android:text="活动标题：哈哈发客户发卡机恢复快结婚"
             />
 
         <TextView
@@ -39,7 +38,6 @@
             android:singleLine="true"
             android:textSize="@dimen/ts_17"
             android:textColor="@color/black"
-            android:text="活动时间：2015-06-08"
             />
 
         <TextView
@@ -53,7 +51,6 @@
             android:singleLine="true"
             android:textSize="@dimen/ts_17"
             android:textColor="@color/black"
-            android:text="活动机构：2015-06-08"
             />
         <View
             android:layout_width="match_parent"
@@ -74,8 +71,12 @@
             />
 
         <RatingBar
+            android:id="@+id/rbar_comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:stepSize="1.0"
+            android:progress="4"
+            android:max="5"
             />
 
         <TextView

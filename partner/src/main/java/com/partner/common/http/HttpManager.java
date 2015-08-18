@@ -348,6 +348,11 @@ public class HttpManager {
         PartnerHttpClient.asyncGet(url + HttpUtils.getUserSign(), callback);
     }
 
+    public static void sendMessagesByActivity(String token, int activityId, String content, AsyncHttpCallback callback) {
+        String url = String.format(HttpConsts.SEND_MESSAGE_BY_ACTIVITY, token, activityId, content);
+        PartnerHttpClient.asyncGet(url + HttpUtils.getUserSign(), callback);
+    }
+
     /**
      * 查看机构信息接口
      * @param token
@@ -450,8 +455,8 @@ public class HttpManager {
         PartnerHttpClient.asyncPostFile(HttpConsts.PUBLISH_ACTIVITY_URL, paramsMap, file, callback);
     }
 
-    public static void commentActivity(String token, int activityParticipantId, int comment, AsyncHttpCallback callback) {
-        String codeUrl = String.format(HttpConsts.COMMENT_ACTIVITY_URL, token, activityParticipantId, comment);
+    public static void commentActivity(String token, int activityId, int comment, AsyncHttpCallback callback) {
+        String codeUrl = String.format(HttpConsts.COMMENT_ACTIVITY_URL, token, activityId, comment);
         PartnerHttpClient.asyncGet(codeUrl + HttpUtils.getUserSign(), callback);
     }
 }

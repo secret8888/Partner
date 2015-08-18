@@ -159,7 +159,7 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".activity.info.MessageDetailActivity"
+            android:name=".activity.login.LawActivity"
             android:screenOrientation="portrait" />
 
         <!-- qr code-->

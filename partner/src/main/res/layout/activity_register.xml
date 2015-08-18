@@ -105,16 +105,31 @@
             </LinearLayout>
         </RelativeLayout>
 
-        <CheckBox
-            android:id="@+id/cbox_law"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/partner_space_middle"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:textSize="@dimen/ts_16"
-            android:text="@string/law_article"
-            />
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            >
+            <CheckBox
+                android:id="@+id/cbox_law"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/ts_16"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/law_article"
+                android:clickable="true"
+                android:onClick="onLawClick"
+                />
+        </LinearLayout>
+
 
         <TextView
             android:layout_width="match_parent"

@@ -33,6 +33,10 @@ public class MessageInfo implements Serializable{
 
     private MessageContent messageContent;
 
+    private String activityTitle;
+
+    private long activityStartTime;
+
     public int getMessageId() {
         return messageId;
     }
@@ -135,5 +139,21 @@ public class MessageInfo implements Serializable{
 
     public void setMessageContent(MessageContent messageContent) {
         this.messageContent = messageContent;
+    }
+
+    public String getActivityTitle() {
+        return activityTitle;
+    }
+
+    public void setActivityTitle(String activityTitle) {
+        this.activityTitle = activityTitle;
+    }
+
+    public long getActivityStartTime() {
+        return activityStartTime;
+    }
+
+    public void setActivityStartTime(long activityStartTime) {
+        this.activityStartTime = activityStartTime;
     }
 }

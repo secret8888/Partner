@@ -13,6 +13,7 @@ import com.partner.common.annotation.ViewId;
 import com.partner.common.http.AsyncHttpCallback;
 import com.partner.common.http.HttpManager;
 import com.partner.common.util.HttpUtils;
+import com.partner.common.util.IntentManager;
 import com.partner.common.util.Toaster;
 import com.partner.common.util.Utils;
 import com.partner.view.TitleView;
@@ -164,6 +165,10 @@ public class InstitutionRegisterActivity extends BaseActivity {
 				}
 			});
 		}
+	}
+
+	public void onLawClick(View view) {
+		IntentManager.startLawActivity(this);
 	}
 
 	private void handleCodeResult(Response response) {

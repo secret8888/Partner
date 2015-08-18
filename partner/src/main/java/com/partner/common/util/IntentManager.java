@@ -22,6 +22,7 @@ import com.partner.activity.info.MyInfoActivity;
 import com.partner.activity.info.MyQrCodeActivity;
 import com.partner.activity.info.RegistrationEditActivity;
 import com.partner.activity.info.RegistrationInfoActivity;
+import com.partner.activity.login.LawActivity;
 import com.partner.activity.setting.AboutActivity;
 import com.partner.activity.setting.FeedbackActivity;
 import com.partner.activity.setting.ModifyPhoneActivity;
@@ -200,8 +201,9 @@ public class IntentManager {
         context.startActivity(intent);
     }
 
-    public static void startMarkActivity(Activity context) {
+    public static void startMarkActivity(Activity context, MessageInfo info) {
         Intent intent = new Intent(context, MarkActivity.class);
+        intent.putExtra(IntentConsts.INFO_KEY, info);
         context.startActivity(intent);
     }
 
@@ -259,6 +261,11 @@ public class IntentManager {
     public static void startMessageDetailActivity(Activity context, MessageInfo messageInfo) {
         Intent intent = new Intent(context, MessageDetailActivity.class);
         intent.putExtra(IntentConsts.INFO_KEY, messageInfo);
+        context.startActivity(intent);
+    }
+
+    public static void startLawActivity(Activity context) {
+        Intent intent = new Intent(context, LawActivity.class);
         context.startActivity(intent);
     }
 }

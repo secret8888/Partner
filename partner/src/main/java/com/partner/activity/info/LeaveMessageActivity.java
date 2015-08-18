@@ -84,16 +84,7 @@ public class LeaveMessageActivity extends BaseActivity {
 		if(Utils.checkNetworkConnected(this)) {
 			onShowLoadingDialog();
 			StringBuilder userIdsBuilder = new StringBuilder();
-			if(isBusiness) {
-				for(FriendInfo friendInfo : friendList.getFriends()) {
-					userIdsBuilder.append(friendInfo.getFriendId());
-					userIdsBuilder.append(",");
-				}
-			} else {
-				userIdsBuilder.append(userId);
-			}
-			UserInfo userInfo = PartnerApplication.getInstance().getUserInfo();
-			HttpManager.sendMessage(userInfo.getToken(), userIdsBuilder.toString(), content, new AsyncHttpCallback() {
+			AsyncHttpCallback callback = new AsyncHttpCallback() {
 				@Override
 				public void onRequestResponse(Response response) {
 					onDismissLoadingDialog();
@@ -105,7 +96,18 @@ public class LeaveMessageActivity extends BaseActivity {
 				public void onRequestFailure(Request request, IOException e) {
 					onDismissLoadingDialog();
 				}
-			});
+			};
+			UserInfo userInfo = PartnerApplication.getInstance().getUserInfo();
+			if(isBusiness) {
+//				for(FriendInfo friendInfo : friendList.getFriends()) {
+//					userIdsBuilder.append(friendInfo.getFriendId());
+//					userIdsBuilder.append(",");
+//				}
+				HttpManager.sendMessagesByActivity(userInfo.getToken(), activityId, content, callback);
+			} else {
+				userIdsBuilder.append(userId);
+				HttpManager.sendMessage(userInfo.getToken(), userIdsBuilder.toString(), content, callback);
+			}
 		}
 	}
 
