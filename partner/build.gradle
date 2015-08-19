@@ -11,6 +11,14 @@ android {
         versionCode 10001
         versionName "1.0.1"
     }
+    signingConfigs {
+        release {
+            storeFile file('partner.jks')
+            storePassword "partner"
+            keyAlias "partner"
+            keyPassword "partner"
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false

@@ -139,8 +139,8 @@ public class ActivityDetailActivity extends BaseActivity {
 	}
 
 	private void shareActivity() {
-		ShareSDKManager.getInstance(this).shareWebPage("title", "desc",
-				"http://img1.cache.netease.com/catchpic/9/90/90F93C644F394EA8D7539EF4BA6DE4FE.jpg", "http://www.baidu.com");
+		ShareSDKManager.getInstance(this).shareWebPage(mInfo.getActivityTitle(), mInfo.getActivityDescription(),
+				mInfo.getActivityImage(), "http://www.baidu.com");
 	}
 
 	private void checkBusinessRole() {
