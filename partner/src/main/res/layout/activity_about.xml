@@ -33,6 +33,7 @@
         android:onClick="onFeedbackClick"
         android:layout_marginTop="@dimen/partner_space_huge"
         android:minHeight="45dp"
+        android:visibility="gone"
         >
 
         <TextView
@@ -57,6 +58,7 @@
         style="@style/ItemLayout"
         android:onClick="onAboutClick"
         android:minHeight="45dp"
+        android:visibility="gone"
         >
         <TextView
             style="@style/PersonalItemText"
@@ -80,6 +82,7 @@
         style="@style/ItemLayout"
         android:onClick="onAboutClick"
         android:minHeight="45dp"
+        android:visibility="gone"
         >
         <TextView
             style="@style/PersonalItemText"
