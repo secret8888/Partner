@@ -7,3 +7,4 @@ gradlew
 gradlew.bat
 .DS_Store
 Partner_V1.0.0.iml
+.PartnerShareLib/build/*
