@@ -139,8 +139,8 @@ public class ActivityDetailActivity extends BaseActivity {
 	}
 
 	private void shareActivity() {
-		ShareSDKManager.getInstance(this).shareWebPage(mInfo.getActivityTitle(), mInfo.getActivityDescription(),
-				mInfo.getActivityImage(), "http://www.baidu.com");
+		ShareSDKManager.getInstance(this).shareWebPage(getString(R.string.activity_share_title), mInfo.getActivityTitle(),
+				mInfo.getActivityImage(), String.format(getString(R.string.activity_share_url), mInfo.getActivityId()));
 	}
 
 	private void checkBusinessRole() {
@@ -156,11 +156,11 @@ public class ActivityDetailActivity extends BaseActivity {
 				shareButton.setVisibility(View.VISIBLE);
 			} else {
 				menuGroup.setVisibility(View.GONE);
-				titleView.setOperate(R.drawable.ic_share);
+				titleView.setOperate(R.drawable.ic_activity_share);
 			}
 
 		} else {
-			titleView.setOperate(R.drawable.ic_share);
+			titleView.setOperate(R.drawable.ic_activity_share);
 		}
 	}
 
@@ -171,7 +171,7 @@ public class ActivityDetailActivity extends BaseActivity {
 		locationView.setText(mInfo.getActivityAddress());
 		phoneView.setText(mInfo.getActivityCellphone());
 		descView.setText(mInfo.getActivityDescription());
-		SimpleDateFormat format = new SimpleDateFormat("yyyy年MM月dd日 hh:mm:ss");
+		SimpleDateFormat format = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
 		startTimeView.setText(format.format(new Date(mInfo.getActivityStartTime())));
 		endTimeView.setText(format.format(new Date(mInfo.getActivityEndTime())));
 		activityAddressView.setText(mInfo.getActivityAddress());

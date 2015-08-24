@@ -60,7 +60,6 @@ public class LeaveMessageActivity extends BaseActivity {
 		isBusiness = PartnerApplication.getInstance().getUserInfo().getUserType() == Consts.ROLE_BUSINESS;
 		if(isBusiness) {
 			titleView.setTitle(R.string.send_notice);
-			getSignedUsers();
 		} else {
 			titleView.setTitle(R.string.leave_message);
 		}
@@ -111,26 +110,26 @@ public class LeaveMessageActivity extends BaseActivity {
 		}
 	}
 
-	private void getSignedUsers() {
-		if(Utils.checkNetworkConnected(this)) {
-			onShowLoadingDialog();
-			HttpManager.getSignedUsers(PartnerApplication.getInstance().getUserInfo().getToken(), activityId, new AsyncHttpCallback() {
-				@Override
-				public void onRequestResponse(Response response) {
-					onDismissLoadingDialog();
-					String responseBody = HttpUtils.getResponseData(response);
-					friendList = YJson.getObj(responseBody, FriendList.class);
-					if(friendList == null || friendList.getFriends() == null || friendList.getFriends().size() == 0) {
-						Toaster.show(R.string.no_sign_user);
-						onBackPressed();
-					}
-				}
-
-				@Override
-				public void onRequestFailure(Request request, IOException e) {
-					onDismissLoadingDialog();
-				}
-			});
-		}
-	}
+//	private void getSignedUsers() {
+//		if(Utils.checkNetworkConnected(this)) {
+//			onShowLoadingDialog();
+//			HttpManager.getSignedUsers(PartnerApplication.getInstance().getUserInfo().getToken(), activityId, new AsyncHttpCallback() {
+//				@Override
+//				public void onRequestResponse(Response response) {
+//					onDismissLoadingDialog();
+//					String responseBody = HttpUtils.getResponseData(response);
+//					friendList = YJson.getObj(responseBody, FriendList.class);
+//					if(friendList == null || friendList.getFriends() == null || friendList.getFriends().size() == 0) {
+//						Toaster.show(R.string.no_sign_user);
+//						onBackPressed();
+//					}
+//				}
+//
+//				@Override
+//				public void onRequestFailure(Request request, IOException e) {
+//					onDismissLoadingDialog();
+//				}
+//			});
+//		}
+//	}
 }

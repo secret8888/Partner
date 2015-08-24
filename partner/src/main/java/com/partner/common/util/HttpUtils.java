@@ -69,7 +69,6 @@ public class HttpUtils {
         String body = getResponseBody(response);
         Logcat.d("response body : " + body);
         if(TextUtils.isEmpty(body)) {
-            Toaster.show(R.string.data_get_error);
             return null;
         }
         try {

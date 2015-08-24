@@ -21,6 +21,7 @@ import android.view.inputmethod.InputMethodManager;
 
 import com.partner.PartnerApplication;
 import com.partner.R;
+import com.partner.activity.activity.ContentActivity;
 import com.partner.common.constant.Consts;
 import com.squareup.okhttp.Response;
 
@@ -528,5 +529,14 @@ public class Utils {
 			return path + "/";
 		}
 		return path;
+	}
+
+	public static boolean checkLogin(Context context) {
+		if(PartnerApplication.getInstance().isLogin()) {
+			return true;
+		}
+
+		IntentManager.startLoginActivity(context);
+		return false;
 	}
 }

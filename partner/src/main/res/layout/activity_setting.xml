@@ -20,7 +20,7 @@
         <ImageView
             android:id="@+id/im_message_switch"
             style="@style/PersonalArrowStyle"
-            android:background="@drawable/pref_check_box_off"
+            android:background="@drawable/pref_check_box_on"
             android:onClick="onSwitchClick"
             />
         <TextView

@@ -89,7 +89,9 @@ public class FriendListFragment extends BaseFragment implements OnItemClickListe
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
-		IntentManager.startInfoEditActivity(this, friendList.getFriends().get(position - 1), 0);
+		if(!isBusiness) {
+			IntentManager.startInfoEditActivity(this, friendList.getFriends().get(position - 1), 0);
+		}
 	}
 
 	@Override
@@ -102,7 +104,11 @@ public class FriendListFragment extends BaseFragment implements OnItemClickListe
 
 	public static FriendListFragment newInstance(int type) {
 		FriendListFragment fragment = new FriendListFragment();
-		fragment.type = type;
+		if(type == 0) {
+			fragment.type = 1;
+		} else {
+			fragment.type = 0;
+		}
 		return fragment;
 	}
 

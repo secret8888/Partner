@@ -41,12 +41,13 @@ public class SplashActivity extends BaseActivity {
 			if(isFirstLogin){
 				IntentManager.startGuideActivity(SplashActivity.this);
 			}else{
-				String userInfo = PreferenceUtils.getString(PreferenceConsts.KEY_USER_INFO, null);
-				if(TextUtils.isEmpty(userInfo)){
-                    IntentManager.startLoginActivity(SplashActivity.this);
-				}else{
-                    IntentManager.startMainActivity(SplashActivity.this);
-				}
+//				String userInfo = PreferenceUtils.getString(PreferenceConsts.KEY_USER_INFO, null);
+//				if(TextUtils.isEmpty(userInfo)){
+//                    IntentManager.startLoginActivity(SplashActivity.this);
+//				}else{
+//                    IntentManager.startMainActivity(SplashActivity.this);
+//				}
+                IntentManager.startMainActivity(SplashActivity.this);
 			}
 	        finish();
 		}

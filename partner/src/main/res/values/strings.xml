@@ -34,7 +34,7 @@
     <string name="new_user_register">新用户注册</string>
     <string name="user_register">用户注册</string>
     <string name="get_code">获取验证码</string>
-    <string name="law_article">法律条款</string>
+    <string name="law_article">用户使用说明协议书</string>
     <string name="institution_register_title">机构注册</string>
     <string name="institution_register">机构注册></string>
     <string name="check_law_tip">请选择法律条款</string>
@@ -57,6 +57,7 @@
     <string name="activity">活动</string>
     <string name="personal">个人</string>
     <string name="personal_info">个人信息</string>
+    <string name="friend">好友</string>
     <string name="all">所有</string>
     <string name="part_in">参加</string>
     <string name="follow">关注</string>
@@ -144,12 +145,13 @@
     <string name="activity_title">活动标题：%s</string>
     <string name="activity_time">活动时间：%s</string>
     <string name="activity_instrument">活动机构：%s</string>
+    <string name="detail_tip">网页版发布了，可以在电脑上发布活动了！赶快行动吧 http://tong-ban.club:8080/playfun</string>
 
     <!-- info -->
     <string name="delete">删除</string>
     <string name="leave_message">留 言</string>
     <string name="send_notice">发通知</string>
-    <string name="change_note_name">修改备注名</string>
+    <string name="change_note_name">修 改</string>
     <string name="nickname">昵称</string>
     <string name="note_name">备注名</string>
     <string name="message_title_hint">请输入留言标题</string>
@@ -191,8 +193,10 @@
     <string name="feedback_success">反馈成功</string>
     <string name="company_name">单位名称</string>
     <string name="company_address">单位地址</string>
-    <string name="company_qrcode">单位二维码</string>
+    <string name="company_intro">单位简介</string>
     <string name="operate_success">操作成功</string>
+    <string name="activity_share_title">这个活动不错哦~</string>
+    <string name="activity_share_url">http://101.200.235.17:8080/playfun/getActivityDetailByWeb?activityId=%d</string>
 
     <!-- qr code -->
     <string name="scan_tips">将二维码放入框内,即可自动扫描</string>

@@ -1,0 +1,23 @@
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/im_icon"
+        android:layout_width="@dimen/share_icon_size"
+        android:layout_height="@dimen/share_icon_size" 
+        />
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        android:layout_marginTop="@dimen/normal_margin_5"
+        android:textSize="@dimen/text_14sp"
+        android:textColor="@color/text_deep_gray"
+        />
+
+</LinearLayout><!-- From: file:/home/emilyu/android/studioworkspace/Partner_V1.0.0/PartnerShareLib/src/main/res/layout/adapter_alert_item.xml -->

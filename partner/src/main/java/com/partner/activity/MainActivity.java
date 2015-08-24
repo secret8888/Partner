@@ -30,6 +30,7 @@ import com.partner.fragment.FriendFragment;
 import com.partner.fragment.MainFragment;
 import com.partner.fragment.MineFragment;
 import com.umeng.update.UmengUpdateAgent;
+import com.youdao.sharesdk.util.Util;
 
 public class MainActivity extends BaseFragmentActivity {
 
@@ -54,6 +55,8 @@ public class MainActivity extends BaseFragmentActivity {
 
 	private boolean isBusiness;
 
+	private boolean isLogin;
+
 	private final Class<?>[] fragments = { MainFragment.class, FriendFragment.class, MineFragment.class };
 
 	@Override
@@ -70,6 +73,7 @@ public class MainActivity extends BaseFragmentActivity {
 	protected void initControls(Bundle savedInstanceState) {
 		PartnerApplication.getInstance().initUserInfo();
 		isBusiness = PartnerApplication.getInstance().getUserInfo().getUserType() == Consts.ROLE_BUSINESS;
+		isLogin = PartnerApplication.getInstance().isLogin();
 		initView();
 		UmengUpdateAgent.update(this);
 		PushManager.startWork(getApplicationContext(),
@@ -83,11 +87,21 @@ public class MainActivity extends BaseFragmentActivity {
 
 	}
 
-	private void initView() {
-		if(isBusiness) {
-			activityRadio.setText(R.string.fans);
-			mineRadio.setText(R.string.mine);
+	@Override
+	protected void onResume() {
+		super.onResume();
+		isBusiness = PartnerApplication.getInstance().getUserInfo().getUserType() == Consts.ROLE_BUSINESS;
+		if(!isLogin && isBusiness) {
+			isLogin = true;
+			showBadge();
+			if(isBusiness) {
+				activityRadio.setText(R.string.fans);
+				mineRadio.setText(R.string.mine);
+			}
 		}
+	}
+
+	private void initView() {
 		mTabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
 		mTabHost.setup(this, getSupportFragmentManager(), R.id.realtabcontent);
 		// 得到fragment的个数
@@ -108,9 +122,17 @@ public class MainActivity extends BaseFragmentActivity {
 						mTabHost.setCurrentTab(0);
 						break;
 					case R.id.tab_activity:
+						if (!Utils.checkLogin(MainActivity.this)) {
+							((RadioButton) group.getChildAt(0)).setChecked(true);
+							return;
+						}
 						mTabHost.setCurrentTab(1);
 						break;
 					case R.id.tab_mine:
+						if (!Utils.checkLogin(MainActivity.this)) {
+							((RadioButton) group.getChildAt(0)).setChecked(true);
+							return;
+						}
 						mTabHost.setCurrentTab(2);
 						if (badgeView.getVisibility() == View.VISIBLE) {
 							badgeView.setVisibility(View.GONE);
