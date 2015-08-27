@@ -11,6 +11,7 @@ import com.partner.R;
 import com.partner.adapter.ActivityFragmentAdapter;
 import com.partner.common.annotation.ViewId;
 import com.partner.common.constant.Consts;
+import com.partner.common.util.Utils;
 import com.partner.fragment.base.BaseFragment;
 import com.partner.view.CustomViewPager;
 
@@ -30,6 +31,8 @@ public class MainFragment extends BaseFragment implements OnClickListener, ViewP
 
 	private boolean isBusiness;
 
+	private boolean isLogin;
+
 	@Override
 	protected int getLayoutId() {
 		return R.layout.fragment_main;
@@ -43,11 +46,27 @@ public class MainFragment extends BaseFragment implements OnClickListener, ViewP
 	@Override
 	protected void initControls(Bundle savedInstanceState) {
 		isBusiness = PartnerApplication.getInstance().getUserInfo().getUserType() == Consts.ROLE_BUSINESS;
+		isLogin = PartnerApplication.getInstance().isLogin();
 		activityPager.setAdapter(new ActivityFragmentAdapter(getFragmentManager(), isBusiness));
-		activityPager.setOffscreenPageLimit(3);
+		activityPager.setOffscreenPageLimit(0);
 		if(isBusiness) {
 			activityTypeView.setText(R.string.publish);
 			followTypeView.setVisibility(View.GONE);
+		}
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		isBusiness = PartnerApplication.getInstance().getUserInfo().getUserType() == Consts.ROLE_BUSINESS;
+		if(!isLogin && isBusiness) {
+			isLogin = true;
+			activityPager.setAdapter(new ActivityFragmentAdapter(getFragmentManager(), isBusiness));
+			activityPager.setOffscreenPageLimit(0);
+			if(isBusiness) {
+				activityTypeView.setText(R.string.publish);
+				followTypeView.setVisibility(View.GONE);
+			}
 		}
 	}
 
@@ -66,9 +85,15 @@ public class MainFragment extends BaseFragment implements OnClickListener, ViewP
 			activityPager.setCurrentItem(0, false);
 			break;
 		case R.id.tv_type_activity:
+			if(!Utils.checkLogin(getActivity())) {
+				return;
+			}
 			activityPager.setCurrentItem(1, false);
 			break;
 		case R.id.tv_type_follow:
+			if(!Utils.checkLogin(getActivity())) {
+				return;
+			}
 			activityPager.setCurrentItem(2, false);
 			break;
 		default:

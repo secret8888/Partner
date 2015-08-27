@@ -18,6 +18,8 @@ public class PartnerApplication extends FrontiaApplication {
 
     private UserInfo userInfo;
 
+    private boolean isLogin = false;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -46,6 +48,21 @@ public class PartnerApplication extends FrontiaApplication {
     }
 
     public UserInfo getUserInfo () {
-        return userInfo;
+        return userInfo == null? new UserInfo(): userInfo;
+    }
+
+    public void cleanUserInfo() {
+        userInfo = null;
+    }
+
+    public boolean isLogin() {
+        if(userInfo != null && !TextUtils.isEmpty(userInfo.getToken())) {
+            isLogin = true;
+        }
+        return isLogin;
+    }
+
+    public void setLogin(boolean isLogin) {
+        this.isLogin = isLogin;
     }
 }

@@ -5,11 +5,19 @@ android {
     buildToolsVersion "22.0.0"
 
     defaultConfig {
-        applicationId "com.partner"
+        applicationId "com.tongban.partner"
         minSdkVersion 11
         targetSdkVersion 21
         versionCode 10001
         versionName "1.0.1"
+    }
+    signingConfigs {
+        release {
+            storeFile file('partner.jks')
+            storePassword "partner"
+            keyAlias "partner"
+            keyPassword "partner"
+        }
     }
     buildTypes {
         release {

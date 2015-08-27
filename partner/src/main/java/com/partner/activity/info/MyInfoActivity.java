@@ -50,11 +50,17 @@ public class MyInfoActivity extends BaseActivity {
 	@ViewId(R.id.tv_name_key)
 	private TextView nameKeyView;
 
+	@ViewId(R.id.tv_nickname)
+	private TextView nicknameView;
+
 	@ViewId(R.id.tv_nickname_key)
 	private TextView nickNameKeyView;
 
 	@ViewId(R.id.tv_qrcode_key)
 	private TextView qrcodeKeyView;
+
+	@ViewId(R.id.tv_qrcode)
+	private TextView qrcodeView;
 
 	private File mCurrentPhotoFile = null;
 
@@ -80,7 +86,11 @@ public class MyInfoActivity extends BaseActivity {
 		if(PartnerApplication.getInstance().getUserInfo().getUserType() == Consts.ROLE_BUSINESS) {
 			nameKeyView.setText(R.string.company_name);
 			nickNameKeyView.setText(R.string.company_address);
-			qrcodeKeyView.setText(R.string.company_qrcode);
+			qrcodeKeyView.setText(R.string.company_intro);
+			nicknameView.setText(PartnerApplication.getInstance().getUserInfo().getAddress());
+//			qrcodeView.setText(PartnerApplication.getInstance().getUserInfo().get);
+		} else {
+			nicknameView.setText(PartnerApplication.getInstance().getUserInfo().getNickName());
 		}
 		String avatarImage = PartnerApplication.getInstance().getUserInfo().getHeadImage();
 		if(!TextUtils.isEmpty(avatarImage)) {

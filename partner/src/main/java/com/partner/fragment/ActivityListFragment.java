@@ -89,6 +89,9 @@ public class ActivityListFragment extends BaseFragment implements OnItemClickLis
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
+		if(!Utils.checkLogin(getActivity())) {
+			return;
+		}
 		IntentManager.startDetailActivity(getActivity(), activityList
 				.getActivities().get(position - 1).getActivityId());
 	}

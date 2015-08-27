@@ -54,11 +54,7 @@ public class MyQrCodeActivity extends BaseActivity {
 
 	@Override
 	protected void initControls(Bundle savedInstanceState) {
-		if(PartnerApplication.getInstance().getUserInfo().getUserType() == Consts.ROLE_BUSINESS) {
-			titleView.setTitle(R.string.company_qrcode);
-		} else {
-			titleView.setTitle(R.string.my_qrcode);
-		}
+		titleView.setTitle(R.string.my_qrcode);
 		nameView.setText(PartnerApplication.getInstance().getUserInfo().getUserName());
 		String avatarImage = PartnerApplication.getInstance().getUserInfo().getHeadImage();
 		if(!TextUtils.isEmpty(avatarImage)) {

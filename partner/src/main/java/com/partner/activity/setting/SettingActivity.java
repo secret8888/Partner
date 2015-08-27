@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.partner.PartnerApplication;
 import com.partner.R;
 import com.partner.activity.base.BaseActivity;
 import com.partner.common.annotation.ViewId;
@@ -49,7 +50,7 @@ public class SettingActivity extends BaseActivity {
 	}
 
 	public void onSwitchClick(View view) {
-		boolean isMessagePush = PreferenceUtils.getBoolean(PreferenceConsts.KEY_MESSAGE_PUSH, false);
+		boolean isMessagePush = PreferenceUtils.getBoolean(PreferenceConsts.KEY_MESSAGE_PUSH, true);
 		if(isMessagePush) {
 			PreferenceUtils.putBoolean(PreferenceConsts.KEY_MESSAGE_PUSH, false);
 			messageSwitchView.setBackgroundResource(R.drawable.pref_check_box_off);
@@ -97,6 +98,8 @@ public class SettingActivity extends BaseActivity {
 
 	public void onLogoutClick(View view) {
 		PreferenceUtils.remove(PreferenceConsts.KEY_USER_INFO);
+		PartnerApplication.getInstance().cleanUserInfo();
+		PartnerApplication.getInstance().setLogin(false);
 		Intent intent = new Intent();
 		intent.putExtra(IntentConsts.LOGOUT_KEY, true);
 		setResult(RESULT_OK, intent);

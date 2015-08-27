@@ -5,6 +5,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 
+import com.partner.PartnerApplication;
 import com.partner.R;
 import com.partner.activity.base.BaseActivity;
 import com.partner.common.annotation.ViewId;
@@ -101,6 +102,7 @@ public class LoginActivity extends BaseActivity {
 		String result = HttpUtils.getResponseData(response);
 		if(!TextUtils.isEmpty(result)) {
 			PreferenceUtils.putString(PreferenceConsts.KEY_USER_INFO, result);
+			PartnerApplication.getInstance().initUserInfo();
 			IntentManager.startMainActivity(this);
 			finish();
 		}

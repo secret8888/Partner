@@ -12,8 +12,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.partner.PartnerApplication;
 import com.partner.R;
 import com.partner.activity.activity.ActivitySignActivity;
+import com.partner.common.constant.Consts;
 import com.partner.model.FriendInfo;
 
 import java.util.ArrayList;
@@ -26,9 +28,12 @@ public class FriendAdapter extends BaseAdapter {
 
 	private boolean isInvite = false;
 
+	private boolean isBusiness;
+
 	public FriendAdapter(Context context, ArrayList<FriendInfo> items) {
 		this.context = context;
 		this.mItems = items;
+		isBusiness = PartnerApplication.getInstance().getUserInfo().getUserType() == Consts.ROLE_BUSINESS;
 	}
 
 	public FriendAdapter(Context context, ArrayList<FriendInfo> items, boolean isInvite) {
@@ -69,6 +74,7 @@ public class FriendAdapter extends BaseAdapter {
 		}
 
 		final FriendInfo info = mItems.get(position);
+
 		if(isInvite) {
 			holder.selectBox.setVisibility(View.VISIBLE);
 			holder.arrowView.setVisibility(View.GONE);
@@ -79,15 +85,20 @@ public class FriendAdapter extends BaseAdapter {
 				}
 			});
 		} else {
+			if(isBusiness) {
+				holder.arrowView.setVisibility(View.GONE);
+			} else {
+				holder.arrowView.setVisibility(View.VISIBLE);
+			}
 			holder.selectBox.setVisibility(View.GONE);
-			holder.arrowView.setVisibility(View.VISIBLE);
 		}
 
 		if(!TextUtils.isEmpty(info.getFriendHeadImage())) {
 			Uri uri = Uri.parse(info.getFriendHeadImage());
 			holder.avatarView.setImageURI(uri);
 		}
-		holder.nameView.setText(info.getFriendRealName());
+		holder.nameView.setText(info.getFriendNickName());
+
 		return convertView;
 	}
 

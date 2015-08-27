@@ -119,6 +119,7 @@
                 android:gravity="center"
                 android:textColor="@color/black"
                 android:textSize="@dimen/ts_16"
+                android:checked="true"
                 />
 
             <TextView
@@ -138,7 +139,7 @@
             android:gravity="center"
             android:textColor="@color/white"
             android:textSize="@dimen/ts_16"
-            android:text="@string/confirm"
+            android:text="@string/register_space"
             android:clickable="true"
             android:onClick="onConfirmClick"
             android:background="@drawable/btn_operate"

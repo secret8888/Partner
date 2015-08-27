@@ -69,8 +69,6 @@ public class Consts {
 
     public final static String WX_APP_ID = "wx2a268bdce9ba293a";
 
-    public final static String YX_APP_ID = "yx88c1dfc92f7442a89e97aef991d30e07";
-
     /**
      * 用户角色, 0为普通用户，1为商家
      */

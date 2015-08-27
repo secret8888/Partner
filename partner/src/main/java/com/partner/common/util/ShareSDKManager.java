@@ -44,7 +44,7 @@ public class ShareSDKManager {
 
     private static ShareSDKManager shareSDKManager = null;
 
-    private static final int THUMB_SIZE = 200;
+    private static final int THUMB_SIZE = 100;
 
     private ShareSDKManager(Activity context) {
         this.context = context;
